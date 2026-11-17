@@ -7,3 +7,4 @@ Thumbs.db
 public/audio/*
 !public/audio/.gitkeep
 !public/audio/*.mp3
+__pycache__/
