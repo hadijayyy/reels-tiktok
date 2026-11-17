@@ -1,6 +1,6 @@
-"""Write a soft backing track (public/audio/tidur-musik.wav) for the sleep film.
+"""Write a soft backing track to public/audio/<slug>-musik.wav.
 
-    python scripts/make_music.py <seconds>
+    python scripts/make_music.py <slug> <seconds>
 
 Plain numpy synthesis: a slow four-chord pad with a quiet music-box arpeggio. No samples.
 """
@@ -22,7 +22,7 @@ def hz(m: float) -> float:
 
 
 def main() -> None:
-    seconds = float(sys.argv[1])
+    slug, seconds = sys.argv[1], float(sys.argv[2])
     n = int(seconds * SR)
     out = np.zeros(n, dtype=np.float64)
     bar_n = int(BAR * SR)
@@ -48,7 +48,7 @@ def main() -> None:
     out[-fade:] *= np.linspace(1, 0, fade)
     out[: SR // 4] *= np.linspace(0, 1, SR // 4)
     out = out / np.abs(out).max() * 0.8
-    sf.write(os.path.join(ROOT, "public", "audio", "tidur-musik.wav"), out.astype(np.float32), SR)
+    sf.write(os.path.join(ROOT, "public", "audio", f"{slug}-musik.wav"), out.astype(np.float32), SR)
 
 
 if __name__ == "__main__":

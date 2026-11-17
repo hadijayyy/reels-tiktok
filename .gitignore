@@ -1,9 +1,9 @@
 node_modules/
 out/*
-!out/kenapa-kita-butuh-tidur.mp4
+!out/*.mp4
 *.log
 .DS_Store
 Thumbs.db
 public/audio/*
 !public/audio/.gitkeep
-!public/audio/tidur.mp3
+!public/audio/*.mp3

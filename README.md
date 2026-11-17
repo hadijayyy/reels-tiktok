@@ -33,14 +33,17 @@ Narasi dibuat secara lokal dengan mesin OmniVoice dari [VoiceStudio](https://git
 ```bash
 git clone --depth 1 https://github.com/debpalash/VoiceStudio ../VoiceStudio
 pip install torch torchaudio transformers accelerate pydub soundfile numpy
-PYTHONPATH=../VoiceStudio python scripts/make_narration.py   # suara + tidurTiming.ts
-python scripts/make_music.py 35.2                            # musik latar
-ffmpeg -y -i public/audio/tidur-narasi.wav -i public/audio/tidur-musik.wav -filter_complex \
-  "[0:a]aresample=44100,apad=whole_dur=35.2[v];[1:a]volume=0.22[m];[v][m]amix=inputs=2:duration=longest:normalize=0,loudnorm=I=-15:TP=-1.5:LRA=11,aresample=44100[a]" \
-  -map "[a]" -b:a 192k public/audio/tidur.mp3
+PYTHONPATH=../VoiceStudio python scripts/make_narration.py tidur   # suara + src/scenes/tidurTiming.ts
+python scripts/make_music.py tidur 35.2                            # musik latar
+scripts/mix_audio.sh tidur 35.2                                    # -> public/audio/tidur.mp3
 ```
 
-Ubah teks di `LINES` dalam `scripts/make_narration.py` untuk mengganti naskah; tanda `|` memisahkan frasa caption.
+Naskah ada di `scripts/narasi/tidur.txt`: satu baris per adegan, tanda `|` memisahkan frasa caption.
+
+## Membuat video baru
+
+Alur lengkapnya tersimpan sebagai skill Claude Code di `.claude/skills/stickman-video/SKILL.md`.
+Di sesi Claude Code yang membuka repo ini, cukup minta "bikin video stickman tentang <topik>".
 
 ## Kredit
 

@@ -11,7 +11,7 @@ import {cheer, idle, mix, point, typing} from "../rig/poses";
 import {seatedAnchor} from "../rig/seat";
 import {Pt, Stickman} from "../rig/Stickman";
 import {C, FPS} from "../styles/palette";
-import {TIDUR_CUES, TIDUR_SCENES} from "./tidurTiming";
+import {CUES as TIDUR_CUES, SCENES as TIDUR_SCENES} from "./tidurTiming";
 
 /*
  * KENAPA KITA BUTUH TIDUR? — a six-scene stickman explainer (about 35 s).
@@ -25,7 +25,7 @@ import {TIDUR_CUES, TIDUR_SCENES} from "./tidurTiming";
  * writes from the narration audio. Every scene below reads its length from there.
  */
 
-export {TIDUR_FRAMES} from "./tidurTiming";
+export {FRAMES as TIDUR_FRAMES} from "./tidurTiming";
 
 const SCALE = 1.5;
 const NIGHT_WALL = "#1B2036";
