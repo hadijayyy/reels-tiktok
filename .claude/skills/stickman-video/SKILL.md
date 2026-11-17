@@ -59,6 +59,8 @@ Skrip menulis `public/audio/<slug>-narasi.wav` dan `src/scenes/<slug>Timing.ts` 
 `CUES`), serta mencetak indeks cue pertama tiap adegan. Baris 1 merancang suara; baris lain mengkloningnya
 supaya naratornya orang yang sama. Untuk mengulang satu baris, hapus WAV-nya di
 `public/audio/<slug>-lines/` lalu jalankan lagi (mengulang baris 1 berarti hapus semuanya).
+Kalau sebuah kata salah diucapkan, tulis cara bacanya dengan `{tulisan=cara baca}` di naskah
+(misalnya `{OJK=O J K}`), hapus WAV baris itu, lalu jalankan lagi.
 
 Periksa hasilnya, karena audio tidak bisa didengar dari sini: transkripsikan tiap baris dengan
 `faster_whisper.WhisperModel("small", device="cpu", compute_type="int8")` dan `language="id"`, lalu

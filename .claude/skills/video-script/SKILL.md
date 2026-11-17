@@ -88,6 +88,9 @@ Ini naskah untuk *didengar*, bukan dibaca:
   digambar, tulis ulang.
 - Ramah TTS: tulis angka sebagai kata ("tujuh jam"), hindari singkatan dan istilah Inggris yang
   ejaannya ambigu; kalau istilah ilmiah perlu, sebut sekali lalu jelaskan dengan bahasa biasa.
+- Singkatan yang harus dieja (OJK, BPJS) tulis sebagai `{OJK=O J K}`: caption menampilkan "OJK",
+  suara membaca "O J K". Tanpa itu, "OJK" bisa terbaca "ojek". Pengecekan transkripsi di skill
+  stickman-video akan menangkap kasus seperti ini.
 - Penutup memberi ajakan yang bisa langsung dilakukan, bukan "like dan follow".
 
 ## 7. Nilai dan revisi

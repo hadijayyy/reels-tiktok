@@ -15,12 +15,27 @@ Hasil jadi: [`out/kenapa-kita-butuh-tidur.mp4`](out/kenapa-kita-butuh-tidur.mp4)
 | 5. Kurang tidur | Fokus buyar, emosi meledak, gampang sakit. |
 | 6. Penutup | Tidur itu servis rutin otak: minimal 7 jam. |
 
+## Video: "Modus Nonton Drama China" (40 detik)
+
+Hasil jadi: [`out/modus-nonton-drama.mp4`](out/modus-nonton-drama.mp4). Caption, hashtag, teks cover
+dan sumber fakta: [`scripts/narasi/drama-copy.md`](scripts/narasi/drama-copy.md).
+
+| Adegan | Isi |
+|---|---|
+| 1. Hook | Dibayar nonton drama? Gajinya ternyata kamu bayar sendiri. |
+| 2. Umpan | Tugas gampang, bayaran kecil yang beneran masuk. |
+| 3. Naik level | Setor deposit dulu biar bayaran makin besar. |
+| 4. Kail | Bayaran awal itu umpan; setelah setor besar, mereka kabur. |
+| 5. Skala | Lebih dari 500 ribu laporan penipuan ke OJK. |
+| 6. Rumus | Kerja yang minta setor duluan itu jebakan. Cek ke OJK. |
+
 ## Cara render ulang
 
 ```bash
 npm ci
 npm run typecheck
 npm run render -- KenapaKitaButuhTidur out/kenapa-kita-butuh-tidur.mp4
+npm run render -- ModusNontonDrama out/modus-nonton-drama.mp4
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di

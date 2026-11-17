@@ -6,13 +6,15 @@ environment with torch, torchaudio, transformers, accelerate, pydub and soundfil
     PYTHONPATH=/path/to/VoiceStudio python scripts/make_narration.py <slug> [language]
 
 It reads scripts/narasi/<slug>.txt (one line per scene, "|" splits a line into caption
-phrases, "#" starts a comment), writes one WAV per line to public/audio/<slug>-lines/, joins
+phrases, "#" starts a comment, and {caption=speech} shows "caption" in the captions but
+speaks "speech", e.g. {OJK=O J K} for an acronym the voice would read as a word), writes one WAV per line to public/audio/<slug>-lines/, joins
 them into public/audio/<slug>-narasi.wav and writes src/scenes/<slug>Timing.ts (scene lengths
 and caption cues, in frames) so the animation follows the voice. Lines that already have a
 WAV are not generated again: delete the WAV to redo a line.
 """
 
 import json
+import re
 import os
 import sys
 
@@ -51,7 +53,9 @@ def main() -> None:
     os.makedirs(LINE_DIR, exist_ok=True)
     model = OmniVoice.from_pretrained("k2-fsa/OmniVoice", device_map="cpu", dtype=torch.float32)
     sr = model.sampling_rate
-    texts = [line.replace("|", " ") for line in LINES]
+    SPOKEN = re.compile(r"\{([^=}]+)=([^}]+)\}")
+    texts = [SPOKEN.sub(r"\2", line).replace("|", " ") for line in LINES]
+    LINES = [SPOKEN.sub(r"\1", line) for line in LINES]
 
     # Line 1 designs the voice; the other lines clone it, so the narrator stays the same person.
     ref_path = os.path.join(LINE_DIR, "line1.wav")
