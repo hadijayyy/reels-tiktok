@@ -1,0 +1,14 @@
+# Satu baris = satu adegan. Tanda | memisahkan frasa caption. {tulisan=cara baca} untuk pelafalan, [jeda=detik] untuk jeda setelah baris.
+Ada satu pesan dari Ibu,|yang baru aku dengar|setelah Ibu pergi.
+Setelah lulus, aku merantau ke Jakarta.|Kerja dari pagi sampai malam.
+Dan setiap malam, jam tujuh,|{HP-ku=hape-ku} bergetar.|Ibu.
+"Sudah makan, Nak?"|"Jangan lupa istirahat."|Pertanyaannya selalu sama.
+Kadang aku angkat sebentar.|Lebih sering aku biarkan,|lalu kirim pesan: "Lagi sibuk, Bu."
+Lebaran tahun lalu, aku nggak pulang.|Kata Ibu, "Nggak apa-apa,|yang penting kamu sehat."
+Aku nggak tahu, Ibu mulai sering sakit.|Dia nggak pernah cerita.|Katanya, nanti anaknya kepikiran.
+Sampai suatu malam, jam tujuh lewat.|{HP-ku=Hape aku} diam. [jeda=1.6]
+Besok paginya, yang menelepon bukan Ibu.|Tapi tetangga kami. [jeda=1.6]
+Aku pulang hari itu juga.|Rumahnya masih sama.|Cuma Ibu yang sudah nggak ada.
+Di {HP=hape} Ibu, ada satu pesan suara|yang belum sempat terkirim:|"Nak, Ibu kangen."
+Kita selalu merasa masih ada waktu.|Masih ada lebaran tahun depan.|Masih ada nanti.
+Jadi kalau malam ini {ibumu=ibu kamu} menelepon,|angkat.|Selagi suaranya masih bisa kamu dengar.

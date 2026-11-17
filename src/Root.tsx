@@ -4,6 +4,7 @@ import {KenapaKitaButuhTidur, TIDUR_FRAMES} from "./scenes/KenapaKitaButuhTidur"
 import {DRAMA_FRAMES, ModusNontonDrama} from "./scenes/ModusNontonDrama";
 import {FLANNAN_FRAMES, MisteriFlannan} from "./scenes/MisteriFlannan";
 import {AYAH_FRAMES, AyahPulang} from "./scenes/AyahPulang";
+import {IBU_FRAMES, PesanIbu} from "./scenes/PesanIbu";
 import {FPS, H, W} from "./styles/palette";
 
 // Render with: npx remotion render src/index.ts <Id> out/<name>.mp4
@@ -44,6 +45,15 @@ export const Root: React.FC = () => (
       width={W}
       height={H}
       defaultProps={{narration: "audio/ayah.mp3"}}
+    />
+    <Composition
+      id="PesanIbu"
+      component={PesanIbu}
+      durationInFrames={IBU_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+      defaultProps={{narration: "audio/ibu.mp3"}}
     />
   </>
 );

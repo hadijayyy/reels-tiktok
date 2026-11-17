@@ -50,6 +50,16 @@ memikirkan keluarga, naik motor saat senja, mobil datang lalu kilat putih dan la
 helm di jalan yang basah, ibu memasak, anak menunggu di dekat pintu ("Ayah kapan pulang, Bu?"), rumah
 yang sunyi, meja makan dengan kursi kosong, anak memeluk foto ayah, dan teks penutup.
 
+## Video: "Pesan Terakhir dari Ibu" (69 detik, cerita emosional, POV anak)
+
+Hasil jadi: [`out/pesan-terakhir-dari-ibu.mp4`](out/pesan-terakhir-dari-ibu.mp4).
+Caption, hashtag, teks cover: [`scripts/narasi/ibu-copy.md`](scripts/narasi/ibu-copy.md).
+
+Pendamping video ayah, diceritakan oleh anak perempuan yang merantau ke Jakarta: telepon ibu setiap jam
+tujuh malam yang sering diabaikan, lebaran tanpa pulang, ibu yang menyembunyikan sakitnya, malam ketika
+HP diam, telepon dari tetangga, rumah yang kosong, dan pesan suara "Nak, Ibu kangen" yang belum
+sempat terkirim.
+
 ## Cara render ulang
 
 ```bash
@@ -59,6 +69,7 @@ npm run render -- KenapaKitaButuhTidur out/kenapa-kita-butuh-tidur.mp4
 npm run render -- ModusNontonDrama out/modus-nonton-drama.mp4
 npm run render -- MisteriFlannan out/misteri-flannan.mp4
 npm run render -- AyahPulang out/ada-yang-menunggu-ayah-pulang.mp4
+npm run render -- PesanIbu out/pesan-terakhir-dari-ibu.mp4
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di

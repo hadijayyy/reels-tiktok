@@ -72,6 +72,7 @@ OmniVoice: gender, usia (young adult, middle-aged, elderly), pitch, dan style wh
 - `male, middle-aged` tempo 1.0: lebih berat dan tenang, ~2,7 kata/detik (video horor).
 - `low pitch` tidak stabil: sering menghasilkan gumaman. Uji satu baris dulu sebelum generate semua.
 
+`female, young adult` tempo 0.85 juga jelas (~3,2 kata/detik; dipakai di video ibu).
 Untuk cerita emosional, `male, middle-aged` tempo 0.85 (~2,7 kata/detik) terasa lebih tenang daripada
 tempo 1.0 (~3,4 kata/detik). Tambahkan `[jeda=1.6]` di akhir baris untuk jeda dramatis, dan
 `--tail 5.5` untuk menahan layar setelah kalimat terakhir (misalnya teks penutup).
@@ -96,6 +97,8 @@ Salin pola salah satu film contoh ke `src/scenes/<NamaFilm>.tsx` dan daftarkan s
 - `src/scenes/AyahPulang.tsx`: cerita emosional keluarga 72 detik, 14 adegan (rumah Indonesia pagi
   dan malam, pasar, naik motor, kecelakaan disamarkan dengan kilat putih + layar hitam, meja makan
   dengan kursi kosong, pelukan foto, teks penutup di layar hitam, color grade hangat/dingin).
+- `src/scenes/PesanIbu.tsx`: cerita orang pertama 69 detik, 13 adegan (layar HP sebagai adegan,
+  layar terbagi dua untuk telepon, jam yang berjalan, rumah kosong).
 
 Bagian-bagian kit ada di `src/rig`, `src/camera`, `src/environment`, `src/captions`, `src/motion`.
 Properti yang sudah ada, pakai ulang sebelum menggambar yang baru:
@@ -106,6 +109,9 @@ Properti yang sudah ada, pakai ulang sebelum menggambar yang baru:
 - `src/environment/FamilyProps.tsx`: look `AYAH`, `AYAH_HELMET`, `IBU` (kerudung), `ANAK`; `House`,
   `PlantPot`, `PowerPole`, `StreetLamp`, `Road`, `Motorbike` + `bikeRider`, `Car`, `HelmetOnRoad`,
   `Stove`, `DiningTable`, `SideChair`, `PhotoFrame`, `SackOnBack`, `SkyBand`, `LightRain`.
+- `src/environment/MotherProps.tsx`: look `AKU` (perempuan muda), `IBU_DESA` (kerudung + kacamata);
+  layar HP `CallScreen`, `QuietScreen`, `MissedCalls`, `ChatSent`, `VoiceMessage`; `earPhone`,
+  `CitySkyline`, `Ketupat`, `Medicine`, `Sandals`, `FoldedScarf`, `Tears`.
 - `src/environment/MoneyProps.tsx`: `Coin`, `handPhone` (HP di tangan lewat `look.handR`),
   `DramaScreen`, `BigPhone`, `Card`, `Tick`, `Padlock`, `DepositBox`, `FishHook`, `Stamp`, `Magnifier`.
 
@@ -139,6 +145,11 @@ Aturan yang membuat video ini berhasil:
   sekitar titiknya. Karakter latar (kerumunan) minimal skala 0.9, dua baris saja.
 - **Close-up di atas caption:** pada zoom tinggi, hitung posisi layar: `960 + (y_dunia - cam.y) * zoom`.
   Subjek utama harus di bawah ~1250 px, jadi naikkan `cam.y` kalau perlu.
+- **Menelepon:** tangan kanan digambar di depan kepala, jadi HP di tangan kanan menutupi wajah.
+  Pakai `handL: earPhone()` dengan `reachL` sedikit di belakang kepala, lalu tambahkan ikon panggilan
+  (`CallBadge` di `PesanIbu.tsx`) di samping kepala supaya jelas sedang menelepon.
+- **Layar terbagi dua:** dua `Camera2D` dengan `clipPath: inset(0 0 50% 0)` dan `inset(50% 0 0 0)`;
+  arahkan kamera dengan `halfCam` agar subjek bawah tetap di atas caption.
 - **Kekerasan:** kecelakaan atau kematian tidak digambarkan langsung. Pakai potongan ke hitam, kilatan,
   atau akibatnya (benda yang tertinggal), tanpa darah atau tubuh.
 - **Teks tidak boleh bertumpuk:** stempel, kartu, dan label harus punya tempat sendiri; cek still di
