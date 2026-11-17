@@ -9,6 +9,13 @@ Membuat satu video penjelasan stickman 30-45 detik dari sebuah topik. Repo ini s
 animasinya (dari `ahmadaryanto/stickman-story`, MIT) dan satu film contoh yang lengkap:
 `src/scenes/KenapaKitaButuhTidur.tsx`. Film baru = naskah baru + file adegan baru; kit-nya dipakai ulang.
 
+## 0. Kalau user minta visual realistis
+
+Repo ini hanya membuat animasi stickman. Kalau user minta "realistis/sinematik, bukan animasi", jangan
+diam-diam membuat stickman: tanyakan dulu. Pilihannya: foto realistis dari Canva AI + gerak kamera,
+video AI Canva (maks. 30 detik per klip dan memakai banyak kuota AI), stickman versi sinematik, atau
+paket produksi (narasi, musik, subtitle, shot list) untuk visual yang user buat sendiri.
+
 ## 1. Tanya hanya yang belum jelas
 
 Jika permintaan sudah menyebut topiknya, langsung kerjakan dengan nilai bawaan. Tanya hanya hal yang
@@ -65,6 +72,10 @@ OmniVoice: gender, usia (young adult, middle-aged, elderly), pitch, dan style wh
 - `male, middle-aged` tempo 1.0: lebih berat dan tenang, ~2,7 kata/detik (video horor).
 - `low pitch` tidak stabil: sering menghasilkan gumaman. Uji satu baris dulu sebelum generate semua.
 
+Untuk cerita emosional, `male, middle-aged` tempo 0.85 (~2,7 kata/detik) terasa lebih tenang daripada
+tempo 1.0 (~3,4 kata/detik). Tambahkan `[jeda=1.6]` di akhir baris untuk jeda dramatis, dan
+`--tail 5.5` untuk menahan layar setelah kalimat terakhir (misalnya teks penutup).
+
 Kalau sebuah kata salah diucapkan, tulis cara bacanya dengan `{tulisan=cara baca}` di naskah
 (misalnya `{OJK=O J K}`), hapus WAV baris itu, lalu jalankan lagi.
 
@@ -82,6 +93,9 @@ Salin pola salah satu film contoh ke `src/scenes/<NamaFilm>.tsx` dan daftarkan s
 - `src/scenes/ModusNontonDrama.tsx`: uang/penipuan (HP, koin terbang, kail, stempel, kerumunan).
 - `src/scenes/MisteriFlannan.tsx`: misteri/horor 70 detik, 14 adegan (malam, laut, badai, kabut,
   vignette, transisi fade, adegan "legenda" bernuansa merah).
+- `src/scenes/AyahPulang.tsx`: cerita emosional keluarga 72 detik, 14 adegan (rumah Indonesia pagi
+  dan malam, pasar, naik motor, kecelakaan disamarkan dengan kilat putih + layar hitam, meja makan
+  dengan kursi kosong, pelukan foto, teks penutup di layar hitam, color grade hangat/dingin).
 
 Bagian-bagian kit ada di `src/rig`, `src/camera`, `src/environment`, `src/captions`, `src/motion`.
 Properti yang sudah ada, pakai ulang sebelum menggambar yang baru:
@@ -89,6 +103,9 @@ Properti yang sudah ada, pakai ulang sebelum menggambar yang baru:
 - `src/environment/SleepProps.tsx`: `Brain`, `Bed`, `Blanket`, `Sleeper`, `SkyWindow`, `Gear`.
 - `src/environment/HorrorProps.tsx`: `Sky`, `Sea`, `Island`, `Lighthouse`, `Steamer`, `Rain`, `Fog`,
   `StoppedClock`, `CoatPeg`, `Railing`, `Boulder`, `Slate`, `Flare`, `Vignette`, look `KEEPER`.
+- `src/environment/FamilyProps.tsx`: look `AYAH`, `AYAH_HELMET`, `IBU` (kerudung), `ANAK`; `House`,
+  `PlantPot`, `PowerPole`, `StreetLamp`, `Road`, `Motorbike` + `bikeRider`, `Car`, `HelmetOnRoad`,
+  `Stove`, `DiningTable`, `SideChair`, `PhotoFrame`, `SackOnBack`, `SkyBand`, `LightRain`.
 - `src/environment/MoneyProps.tsx`: `Coin`, `handPhone` (HP di tangan lewat `look.handR`),
   `DramaScreen`, `BigPhone`, `Card`, `Tick`, `Padlock`, `DepositBox`, `FishHook`, `Stamp`, `Magnifier`.
 
@@ -120,6 +137,10 @@ Aturan yang membuat video ini berhasil:
   still: karakter yang terpotong di tepi adalah kesalahan paling sering.
 - **Ukuran:** properti kunci (kail, koin umpan) minimal ~60 px di layar; perbesar dengan `scale()` di
   sekitar titiknya. Karakter latar (kerumunan) minimal skala 0.9, dua baris saja.
+- **Close-up di atas caption:** pada zoom tinggi, hitung posisi layar: `960 + (y_dunia - cam.y) * zoom`.
+  Subjek utama harus di bawah ~1250 px, jadi naikkan `cam.y` kalau perlu.
+- **Kekerasan:** kecelakaan atau kematian tidak digambarkan langsung. Pakai potongan ke hitam, kilatan,
+  atau akibatnya (benda yang tertinggal), tanpa darah atau tubuh.
 - **Teks tidak boleh bertumpuk:** stempel, kartu, dan label harus punya tempat sendiri; cek still di
   frame saat elemen terakhir sudah muncul.
 - **Label di layar** pendek, huruf kapital, 2-3 kata. Tanpa logo atau merek.
@@ -137,7 +158,7 @@ sendiri gambarnya. Cari: karakter tertutup properti, teks keluar layar atau meni
 muncul di frasa yang salah. Perbaiki sebelum render penuh.
 
 ```bash
-python scripts/make_music.py <slug> <detik> [calm|horror]   # detik = FRAMES / 30
+python scripts/make_music.py <slug> <detik> [calm|horror|piano] [puncak]   # detik = FRAMES / 30; piano naik sampai `puncak` (0..1)
 scripts/mix_audio.sh <slug> <detik> [volume musik]         # -> public/audio/<slug>.mp3 (horor: 0.3)
 npx remotion render src/index.ts <Id> out/<slug>.mp4 --crf=20
 ```

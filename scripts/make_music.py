@@ -5,6 +5,9 @@
 Plain numpy synthesis, no samples. Moods:
   calm    (default) a slow four-chord pad with a quiet music-box arpeggio
   horror  a low beating drone, sea wind, and sparse out-of-tune bell notes
+  piano   a sad piano that builds: sparse notes, then chords, then full arpeggios near the end,
+          easing off for the last bars. Optional 4th argument: the build peak as a fraction
+          of the length (default 0.78)
 """
 
 import os
@@ -50,11 +53,66 @@ def horror(seconds: float) -> np.ndarray:
     return out
 
 
+def piano_note(freq: float, length: float, vel: float) -> np.ndarray:
+    """A piano-like tone: a few slightly stretched harmonics, a soft hammer and a two-stage decay."""
+    t = np.arange(int(length * SR)) / SR
+    out = np.zeros_like(t)
+    for k, amp in enumerate([1.0, 0.45, 0.22, 0.12, 0.06], start=1):
+        f = freq * k * (1 + 0.0004 * k * k)
+        if f > SR / 2:
+            break
+        out += amp * np.sin(2 * np.pi * f * t) * np.exp(-t * (0.9 + 0.5 * k) * (freq / 440) ** 0.3)
+    attack = np.minimum(1, t / 0.006)
+    body = 0.65 * np.exp(-t * 0.7) + 0.35 * np.exp(-t * 4.0)
+    return out * attack * body * vel
+
+
+def piano(seconds: float, peak: float) -> np.ndarray:
+    n = int(seconds * SR)
+    out = np.zeros(n + SR * 6)
+    beat = 60 / 66  # 66 bpm
+    bar = beat * 4
+    # Am - F - C - G, then Am - F - C - E (minor-key lament)
+    prog = [(57, [57, 60, 64]), (53, [53, 57, 60]), (48, [55, 60, 64]), (55, [55, 59, 62]),
+            (57, [57, 60, 64]), (53, [53, 57, 60]), (48, [55, 60, 64]), (52, [56, 59, 64])]
+    melody = [76, 74, 72, 71, 72, 69, 67, 68]
+
+    def add(at: float, midi: int, length: float, vel: float) -> None:
+        i = int(at * SR)
+        note = piano_note(hz(midi), length, vel)
+        out[i : i + len(note)] += note
+
+    b = 0
+    while b * bar < seconds:
+        start = b * bar
+        x = start / seconds                       # 0..1 through the piece
+        build = min(1.0, x / peak)                 # rises to the peak...
+        if x > peak:
+            build = max(0.25, 1 - (x - peak) / (1 - peak) * 0.75)  # ...then eases off
+        bass, chord = prog[b % len(prog)]
+        add(start, bass - 12, bar * 1.6, 0.30 + 0.25 * build)
+        if build > 0.25:
+            for j, m in enumerate(chord):
+                add(start + beat * 2 + j * 0.03, m, bar, 0.10 + 0.12 * build)
+        # right hand: one note, then two, then flowing eighths
+        steps = 1 if build < 0.35 else 2 if build < 0.6 else 4 if build < 0.85 else 8
+        for k in range(steps):
+            m = melody[b % len(melody)] if k == 0 else chord[(k + b) % 3] + 12
+            add(start + k * bar / steps, m, bar * 1.2, (0.22 if k == 0 else 0.12) * (0.6 + 0.6 * build))
+        b += 1
+    out = out[:n]
+    # a little room: two short echoes
+    for d, g in [(0.083, 0.25), (0.197, 0.15)]:
+        k = int(d * SR)
+        out[k:] += out[:-k] * g
+    return out
+
+
 def main() -> None:
     slug, seconds = sys.argv[1], float(sys.argv[2])
     mood = sys.argv[3] if len(sys.argv) > 3 else "calm"
-    if mood == "horror":
-        out = horror(seconds)
+    if mood in ("horror", "piano"):
+        out = horror(seconds) if mood == "horror" else piano(seconds, float(sys.argv[4]) if len(sys.argv) > 4 else 0.78)
         fade = int(SR * 2.5)
         out[-fade:] *= np.linspace(1, 0, fade)
         out[: SR] *= np.linspace(0, 1, SR)

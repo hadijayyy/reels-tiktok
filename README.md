@@ -39,6 +39,17 @@ malam hari, catatan terakhir, lampu padam, kapal suplai tertahan badai, Joseph M
 mercusuar kosong (ranjang, jam berhenti, satu jas hujan tertinggal), dermaga barat yang rusak,
 kesimpulan resmi (ombak raksasa), legenda yang ternyata karangan, dan pertanyaan yang belum terjawab.
 
+## Video: "Ada yang Menunggu Ayah Pulang" (72 detik, cerita emosional)
+
+Hasil jadi: [`out/ada-yang-menunggu-ayah-pulang.mp4`](out/ada-yang-menunggu-ayah-pulang.mp4).
+Caption, hashtag, teks cover: [`scripts/narasi/ayah-copy.md`](scripts/narasi/ayah-copy.md).
+
+Cerita dari user: seorang ayah pamit kerja di pagi hari, bekerja keras, dan tidak pulang. 14 adegan:
+pamit di depan rumah, rumah yang sama saat malam, memikul karung di pasar, menghitung uang sambil
+memikirkan keluarga, naik motor saat senja, mobil datang lalu kilat putih dan layar hitam, motor dan
+helm di jalan yang basah, ibu memasak, anak menunggu di dekat pintu ("Ayah kapan pulang, Bu?"), rumah
+yang sunyi, meja makan dengan kursi kosong, anak memeluk foto ayah, dan teks penutup.
+
 ## Cara render ulang
 
 ```bash
@@ -47,6 +58,7 @@ npm run typecheck
 npm run render -- KenapaKitaButuhTidur out/kenapa-kita-butuh-tidur.mp4
 npm run render -- ModusNontonDrama out/modus-nonton-drama.mp4
 npm run render -- MisteriFlannan out/misteri-flannan.mp4
+npm run render -- AyahPulang out/ada-yang-menunggu-ayah-pulang.mp4
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di

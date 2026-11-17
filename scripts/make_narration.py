@@ -8,7 +8,8 @@ environment with torch, torchaudio, transformers, accelerate, pydub and soundfil
 
 It reads scripts/narasi/<slug>.txt (one line per scene, "|" splits a line into caption
 phrases, "#" starts a comment, and {caption=speech} shows "caption" in the captions but
-speaks "speech", e.g. {OJK=O J K} for an acronym the voice would read as a word), writes one WAV per line to public/audio/<slug>-lines/, joins
+speaks "speech", e.g. {OJK=O J K} for an acronym the voice would read as a word, and a
+trailing [jeda=1.5] adds 1.5 s of silence after that line, for a dramatic pause), writes one WAV per line to public/audio/<slug>-lines/, joins
 them into public/audio/<slug>-narasi.wav and writes src/scenes/<slug>Timing.ts (scene lengths
 and caption cues, in frames) so the animation follows the voice. Lines that already have a
 WAV are not generated again: delete the WAV to redo a line.
@@ -53,6 +54,7 @@ def main() -> None:
     ap.add_argument("language", nargs="?", default="id")
     ap.add_argument("--voice", default=VOICE, help="voice design prompt (gender, age, pitch, style)")
     ap.add_argument("--speed", type=float, default=SPEED)
+    ap.add_argument("--tail", type=float, default=TAIL, help="seconds held after the last line (e.g. for a closing title)")
     args = ap.parse_args()
     slug, language, voice, speed = args.slug, args.language, args.voice, args.speed
     with open(os.path.join(ROOT, "scripts", "narasi", f"{slug}.txt"), encoding="utf-8") as f:
@@ -61,6 +63,9 @@ def main() -> None:
     os.makedirs(LINE_DIR, exist_ok=True)
     model = OmniVoice.from_pretrained("k2-fsa/OmniVoice", device_map="cpu", dtype=torch.float32)
     sr = model.sampling_rate
+    PAUSE = re.compile(r"\s*\[jeda=([\d.]+)\]\s*$")
+    pauses = [float(m.group(1)) if (m := PAUSE.search(line)) else 0.0 for line in LINES]
+    LINES = [PAUSE.sub("", line) for line in LINES]
     SPOKEN = re.compile(r"\{([^=}]+)=([^}]+)\}")
     texts = [SPOKEN.sub(r"\2", line).replace("|", " ") for line in LINES]
     LINES = [SPOKEN.sub(r"\1", line) for line in LINES]
@@ -98,9 +103,9 @@ def main() -> None:
             cues.append({"from": round(at * FPS), "to": round((at + span) * FPS), "text": p})
             at += span
         parts.append(wav)
-        parts.append(silence(TAIL if i == len(clips) - 1 else GAP))
-        cursor = end + GAP
-    total_frames = round((cursor - GAP + TAIL) * FPS)
+        parts.append(silence(args.tail if i == len(clips) - 1 else GAP + pauses[i]))
+        cursor = end + GAP + pauses[i]
+    total_frames = round((cursor - GAP - pauses[-1] + args.tail) * FPS)
     for i, s in enumerate(scenes):
         s["len"] = (scenes[i + 1]["from"] if i + 1 < len(scenes) else total_frames) - s["from"]
 
