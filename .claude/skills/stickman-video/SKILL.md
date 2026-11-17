@@ -81,6 +81,11 @@ Aturan yang membuat video ini berhasil:
   mengasumsikan tiga frasa per baris.
 - **Satu ide visual per adegan**, dan setiap adegan memuat stickman. Variasikan: tidur, duduk mengetik,
   menunjuk papan, lesu, bersorak.
+- **Transisi antar-adegan:** rakit adegan dengan `ScenesWithTransitions` dari
+  `src/camera/Transitions.tsx` (lihat akhir film contoh) dan pilih `"zoom"`, `"whip"` atau `"cut"` per
+  potongan; selang-seling whip dan zoom terasa paling hidup. Di dalam adegan pakai `useSceneFrame()`,
+  bukan `useCurrentFrame()`, supaya `cueAt` tetap pas dengan narasi. Cek still tepat di frame potongan
+  (`SCENES[i].from`) dan ±4 frame.
 - **Kamera** selalu bergerak pelan (zoom 1.0 -> ~1.15 sepanjang adegan). Pakai `y: 120` sebagai dasar
   agar lantai berada di atas caption; `handheld` untuk adegan tegang.
 - **Area aman:** teks di layar di antara y 250 dan 1300 px; caption bawaan di 1380. Lebar dunia yang

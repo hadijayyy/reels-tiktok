@@ -1,7 +1,8 @@
 import React from "react";
-import {AbsoluteFill, Sequence, useCurrentFrame} from "remotion";
+import {AbsoluteFill} from "remotion";
 import {Narration} from "../audio/Narration";
 import {Camera2D, Layer} from "../camera/Camera2D";
+import {ScenesWithTransitions, TransitionKind, useSceneFrame} from "../camera/Transitions";
 import {CaptionTrack} from "../captions/CaptionTrack";
 import {Board, Desk, Floor, FLOOR, Glow, Label, Monitor, OfficeChair, Wall} from "../environment/Furniture";
 import {Bed, Blanket, Brain, Gear, SkyWindow, Sleeper} from "../environment/SleepProps";
@@ -68,7 +69,7 @@ const BedWithSleeper: React.FC<{t: number}> = ({t}) => (
 
 /** Scene 1: asleep at night. "1/3" and a life bar that fills to a third. */
 const Hook: React.FC<{len: number}> = ({len}) => {
-  const frame = useCurrentFrame();
+  const frame = useSceneFrame();
   const t = frame / FPS;
   const cam = keysObj(frame, [
     [0, {x: 0, y: 120, zoom: 1.08, rot: 0}],
@@ -111,7 +112,7 @@ const Hook: React.FC<{len: number}> = ({len}) => {
 
 /** Scene 2: a day at the desk. Waste specks pile up in the brain while the clock spins. */
 const Day: React.FC<{len: number}> = ({len}) => {
-  const frame = useCurrentFrame();
+  const frame = useSceneFrame();
   const t = frame / FPS;
   const chair = {x: -120, floorY: FLOOR, facing: 1 as const, seat: 87};
   const seat = seatedAnchor(chair, SCALE);
@@ -176,7 +177,7 @@ const Day: React.FC<{len: number}> = ({len}) => {
 
 /** Scene 3: asleep. A wave of fluid crosses the brain and carries the waste away. */
 const Wash: React.FC<{len: number}> = ({len}) => {
-  const frame = useCurrentFrame();
+  const frame = useSceneFrame();
   const t = frame / FPS;
   const cam = keysObj(frame, [
     [0, {x: 0, y: 120, zoom: 1, rot: 0}],
@@ -233,7 +234,7 @@ const Wash: React.FC<{len: number}> = ({len}) => {
 
 /** Scene 4: memory cards move from "today" into long-term storage on a board. */
 const Memory: React.FC<{len: number}> = ({len}) => {
-  const frame = useCurrentFrame();
+  const frame = useSceneFrame();
   const t = frame / FPS;
   const cam = keysObj(frame, [
     [0, {x: 0, y: 80, zoom: 1, rot: 0}],
@@ -283,7 +284,7 @@ const Memory: React.FC<{len: number}> = ({len}) => {
 
 /** Scene 5: no sleep. A drained character and three warnings, one per phrase. */
 const NoSleep: React.FC<{len: number}> = ({len}) => {
-  const frame = useCurrentFrame();
+  const frame = useSceneFrame();
   const t = frame / FPS;
   const cam = keysObj(frame, [
     [0, {x: 0, y: 120, zoom: 1.05, rot: 0}],
@@ -320,7 +321,7 @@ const NoSleep: React.FC<{len: number}> = ({len}) => {
 
 /** Scene 6: morning. Sleep is maintenance, then the call to action. */
 const Outro: React.FC<{len: number}> = ({len}) => {
-  const frame = useCurrentFrame();
+  const frame = useSceneFrame();
   const t = frame / FPS;
   const service = cueAt(17, 5);
   const cta = cueAt(18, 5);
@@ -361,13 +362,19 @@ const Outro: React.FC<{len: number}> = ({len}) => {
 
 const SCENES = [Hook, Day, Wash, Memory, NoSleep, Outro];
 
+// Camera transition at each cut: Hook>Day, Day>Wash, Wash>Memory, Memory>NoSleep, NoSleep>Outro.
+const TRANSITIONS: TransitionKind[] = ["whip", "zoom", "whip", "zoom", "whip"];
+
 export const KenapaKitaButuhTidur: React.FC<{narration?: string}> = ({narration}) => (
   <AbsoluteFill>
-    {SCENES.map((Scene, i) => (
-      <Sequence key={i} from={TIDUR_SCENES[i].from} durationInFrames={TIDUR_SCENES[i].len}>
-        <Scene len={TIDUR_SCENES[i].len} />
-      </Sequence>
-    ))}
+    <ScenesWithTransitions
+      scenes={TIDUR_SCENES}
+      kinds={TRANSITIONS}
+      render={(i) => {
+        const Scene = SCENES[i];
+        return <Scene len={TIDUR_SCENES[i].len} />;
+      }}
+    />
     <CaptionTrack cues={TIDUR_CUES} />
     <Narration file={narration} />
   </AbsoluteFill>
