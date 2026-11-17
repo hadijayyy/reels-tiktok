@@ -2,6 +2,7 @@ import React from "react";
 import {Composition} from "remotion";
 import {KenapaKitaButuhTidur, TIDUR_FRAMES} from "./scenes/KenapaKitaButuhTidur";
 import {DRAMA_FRAMES, ModusNontonDrama} from "./scenes/ModusNontonDrama";
+import {FLANNAN_FRAMES, MisteriFlannan} from "./scenes/MisteriFlannan";
 import {FPS, H, W} from "./styles/palette";
 
 // Render with: npx remotion render src/index.ts <Id> out/<name>.mp4
@@ -24,6 +25,15 @@ export const Root: React.FC = () => (
       width={W}
       height={H}
       defaultProps={{narration: "audio/drama.mp3"}}
+    />
+    <Composition
+      id="MisteriFlannan"
+      component={MisteriFlannan}
+      durationInFrames={FLANNAN_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+      defaultProps={{narration: "audio/flannan.mp3"}}
     />
   </>
 );

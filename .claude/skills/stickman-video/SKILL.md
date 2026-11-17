@@ -59,6 +59,12 @@ Skrip menulis `public/audio/<slug>-narasi.wav` dan `src/scenes/<slug>Timing.ts` 
 `CUES`), serta mencetak indeks cue pertama tiap adegan. Baris 1 merancang suara; baris lain mengkloningnya
 supaya naratornya orang yang sama. Untuk mengulang satu baris, hapus WAV-nya di
 `public/audio/<slug>-lines/` lalu jalankan lagi (mengulang baris 1 berarti hapus semuanya).
+Suara dan tempo bisa diganti per video: `--voice "male, middle-aged" --speed 1.0`. Pilihan suara
+OmniVoice: gender, usia (young adult, middle-aged, elderly), pitch, dan style whisper. Catatan dari uji coba:
+- `male, young adult` tempo 0.78: jelas, ~3 kata/detik (video tidur dan drama).
+- `male, middle-aged` tempo 1.0: lebih berat dan tenang, ~2,7 kata/detik (video horor).
+- `low pitch` tidak stabil: sering menghasilkan gumaman. Uji satu baris dulu sebelum generate semua.
+
 Kalau sebuah kata salah diucapkan, tulis cara bacanya dengan `{tulisan=cara baca}` di naskah
 (misalnya `{OJK=O J K}`), hapus WAV baris itu, lalu jalankan lagi.
 
@@ -74,11 +80,15 @@ Salin pola salah satu film contoh ke `src/scenes/<NamaFilm>.tsx` dan daftarkan s
 
 - `src/scenes/KenapaKitaButuhTidur.tsx`: sains/kesehatan (kasur, otak, papan memori).
 - `src/scenes/ModusNontonDrama.tsx`: uang/penipuan (HP, koin terbang, kail, stempel, kerumunan).
+- `src/scenes/MisteriFlannan.tsx`: misteri/horor 70 detik, 14 adegan (malam, laut, badai, kabut,
+  vignette, transisi fade, adegan "legenda" bernuansa merah).
 
 Bagian-bagian kit ada di `src/rig`, `src/camera`, `src/environment`, `src/captions`, `src/motion`.
 Properti yang sudah ada, pakai ulang sebelum menggambar yang baru:
 
 - `src/environment/SleepProps.tsx`: `Brain`, `Bed`, `Blanket`, `Sleeper`, `SkyWindow`, `Gear`.
+- `src/environment/HorrorProps.tsx`: `Sky`, `Sea`, `Island`, `Lighthouse`, `Steamer`, `Rain`, `Fog`,
+  `StoppedClock`, `CoatPeg`, `Railing`, `Boulder`, `Slate`, `Flare`, `Vignette`, look `KEEPER`.
 - `src/environment/MoneyProps.tsx`: `Coin`, `handPhone` (HP di tangan lewat `look.handR`),
   `DramaScreen`, `BigPhone`, `Card`, `Tick`, `Padlock`, `DepositBox`, `FishHook`, `Stamp`, `Magnifier`.
 
@@ -94,8 +104,9 @@ Aturan yang membuat video ini berhasil:
 - **Satu ide visual per adegan**, dan setiap adegan memuat stickman. Variasikan: tidur, duduk mengetik,
   menunjuk papan, lesu, bersorak.
 - **Transisi antar-adegan:** rakit adegan dengan `ScenesWithTransitions` dari
-  `src/camera/Transitions.tsx` (lihat akhir film contoh) dan pilih `"zoom"`, `"whip"` atau `"cut"` per
-  potongan; selang-seling whip dan zoom terasa paling hidup. Di dalam adegan pakai `useSceneFrame()`,
+  `src/camera/Transitions.tsx` (lihat akhir film contoh) dan pilih `"zoom"`, `"whip"`, `"fade"` atau
+  `"cut"` per potongan; selang-seling whip dan zoom terasa paling hidup untuk edukasi, `"fade"` untuk
+  misteri/horor. Di dalam adegan pakai `useSceneFrame()`,
   bukan `useCurrentFrame()`, supaya `cueAt` tetap pas dengan narasi. Cek still tepat di frame potongan
   (`SCENES[i].from`) dan ±4 frame.
 - **Kamera** selalu bergerak pelan (zoom 1.0 -> ~1.15 sepanjang adegan). Pakai `y: 120` sebagai dasar
@@ -126,8 +137,8 @@ sendiri gambarnya. Cari: karakter tertutup properti, teks keluar layar atau meni
 muncul di frasa yang salah. Perbaiki sebelum render penuh.
 
 ```bash
-python scripts/make_music.py <slug> <detik>          # detik = FRAMES / 30
-scripts/mix_audio.sh <slug> <detik>                  # -> public/audio/<slug>.mp3
+python scripts/make_music.py <slug> <detik> [calm|horror]   # detik = FRAMES / 30
+scripts/mix_audio.sh <slug> <detik> [volume musik]         # -> public/audio/<slug>.mp3 (horor: 0.3)
 npx remotion render src/index.ts <Id> out/<slug>.mp4 --crf=20
 ```
 

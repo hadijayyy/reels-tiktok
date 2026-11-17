@@ -10,13 +10,14 @@ import {W} from "../styles/palette";
  *
  *   "zoom"  the camera rushes into the outgoing scene, then pulls back out of the incoming one
  *   "whip"  a fast pan: the outgoing scene leaves to the left, the incoming one arrives from the right
+ *   "fade"  a slow dip through the dark background (the calmest; suits night and horror)
  *   "cut"   a plain cut
  *
  * Inside a scene, read the frame with useSceneFrame() instead of useCurrentFrame(): it is 0 at the
  * scene's real start, holds at 0 during the lead-in, and keeps counting during the lead-out.
  */
 
-export type TransitionKind = "zoom" | "whip" | "cut";
+export type TransitionKind = "zoom" | "whip" | "fade" | "cut";
 
 /** Frames on each side of a cut (the whole transition lasts 2 * HALF frames, about half a second). */
 export const HALF = 8;
@@ -29,6 +30,7 @@ export const useSceneFrame = () => Math.max(0, useCurrentFrame() - React.useCont
 /** How a scene looks at progress p of a transition: p goes 0 -> 1 across the cut, `out` = leaving. */
 const look = (kind: TransitionKind, p: number, out: boolean): React.CSSProperties => {
   if (kind === "cut") return {opacity: out ? (p < 0.5 ? 1 : 0) : p < 0.5 ? 0 : 1};
+  if (kind === "fade") return {opacity: out ? 1 - clamp(p * 2) : clamp(p * 2 - 1)};
   // the leaving scene accelerates away, the arriving one decelerates in
   const k = out ? eIn(clamp(p * 2)) : 1 - eOut(clamp(p * 2 - 1));
   const blur = k * (kind === "zoom" ? 14 : 18);

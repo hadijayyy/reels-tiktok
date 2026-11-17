@@ -1,8 +1,10 @@
 """Write a soft backing track to public/audio/<slug>-musik.wav.
 
-    python scripts/make_music.py <slug> <seconds>
+    python scripts/make_music.py <slug> <seconds> [mood]
 
-Plain numpy synthesis: a slow four-chord pad with a quiet music-box arpeggio. No samples.
+Plain numpy synthesis, no samples. Moods:
+  calm    (default) a slow four-chord pad with a quiet music-box arpeggio
+  horror  a low beating drone, sea wind, and sparse out-of-tune bell notes
 """
 
 import os
@@ -21,8 +23,44 @@ def hz(m: float) -> float:
     return 440.0 * 2 ** ((m - 69) / 12)
 
 
+def horror(seconds: float) -> np.ndarray:
+    n = int(seconds * SR)
+    t = np.arange(n) / SR
+    rng = np.random.default_rng(13)
+    # drone: two low notes a hair apart so they beat slowly, swelling in and out
+    swell = 0.6 + 0.4 * np.sin(2 * np.pi * t / 11.0) ** 2
+    drone = (np.sin(2 * np.pi * 55.0 * t) + np.sin(2 * np.pi * 55.6 * t) + 0.5 * np.sin(2 * np.pi * 82.4 * t)) * swell
+    # wind: noise smoothed by a moving average, with gusts
+    noise = rng.standard_normal(n)
+    k = 60
+    wind = np.convolve(noise, np.ones(k) / k, mode="same")
+    wind *= 0.5 + 0.5 * np.sin(2 * np.pi * t / 7.3 + 1.0) ** 2
+    wind /= np.abs(wind).max()
+    out = drone * 0.22 + wind * 0.35
+    # bells: a minor second apart, every few seconds
+    bell_t = np.arange(int(SR * 4)) / SR
+    at = 2.0
+    while at < seconds - 3:
+        m = rng.choice([69, 70, 76, 77])
+        note = (np.sin(2 * np.pi * hz(m) * bell_t) + 0.4 * np.sin(2 * np.pi * hz(m) * 2.76 * bell_t)) * np.exp(-bell_t * 1.6) * 0.16
+        i = int(at * SR)
+        end = min(n, i + len(note))
+        out[i:end] += note[: end - i]
+        at += rng.uniform(4.5, 7.5)
+    return out
+
+
 def main() -> None:
     slug, seconds = sys.argv[1], float(sys.argv[2])
+    mood = sys.argv[3] if len(sys.argv) > 3 else "calm"
+    if mood == "horror":
+        out = horror(seconds)
+        fade = int(SR * 2.5)
+        out[-fade:] *= np.linspace(1, 0, fade)
+        out[: SR] *= np.linspace(0, 1, SR)
+        out = out / np.abs(out).max() * 0.8
+        sf.write(os.path.join(ROOT, "public", "audio", f"{slug}-musik.wav"), out.astype(np.float32), SR)
+        return
     n = int(seconds * SR)
     out = np.zeros(n, dtype=np.float64)
     bar_n = int(BAR * SR)

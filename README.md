@@ -29,6 +29,16 @@ dan sumber fakta: [`scripts/narasi/drama-copy.md`](scripts/narasi/drama-copy.md)
 | 5. Skala | Lebih dari 500 ribu laporan penipuan ke OJK. |
 | 6. Rumus | Kerja yang minta setor duluan itu jebakan. Cek ke OJK. |
 
+## Video: "Misteri Mercusuar Flannan" (68 detik, horor kisah nyata)
+
+Hasil jadi: [`out/misteri-flannan.mp4`](out/misteri-flannan.mp4). Tabel fakta vs legenda, caption,
+hashtag dan sumber: [`scripts/narasi/flannan-copy.md`](scripts/narasi/flannan-copy.md).
+
+Desember 1900, tiga penjaga mercusuar di pulau Eilean Mor, Skotlandia, hilang. 14 adegan: pulau di
+malam hari, catatan terakhir, lampu padam, kapal suplai tertahan badai, Joseph Moore menemukan
+mercusuar kosong (ranjang, jam berhenti, satu jas hujan tertinggal), dermaga barat yang rusak,
+kesimpulan resmi (ombak raksasa), legenda yang ternyata karangan, dan pertanyaan yang belum terjawab.
+
 ## Cara render ulang
 
 ```bash
@@ -36,6 +46,7 @@ npm ci
 npm run typecheck
 npm run render -- KenapaKitaButuhTidur out/kenapa-kita-butuh-tidur.mp4
 npm run render -- ModusNontonDrama out/modus-nonton-drama.mp4
+npm run render -- MisteriFlannan out/misteri-flannan.mp4
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di

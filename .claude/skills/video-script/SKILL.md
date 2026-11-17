@@ -86,12 +86,26 @@ Ini naskah untuk *didengar*, bukan dibaca:
 - Pakai analogi dari keseharian (sampah, servis motor, HP penuh) untuk konsep abstrak.
 - Setiap baris harus bisa divisualkan dengan stickman dan properti sederhana. Kalau tidak bisa
   digambar, tulis ulang.
-- Ramah TTS: tulis angka sebagai kata ("tujuh jam"), hindari singkatan dan istilah Inggris yang
+- Ramah TTS: tulis angka sebagai kata ("tujuh jam"). Ini wajib, termasuk tahun: "1900" sebagai digit
+  membuat suara rusak. Kalau caption tetap ingin angka, tulis `{1900=seribu sembilan ratus}`, hindari singkatan dan istilah Inggris yang
   ejaannya ambigu; kalau istilah ilmiah perlu, sebut sekali lalu jelaskan dengan bahasa biasa.
 - Singkatan yang harus dieja (OJK, BPJS) tulis sebagai `{OJK=O J K}`: caption menampilkan "OJK",
   suara membaca "O J K". Tanpa itu, "OJK" bisa terbaca "ojek". Pengecekan transkripsi di skill
   stickman-video akan menangkap kasus seperti ini.
 - Penutup memberi ajakan yang bisa langsung dilakukan, bukan "like dan follow".
+
+## Kisah nyata, misteri, dan horor
+
+- Pisahkan **fakta** (laporan resmi, arsip, media besar) dari **legenda** (cerita turun-temurun, detail
+  yang hanya muncul di situs populer). Legenda boleh masuk naskah, tapi harus disebut sebagai cerita
+  ("katanya", "cerita yang beredar"). Membongkar legenda bisa jadi twist yang kuat.
+- Buat tabel "Fakta vs legenda" di file copy, dengan sumber untuk setiap baris.
+- Seram dari suasana dan detail ganjil, bukan dari kekerasan. Kematian orang sungguhan digambarkan
+  abstrak (siluet hilang, ombak menutupi), tanpa luka atau jasad.
+- Pilih kejadian yang sudah lama atau terdokumentasi resmi. Jangan memakai tragedi baru yang korbannya
+  masih punya keluarga yang berduka, dan jangan menyebut korban sebagai hantu.
+- Untuk 60-75 detik: 12-14 baris, alur kronologis, satu detail ganjil per adegan, dan penutup berupa
+  pertanyaan yang menggantung (memancing komentar teori).
 
 ## 7. Nilai dan revisi
 

@@ -4,6 +4,7 @@ Needs a checkout of https://github.com/debpalash/VoiceStudio on PYTHONPATH and a
 environment with torch, torchaudio, transformers, accelerate, pydub and soundfile:
 
     PYTHONPATH=/path/to/VoiceStudio python scripts/make_narration.py <slug> [language]
+        [--voice "male, middle-aged"] [--speed 1.0]
 
 It reads scripts/narasi/<slug>.txt (one line per scene, "|" splits a line into caption
 phrases, "#" starts a comment, and {caption=speech} shows "caption" in the captions but
@@ -45,8 +46,15 @@ def trim(wav: np.ndarray, sr: int, thresh: float = 0.01) -> np.ndarray:
 
 
 def main() -> None:
-    slug = sys.argv[1]
-    language = sys.argv[2] if len(sys.argv) > 2 else "id"
+    import argparse
+
+    ap = argparse.ArgumentParser()
+    ap.add_argument("slug")
+    ap.add_argument("language", nargs="?", default="id")
+    ap.add_argument("--voice", default=VOICE, help="voice design prompt (gender, age, pitch, style)")
+    ap.add_argument("--speed", type=float, default=SPEED)
+    args = ap.parse_args()
+    slug, language, voice, speed = args.slug, args.language, args.voice, args.speed
     with open(os.path.join(ROOT, "scripts", "narasi", f"{slug}.txt"), encoding="utf-8") as f:
         LINES = [ln.strip() for ln in f if ln.strip() and not ln.startswith("#")]
     LINE_DIR = os.path.join(OUT_DIR, f"{slug}-lines")
@@ -64,9 +72,9 @@ def main() -> None:
         path = os.path.join(LINE_DIR, f"line{i + 1}.wav")
         if not os.path.exists(path):
             if i == 0:
-                audio = model.generate(text=text, language=language, instruct=VOICE, speed=SPEED, seed=7)[0]
+                audio = model.generate(text=text, language=language, instruct=voice, speed=speed, seed=7)[0]
             else:
-                audio = model.generate(text=text, language=language, ref_audio=ref_path, ref_text=texts[0], speed=SPEED, seed=7)[0]
+                audio = model.generate(text=text, language=language, ref_audio=ref_path, ref_text=texts[0], speed=speed, seed=7)[0]
             wav = np.asarray(audio.cpu() if hasattr(audio, "cpu") else audio, dtype=np.float32).squeeze()
             sf.write(path, trim(wav, sr), sr)
         wav, _ = sf.read(path, dtype="float32")
