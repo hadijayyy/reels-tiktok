@@ -45,6 +45,10 @@ Naskah ada di `scripts/narasi/tidur.txt`: satu baris per adegan, tanda `|` memis
 Alur lengkapnya tersimpan sebagai skill Claude Code di `.claude/skills/stickman-video/SKILL.md`.
 Di sesi Claude Code yang membuka repo ini, cukup minta "bikin video stickman tentang <topik>".
 
+Naskah dan copywriting (hook, caption, hashtag, teks cover, skor naskah, sumber fakta) ditulis dengan
+skill `.claude/skills/video-script/SKILL.md`, yang juga bisa dipakai sendiri: "bikinin naskah video
+tentang <topik>". Contoh hasilnya: `scripts/narasi/tidur-copy.md`.
+
 ## Kredit
 
 - Rig stickman, kamera, caption, dan perabot: [stickman-story](https://github.com/ahmadaryanto/stickman-story)

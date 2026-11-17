@@ -27,14 +27,15 @@ pilihan itu di laporan akhir.
 
 ## 2. Tulis naskah
 
-Buat `scripts/narasi/<slug>.txt`. Satu baris = satu adegan; `|` memisahkan frasa caption.
+Pakai skill `video-script` (`.claude/skills/video-script/SKILL.md`): riset dan cek fakta, 5 hook,
+alur 6 adegan, skor + revisi, dan paket posting. Hasilnya `scripts/narasi/<slug>.txt` (naskah) dan
+`scripts/narasi/<slug>-copy.md` (hook alternatif, judul, caption, hashtag, teks cover, skor, sumber).
 
-- Struktur yang terbukti: hook mengejutkan -> masalah -> mekanisme -> manfaat kedua -> akibat jika
-  diabaikan -> penutup dengan ajakan.
+Batasan tambahan dari sisi animasi:
+
 - 11-16 kata per baris (sekitar 5 detik per adegan pada tempo 0.78). Enam baris menghasilkan ~35 detik.
 - Tiap frasa caption maksimal ~40 karakter agar muat dua baris.
-- Fakta harus benar. Sederhanakan, jangan mengarang angka.
-- Hindari kata serapan Inggris yang ejaannya ambigu bagi TTS.
+- Setiap baris harus bisa digambar dengan stickman dan properti datar sederhana.
 
 ## 3. Generate narasi
 
@@ -118,6 +119,7 @@ frame dari MP4-nya dan lihat sekali lagi. Hapus `out/check/`.
 
 ## 6. Serahkan
 
-Kirim MP4 ke user, commit (`out/<slug>.mp4`, `public/audio/<slug>.mp3`, naskah, adegan, timing) dan
+Kirim MP4 ke user beserta caption, hashtag dan teks cover dari `<slug>-copy.md`, commit
+(`out/<slug>.mp4`, `public/audio/<slug>.mp3`, naskah, file copy, adegan, timing) dan
 push ke branch kerja. Tambahkan film baru ke tabel di `README.md`. Laporan akhir menyebut: topik yang
 dipilih, durasi, isi tiap adegan, apa saja yang sudah diverifikasi, dan apa yang belum (suara).
