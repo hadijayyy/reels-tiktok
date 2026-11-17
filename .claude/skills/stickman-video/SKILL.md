@@ -69,12 +69,21 @@ bahwa intonasi dan kealamian suara belum dinilai manusia.
 
 ## 4. Tulis adegan
 
-Salin pola `src/scenes/KenapaKitaButuhTidur.tsx` ke `src/scenes/<NamaFilm>.tsx` dan daftarkan sebagai
-`<Composition>` di `src/Root.tsx` dengan `defaultProps={{narration: "audio/<slug>.mp3"}}`.
+Salin pola salah satu film contoh ke `src/scenes/<NamaFilm>.tsx` dan daftarkan sebagai
+`<Composition>` di `src/Root.tsx` dengan `defaultProps={{narration: "audio/<slug>.mp3"}}`:
+
+- `src/scenes/KenapaKitaButuhTidur.tsx`: sains/kesehatan (kasur, otak, papan memori).
+- `src/scenes/ModusNontonDrama.tsx`: uang/penipuan (HP, koin terbang, kail, stempel, kerumunan).
+
 Bagian-bagian kit ada di `src/rig`, `src/camera`, `src/environment`, `src/captions`, `src/motion`.
-Properti buatan sendiri (otak, kasur, jendela, gir) ada di `src/environment/SleepProps.tsx`; tambahkan
-properti baru di folder itu dengan aturan gambar yang sama: bentuk datar, satu ketebalan garis, warna
-dari `C` di `src/styles/palette.ts`.
+Properti yang sudah ada, pakai ulang sebelum menggambar yang baru:
+
+- `src/environment/SleepProps.tsx`: `Brain`, `Bed`, `Blanket`, `Sleeper`, `SkyWindow`, `Gear`.
+- `src/environment/MoneyProps.tsx`: `Coin`, `handPhone` (HP di tangan lewat `look.handR`),
+  `DramaScreen`, `BigPhone`, `Card`, `Tick`, `Padlock`, `DepositBox`, `FishHook`, `Stamp`, `Magnifier`.
+
+Properti baru masuk ke folder yang sama dengan aturan gambar yang sama: bentuk datar, satu ketebalan
+garis, warna dari `C` di `src/styles/palette.ts`.
 
 Aturan yang membuat video ini berhasil:
 
@@ -96,6 +105,12 @@ Aturan yang membuat video ini berhasil:
 - **Deterministik:** hanya `useCurrentFrame()`, `rand(seed)` dan `noise()`. Tanpa `Math.random`, tanpa timer.
 - **Karakter berbaring:** bungkus `Stickman` dalam `rotate(-90)` (lihat `Sleeper`); kepalanya berada
   ~313 x skala unit dari titik kaki, jadi cek posisi bantal dan selimut lewat still.
+- **Tata letak:** pada zoom 1 hanya x -540..540 yang terlihat. Taruh karakter di x -420..420 dan cek
+  still: karakter yang terpotong di tepi adalah kesalahan paling sering.
+- **Ukuran:** properti kunci (kail, koin umpan) minimal ~60 px di layar; perbesar dengan `scale()` di
+  sekitar titiknya. Karakter latar (kerumunan) minimal skala 0.9, dua baris saja.
+- **Teks tidak boleh bertumpuk:** stempel, kartu, dan label harus punya tempat sendiri; cek still di
+  frame saat elemen terakhir sudah muncul.
 - **Label di layar** pendek, huruf kapital, 2-3 kata. Tanpa logo atau merek.
 - **Font** Inter dibundel di `public/fonts`. Jangan memuat font dari jaringan: render akan gagal.
 

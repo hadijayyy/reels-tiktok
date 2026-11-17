@@ -64,6 +64,10 @@ Naskah dan copywriting (hook, caption, hashtag, teks cover, skor naskah, sumber 
 skill `.claude/skills/video-script/SKILL.md`, yang juga bisa dipakai sendiri: "bikinin naskah video
 tentang <topik>". Contoh hasilnya: `scripts/narasi/tidur-copy.md`.
 
+Untuk video dari topik yang sedang viral, pakai skill `.claude/skills/viral-video/SKILL.md`: minta
+"bikin video reels topik yang lagi viral". Skill ini meriset tren, menyaring topik yang aman, lalu
+menanyakan pilihan topik sebelum membuat naskah dan video.
+
 ## Kredit
 
 - Rig stickman, kamera, caption, dan perabot: [stickman-story](https://github.com/ahmadaryanto/stickman-story)
