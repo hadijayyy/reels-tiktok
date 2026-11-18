@@ -60,6 +60,15 @@ tujuh malam yang sering diabaikan, lebaran tanpa pulang, ibu yang menyembunyikan
 HP diam, telepon dari tetangga, rumah yang kosong, dan pesan suara "Nak, Ibu kangen" yang belum
 sempat terkirim.
 
+## Video: "Black Hole: Tempat di Mana Cahaya pun Tak Bisa Kabur" (74 detik, sains antariksa)
+
+Hasil jadi: [`out/black-hole.mp4`](out/black-hole.mp4).
+Caption, hashtag, teks cover, cek fakta: [`scripts/narasi/blackhole-copy.md`](scripts/narasi/blackhole-copy.md).
+
+Naskah dari user, dipadatkan ke 14 adegan. Astronot stickman menyaksikan bintang raksasa runtuh menjadi
+black hole, lalu memperkenalkan event horizon, accretion disk, gravitational lensing, spaghettification
+dan singularitas. Narator pria paruh baya, musik ambient luar angkasa dengan dentuman saat bintang runtuh.
+
 ## Cara render ulang
 
 ```bash
@@ -70,6 +79,7 @@ npm run render -- ModusNontonDrama out/modus-nonton-drama.mp4
 npm run render -- MisteriFlannan out/misteri-flannan.mp4
 npm run render -- AyahPulang out/ada-yang-menunggu-ayah-pulang.mp4
 npm run render -- PesanIbu out/pesan-terakhir-dari-ibu.mp4
+npm run render -- BlackHole out/black-hole.mp4
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di

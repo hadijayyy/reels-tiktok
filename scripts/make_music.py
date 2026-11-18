@@ -8,6 +8,8 @@ Plain numpy synthesis, no samples. Moods:
   piano   a sad piano that builds: sparse notes, then chords, then full arpeggios near the end,
           easing off for the last bars. Optional 4th argument: the build peak as a fraction
           of the length (default 0.78)
+  space   a slow ambient pad (Dm9 - Bbmaj7 - Fadd9 - C), a low drone and twinkling high notes.
+          Optional 4th argument: a time in seconds for one deep impact (a star collapsing)
 """
 
 import os
@@ -50,6 +52,49 @@ def horror(seconds: float) -> np.ndarray:
         end = min(n, i + len(note))
         out[i:end] += note[: end - i]
         at += rng.uniform(4.5, 7.5)
+    return out
+
+
+def space(seconds: float, hit: float | None) -> np.ndarray:
+    n = int(seconds * SR)
+    t = np.arange(n) / SR
+    rng = np.random.default_rng(21)
+    out = np.zeros(n + SR * 12)
+    chords = [[50, 57, 60, 64, 65], [46, 53, 57, 62, 65], [41, 53, 57, 60, 67], [48, 55, 60, 64, 67]]
+    bar = 8.0
+    b = 0
+    while b * bar < seconds:
+        length = bar * 1.5
+        tt = np.arange(int(length * SR)) / SR
+        env = np.sin(np.pi * np.clip(tt / length, 0, 1)) ** 2
+        pad = sum(np.sin(2 * np.pi * hz(m) * d * tt + d) for m in chords[b % 4] for d in (0.996, 1.0, 1.004))
+        i = int(b * bar * SR)
+        out[i : i + len(tt)] += pad * env * 0.05
+        b += 1
+    out = out[:n]
+    # low drone that breathes
+    out += (np.sin(2 * np.pi * 36.7 * t) + 0.6 * np.sin(2 * np.pi * 55.0 * t)) * (0.5 + 0.5 * np.sin(2 * np.pi * t / 13) ** 2) * 0.12
+    # twinkles: soft high sines with long tails
+    tw_t = np.arange(int(SR * 3)) / SR
+    at = 1.5
+    while at < seconds - 3:
+        m = rng.choice([74, 76, 77, 81, 84, 86])
+        note = np.sin(2 * np.pi * hz(m) * tw_t) * np.exp(-tw_t * 1.8) * np.minimum(1, tw_t / 0.02) * 0.05
+        i = int(at * SR)
+        end = min(n, i + len(note))
+        out[i:end] += note[: end - i]
+        at += rng.uniform(0.9, 2.2)
+    if hit is not None and 0 < hit < seconds - 1:
+        ht = np.arange(int(SR * 5)) / SR
+        boom = np.sin(2 * np.pi * (30 + 50 * np.exp(-ht * 3)) * ht) * np.exp(-ht * 0.9) * 0.9
+        nz = np.convolve(rng.standard_normal(len(ht)), np.ones(40) / 40, mode="same") * np.exp(-ht * 2.5) * 2.0
+        i = int(hit * SR)
+        end = min(n, i + len(ht))
+        out[i:end] += (boom + nz)[: end - i]
+    # a little space: long soft echoes
+    for d, g in [(0.31, 0.3), (0.67, 0.18)]:
+        k = int(d * SR)
+        out[k:] += out[:-k] * g
     return out
 
 
@@ -111,8 +156,14 @@ def piano(seconds: float, peak: float) -> np.ndarray:
 def main() -> None:
     slug, seconds = sys.argv[1], float(sys.argv[2])
     mood = sys.argv[3] if len(sys.argv) > 3 else "calm"
-    if mood in ("horror", "piano"):
-        out = horror(seconds) if mood == "horror" else piano(seconds, float(sys.argv[4]) if len(sys.argv) > 4 else 0.78)
+    if mood in ("horror", "piano", "space"):
+        arg = float(sys.argv[4]) if len(sys.argv) > 4 else None
+        if mood == "horror":
+            out = horror(seconds)
+        elif mood == "piano":
+            out = piano(seconds, arg if arg is not None else 0.78)
+        else:
+            out = space(seconds, arg)
         fade = int(SR * 2.5)
         out[-fade:] *= np.linspace(1, 0, fade)
         out[: SR] *= np.linspace(0, 1, SR)

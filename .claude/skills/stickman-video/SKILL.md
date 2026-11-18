@@ -72,6 +72,12 @@ OmniVoice: gender, usia (young adult, middle-aged, elderly), pitch, dan style wh
 - `male, middle-aged` tempo 1.0: lebih berat dan tenang, ~2,7 kata/detik (video horor).
 - `low pitch` tidak stabil: sering menghasilkan gumaman. Uji satu baris dulu sebelum generate semua.
 
+Istilah Inggris (Black Hole, Event Horizon) bisa dibaca dengan lafal Indonesia lewat
+`{Black Hole=blek hol}`; whisper mentranskripsikannya kembali sebagai istilah Inggris, tanda lafalnya benar.
+Kalau total narasi melebihi target, percepat WAV per baris dengan `ffmpeg -filter:a atempo=1.12`
+(nada tetap), kurangi `[jeda=...]`, lalu jalankan skrip lagi: baris yang sudah ada tidak dibuat ulang
+dan timing dihitung ulang dari WAV itu.
+
 `female, young adult` tempo 0.85 juga jelas (~3,2 kata/detik; dipakai di video ibu).
 Untuk cerita emosional, `male, middle-aged` tempo 0.85 (~2,7 kata/detik) terasa lebih tenang daripada
 tempo 1.0 (~3,4 kata/detik). Tambahkan `[jeda=1.6]` di akhir baris untuk jeda dramatis, dan
@@ -97,6 +103,8 @@ Salin pola salah satu film contoh ke `src/scenes/<NamaFilm>.tsx` dan daftarkan s
 - `src/scenes/AyahPulang.tsx`: cerita emosional keluarga 72 detik, 14 adegan (rumah Indonesia pagi
   dan malam, pasar, naik motor, kecelakaan disamarkan dengan kilat putih + layar hitam, meja makan
   dengan kursi kosong, pelukan foto, teks penutup di layar hitam, color grade hangat/dingin).
+- `src/scenes/BlackHole.tsx`: sains antariksa 74 detik, 14 adegan (astronot pemandu di asteroid,
+  bintang runtuh, black hole + accretion disk, grid ruang-waktu, lensa gravitasi, tubuh memanjang).
 - `src/scenes/PesanIbu.tsx`: cerita orang pertama 69 detik, 13 adegan (layar HP sebagai adegan,
   layar terbagi dua untuk telepon, jam yang berjalan, rumah kosong).
 
@@ -109,6 +117,9 @@ Properti yang sudah ada, pakai ulang sebelum menggambar yang baru:
 - `src/environment/FamilyProps.tsx`: look `AYAH`, `AYAH_HELMET`, `IBU` (kerudung), `ANAK`; `House`,
   `PlantPot`, `PowerPole`, `StreetLamp`, `Road`, `Motorbike` + `bikeRider`, `Car`, `HelmetOnRoad`,
   `Stove`, `DiningTable`, `SideChair`, `PhotoFrame`, `SackOnBack`, `SkyBand`, `LightRain`.
+- `src/environment/SpaceProps.tsx`: look `ASTRONAUT`; `Starfield`, `BigStar`, `BlackHole` (dengan
+  accretion disk), `HorizonRing`, `SpacetimeGrid`, `Asteroid`, `Arrow`, `Photon`, `spiralIn`, `Tag`
+  (label dengan pelat gelap), `Burst`.
 - `src/environment/MotherProps.tsx`: look `AKU` (perempuan muda), `IBU_DESA` (kerudung + kacamata);
   layar HP `CallScreen`, `QuietScreen`, `MissedCalls`, `ChatSent`, `VoiceMessage`; `earPhone`,
   `CitySkyline`, `Ketupat`, `Medicine`, `Sandals`, `FoldedScarf`, `Tears`.
@@ -169,7 +180,7 @@ sendiri gambarnya. Cari: karakter tertutup properti, teks keluar layar atau meni
 muncul di frasa yang salah. Perbaiki sebelum render penuh.
 
 ```bash
-python scripts/make_music.py <slug> <detik> [calm|horror|piano] [puncak]   # detik = FRAMES / 30; piano naik sampai `puncak` (0..1)
+python scripts/make_music.py <slug> <detik> [calm|horror|piano|space] [puncak|detik_dentuman]   # detik = FRAMES / 30; piano naik sampai `puncak` (0..1); space: satu dentuman di detik itu
 scripts/mix_audio.sh <slug> <detik> [volume musik]         # -> public/audio/<slug>.mp3 (horor: 0.3)
 npx remotion render src/index.ts <Id> out/<slug>.mp4 --crf=20
 ```
