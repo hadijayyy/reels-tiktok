@@ -69,6 +69,15 @@ Naskah dari user, dipadatkan ke 14 adegan. Astronot stickman menyaksikan bintang
 black hole, lalu memperkenalkan event horizon, accretion disk, gravitational lensing, spaghettification
 dan singularitas. Narator pria paruh baya, musik ambient luar angkasa dengan dentuman saat bintang runtuh.
 
+## Video: "Gaji Sama, Siapa Duluan Tembus Rp100 Juta?" (32 detik, keuangan, tanpa narasi)
+
+Hasil jadi: [`out/gaji-sama.mp4`](out/gaji-sama.mp4).
+Caption, hashtag, teks cover, asumsi angka: [`scripts/narasi/gajisama-copy.md`](scripts/narasi/gajisama-copy.md).
+
+Layar dibagi empat: Boros, Investor, Penabung dan Judol mengisi toples koin di bawah lampu sorot masing-masing
+sementara penghitung bulan berjalan. Investor tembus Rp100 juta di bulan 41. Hanya musik, denting koin dan
+teks. Angka dibuat oleh `scripts/make_race.py`, musiknya `make_music.py gajisama 32.3 race`.
+
 ## Cara render ulang
 
 ```bash
@@ -80,6 +89,7 @@ npm run render -- MisteriFlannan out/misteri-flannan.mp4
 npm run render -- AyahPulang out/ada-yang-menunggu-ayah-pulang.mp4
 npm run render -- PesanIbu out/pesan-terakhir-dari-ibu.mp4
 npm run render -- BlackHole out/black-hole.mp4
+npm run render -- GajiSama out/gaji-sama.mp4
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di

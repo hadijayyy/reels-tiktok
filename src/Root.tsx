@@ -6,6 +6,7 @@ import {FLANNAN_FRAMES, MisteriFlannan} from "./scenes/MisteriFlannan";
 import {AYAH_FRAMES, AyahPulang} from "./scenes/AyahPulang";
 import {IBU_FRAMES, PesanIbu} from "./scenes/PesanIbu";
 import {BLACKHOLE_FRAMES, BlackHole} from "./scenes/BlackHole";
+import {GAJI_FRAMES, GajiSama} from "./scenes/GajiSama";
 import {FPS, H, W} from "./styles/palette";
 
 // Render with: npx remotion render src/index.ts <Id> out/<name>.mp4
@@ -64,6 +65,15 @@ export const Root: React.FC = () => (
       width={W}
       height={H}
       defaultProps={{narration: "audio/blackhole.mp3"}}
+    />
+    <Composition
+      id="GajiSama"
+      component={GajiSama}
+      durationInFrames={GAJI_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+      defaultProps={{narration: "audio/gajisama.mp3"}}
     />
   </>
 );

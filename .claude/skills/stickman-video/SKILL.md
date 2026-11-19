@@ -16,6 +16,10 @@ diam-diam membuat stickman: tanyakan dulu. Pilihannya: foto realistis dari Canva
 video AI Canva (maks. 30 detik per klip dan memakai banyak kuota AI), stickman versi sinematik, atau
 paket produksi (narasi, musik, subtitle, shot list) untuk visual yang user buat sendiri.
 
+Kalau user mengirim foto/tangkapan layar video orang lain dan minta "serupa", tiru formatnya (tata letak,
+ritme, jenis teks), bukan karakter, maskot, nama akun atau gambar kreator itu; tanyakan bahasa/mata uang,
+isi karakter, dan apakah pakai narasi.
+
 ## 1. Tanya hanya yang belum jelas
 
 Jika permintaan sudah menyebut topiknya, langsung kerjakan dengan nilai bawaan. Tanya hanya hal yang
@@ -105,6 +109,11 @@ Salin pola salah satu film contoh ke `src/scenes/<NamaFilm>.tsx` dan daftarkan s
   dengan kursi kosong, pelukan foto, teks penutup di layar hitam, color grade hangat/dingin).
 - `src/scenes/BlackHole.tsx`: sains antariksa 74 detik, 14 adegan (astronot pemandu di asteroid,
   bintang runtuh, black hole + accretion disk, grid ruang-waktu, lensa gravitasi, tubuh memanjang).
+- `src/scenes/GajiSama.tsx`: format "balapan" tanpa narasi, 32 detik (layar dibagi 4, toples koin di bawah
+  lampu sorot, penghitung bulan, saldo berjalan, call-out per karakter, piala + konfeti, kartu penutup).
+  Datanya dari `scripts/make_race.py`; musik `make_music.py <slug> <detik> race` membaca
+  `public/audio/<slug>-events.json` untuk denting koin dan jingle finish. Tanpa narasi, MP3 cukup dari
+  musik: `ffmpeg -i <slug>-musik.wav -af loudnorm=I=-14:TP=-1.5 <slug>.mp3`.
 - `src/scenes/PesanIbu.tsx`: cerita orang pertama 69 detik, 13 adegan (layar HP sebagai adegan,
   layar terbagi dua untuk telepon, jam yang berjalan, rumah kosong).
 
@@ -180,7 +189,7 @@ sendiri gambarnya. Cari: karakter tertutup properti, teks keluar layar atau meni
 muncul di frasa yang salah. Perbaiki sebelum render penuh.
 
 ```bash
-python scripts/make_music.py <slug> <detik> [calm|horror|piano|space] [puncak|detik_dentuman]   # detik = FRAMES / 30; piano naik sampai `puncak` (0..1); space: satu dentuman di detik itu
+python scripts/make_music.py <slug> <detik> [calm|horror|piano|space|race] [puncak|detik_dentuman]   # detik = FRAMES / 30; piano naik sampai `puncak` (0..1); space: satu dentuman di detik itu
 scripts/mix_audio.sh <slug> <detik> [volume musik]         # -> public/audio/<slug>.mp3 (horor: 0.3)
 npx remotion render src/index.ts <Id> out/<slug>.mp4 --crf=20
 ```

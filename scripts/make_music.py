@@ -10,7 +10,11 @@ Plain numpy synthesis, no samples. Moods:
           of the length (default 0.78)
   space   a slow ambient pad (Dm9 - Bbmaj7 - Fadd9 - C), a low drone and twinkling high notes.
           Optional 4th argument: a time in seconds for one deep impact (a star collapsing)
+  race    an upbeat lo-fi loop (kick, snare, hats, bass, chords) with a coin clink at every time in
+          public/audio/<slug>-events.json "clinks" and a win jingle at "finish"
 """
+
+import json
 
 import os
 import sys
@@ -98,6 +102,53 @@ def space(seconds: float, hit: float | None) -> np.ndarray:
     return out
 
 
+def race(seconds: float, events: dict) -> np.ndarray:
+    n = int(seconds * SR)
+    out = np.zeros(n + SR * 4)
+    rng = np.random.default_rng(5)
+    beat = 60 / 96
+    def put(at: float, sig: np.ndarray, gain: float) -> None:
+        i = int(at * SR)
+        if i >= len(out):
+            return
+        end = min(len(out), i + len(sig))
+        out[i:end] += sig[: end - i] * gain
+    tt = np.arange(int(SR * 0.5)) / SR
+    kick = np.sin(2 * np.pi * (45 + 90 * np.exp(-tt * 30)) * tt) * np.exp(-tt * 9)
+    noise = rng.standard_normal(len(tt))
+    snare = (np.convolve(noise, np.ones(4) / 4, mode="same") * np.exp(-tt * 18) + 0.4 * np.sin(2 * np.pi * 190 * tt) * np.exp(-tt * 20))
+    hat = (noise - np.convolve(noise, np.ones(3) / 3, mode="same")) * np.exp(-tt * 60)
+    prog = [[57, 60, 64, 67], [53, 57, 60, 64], [48, 52, 55, 59], [55, 59, 62, 65]]  # Am7 Fmaj7 Cmaj7 G7
+    finish = events.get("finish", seconds)
+    b = 0
+    while b * beat < seconds:
+        at = b * beat
+        bar = b // 4
+        chord = prog[bar % 4]
+        if at < finish + 0.2:
+            put(at, kick, 0.55 if b % 4 in (0, 2) else 0.0)
+            if b % 4 in (1, 3):
+                put(at, snare, 0.25)
+            put(at, hat, 0.12)
+            put(at + beat / 2, hat, 0.07)
+            bt = np.arange(int(SR * beat)) / SR
+            bass = np.sin(2 * np.pi * hz(chord[0] - 24) * bt) * np.exp(-bt * 3)
+            put(at, bass, 0.35)
+        if b % 4 == 0:
+            ct = np.arange(int(SR * beat * 4)) / SR
+            pad = sum(np.sin(2 * np.pi * hz(m) * ct) + 0.3 * np.sin(2 * np.pi * hz(m) * 2 * ct) for m in chord)
+            put(at, pad * np.exp(-ct * 0.6) * np.minimum(1, ct / 0.02), 0.04)
+        b += 1
+    ct = np.arange(int(SR * 0.35)) / SR
+    clink = (np.sin(2 * np.pi * 2637 * ct) + 0.6 * np.sin(2 * np.pi * 3520 * ct) + 0.3 * np.sin(2 * np.pi * 5274 * ct)) * np.exp(-ct * 14)
+    for i, at in enumerate(events.get("clinks", [])):
+        put(at, clink, 0.10 + 0.03 * (i % 2))
+    for k, m in enumerate([72, 76, 79, 84]):
+        jt = np.arange(int(SR * 1.6)) / SR
+        put(finish + k * 0.11, (np.sin(2 * np.pi * hz(m) * jt) + 0.3 * np.sin(2 * np.pi * hz(m) * 2 * jt)) * np.exp(-jt * 2.2), 0.22)
+    return out[:n]
+
+
 def piano_note(freq: float, length: float, vel: float) -> np.ndarray:
     """A piano-like tone: a few slightly stretched harmonics, a soft hammer and a two-stage decay."""
     t = np.arange(int(length * SR)) / SR
@@ -156,6 +207,14 @@ def piano(seconds: float, peak: float) -> np.ndarray:
 def main() -> None:
     slug, seconds = sys.argv[1], float(sys.argv[2])
     mood = sys.argv[3] if len(sys.argv) > 3 else "calm"
+    if mood == "race":
+        with open(os.path.join(ROOT, "public", "audio", f"{slug}-events.json")) as f:
+            out = race(seconds, json.load(f))
+        fade = int(SR * 1.5)
+        out[-fade:] *= np.linspace(1, 0, fade)
+        out = out / np.abs(out).max() * 0.8
+        sf.write(os.path.join(ROOT, "public", "audio", f"{slug}-musik.wav"), out.astype(np.float32), SR)
+        return
     if mood in ("horror", "piano", "space"):
         arg = float(sys.argv[4]) if len(sys.argv) > 4 else None
         if mood == "horror":
