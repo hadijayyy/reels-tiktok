@@ -1,0 +1,7 @@
+# Satu baris = satu adegan. Tanda | memisahkan frasa caption.
+Orang paling pintar di ruangan|belum tentu paling sukses.|Dan ini alasannya.
+Karena pintar itu cuma modal.|Lu bisa punya {IQ=ai kyu} tinggi,|nilai bagus, gelar banyak,
+tapi kalau lu nggak berani mengambil risiko,|nggak bisa berkomunikasi,|dan nggak tahu cara menjual ide,
+lu bisa kalah sama orang|yang biasa-biasa aja.|Dunia nyata nggak punya sistem ranking.
+Dunia menghargai siapa yang bisa|menciptakan {value=vel yu},|menyelesaikan masalah,|dan membuat orang lain percaya.
+Jadi jangan cuma berusaha jadi pintar.|Belajar jadi berguna.

@@ -78,6 +78,15 @@ Layar dibagi empat: Boros, Investor, Penabung dan Judol mengisi toples koin di b
 sementara penghitung bulan berjalan. Investor tembus Rp100 juta di bulan 41. Hanya musik, denting koin dan
 teks. Angka dibuat oleh `scripts/make_race.py`, musiknya `make_music.py gajisama 32.3 race`.
 
+## Video: "Pintar Saja Tidak Cukup" (38 detik, pengembangan diri)
+
+Hasil jadi: [`out/pintar.mp4`](out/pintar.mp4).
+Caption, hashtag, teks cover, skor naskah: [`scripts/narasi/pintar-copy.md`](scripts/narasi/pintar-copy.md).
+
+Naskah dari user, digabung-pecah jadi 6 adegan. Si "pintar" (berkacamata) dan si "biasa aja" (kaus oranye):
+spotlight, tumpukan buku, tiga kartu kekurangan, podium dengan papan RANKING yang dicoret, koin value, dan lampu
+bohlam yang berubah jadi roda gigi. Narator pria muda, musik calm.
+
 ## Cara render ulang
 
 ```bash
@@ -90,6 +99,7 @@ npm run render -- AyahPulang out/ada-yang-menunggu-ayah-pulang.mp4
 npm run render -- PesanIbu out/pesan-terakhir-dari-ibu.mp4
 npm run render -- BlackHole out/black-hole.mp4
 npm run render -- GajiSama out/gaji-sama.mp4
+npm run render -- PintarSaja out/pintar.mp4
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di

@@ -7,6 +7,7 @@ import {AYAH_FRAMES, AyahPulang} from "./scenes/AyahPulang";
 import {IBU_FRAMES, PesanIbu} from "./scenes/PesanIbu";
 import {BLACKHOLE_FRAMES, BlackHole} from "./scenes/BlackHole";
 import {GAJI_FRAMES, GajiSama} from "./scenes/GajiSama";
+import {PINTAR_FRAMES, PintarSaja} from "./scenes/PintarSaja";
 import {FPS, H, W} from "./styles/palette";
 
 // Render with: npx remotion render src/index.ts <Id> out/<name>.mp4
@@ -74,6 +75,15 @@ export const Root: React.FC = () => (
       width={W}
       height={H}
       defaultProps={{narration: "audio/gajisama.mp3"}}
+    />
+    <Composition
+      id="PintarSaja"
+      component={PintarSaja}
+      durationInFrames={PINTAR_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+      defaultProps={{narration: "audio/pintar.mp3"}}
     />
   </>
 );
