@@ -251,7 +251,7 @@ const Refuse: React.FC<{len: number}> = ({len}) => {
             <Stickman x={-30} y={FLOOR} scale={1.2} pose={idle(t, 6)} look={BADUY} expr="determined" />
           </g>
           <Plate x={0} y={-480} text="16 NOV" k={pop(frame, date)} w={380} size={56} border={C.yellow} />
-          <Plate x={300} y={-300} text="HABITAT ASLI" k={pop(frame, stay)} w={440} size={42} border={C.olive} />
+          <Plate x={170} y={-300} text="HABITAT ASLI" k={pop(frame, stay)} w={420} size={40} border={C.olive} />
         </Layer>
       </Camera2D>
     </AbsoluteFill>
@@ -368,22 +368,22 @@ const Duty: React.FC<{len: number}> = ({len}) => {
           {/* storm cloud and rain */}
           <g opacity={hit}>
             <g fill="#3A4150" stroke={C.ink} strokeWidth={4}>
-              <circle cx={-170} cy={-640} r={90} />
-              <circle cx={-40} cy={-690} r={110} />
-              <circle cx={110} cy={-650} r={95} />
-              <circle cx={230} cy={-620} r={70} />
+              <circle cx={-170} cy={-500} r={90} />
+              <circle cx={-40} cy={-545} r={110} />
+              <circle cx={110} cy={-510} r={95} />
+              <circle cx={230} cy={-480} r={70} />
             </g>
             {Array.from({length: 14}, (_, i) => {
               const ph = (t * 1.4 + i * 0.17) % 1;
-              return <line key={i} x1={-260 + i * 40} y1={-600 + ph * 760} x2={-270 + i * 40} y2={-570 + ph * 760} stroke={C.cyan} strokeWidth={5} strokeLinecap="round" opacity={0.7 * (1 - dome * (ph > 0.55 ? 1 : 0))} />;
+              return <line key={i} x1={-260 + i * 40} y1={-440 + ph * 600} x2={-270 + i * 40} y2={-410 + ph * 600} stroke={C.cyan} strokeWidth={5} strokeLinecap="round" opacity={0.7 * (1 - dome * (ph > 0.55 ? 1 : 0))} />;
             })}
-            <path d="M 20 -590 L -20 -520 L 10 -520 L -30 -440" fill="none" stroke={C.yellow} strokeWidth={10} strokeLinecap="round" strokeLinejoin="round" opacity={Math.sin(t * 14) > 0.4 ? 1 : 0.2} />
+            <path d="M 20 -460 L -20 -400 L 10 -400 L -30 -340" fill="none" stroke={C.yellow} strokeWidth={10} strokeLinecap="round" strokeLinejoin="round" opacity={Math.sin(t * 14) > 0.4 ? 1 : 0.2} />
           </g>
           <Rhino x={-250} y={FLOOR} s={0.6} />
           <Sapling x={250} y={FLOOR} k={1} s={1.2} />
           <Stickman x={0} y={FLOOR} scale={SCALE} pose={{...idle(t), shR: 150, elR: 10}} look={CASUAL} expr="determined" />
           {/* the umbrella */}
-          <g opacity={dome} transform={`translate(10 ${FLOOR - 560 + (1 - dome) * 60})`}>
+          <g opacity={dome} transform={`translate(58 ${FLOOR - 560 + (1 - dome) * 60})`}>
             <path d="M -380 0 Q 0 -300 380 0 Q 300 -50 190 0 Q 95 -50 0 0 Q -95 -50 -190 0 Q -300 -50 -380 0 Z" fill={C.yellow} stroke={C.ink} strokeWidth={6} strokeLinejoin="round" />
             <line x1={0} y1={-6} x2={0} y2={300} stroke={C.ink} strokeWidth={8} strokeLinecap="round" />
           </g>
@@ -416,7 +416,7 @@ const Question: React.FC<{len: number}> = ({len}) => {
           <Floor x0={-1400} x1={1400} />
           <Sapling x={190} y={FLOOR} k={grow * 0.6 + 0.2} s={1.6} />
           <Stickman x={-80} y={FLOOR} scale={SCALE} pose={mix(idle(t), {...idle(t), lookY: 0.1, headTilt: 4}, 1)} look={CASUAL} expr="calm" />
-          <g transform={`translate(0 -450) scale(${(pop(frame, 2) + pop(frame, ask) * 0.2) * (1 + Math.sin(t * 4) * 0.03)})`}>
+          <g transform={`translate(0 -330) scale(${(pop(frame, 2) + pop(frame, ask) * 0.2) * (1 + Math.sin(t * 4) * 0.03)})`}>
             <Label x={0} y={0} text="?" size={260} color={C.yellow} />
           </g>
         </Layer>

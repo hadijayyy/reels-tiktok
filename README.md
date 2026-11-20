@@ -87,6 +87,15 @@ Naskah dari user, digabung-pecah jadi 6 adegan. Si "pintar" (berkacamata) dan si
 spotlight, tumpukan buku, tiga kartu kekurangan, podium dengan papan RANKING yang dicoret, koin value, dan lampu
 bohlam yang berubah jadi roda gigi. Narator pria muda, musik calm.
 
+## Video: "Baduy, Api, dan Badak" (63 detik, berita)
+
+Hasil jadi: [`out/baduy.mp4`](out/baduy.mp4).
+Caption, hashtag, teks cover, cek fakta dan sumber: [`scripts/narasi/baduy-copy.md`](scripts/narasi/baduy-copy.md).
+
+Naskah dari user (berita 19-20 November 2026), 9 adegan: rumah panggung Baduy terbakar, angka korban, peta
+pemindahan Badak Jawa, penolakan masyarakat adat, amanat leluhur, dua peristiwa yang tidak berkaitan, payung
+pelindung, dan pertanyaan penutup. Narasi dipercepat 15%, musik piano. Properti baru: `src/environment/BaduyProps.tsx`.
+
 ## Cara render ulang
 
 ```bash
@@ -100,6 +109,7 @@ npm run render -- PesanIbu out/pesan-terakhir-dari-ibu.mp4
 npm run render -- BlackHole out/black-hole.mp4
 npm run render -- GajiSama out/gaji-sama.mp4
 npm run render -- PintarSaja out/pintar.mp4
+npm run render -- BaduyBadak out/baduy.mp4
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di
