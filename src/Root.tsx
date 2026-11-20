@@ -8,6 +8,7 @@ import {IBU_FRAMES, PesanIbu} from "./scenes/PesanIbu";
 import {BLACKHOLE_FRAMES, BlackHole} from "./scenes/BlackHole";
 import {GAJI_FRAMES, GajiSama} from "./scenes/GajiSama";
 import {PINTAR_FRAMES, PintarSaja} from "./scenes/PintarSaja";
+import {BADUY_FRAMES, BaduyBadak} from "./scenes/BaduyBadak";
 import {FPS, H, W} from "./styles/palette";
 
 // Render with: npx remotion render src/index.ts <Id> out/<name>.mp4
@@ -84,6 +85,15 @@ export const Root: React.FC = () => (
       width={W}
       height={H}
       defaultProps={{narration: "audio/pintar.mp3"}}
+    />
+    <Composition
+      id="BaduyBadak"
+      component={BaduyBadak}
+      durationInFrames={BADUY_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+      defaultProps={{narration: "audio/baduy.mp3"}}
     />
   </>
 );

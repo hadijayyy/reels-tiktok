@@ -1,0 +1,10 @@
+# Satu baris = satu adegan. Tanda | memisahkan frasa caption.
+{19=sembilan belas} rumah terbakar di Baduy.|Tapi di tengah tragedi ini,|ada isu lain yang bikin masyarakat ikut bersuara.
+Pada Kamis malam,|{19 November 2026=sembilan belas November dua ribu dua puluh enam},|kebakaran melanda Kampung Cipaler, Desa Kanekes, Baduy.
+{19=sembilan belas} rumah hangus.|{34=tiga puluh empat} keluarga terdampak.|Dan untungnya, tidak ada korban jiwa.
+Beberapa hari sebelumnya,|tepat {12 November 2026=dua belas November dua ribu dua puluh enam},|muncul wacana memindahkan sebagian Badak Jawa|dari Ujung Kulon ke Alas Purwo.
+Wacana ini memicu penolakan.|Pada {16=enam belas} November,|masyarakat adat Baduy meminta|badak tetap berada di habitat aslinya.
+Bagi mereka,|menjaga alam bukan sekadar kebijakan.|Tapi amanat leluhur.
+Dua peristiwa ini|bukan berarti saling berkaitan.|Tapi keduanya mengingatkan kita pada satu hal:
+ketika alam menghadapi ancaman,|manusia punya tanggung jawab|untuk melindunginya.
+Dan pertanyaannya...|sudahkah kita benar-benar melakukannya?
