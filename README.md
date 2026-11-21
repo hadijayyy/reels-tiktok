@@ -174,6 +174,29 @@ Caption, hashtag, teks cover, skor naskah, dan sumber: [`scripts/narasi/jeda-cop
 
 Topik viral cepat basi: sebaiknya diposting dalam beberapa hari. Properti baru: `src/environment/CallProps.tsx`.
 
+## Video: "Steve Jobs dan Apple" (93 detik, cerita sejarah bisnis)
+
+Hasil jadi: [`out/jobs.mp4`](out/jobs.mp4).
+Caption, hashtag, teks cover, skor naskah, tabel fakta, dan sumber: [`scripts/narasi/jobs-copy.md`](scripts/narasi/jobs-copy.md).
+
+| Adegan | Isi |
+|---|---|
+| 1. Hook | Jobs disingkirkan dari perusahaan yang dia bangun, lalu kembali. |
+| 2. 1976 | Jobs dan Wozniak membuat Apple di garasi. |
+| 3. Apple I | Komputer pertama sekitar US$ 666; satu toko memesan 50 unit. |
+| 4. 1980 | Apple melantai di bursa; banyak karyawan jadi jutawan. |
+| 5. Sculley | Jobs merekrut John Sculley dari Pepsi jadi bos; mereka berseteru. |
+| 6. 1985 | Dewan memihak Sculley; Jobs pergi dan mendirikan NeXT. |
+| 7. 1997 | Apple goyah, rugi sekitar US$ 1 miliar, nyaris bangkrut. |
+| 8. Kembali | Apple membeli NeXT; Microsoft menanam US$ 150 juta. |
+| 9. iMac | Fokus ke produk sederhana; iMac warna-warni; Apple untung lagi (US$ 309 juta). |
+| 10. iPod, iPhone | 2001: seribu lagu di saku; 2007: iPhone. |
+| 11. 2011 | Apple jadi perusahaan paling bernilai, mengalahkan Exxon. |
+| 12. Perpisahan | Jobs mundur sebagai CEO; 5 Oktober (kematian tidak digambar; hanya kursi kosong). |
+| 13. Penutup | Dari garasi sampai puncak; "kalah sekali bukan akhir cerita"; pertanyaan ke penonton. |
+
+Properti baru: `src/environment/JobsProps.tsx` (tanpa logo; perangkat berupa bentuk generik).
+
 ## Alat bantu produksi
 
 - `scripts/make_narration.py`: narasi per baris (VoiceStudio/OmniVoice) + penyelarasan per kata dengan
@@ -198,6 +221,7 @@ npm run render -- AyahPulang out/ada-yang-menunggu-ayah-pulang.mp4
 npm run render -- PesanIbu out/pesan-terakhir-dari-ibu.mp4
 npm run render -- BlackHole out/black-hole.mp4
 npm run render -- GajiSama out/gaji-sama.mp4
+npm run render -- SteveJobsApple out/jobs.mp4
 npm run render -- PintarSaja out/pintar.mp4
 npm run render -- BaduyBadak out/baduy.mp4
 npm run render -- AsalQris out/qris.mp4
