@@ -116,6 +116,16 @@ sepatu, gadget dan makanan mahal sampai saldo Rp0; Orang 2 beli buku, kursus dan
 Rp400.000; kesenangan memudar (layar jadi kelabu); klien dan penghasilan Orang 2 tumbuh; perbandingan
 "KESENANGAN vs KEMAMPUAN" dan ending text. Properti baru: `src/environment/SpendProps.tsx`.
 
+## Video: "Dia Menunggu 10 Tahun untuk Membalas Dendam" (95 detik, cerita inspiratif)
+
+Hasil jadi: [`out/dendam.mp4`](out/dendam.mp4).
+Caption, hashtag, teks cover: [`scripts/narasi/dendam-copy.md`](scripts/narasi/dendam-copy.md).
+
+Naskah dan arahan visual dari user, 16 adegan: diejek di sekolah (sepia), janji di depan cermin, belajar, kerja
+dan ditolak, sepuluh tahun lewat kalender, rumah dan mobil, bertemu perundung yang kini mencari kerja, permintaan
+maaf, godaan membalas (merah), uluran tangan, kenangan masa kecil, tali masa lalu putus, berjalan ke matahari
+terbit. Narator pria paruh baya, musik piano. Properti baru: `src/environment/StoryProps.tsx`.
+
 ## Cara render ulang
 
 ```bash
@@ -132,6 +142,7 @@ npm run render -- PintarSaja out/pintar.mp4
 npm run render -- BaduyBadak out/baduy.mp4
 npm run render -- AsalQris out/qris.mp4
 npm run render -- DuaCaraUang out/uang.mp4
+npm run render -- DendamFilm out/dendam.mp4
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di

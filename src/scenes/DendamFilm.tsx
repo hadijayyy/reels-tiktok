@@ -127,7 +127,7 @@ const Hook: React.FC<{len: number}> = ({len}) => {
       <Stickman x={-170} y={FLOOR} scale={ADULT} pose={{...idle(t), shR: 30, elR: 40}} look={{...HERO_BOSS, handR: handLetter}} expr="determined" />
       <Stickman x={200} y={FLOOR} scale={ADULT} facing={-1} pose={slumped(t, 3)} look={BULLY_ADULT} expr="worried" />
       <Plate x={0} y={-520} text="10 TAHUN" k={pop(frame, 4)} size={64} border={C.red} />
-      <g transform={`translate(15 -350) scale(${pop(frame, twist) * (1 + Math.sin(t * 5) * 0.04)})`}>
+      <g transform={`translate(15 -260) scale(${pop(frame, twist) * (1 + Math.sin(t * 5) * 0.04)})`}>
         <Label x={0} y={0} text="?" size={170} color={C.yellow} />
       </g>
       <g opacity={prog(frame, chance, chance + 12)}>
@@ -185,7 +185,7 @@ const Classroom: React.FC<{len: number}> = ({len}) => {
       </Board>
       <Stickman x={-430} y={FLOOR} scale={1.25} facing={1} pose={point(idle(t), 1, 100)} look={IBU} expr="neutral" />
       <Stickman x={150} y={FLOOR} scale={KID} facing={-1} pose={mix(handUp, slumped(t), down)} look={HERO_KID} expr={down > 0.5 ? "sad" : "happy"} />
-      {[300, 430].map((x, i) => (
+      {[290, 400].map((x, i) => (
         <g key={i} opacity={prog(frame, laugh + i * 4, laugh + i * 4 + 8)}>
           <Stickman x={x} y={FLOOR} scale={KID} facing={-1} pose={laughing(t, i + 2)} look={KIDS[i]} expr="smug" />
           <Laugh x={x} y={FLOOR - 360} t={t} k={pop(frame, laugh + i * 4 + 4)} seed={i + 4} />
@@ -207,8 +207,8 @@ const Promise: React.FC<{len: number}> = ({len}) => {
       <SkyWindow x={-330} y={-250} />
       <Glow x={180} y={-150} r={420} color={C.cyan} opacity={0.08} />
       <Mirror x={250} y={-170} w={240} h={420}>
-        <g transform="translate(-250 170)">
-          <Stickman x={250} y={FLOOR - 200} scale={0.85} facing={-1} pose={p} look={HERO_TEEN} expr={det > 0.5 ? "determined" : "sad"} />
+        <g>
+          <Stickman x={0} y={200} scale={0.85} facing={-1} pose={p} look={HERO_TEEN} expr={det > 0.5 ? "determined" : "sad"} />
         </g>
       </Mirror>
       <Stickman x={0} y={FLOOR} scale={1.2} facing={1} pose={p} look={HERO_TEEN} expr={det > 0.5 ? "determined" : "sad"} />
@@ -444,7 +444,7 @@ const Realize: React.FC<{len: number}> = ({len}) => {
       <Stickman x={x} y={FLOOR} scale={ADULT} pose={walk((x + 200) / STRIDE, t)} look={HERO_BOSS} expr="calm" />
       <g opacity={memK * 0.9} style={{filter: SEPIA}}>
         <circle cx={-100} cy={-420} r={190} fill="#3E352E" stroke={C.bone} strokeWidth={6} />
-        <g transform="translate(-100 -420) scale(0.75) translate(0 200)">
+        <g transform="translate(-100 -420) translate(0 160)">
           <Stickman x={0} y={0} scale={KID} pose={{...slumped(t), lean: 20, headTilt: 26}} look={HERO_KID} expr="sad" />
           <Tears x={-8} y={-300} t={t} />
         </g>
