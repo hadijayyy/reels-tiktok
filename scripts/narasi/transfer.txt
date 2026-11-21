@@ -4,7 +4,7 @@ Dia bukan orang kaya.|Gajinya hanya cukup untuk makan,|bayar kos, dan sedikit ta
 Tapi setiap tanggal {15=lima belas},|dia selalu mengirim uang|dengan jumlah yang sama|kepada seseorang. [jeda=0.8]
 Suatu hari,|temannya melihat transaksi itu.|"Siapa orang ini? Pacarmu?"
 Dia hanya tersenyum dan menjawab,|"Bukan. Aku bahkan belum pernah|bertemu dengannya." [jeda=1.0]
-Temannya menganggap dia bodoh.|"Kamu sendiri hidup susah.|Kenapa membantu orang|yang bahkan tidak kamu kenal?"
+{Temannya=Temannya,} menganggap dia bodoh.|"Kamu sendiri hidup susah.|Kenapa membantu orang|yang bahkan tidak kamu kenal?"
 Dia tidak menjawab.|Tapi malam itu,|dia hampir menghentikan transfer tersebut. [jeda=1.2]
 Tiga tahun sebelumnya,|ketika dia hampir putus sekolah|karena tidak punya uang,
 seseorang {diam-diam=diam diam}|membayar biaya sekolahnya.

@@ -137,6 +137,17 @@ menghitung uang tiap malam, daftar kebutuhan dengan "SEPATU AYAH" dicoret, kotak
 nota sekolah dan foto wisuda, anak berlutut menangis, sepatu baru, ayah diam-diam mencobanya, berjalan berdua,
 dan kartu "Terima kasih, Ayah." Properti baru: `src/environment/FatherProps.tsx`.
 
+## Video: "Selama 3 Tahun Dia Mengirim Uang kepada Orang Asing" (102 detik, cerita inspiratif)
+
+Hasil jadi: [`out/transfer.mp4`](out/transfer.mp4).
+Caption, hashtag, teks cover: [`scripts/narasi/transfer-copy.md`](scripts/narasi/transfer-copy.md).
+
+Naskah dan arahan visual dari user, 17 adegan: transfer rahasia dengan nama penerima disensor, kerja di minimarket,
+tanggal 15 tiap bulan, riwayat transfer yang dilihat teman, malam ketika hampir membatalkan, kotak tua di bawah
+hujan, tagihan sekolah yang "LUNAS", pesan dari penolong, guru tua yang mengajar anak miskin gratis (sepia), kursi
+kosong dan kacamata, daftar anak yang masih butuh bantuan, satu nama dilingkari, buku untuk seorang anak, dan
+satu orang yang menyalakan seribu. Properti baru: `src/environment/TransferProps.tsx`.
+
 ## Cara render ulang
 
 ```bash
@@ -155,6 +166,7 @@ npm run render -- AsalQris out/qris.mp4
 npm run render -- DuaCaraUang out/uang.mp4
 npm run render -- DendamFilm out/dendam.mp4
 npm run render -- AyahSepatu out/ayahsepatu.mp4
+npm run render -- TransferRahasia out/transfer.mp4
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di

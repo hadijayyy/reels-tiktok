@@ -133,7 +133,7 @@ const Hook: React.FC<{len: number}> = ({len}) => {
       <Stickman x={-230} y={FLOOR} scale={AS} pose={phoneHold(t, 1)} look={{...HERO, handR: handPhone(<rect width={44} height={70} fill="#F2F4F6" />)}} expr="worried" />
       <Screen x={170} y={-260} k={pop(frame, 4)} status="form" shake={1} t={t} />
       <Plate x={-230} y={-520} text="3 TAHUN" k={pop(frame, 8)} size={54} border={C.yellow} />
-      <Stamp x={170} y={-480} text="RAHASIA" k={prog(frame, secret, secret + 10, eOut)} rot={-8} size={48} />
+      <Stamp x={170} y={60} text="RAHASIA" k={prog(frame, secret, secret + 10, eOut)} rot={-8} size={48} />
     </Shot>
   );
 };
@@ -186,7 +186,7 @@ const Friend: React.FC<{len: number}> = ({len}) => {
     <Shot len={len} wall={ROOM} z1={1.14}>
       <Screen x={-200} y={-300} k={pop(frame, sees - 6)} status="history" t={t} />
       <Stickman x={-60} y={FLOOR} scale={AS} pose={phoneHold(t)} look={{...HERO, handR: handPhone(<rect width={44} height={70} fill="#F2F4F6" />)}} expr="neutral" />
-      <Stickman x={170} y={FLOOR} scale={AS} facing={-1} pose={{...idle(t), lean: 14 * prog(frame, sees, sees + 12), headTilt: 10, lookY: 0.5}} look={FRIEND} expr={frame > ask ? "surprised" : "focused"} />
+      <Stickman x={210} y={FLOOR} scale={AS} facing={-1} pose={{...idle(t), lean: 14 * prog(frame, sees, sees + 12), headTilt: 10, lookY: 0.5}} look={FRIEND} expr={frame > ask ? "surprised" : "focused"} />
       <SpeechBubble x={250} y={-470} lines={["Siapa orang ini?", "Pacarmu?"]} k={pop(frame, ask)} tx={200} ty={-170} size={36} />
     </Shot>
   );
@@ -324,8 +324,14 @@ const Teacher: React.FC<{len: number}> = ({len}) => {
     <Shot len={len} wall={ROOM} z1={1.1}>
       <Seated cx={-360} f={1} t={t} look={HERO} pose={{lean: 10, headTilt: 6, lookY: -0.3}} expr="sad" />
       <g opacity={prog(frame, 4, 24)} style={{filter: SEPIA}}>
+        <defs>
+          <clipPath id="teacher-memory">
+            <circle cx={110} cy={-260} r={326} />
+          </clipPath>
+        </defs>
         <circle cx={110} cy={-260} r={330} fill="#4A4038" stroke={C.bone} strokeWidth={6} />
-        <g transform="translate(110 -260) translate(0 200) scale(0.62)">
+        <g clipPath="url(#teacher-memory)">
+        <g transform="translate(110 -260) translate(10 190) scale(0.82)">
           <Board x={-120} y={-160} w={360} h={220}>
             <Label x={180} y={90} text="A B C" size={56} color={C.ink} />
             <g opacity={prog(frame, free, free + 10)}>
@@ -337,6 +343,7 @@ const Teacher: React.FC<{len: number}> = ({len}) => {
           {[-220, -110, 0].map((x, i) => (
             <Stickman key={i} x={x} y={-4} scale={0.8} pose={{...sit(t, i), hipL: 80, kneeL: 150, hipR: 82, kneeR: 150}} look={KIDS[i]} expr="happy" />
           ))}
+        </g>
         </g>
       </g>
     </Shot>
