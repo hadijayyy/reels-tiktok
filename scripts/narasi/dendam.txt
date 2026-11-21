@@ -1,0 +1,17 @@
+# Satu baris = satu adegan. Tanda | memisahkan frasa caption.
+Dia menunggu {10=sepuluh} tahun|untuk membalas dendam.|Tapi saat akhirnya punya kesempatan...|dia malah melakukan sesuatu|yang tidak terduga. [jeda=1.2]
+Ketika berusia {15=lima belas} tahun,|dia sering dihina.|Bajunya jelek.|Keluarganya miskin.
+Bahkan ketika dia menjawab|pertanyaan guru dengan benar,|teman-temannya tetap menertawakannya. [jeda=0.8]
+Setiap malam|dia berjanji pada dirinya sendiri.|Suatu hari, mereka akan menyesal|pernah meremehkannya.
+Dia belajar lebih keras.|Bekerja sambil kuliah.|Ditolak berkali-kali.
+Tapi setiap kali ingin menyerah,|dia mengingat wajah|orang-orang yang menertawakannya. [jeda=0.8]
+Sepuluh tahun berlalu.|Dia menjadi pengusaha sukses.
+Rumahnya besar.|Mobilnya mahal.
+Dan suatu hari, dia bertemu orang|yang dulu paling sering|menghina dirinya. [jeda=1.0]
+Orang itu sekarang|sedang mencari pekerjaan.|Hidupnya berantakan.
+Ketika melihat mantan teman sekolahnya,|dia menunduk dan berkata,|"Maaf. Dulu aku salah." [jeda=1.2]
+Dia bisa mempermalukannya.|Bisa membalas semua hinaan|yang pernah dia terima.
+Tapi dia hanya berkata,|"Aku sudah terlalu jauh|untuk kembali menjadi orang yang dulu." [jeda=1.2]
+Dia sadar,|kemenangan terbesar bukan|ketika orang yang menyakitimu menderita.
+Tapi ketika mereka|tidak lagi punya kekuatan|untuk mengendalikan hidupmu. [jeda=1.0]
+Jangan hidup untuk membalas dendam.|Hidup sampai dendam itu|tidak lagi penting.

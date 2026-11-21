@@ -11,6 +11,7 @@ import {PINTAR_FRAMES, PintarSaja} from "./scenes/PintarSaja";
 import {BADUY_FRAMES, BaduyBadak} from "./scenes/BaduyBadak";
 import {AsalQris, QRIS_FRAMES} from "./scenes/AsalQris";
 import {DuaCaraUang, UANG_FRAMES} from "./scenes/DuaCaraUang";
+import {DENDAM_FRAMES, DendamFilm} from "./scenes/DendamFilm";
 import {FPS, H, W} from "./styles/palette";
 
 // Render with: npx remotion render src/index.ts <Id> out/<name>.mp4
@@ -114,6 +115,15 @@ export const Root: React.FC = () => (
       width={W}
       height={H}
       defaultProps={{narration: "audio/uang.mp3"}}
+    />
+    <Composition
+      id="DendamFilm"
+      component={DendamFilm}
+      durationInFrames={DENDAM_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+      defaultProps={{narration: "audio/dendam.mp3"}}
     />
   </>
 );
