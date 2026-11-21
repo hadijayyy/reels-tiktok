@@ -1,0 +1,14 @@
+# Satu baris = satu adegan. Tanda | memisahkan frasa caption.
+*Steve Jobs* pernah disingkirkan|dari perusahaan yang dia bangun sendiri.|Tapi dia balik, dan menyelamatkannya.
+Semuanya mulai tahun {1976=seribu sembilan ratus tujuh puluh enam}.|Jobs dan Wozniak bikin {Apple=Epel}|di sebuah garasi.
+Komputer pertama mereka dijual|sekitar {666=enam ratus enam puluh enam} dolar.|Satu toko langsung pesan *lima puluh* unit.
+Akhir {1980=seribu sembilan ratus delapan puluh},|{Apple=Epel} melantai di bursa.|Banyak karyawannya mendadak jadi jutawan.
+Jobs lalu merekrut John Sculley dari Pepsi|jadi bos {Apple=Epel}.|Tapi mereka malah berseteru.
+Dewan direksi memihak Sculley.|Tahun {1985=seribu sembilan ratus delapan puluh lima}, Jobs pergi|dan mendirikan {NeXT=Neks}.[jeda=1.2]
+Tanpa Jobs, {Apple=Epel} goyah.|Tahun {1997=seribu sembilan ratus sembilan puluh tujuh},|rugi sekitar *satu miliar* dolar, nyaris bangkrut.
+{Apple=Epel} membeli {NeXT=Neks}, Jobs kembali.|Dia menggandeng musuh lama, Microsoft,|yang menanam seratus lima puluh juta dolar.
+Dia fokus ke produk yang sederhana.|{iMac=ai mek} warna-warni meluncur,|dan setahun kemudian {Apple=Epel} untung lagi.
+Tahun {2001=dua ribu satu}, datang {iPod=ai pod}:|seribu lagu di saku.|Lalu {iPhone=ai fon}, tahun {2007=dua ribu tujuh}.
+Agustus {2011=dua ribu sebelas}, {Apple=Epel} jadi|perusahaan *paling bernilai* di dunia,|mengalahkan {Exxon=Eksson}.
+Dua minggu kemudian, Jobs mundur sebagai {CEO=si i o}.|Lalu {5 Oktober=lima Oktober},|dia meninggal dunia.[jeda=1.4]
+Dari satu garasi sampai puncak dunia.|Kalah sekali bukan akhir cerita.|Menurutmu, apa kunci Jobs bangkit?
