@@ -93,7 +93,12 @@ const Flash: React.FC<{frame: number; at: number[]}> = ({frame, at: points}) => 
   return <AbsoluteFill style={{background: "#FFFFFF", opacity: k * 0.6, pointerEvents: "none"}} />;
 };
 
-const kneel = (t: number): Pose => ({...idle(t), lean: 30, headTilt: 26, hipL: 60, kneeL: -100, hipR: 70, kneeR: -110, shL: 40, elL: 50, shR: 46, elR: 50, lookY: 0.8, bob: 70});
+const kneel = (t: number): Pose => ({...idle(t), lean: 30, headTilt: 26, shL: 40, elL: 50, shR: 46, elR: 50, lookY: 0.8});
+
+/** A kneeling figure: pelvis low, both feet planted behind on the floor. (x, FLOOR) is under the knees. */
+const Kneeling: React.FC<{x: number; t: number; look: Look; scale?: number}> = ({x, t, look, scale = AS}) => (
+  <Stickman x={x} y={FLOOR - 62 * scale} anchor="hip" scale={scale} pose={kneel(t)} look={look} expr="sad" footL={{x: x - 70 * scale, y: FLOOR}} footR={{x: x - 50 * scale, y: FLOOR}} />
+);
 const tired = (t: number): Pose => ({...idle(t), lean: 8, headTilt: 10, lookY: 0.4});
 
 /* 1 — Hook */
@@ -125,7 +130,7 @@ const Hook: React.FC<{len: number}> = ({len}) => {
             <Stickman x={-200} y={FLOOR} scale={AS} pose={point(idle(t), prog(frame, door, door + 16), 80)} look={SON} expr="neutral" />
           ) : (
             <g>
-              <Stickman x={-160} y={FLOOR} scale={AS} pose={kneel(t)} look={SON} expr="sad" />
+              <Kneeling x={-160} t={t} look={SON} />
               <Tears x={-150} y={FLOOR - 270} t={t} />
             </g>
           )}
@@ -370,7 +375,7 @@ const Understand: React.FC<{len: number}> = ({len}) => {
       <g opacity={0.25 * prog(frame, know, know + 30)}>
         <PhotoFrame x={-250} y={-420} s={1.3} rot={-4} />
       </g>
-      <Stickman x={60} y={FLOOR} scale={AS} pose={kneel(t)} look={{...SON, handR: shoeInHand}} expr="sad" />
+      <Kneeling x={60} t={t} look={{...SON, handR: shoeInHand}} />
       <Tears x={70} y={FLOOR - 270} t={t} />
     </Shot>
   );

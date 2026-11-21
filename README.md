@@ -126,6 +126,17 @@ dan ditolak, sepuluh tahun lewat kalender, rumah dan mobil, bertemu perundung ya
 maaf, godaan membalas (merah), uluran tangan, kenangan masa kecil, tali masa lalu putus, berjalan ke matahari
 terbit. Narator pria paruh baya, musik piano. Properti baru: `src/environment/StoryProps.tsx`.
 
+## Video: "Ayahnya Tidak Pernah Membeli Apa Pun untuk Dirinya" (117 detik, cerita keluarga)
+
+Hasil jadi: [`out/ayahsepatu.mp4`](out/ayahsepatu.mp4).
+Caption, hashtag, teks cover, dan tabel perubahan naskah: [`scripts/narasi/ayahsepatu-copy.md`](scripts/narasi/ayahsepatu-copy.md).
+
+Naskah dari user, diperkuat sisi emosional dan engagement-nya. 18 adegan: anak membuka hadiah sementara ayah
+bersepatu usang, lemari yang dibuka bertahun-tahun kemudian, sol sepatu yang lepas dan baju yang dijahit sendiri,
+menghitung uang tiap malam, daftar kebutuhan dengan "SEPATU AYAH" dicoret, kotak berisi sepatu lama, catatan,
+nota sekolah dan foto wisuda, anak berlutut menangis, sepatu baru, ayah diam-diam mencobanya, berjalan berdua,
+dan kartu "Terima kasih, Ayah." Properti baru: `src/environment/FatherProps.tsx`.
+
 ## Cara render ulang
 
 ```bash
@@ -143,6 +154,7 @@ npm run render -- BaduyBadak out/baduy.mp4
 npm run render -- AsalQris out/qris.mp4
 npm run render -- DuaCaraUang out/uang.mp4
 npm run render -- DendamFilm out/dendam.mp4
+npm run render -- AyahSepatu out/ayahsepatu.mp4
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di
