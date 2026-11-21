@@ -15,6 +15,7 @@ import {DENDAM_FRAMES, DendamFilm} from "./scenes/DendamFilm";
 import {AYAHSEPATU_FRAMES, AyahSepatu} from "./scenes/AyahSepatu";
 import {TRANSFER_FRAMES, TransferRahasia} from "./scenes/TransferRahasia";
 import {PARKIR_FRAMES, TukangParkir} from "./scenes/TukangParkir";
+import {JEDA_FRAMES, JedaTigaPuluh} from "./scenes/JedaTigaPuluh";
 import {FPS, H, W} from "./styles/palette";
 
 // Render with: npx remotion render src/index.ts <Id> out/<name>.mp4
@@ -154,6 +155,15 @@ export const Root: React.FC = () => (
       width={W}
       height={H}
       defaultProps={{narration: "audio/parkir.mp3"}}
+    />
+    <Composition
+      id="JedaTigaPuluh"
+      component={JedaTigaPuluh}
+      durationInFrames={JEDA_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+      defaultProps={{narration: "audio/jeda.mp3"}}
     />
   </>
 );

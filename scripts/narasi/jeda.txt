@@ -1,0 +1,7 @@
+# Satu baris = satu adegan. Tanda | memisahkan frasa caption.
+Lagi ditelepon sambil buka aplikasi bank?|Sekarang {BCA=B C A} bakal nahan kamu {30 detik=tiga puluh detik}.
+Penelepon ngaku dari bank,|nyuruh buka {m-banking=em banking},|lalu minta layar dibagikan.
+Itu {social engineering=sosial enjinering}:|yang diserang bukan sistem,|tapi psikologis kamu. [jeda=1.0]
+Kalau buka aplikasi sambil terima telepon,|muncul jeda {30 detik=tiga puluh detik}.|Tutup, atau tunggu dulu.
+Tapi ini cuma pengingat,|bukan pendeteksi penipu.|Penjaganya tetap kamu.
+Jadi ingat:|telepon minta {OTP=O T P} atau {PIN=pin}?|Tutup dulu. Ragu, hubungi Halo {BCA=B C A}.
