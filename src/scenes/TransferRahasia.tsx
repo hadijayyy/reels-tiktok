@@ -1,10 +1,6 @@
 import React from "react";
-import {AbsoluteFill} from "remotion";
-import {Narration} from "../audio/Narration";
-import {Camera2D, Layer} from "../camera/Camera2D";
-import {ScenesWithTransitions, TransitionKind, useSceneFrame} from "../camera/Transitions";
-import {CaptionTrack} from "../captions/CaptionTrack";
-import {Board, Floor, FLOOR, Glow, Label, Wall} from "../environment/Furniture";
+import {TransitionKind, useSceneFrame} from "../camera/Transitions";
+import {Board, FLOOR, Glow, Label} from "../environment/Furniture";
 import {ANAK, LightRain, SideChair, SkyBand} from "../environment/FamilyProps";
 import {KeepBox} from "../environment/FatherProps";
 import {Tears} from "../environment/MotherProps";
@@ -14,11 +10,12 @@ import {Bed, SkyWindow} from "../environment/SleepProps";
 import {ItemTag} from "../environment/SpendProps";
 import {Calendar, SpeechBubble} from "../environment/StoryProps";
 import {Checkout, FeeBill, Glasses, handBook, Hearts, Mat, NameList, Shelf, TransferScreen} from "../environment/TransferProps";
-import {clamp, eInOut, eOut, keysObj, lerp, noise, prog} from "../motion/ease";
+import {clamp, eInOut, eOut, lerp, noise, prog} from "../motion/ease";
 import {CASUAL, RoundGlasses, ShortHair, SHIRT_ORANGE} from "../rig/looks";
 import {cheer, idle, mix, point, sit} from "../rig/poses";
 import {seatedAnchor} from "../rig/seat";
 import {Look, Pose, Stickman} from "../rig/Stickman";
+import {Film, Plate as KitPlate, pop, Shot as KitShot, ShotProps} from "../story/StoryKit";
 import {C, FPS} from "../styles/palette";
 import {CUES as T_CUES, SCENES as T_SCENES} from "./transferTiming";
 
@@ -41,10 +38,9 @@ export {FRAMES as TRANSFER_FRAMES} from "./transferTiming";
 const FIRST = [0, 3, 6, 10, 13, 16, 20, 23, 26, 28, 32, 36, 37, 40, 43, 46, 48];
 const at = (i: number, j: number) => T_CUES[FIRST[i] + j].from - T_SCENES[i].from;
 
-const pop = (frame: number, a: number) => {
-  const k = clamp((frame - a) / 10);
-  return k === 0 ? 0 : 1 + Math.sin(k * Math.PI) * 0.18 * (1 - k) - Math.pow(1 - k, 3);
-};
+const Plate: React.FC<React.ComponentProps<typeof KitPlate>> = (p) => <KitPlate size={44} {...p} />;
+const Shot: React.FC<ShotProps> = (p) => <KitShot wall={ROOM} {...p} />;
+
 
 const SEPIA = "sepia(0.75) saturate(0.8) brightness(0.92)";
 const AS = 1.35;
@@ -62,40 +58,7 @@ const KIDS: Look[] = [ANAK, {...ANAK, top: "#6B8E3E", sleeve: "#6B8E3E"}, {...AN
 const ROOM = "#2A2620";
 const NIGHT = "#161B2A";
 
-const Plate: React.FC<{x: number; y: number; text: string; k: number; size?: number; color?: string; border?: string; w?: number}> = ({x, y, text, k, size = 44, color = C.bone, border = C.yellow, w}) => {
-  if (k <= 0) return null;
-  const ww = w ?? text.length * size * 0.66 + size * 1.2;
-  return (
-    <g transform={`translate(${x} ${y}) scale(${k})`}>
-      <rect x={-ww / 2} y={-size * 0.95} width={ww} height={size * 1.7} rx={size * 0.3} fill={C.charcoal} stroke={border} strokeWidth={6} />
-      <Label x={0} y={size * 0.3} text={text} size={size} color={color} />
-    </g>
-  );
-};
 
-type ShotProps = {len: number; wall?: string; z0?: number; z1?: number; y0?: number; x0?: number; x1?: number; handheld?: number; filter?: string; back?: React.ReactNode; children: React.ReactNode};
-const Shot: React.FC<ShotProps> = ({len, wall = ROOM, z0 = 1.0, z1 = 1.13, y0 = 120, x0 = 0, x1 = 0, handheld = 0, filter, back, children}) => {
-  const frame = useSceneFrame();
-  const t = frame / FPS;
-  const cam = keysObj(frame, [
-    [0, {x: x0, y: y0, zoom: z0, rot: 0}],
-    [len, {x: x1, y: y0 - 20, zoom: z1, rot: 0}],
-  ]);
-  return (
-    <AbsoluteFill style={{filter}}>
-      <Camera2D cam={cam} t={t} handheld={handheld}>
-        <Layer depth={0.5}>
-          <Wall x0={-1400} x1={1400} y0={-1200} y1={FLOOR} color={wall} />
-          {back}
-        </Layer>
-        <Layer depth={1}>
-          <Floor x0={-1400} x1={1400} />
-          {children}
-        </Layer>
-      </Camera2D>
-    </AbsoluteFill>
-  );
-};
 
 const phoneHold = (t: number, shake = 0): Pose => ({...idle(t), shR: 64 + noise(t * 9, 3) * 6 * shake, elR: 70, lookY: 0.5, headTilt: 10});
 const slumped = (t: number): Pose => ({...idle(t), lean: 12, headTilt: 18, shL: 4, shR: 8, lookY: 0.7});
@@ -459,16 +422,14 @@ const SCENES = [Hook, Work, Fifteenth, Friend, NeverMet, Fool, Almost, ThreeYear
 const TRANSITIONS: TransitionKind[] = ["fade", "cut", "fade", "cut", "cut", "fade", "fade", "fade", "fade", "fade", "fade", "fade", "cut", "fade", "fade", "fade"];
 
 export const TransferRahasia: React.FC<{narration?: string}> = ({narration}) => (
-  <AbsoluteFill>
-    <ScenesWithTransitions
-      scenes={T_SCENES}
-      kinds={TRANSITIONS}
-      render={(i) => {
+  <Film
+    scenes={T_SCENES}
+    cues={T_CUES}
+    kinds={TRANSITIONS}
+    narration={narration}
+    render={(i) => {
         const Scene = SCENES[i];
         return <Scene len={T_SCENES[i].len} />;
-      }}
-    />
-    <CaptionTrack cues={T_CUES} />
-    <Narration file={narration} />
-  </AbsoluteFill>
+    }}
+  />
 );

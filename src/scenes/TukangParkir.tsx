@@ -1,20 +1,18 @@
 import React from "react";
 import {AbsoluteFill} from "remotion";
-import {Narration} from "../audio/Narration";
-import {Camera2D, Layer} from "../camera/Camera2D";
-import {ScenesWithTransitions, TransitionKind, useSceneFrame} from "../camera/Transitions";
-import {CaptionTrack} from "../captions/CaptionTrack";
-import {Desk, Floor, FLOOR, Glow, Label, Monitor, OfficeChair, Wall} from "../environment/Furniture";
+import {TransitionKind, useSceneFrame} from "../camera/Transitions";
+import {Desk, FLOOR, Glow, Label, Monitor, OfficeChair} from "../environment/Furniture";
 import {Car, House, SkyBand, StreetLamp} from "../environment/FamilyProps";
 import {CitySkyline, Tears} from "../environment/MotherProps";
 import {Stamp} from "../environment/MoneyProps";
 import {Banknote} from "../environment/SpendProps";
 import {handFolder, Laugh, SpeechBubble} from "../environment/StoryProps";
-import {clamp, eInOut, eOut, keysObj, lerp, prog} from "../motion/ease";
+import {clamp, eInOut, eOut, lerp, prog} from "../motion/ease";
 import {CASUAL, RoundGlasses, ShortHair} from "../rig/looks";
 import {idle, mix, point, sit, STRIDE, walk} from "../rig/poses";
 import {seatedAnchor} from "../rig/seat";
 import {Look, Pose, Stickman} from "../rig/Stickman";
+import {Film, Plate as KitPlate, pop, Shot as KitShot, ShotProps} from "../story/StoryKit";
 import {C, FPS} from "../styles/palette";
 import {CUES as P_CUES, SCENES as P_SCENES} from "./parkirTiming";
 
@@ -38,10 +36,9 @@ export {FRAMES as PARKIR_FRAMES} from "./parkirTiming";
 const FIRST = [0, 4, 6, 9, 12, 15, 17, 19, 21, 23, 26, 28, 32, 33, 36, 39, 44];
 const at = (i: number, j: number) => P_CUES[FIRST[i] + j].from - P_SCENES[i].from;
 
-const pop = (frame: number, a: number) => {
-  const k = clamp((frame - a) / 10);
-  return k === 0 ? 0 : 1 + Math.sin(k * Math.PI) * 0.18 * (1 - k) - Math.pow(1 - k, 3);
-};
+const Plate: React.FC<React.ComponentProps<typeof KitPlate>> = (p) => <KitPlate size={44} {...p} />;
+const Shot: React.FC<ShotProps> = (p) => <KitShot wall={"#26303A"} {...p} />;
+
 
 const AS = 1.35;
 const SEPIA = "sepia(0.75) saturate(0.8) brightness(0.92)";
@@ -76,40 +73,7 @@ const DIREKTUR: Look = {top: "#E9E7DF", sleeve: "#2A2F3A", coat: "#2A2F3A", tie:
   </g>
 )};
 
-const Plate: React.FC<{x: number; y: number; text: string; k: number; size?: number; color?: string; border?: string; w?: number}> = ({x, y, text, k, size = 44, color = C.bone, border = C.yellow, w}) => {
-  if (k <= 0) return null;
-  const ww = w ?? text.length * size * 0.66 + size * 1.2;
-  return (
-    <g transform={`translate(${x} ${y}) scale(${k})`}>
-      <rect x={-ww / 2} y={-size * 0.95} width={ww} height={size * 1.7} rx={size * 0.3} fill={C.charcoal} stroke={border} strokeWidth={6} />
-      <Label x={0} y={size * 0.3} text={text} size={size} color={color} />
-    </g>
-  );
-};
 
-type ShotProps = {len: number; wall?: string; z0?: number; z1?: number; y0?: number; x0?: number; x1?: number; handheld?: number; filter?: string; back?: React.ReactNode; children: React.ReactNode};
-const Shot: React.FC<ShotProps> = ({len, wall = "#26303A", z0 = 1.0, z1 = 1.13, y0 = 120, x0 = 0, x1 = 0, handheld = 0, filter, back, children}) => {
-  const frame = useSceneFrame();
-  const t = frame / FPS;
-  const cam = keysObj(frame, [
-    [0, {x: x0, y: y0, zoom: z0, rot: 0}],
-    [len, {x: x1, y: y0 - 20, zoom: z1, rot: 0}],
-  ]);
-  return (
-    <AbsoluteFill style={{filter}}>
-      <Camera2D cam={cam} t={t} handheld={handheld}>
-        <Layer depth={0.5}>
-          <Wall x0={-1400} x1={1400} y0={-1200} y1={FLOOR} color={wall} />
-          {back}
-        </Layer>
-        <Layer depth={1}>
-          <Floor x0={-1400} x1={1400} />
-          {children}
-        </Layer>
-      </Camera2D>
-    </AbsoluteFill>
-  );
-};
 
 const laughing = (t: number, seed = 0): Pose => ({...idle(t, seed), lean: -8 + Math.sin(t * 14 + seed) * 4, shL: -30, elL: 80, shR: 40, elR: 70, bob: -Math.abs(Math.sin(t * 12 + seed)) * 4});
 const bowing = (t: number): Pose => ({...idle(t), lean: 30, headTilt: 26, shL: 10, shR: 10, lookY: 0.8});
@@ -483,16 +447,14 @@ const SCENES = [Hook, RichKid, Belief, ReturnTip, Insult, Calm, Dignity, Joke, B
 const TRANSITIONS: TransitionKind[] = ["fade", "cut", "fade", "cut", "fade", "cut", "fade", "fade", "fade", "fade", "fade", "cut", "fade", "fade", "fade", "fade"];
 
 export const TukangParkir: React.FC<{narration?: string}> = ({narration}) => (
-  <AbsoluteFill>
-    <ScenesWithTransitions
-      scenes={P_SCENES}
-      kinds={TRANSITIONS}
-      render={(i) => {
+  <Film
+    scenes={P_SCENES}
+    cues={P_CUES}
+    kinds={TRANSITIONS}
+    narration={narration}
+    render={(i) => {
         const Scene = SCENES[i];
         return <Scene len={P_SCENES[i].len} />;
-      }}
-    />
-    <CaptionTrack cues={P_CUES} />
-    <Narration file={narration} />
-  </AbsoluteFill>
+    }}
+  />
 );

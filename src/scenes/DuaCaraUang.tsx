@@ -1,17 +1,15 @@
 import React from "react";
 import {AbsoluteFill} from "remotion";
-import {Narration} from "../audio/Narration";
-import {Camera2D, Layer} from "../camera/Camera2D";
-import {ScenesWithTransitions, TransitionKind, useSceneFrame} from "../camera/Transitions";
-import {CaptionTrack} from "../captions/CaptionTrack";
-import {Desk, Floor, FLOOR, Glow, Label, Monitor, OfficeChair, Wall} from "../environment/Furniture";
+import {TransitionKind, useSceneFrame} from "../camera/Transitions";
+import {Desk, FLOOR, Glow, Label, Monitor, OfficeChair} from "../environment/Furniture";
 import {Coin, Tick} from "../environment/MoneyProps";
 import {Banknote, BookStack, CashStack, CourseScreen, EmptyWallet, FancyMeal, Gadget, GrowthChart, ItemTag, Laptop, Sneaker, WorkScreen} from "../environment/SpendProps";
-import {clamp, eInOut, eOut, keysObj, lerp, prog} from "../motion/ease";
+import {eInOut, eOut, lerp, prog} from "../motion/ease";
 import {CASUAL, JACKET_BLUE, SHIRT_ORANGE} from "../rig/looks";
 import {cheer, idle, mix, typing} from "../rig/poses";
 import {seatedAnchor} from "../rig/seat";
 import {Look, Pt, Stickman} from "../rig/Stickman";
+import {Film, Plate as KitPlate, pop, Shot as KitShot, ShotProps} from "../story/StoryKit";
 import {C, FONT, FPS} from "../styles/palette";
 import {CUES as U_CUES, SCENES as U_SCENES} from "./uangTiming";
 
@@ -31,28 +29,17 @@ export {FRAMES as UANG_FRAMES} from "./uangTiming";
 const FIRST = [0, 4, 8, 12, 16, 20];
 const at = (i: number, j: number) => U_CUES[FIRST[i] + j].from - U_SCENES[i].from;
 
+const Plate: React.FC<React.ComponentProps<typeof KitPlate>> = (p) => <KitPlate size={48} {...p} />;
+const Shot: React.FC<ShotProps> = (p) => <KitShot wall={WALL} {...p} />;
+
 const A: Look = SHIRT_ORANGE;
 const B: Look = JACKET_BLUE;
 const WALL = "#26303A";
 const GOOD = "#5E9347";
 
-const pop = (frame: number, a: number) => {
-  const k = clamp((frame - a) / 10);
-  return k === 0 ? 0 : 1 + Math.sin(k * Math.PI) * 0.18 * (1 - k) - Math.pow(1 - k, 3);
-};
 
 const rupiah = (n: number) => "Rp" + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-const Plate: React.FC<{x: number; y: number; text: string; k: number; size?: number; color?: string; border?: string; w?: number}> = ({x, y, text, k, size = 48, color = C.bone, border = C.yellow, w}) => {
-  if (k <= 0) return null;
-  const ww = w ?? text.length * size * 0.66 + size * 1.2;
-  return (
-    <g transform={`translate(${x} ${y}) scale(${k})`}>
-      <rect x={-ww / 2} y={-size * 0.95} width={ww} height={size * 1.7} rx={size * 0.3} fill={C.charcoal} stroke={border} strokeWidth={6} />
-      <Label x={0} y={size * 0.3} text={text} size={size} color={color} />
-    </g>
-  );
-};
 
 /** Balance read-out that steps down at the given frames. */
 const Balance: React.FC<{x: number; y: number; frame: number; steps: [number, number][]; start?: number; k?: number}> = ({x, y, frame, steps, start = 1000000, k = 1}) => {
@@ -73,27 +60,6 @@ const Balance: React.FC<{x: number; y: number; frame: number; steps: [number, nu
   );
 };
 
-const Shot: React.FC<{len: number; wall?: string; z0?: number; z1?: number; handheld?: number; grey?: number; children: React.ReactNode}> = ({len, wall = WALL, z0 = 1.0, z1 = 1.13, handheld = 0, grey = 0, children}) => {
-  const frame = useSceneFrame();
-  const t = frame / FPS;
-  const cam = keysObj(frame, [
-    [0, {x: 0, y: 120, zoom: z0, rot: 0}],
-    [len, {x: 0, y: 100, zoom: z1, rot: 0}],
-  ]);
-  return (
-    <AbsoluteFill style={{filter: grey > 0 ? `saturate(${1 - grey * 0.8}) brightness(${1 - grey * 0.25})` : undefined}}>
-      <Camera2D cam={cam} t={t} handheld={handheld}>
-        <Layer depth={0.5}>
-          <Wall x0={-1400} x1={1400} y0={-1200} y1={FLOOR} color={wall} />
-        </Layer>
-        <Layer depth={1}>
-          <Floor x0={-1400} x1={1400} />
-          {children}
-        </Layer>
-      </Camera2D>
-    </AbsoluteFill>
-  );
-};
 
 /** A small red toolbox with a wrench on top. Base centre at (x, y). */
 const Toolbox: React.FC<{x: number; y: number; s?: number}> = ({x, y, s = 1}) => (
@@ -320,16 +286,14 @@ const SCENES = [Start, Spend, Invest, Fade, Grow, Compare];
 const TRANSITIONS: TransitionKind[] = ["whip", "zoom", "whip", "zoom", "fade"];
 
 export const DuaCaraUang: React.FC<{narration?: string}> = ({narration}) => (
-  <AbsoluteFill>
-    <ScenesWithTransitions
-      scenes={U_SCENES}
-      kinds={TRANSITIONS}
-      render={(i) => {
+  <Film
+    scenes={U_SCENES}
+    cues={U_CUES}
+    kinds={TRANSITIONS}
+    narration={narration}
+    render={(i) => {
         const Scene = SCENES[i];
         return <Scene len={U_SCENES[i].len} />;
-      }}
-    />
-    <CaptionTrack cues={U_CUES} />
-    <Narration file={narration} />
-  </AbsoluteFill>
+    }}
+  />
 );

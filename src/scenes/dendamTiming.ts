@@ -4,252 +4,1234 @@ export const SCENES = [{"from": 0, "len": 296}, {"from": 296, "len": 175}, {"fro
 export const CUES = [
   {
     "from": 10,
-    "to": 51,
-    "text": "Dia menunggu 10 tahun"
+    "to": 45,
+    "text": "Dia menunggu 10 tahun",
+    "words": [
+      {
+        "t": "Dia",
+        "f": 10,
+        "e": 16
+      },
+      {
+        "t": "menunggu",
+        "f": 16,
+        "e": 30
+      },
+      {
+        "t": "10",
+        "f": 30,
+        "e": 38,
+        "k": 1
+      },
+      {
+        "t": "tahun",
+        "f": 38,
+        "e": 47
+      }
+    ]
   },
   {
-    "from": 51,
-    "to": 93,
-    "text": "untuk membalas dendam."
+    "from": 45,
+    "to": 94,
+    "text": "untuk membalas dendam.",
+    "words": [
+      {
+        "t": "untuk",
+        "f": 47,
+        "e": 56
+      },
+      {
+        "t": "membalas",
+        "f": 56,
+        "e": 71
+      },
+      {
+        "t": "dendam.",
+        "f": 71,
+        "e": 85
+      }
+    ]
   },
   {
-    "from": 93,
-    "to": 165,
-    "text": "Tapi saat akhirnya punya kesempatan..."
+    "from": 94,
+    "to": 182,
+    "text": "Tapi saat akhirnya punya kesempatan...",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 96,
+        "e": 113
+      },
+      {
+        "t": "saat",
+        "f": 113,
+        "e": 121
+      },
+      {
+        "t": "akhirnya",
+        "f": 121,
+        "e": 139
+      },
+      {
+        "t": "punya",
+        "f": 139,
+        "e": 146
+      },
+      {
+        "t": "kesempatan...",
+        "f": 146,
+        "e": 169
+      }
+    ]
   },
   {
-    "from": 165,
-    "to": 217,
-    "text": "dia malah melakukan sesuatu"
+    "from": 182,
+    "to": 226,
+    "text": "dia malah melakukan sesuatu",
+    "words": [
+      {
+        "t": "dia",
+        "f": 184,
+        "e": 189
+      },
+      {
+        "t": "malah",
+        "f": 189,
+        "e": 199
+      },
+      {
+        "t": "melakukan",
+        "f": 199,
+        "e": 211
+      },
+      {
+        "t": "sesuatu",
+        "f": 211,
+        "e": 228
+      }
+    ]
   },
   {
-    "from": 217,
+    "from": 226,
     "to": 253,
-    "text": "yang tidak terduga."
+    "text": "yang tidak terduga.",
+    "words": [
+      {
+        "t": "yang",
+        "f": 228,
+        "e": 231
+      },
+      {
+        "t": "tidak",
+        "f": 231,
+        "e": 237
+      },
+      {
+        "t": "terduga.",
+        "f": 237,
+        "e": 250
+      }
+    ]
   },
   {
     "from": 303,
-    "to": 354,
-    "text": "Ketika berusia 15 tahun,"
+    "to": 358,
+    "text": "Ketika berusia 15 tahun,",
+    "words": [
+      {
+        "t": "Ketika",
+        "f": 303,
+        "e": 315
+      },
+      {
+        "t": "berusia",
+        "f": 315,
+        "e": 327
+      },
+      {
+        "t": "15",
+        "f": 327,
+        "e": 335,
+        "k": 1
+      },
+      {
+        "t": "tahun,",
+        "f": 335,
+        "e": 349
+      }
+    ]
   },
   {
-    "from": 354,
-    "to": 393,
-    "text": "dia sering dihina."
+    "from": 358,
+    "to": 396,
+    "text": "dia sering dihina.",
+    "words": [
+      {
+        "t": "dia",
+        "f": 360,
+        "e": 364
+      },
+      {
+        "t": "sering",
+        "f": 364,
+        "e": 373
+      },
+      {
+        "t": "dihina.",
+        "f": 373,
+        "e": 384
+      }
+    ]
   },
   {
-    "from": 393,
-    "to": 423,
-    "text": "Bajunya jelek."
+    "from": 396,
+    "to": 434,
+    "text": "Bajunya jelek.",
+    "words": [
+      {
+        "t": "Bajunya",
+        "f": 398,
+        "e": 412
+      },
+      {
+        "t": "jelek.",
+        "f": 412,
+        "e": 424
+      }
+    ]
   },
   {
-    "from": 423,
+    "from": 434,
     "to": 464,
-    "text": "Keluarganya miskin."
+    "text": "Keluarganya miskin.",
+    "words": [
+      {
+        "t": "Keluarganya",
+        "f": 436,
+        "e": 453
+      },
+      {
+        "t": "miskin.",
+        "f": 453,
+        "e": 462
+      }
+    ]
   },
   {
     "from": 478,
-    "to": 526,
-    "text": "Bahkan ketika dia menjawab"
+    "to": 519,
+    "text": "Bahkan ketika dia menjawab",
+    "words": [
+      {
+        "t": "Bahkan",
+        "f": 478,
+        "e": 490
+      },
+      {
+        "t": "ketika",
+        "f": 490,
+        "e": 501
+      },
+      {
+        "t": "dia",
+        "f": 501,
+        "e": 505
+      },
+      {
+        "t": "menjawab",
+        "f": 505,
+        "e": 521
+      }
+    ]
   },
   {
-    "from": 526,
-    "to": 579,
-    "text": "pertanyaan guru dengan benar,"
+    "from": 519,
+    "to": 575,
+    "text": "pertanyaan guru dengan benar,",
+    "words": [
+      {
+        "t": "pertanyaan",
+        "f": 521,
+        "e": 540
+      },
+      {
+        "t": "guru",
+        "f": 540,
+        "e": 545
+      },
+      {
+        "t": "dengan",
+        "f": 545,
+        "e": 553
+      },
+      {
+        "t": "benar,",
+        "f": 553,
+        "e": 569
+      }
+    ]
   },
   {
-    "from": 579,
+    "from": 575,
     "to": 647,
-    "text": "teman-temannya tetap menertawakannya."
+    "text": "teman-temannya tetap menertawakannya.",
+    "words": [
+      {
+        "t": "teman-temannya",
+        "f": 577,
+        "e": 596
+      },
+      {
+        "t": "tetap",
+        "f": 596,
+        "e": 614
+      },
+      {
+        "t": "menertawakannya.",
+        "f": 614,
+        "e": 643
+      }
+    ]
   },
   {
     "from": 685,
-    "to": 706,
-    "text": "Setiap malam"
+    "to": 704,
+    "text": "Setiap malam",
+    "words": [
+      {
+        "t": "Setiap",
+        "f": 685,
+        "e": 696
+      },
+      {
+        "t": "malam",
+        "f": 696,
+        "e": 706
+      }
+    ]
   },
   {
-    "from": 706,
-    "to": 765,
-    "text": "dia berjanji pada dirinya sendiri."
+    "from": 704,
+    "to": 769,
+    "text": "dia berjanji pada dirinya sendiri.",
+    "words": [
+      {
+        "t": "dia",
+        "f": 706,
+        "e": 711
+      },
+      {
+        "t": "berjanji",
+        "f": 711,
+        "e": 726
+      },
+      {
+        "t": "pada",
+        "f": 726,
+        "e": 733
+      },
+      {
+        "t": "dirinya",
+        "f": 733,
+        "e": 745
+      },
+      {
+        "t": "sendiri.",
+        "f": 745,
+        "e": 755
+      }
+    ]
   },
   {
-    "from": 765,
-    "to": 821,
-    "text": "Suatu hari, mereka akan menyesal"
+    "from": 769,
+    "to": 820,
+    "text": "Suatu hari, mereka akan menyesal",
+    "words": [
+      {
+        "t": "Suatu",
+        "f": 771,
+        "e": 781
+      },
+      {
+        "t": "hari,",
+        "f": 781,
+        "e": 790
+      },
+      {
+        "t": "mereka",
+        "f": 790,
+        "e": 798
+      },
+      {
+        "t": "akan",
+        "f": 798,
+        "e": 807
+      },
+      {
+        "t": "menyesal",
+        "f": 807,
+        "e": 822
+      }
+    ]
   },
   {
-    "from": 821,
+    "from": 820,
     "to": 858,
-    "text": "pernah meremehkannya."
+    "text": "pernah meremehkannya.",
+    "words": [
+      {
+        "t": "pernah",
+        "f": 822,
+        "e": 831
+      },
+      {
+        "t": "meremehkannya.",
+        "f": 831,
+        "e": 854
+      }
+    ]
   },
   {
     "from": 871,
-    "to": 919,
-    "text": "Dia belajar lebih keras."
+    "to": 912,
+    "text": "Dia belajar lebih keras.",
+    "words": [
+      {
+        "t": "Dia",
+        "f": 871,
+        "e": 878
+      },
+      {
+        "t": "belajar",
+        "f": 878,
+        "e": 890
+      },
+      {
+        "t": "lebih",
+        "f": 890,
+        "e": 895
+      },
+      {
+        "t": "keras.",
+        "f": 895,
+        "e": 907
+      }
+    ]
   },
   {
-    "from": 919,
-    "to": 963,
-    "text": "Bekerja sambil kuliah."
+    "from": 912,
+    "to": 965,
+    "text": "Bekerja sambil kuliah.",
+    "words": [
+      {
+        "t": "Bekerja",
+        "f": 914,
+        "e": 937
+      },
+      {
+        "t": "sambil",
+        "f": 937,
+        "e": 946
+      },
+      {
+        "t": "kuliah.",
+        "f": 946,
+        "e": 959
+      }
+    ]
   },
   {
-    "from": 963,
+    "from": 965,
     "to": 1005,
-    "text": "Ditolak berkali-kali."
+    "text": "Ditolak berkali-kali.",
+    "words": [
+      {
+        "t": "Ditolak",
+        "f": 967,
+        "e": 982
+      },
+      {
+        "t": "berkali-kali.",
+        "f": 982,
+        "e": 1004
+      }
+    ]
   },
   {
     "from": 1018,
-    "to": 1072,
-    "text": "Tapi setiap kali ingin menyerah,"
+    "to": 1073,
+    "text": "Tapi setiap kali ingin menyerah,",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 1018,
+        "e": 1025
+      },
+      {
+        "t": "setiap",
+        "f": 1025,
+        "e": 1037
+      },
+      {
+        "t": "kali",
+        "f": 1037,
+        "e": 1045
+      },
+      {
+        "t": "ingin",
+        "f": 1045,
+        "e": 1054
+      },
+      {
+        "t": "menyerah,",
+        "f": 1054,
+        "e": 1075
+      }
+    ]
   },
   {
-    "from": 1072,
-    "to": 1104,
-    "text": "dia mengingat wajah"
+    "from": 1073,
+    "to": 1111,
+    "text": "dia mengingat wajah",
+    "words": [
+      {
+        "t": "dia",
+        "f": 1075,
+        "e": 1081
+      },
+      {
+        "t": "mengingat",
+        "f": 1081,
+        "e": 1096
+      },
+      {
+        "t": "wajah",
+        "f": 1096,
+        "e": 1113
+      }
+    ]
   },
   {
-    "from": 1104,
+    "from": 1111,
     "to": 1160,
-    "text": "orang-orang yang menertawakannya."
+    "text": "orang-orang yang menertawakannya.",
+    "words": [
+      {
+        "t": "orang-orang",
+        "f": 1113,
+        "e": 1127
+      },
+      {
+        "t": "yang",
+        "f": 1127,
+        "e": 1133
+      },
+      {
+        "t": "menertawakannya.",
+        "f": 1133,
+        "e": 1156
+      }
+    ]
   },
   {
     "from": 1198,
-    "to": 1243,
-    "text": "Sepuluh tahun berlalu."
+    "to": 1237,
+    "text": "Sepuluh tahun berlalu.",
+    "words": [
+      {
+        "t": "Sepuluh",
+        "f": 1198,
+        "e": 1208
+      },
+      {
+        "t": "tahun",
+        "f": 1208,
+        "e": 1217
+      },
+      {
+        "t": "berlalu.",
+        "f": 1217,
+        "e": 1234
+      }
+    ]
   },
   {
-    "from": 1243,
+    "from": 1237,
     "to": 1302,
-    "text": "Dia menjadi pengusaha sukses."
+    "text": "Dia menjadi pengusaha sukses.",
+    "words": [
+      {
+        "t": "Dia",
+        "f": 1239,
+        "e": 1256
+      },
+      {
+        "t": "menjadi",
+        "f": 1256,
+        "e": 1267
+      },
+      {
+        "t": "pengusaha",
+        "f": 1267,
+        "e": 1286
+      },
+      {
+        "t": "sukses.",
+        "f": 1286,
+        "e": 1300
+      }
+    ]
   },
   {
     "from": 1316,
-    "to": 1350,
-    "text": "Rumahnya besar."
+    "to": 1352,
+    "text": "Rumahnya besar.",
+    "words": [
+      {
+        "t": "Rumahnya",
+        "f": 1316,
+        "e": 1329
+      },
+      {
+        "t": "besar.",
+        "f": 1329,
+        "e": 1338
+      }
+    ]
   },
   {
-    "from": 1350,
+    "from": 1352,
     "to": 1385,
-    "text": "Mobilnya mahal."
+    "text": "Mobilnya mahal.",
+    "words": [
+      {
+        "t": "Mobilnya",
+        "f": 1354,
+        "e": 1369
+      },
+      {
+        "t": "mahal.",
+        "f": 1369,
+        "e": 1382
+      }
+    ]
   },
   {
     "from": 1398,
-    "to": 1451,
-    "text": "Dan suatu hari, dia bertemu orang"
+    "to": 1455,
+    "text": "Dan suatu hari, dia bertemu orang",
+    "words": [
+      {
+        "t": "Dan",
+        "f": 1398,
+        "e": 1403
+      },
+      {
+        "t": "suatu",
+        "f": 1403,
+        "e": 1412
+      },
+      {
+        "t": "hari,",
+        "f": 1412,
+        "e": 1421
+      },
+      {
+        "t": "dia",
+        "f": 1424,
+        "e": 1437
+      },
+      {
+        "t": "bertemu",
+        "f": 1437,
+        "e": 1450
+      },
+      {
+        "t": "orang",
+        "f": 1450,
+        "e": 1457
+      }
+    ]
   },
   {
-    "from": 1451,
-    "to": 1487,
-    "text": "yang dulu paling sering"
+    "from": 1455,
+    "to": 1486,
+    "text": "yang dulu paling sering",
+    "words": [
+      {
+        "t": "yang",
+        "f": 1457,
+        "e": 1463
+      },
+      {
+        "t": "dulu",
+        "f": 1463,
+        "e": 1470
+      },
+      {
+        "t": "paling",
+        "f": 1470,
+        "e": 1478
+      },
+      {
+        "t": "sering",
+        "f": 1478,
+        "e": 1488
+      }
+    ]
   },
   {
-    "from": 1487,
+    "from": 1486,
     "to": 1515,
-    "text": "menghina dirinya."
+    "text": "menghina dirinya.",
+    "words": [
+      {
+        "t": "menghina",
+        "f": 1488,
+        "e": 1499
+      },
+      {
+        "t": "dirinya.",
+        "f": 1499,
+        "e": 1510
+      }
+    ]
   },
   {
     "from": 1558,
-    "to": 1591,
-    "text": "Orang itu sekarang"
+    "to": 1580,
+    "text": "Orang itu sekarang",
+    "words": [
+      {
+        "t": "Orang",
+        "f": 1558,
+        "e": 1568
+      },
+      {
+        "t": "itu",
+        "f": 1568,
+        "e": 1573
+      },
+      {
+        "t": "sekarang",
+        "f": 1573,
+        "e": 1582
+      }
+    ]
   },
   {
-    "from": 1591,
+    "from": 1580,
     "to": 1638,
-    "text": "sedang mencari pekerjaan."
+    "text": "sedang mencari pekerjaan.",
+    "words": [
+      {
+        "t": "sedang",
+        "f": 1582,
+        "e": 1595
+      },
+      {
+        "t": "mencari",
+        "f": 1595,
+        "e": 1606
+      },
+      {
+        "t": "pekerjaan.",
+        "f": 1606,
+        "e": 1632
+      }
+    ]
   },
   {
     "from": 1638,
     "to": 1675,
-    "text": "Hidupnya berantakan."
+    "text": "Hidupnya berantakan.",
+    "words": [
+      {
+        "t": "Hidupnya",
+        "f": 1640,
+        "e": 1655
+      },
+      {
+        "t": "berantakan.",
+        "f": 1655,
+        "e": 1670
+      }
+    ]
   },
   {
     "from": 1688,
-    "to": 1756,
-    "text": "Ketika melihat mantan teman sekolahnya,"
+    "to": 1747,
+    "text": "Ketika melihat mantan teman sekolahnya,",
+    "words": [
+      {
+        "t": "Ketika",
+        "f": 1688,
+        "e": 1699
+      },
+      {
+        "t": "melihat",
+        "f": 1699,
+        "e": 1710
+      },
+      {
+        "t": "mantan",
+        "f": 1710,
+        "e": 1721
+      },
+      {
+        "t": "teman",
+        "f": 1721,
+        "e": 1730
+      },
+      {
+        "t": "sekolahnya,",
+        "f": 1730,
+        "e": 1747
+      }
+    ]
   },
   {
-    "from": 1756,
-    "to": 1800,
-    "text": "dia menunduk dan berkata,"
+    "from": 1747,
+    "to": 1794,
+    "text": "dia menunduk dan berkata,",
+    "words": [
+      {
+        "t": "dia",
+        "f": 1749,
+        "e": 1752
+      },
+      {
+        "t": "menunduk",
+        "f": 1752,
+        "e": 1766
+      },
+      {
+        "t": "dan",
+        "f": 1766,
+        "e": 1770
+      },
+      {
+        "t": "berkata,",
+        "f": 1770,
+        "e": 1786
+      }
+    ]
   },
   {
-    "from": 1800,
+    "from": 1794,
     "to": 1840,
-    "text": "\"Maaf. Dulu aku salah.\""
+    "text": "\"Maaf. Dulu aku salah.\"",
+    "words": [
+      {
+        "t": "\"Maaf.",
+        "f": 1796,
+        "e": 1809
+      },
+      {
+        "t": "Dulu",
+        "f": 1816,
+        "e": 1821
+      },
+      {
+        "t": "aku",
+        "f": 1821,
+        "e": 1827
+      },
+      {
+        "t": "salah.\"",
+        "f": 1827,
+        "e": 1835
+      }
+    ]
   },
   {
     "from": 1890,
-    "to": 1934,
-    "text": "Dia bisa mempermalukannya."
+    "to": 1933,
+    "text": "Dia bisa mempermalukannya.",
+    "words": [
+      {
+        "t": "Dia",
+        "f": 1890,
+        "e": 1895
+      },
+      {
+        "t": "bisa",
+        "f": 1895,
+        "e": 1902
+      },
+      {
+        "t": "mempermalukannya.",
+        "f": 1902,
+        "e": 1929
+      }
+    ]
   },
   {
-    "from": 1934,
-    "to": 1978,
-    "text": "Bisa membalas semua hinaan"
+    "from": 1933,
+    "to": 1983,
+    "text": "Bisa membalas semua hinaan",
+    "words": [
+      {
+        "t": "Bisa",
+        "f": 1935,
+        "e": 1949
+      },
+      {
+        "t": "membalas",
+        "f": 1949,
+        "e": 1964
+      },
+      {
+        "t": "semua",
+        "f": 1964,
+        "e": 1971
+      },
+      {
+        "t": "hinaan",
+        "f": 1971,
+        "e": 1985
+      }
+    ]
   },
   {
-    "from": 1978,
+    "from": 1983,
     "to": 2016,
-    "text": "yang pernah dia terima."
+    "text": "yang pernah dia terima.",
+    "words": [
+      {
+        "t": "yang",
+        "f": 1985,
+        "e": 1989
+      },
+      {
+        "t": "pernah",
+        "f": 1989,
+        "e": 1996
+      },
+      {
+        "t": "dia",
+        "f": 1996,
+        "e": 2002
+      },
+      {
+        "t": "terima.",
+        "f": 2002,
+        "e": 2013
+      }
+    ]
   },
   {
     "from": 2030,
-    "to": 2069,
-    "text": "Tapi dia hanya berkata,"
+    "to": 2085,
+    "text": "Tapi dia hanya berkata,",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 2030,
+        "e": 2038
+      },
+      {
+        "t": "dia",
+        "f": 2038,
+        "e": 2045
+      },
+      {
+        "t": "hanya",
+        "f": 2045,
+        "e": 2052
+      },
+      {
+        "t": "berkata,",
+        "f": 2052,
+        "e": 2068
+      }
+    ]
   },
   {
-    "from": 2069,
-    "to": 2108,
-    "text": "\"Aku sudah terlalu jauh"
+    "from": 2085,
+    "to": 2123,
+    "text": "\"Aku sudah terlalu jauh",
+    "words": [
+      {
+        "t": "\"Aku",
+        "f": 2087,
+        "e": 2096
+      },
+      {
+        "t": "sudah",
+        "f": 2096,
+        "e": 2103
+      },
+      {
+        "t": "terlalu",
+        "f": 2103,
+        "e": 2115
+      },
+      {
+        "t": "jauh",
+        "f": 2115,
+        "e": 2125
+      }
+    ]
   },
   {
-    "from": 2108,
+    "from": 2123,
     "to": 2175,
-    "text": "untuk kembali menjadi orang yang dulu.\""
+    "text": "untuk kembali menjadi orang yang dulu.\"",
+    "words": [
+      {
+        "t": "untuk",
+        "f": 2125,
+        "e": 2130
+      },
+      {
+        "t": "kembali",
+        "f": 2130,
+        "e": 2143
+      },
+      {
+        "t": "menjadi",
+        "f": 2143,
+        "e": 2151
+      },
+      {
+        "t": "orang",
+        "f": 2151,
+        "e": 2159
+      },
+      {
+        "t": "yang",
+        "f": 2159,
+        "e": 2164
+      },
+      {
+        "t": "dulu.\"",
+        "f": 2164,
+        "e": 2172
+      }
+    ]
   },
   {
     "from": 2224,
     "to": 2243,
-    "text": "Dia sadar,"
+    "text": "Dia sadar,",
+    "words": [
+      {
+        "t": "Dia",
+        "f": 2224,
+        "e": 2230
+      },
+      {
+        "t": "sadar,",
+        "f": 2230,
+        "e": 2245
+      }
+    ]
   },
   {
     "from": 2243,
-    "to": 2288,
-    "text": "kemenangan terbesar bukan"
+    "to": 2279,
+    "text": "kemenangan terbesar bukan",
+    "words": [
+      {
+        "t": "kemenangan",
+        "f": 2245,
+        "e": 2260
+      },
+      {
+        "t": "terbesar",
+        "f": 2260,
+        "e": 2275
+      },
+      {
+        "t": "bukan",
+        "f": 2275,
+        "e": 2281
+      }
+    ]
   },
   {
-    "from": 2288,
+    "from": 2279,
     "to": 2361,
-    "text": "ketika orang yang menyakitimu menderita."
+    "text": "ketika orang yang menyakitimu menderita.",
+    "words": [
+      {
+        "t": "ketika",
+        "f": 2281,
+        "e": 2294
+      },
+      {
+        "t": "orang",
+        "f": 2294,
+        "e": 2303
+      },
+      {
+        "t": "yang",
+        "f": 2303,
+        "e": 2323
+      },
+      {
+        "t": "menyakitimu",
+        "f": 2323,
+        "e": 2344
+      },
+      {
+        "t": "menderita.",
+        "f": 2344,
+        "e": 2357
+      }
+    ]
   },
   {
     "from": 2375,
-    "to": 2407,
-    "text": "Tapi ketika mereka"
+    "to": 2402,
+    "text": "Tapi ketika mereka",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 2375,
+        "e": 2382
+      },
+      {
+        "t": "ketika",
+        "f": 2382,
+        "e": 2393
+      },
+      {
+        "t": "mereka",
+        "f": 2393,
+        "e": 2404
+      }
+    ]
   },
   {
-    "from": 2407,
-    "to": 2452,
-    "text": "tidak lagi punya kekuatan"
+    "from": 2402,
+    "to": 2447,
+    "text": "tidak lagi punya kekuatan",
+    "words": [
+      {
+        "t": "tidak",
+        "f": 2404,
+        "e": 2414
+      },
+      {
+        "t": "lagi",
+        "f": 2414,
+        "e": 2425
+      },
+      {
+        "t": "punya",
+        "f": 2425,
+        "e": 2432
+      },
+      {
+        "t": "kekuatan",
+        "f": 2432,
+        "e": 2449
+      }
+    ]
   },
   {
-    "from": 2452,
+    "from": 2447,
     "to": 2503,
-    "text": "untuk mengendalikan hidupmu."
+    "text": "untuk mengendalikan hidupmu.",
+    "words": [
+      {
+        "t": "untuk",
+        "f": 2449,
+        "e": 2466
+      },
+      {
+        "t": "mengendalikan",
+        "f": 2466,
+        "e": 2486
+      },
+      {
+        "t": "hidupmu.",
+        "f": 2486,
+        "e": 2499
+      }
+    ]
   },
   {
     "from": 2546,
-    "to": 2610,
-    "text": "Jangan hidup untuk membalas dendam."
+    "to": 2605,
+    "text": "Jangan hidup untuk membalas dendam.",
+    "words": [
+      {
+        "t": "Jangan",
+        "f": 2546,
+        "e": 2556
+      },
+      {
+        "t": "hidup",
+        "f": 2556,
+        "e": 2567
+      },
+      {
+        "t": "untuk",
+        "f": 2567,
+        "e": 2573
+      },
+      {
+        "t": "membalas",
+        "f": 2573,
+        "e": 2587
+      },
+      {
+        "t": "dendam.",
+        "f": 2587,
+        "e": 2600
+      }
+    ]
   },
   {
-    "from": 2610,
+    "from": 2605,
     "to": 2653,
-    "text": "Hidup sampai dendam itu"
+    "text": "Hidup sampai dendam itu",
+    "words": [
+      {
+        "t": "Hidup",
+        "f": 2607,
+        "e": 2625
+      },
+      {
+        "t": "sampai",
+        "f": 2625,
+        "e": 2634
+      },
+      {
+        "t": "dendam",
+        "f": 2634,
+        "e": 2649
+      },
+      {
+        "t": "itu",
+        "f": 2649,
+        "e": 2655
+      }
+    ]
   },
   {
     "from": 2653,
     "to": 2688,
-    "text": "tidak lagi penting."
+    "text": "tidak lagi penting.",
+    "words": [
+      {
+        "t": "tidak",
+        "f": 2655,
+        "e": 2663
+      },
+      {
+        "t": "lagi",
+        "f": 2663,
+        "e": 2672
+      },
+      {
+        "t": "penting.",
+        "f": 2672,
+        "e": 2684
+      }
+    ]
   }
 ];

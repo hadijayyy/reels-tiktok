@@ -1,21 +1,19 @@
 import React from "react";
 import {AbsoluteFill} from "remotion";
-import {Narration} from "../audio/Narration";
-import {Camera2D, Layer} from "../camera/Camera2D";
-import {ScenesWithTransitions, TransitionKind, useSceneFrame} from "../camera/Transitions";
-import {CaptionTrack} from "../captions/CaptionTrack";
-import {Board, Desk, Floor, FLOOR, Glow, Label, Wall} from "../environment/Furniture";
+import {TransitionKind, useSceneFrame} from "../camera/Transitions";
+import {Board, Desk, Floor, FLOOR, Glow, Label} from "../environment/Furniture";
 import {ANAK, Car, House, IBU, LightRain, SackOnBack, SkyBand, StreetLamp} from "../environment/FamilyProps";
 import {Tears} from "../environment/MotherProps";
 import {Stamp, Tick} from "../environment/MoneyProps";
 import {SkyWindow} from "../environment/SleepProps";
 import {BookStack, GrowthChart} from "../environment/SpendProps";
 import {Bench, Calendar, handFolder, handLetter, Laugh, Mirror, SpeechBubble, Sunrise} from "../environment/StoryProps";
-import {clamp, eInOut, eOut, keysObj, lerp, prog} from "../motion/ease";
+import {clamp, eInOut, eOut, lerp, prog} from "../motion/ease";
 import {CASUAL, ShortHair, SHIRT_ORANGE} from "../rig/looks";
 import {cheer, idle, mix, point, sit, STRIDE, walk} from "../rig/poses";
 import {seatedAnchor} from "../rig/seat";
 import {Look, Pose, Stickman} from "../rig/Stickman";
+import {Film, Plate as KitPlate, pop, Shot as KitShot, ShotProps} from "../story/StoryKit";
 import {C, FPS} from "../styles/palette";
 import {CUES as D_CUES, SCENES as D_SCENES} from "./dendamTiming";
 
@@ -37,10 +35,9 @@ export {FRAMES as DENDAM_FRAMES} from "./dendamTiming";
 const FIRST = [0, 5, 9, 12, 16, 19, 22, 24, 26, 29, 32, 35, 38, 41, 44, 47];
 const at = (i: number, j: number) => D_CUES[FIRST[i] + j].from - D_SCENES[i].from;
 
-const pop = (frame: number, a: number) => {
-  const k = clamp((frame - a) / 10);
-  return k === 0 ? 0 : 1 + Math.sin(k * Math.PI) * 0.18 * (1 - k) - Math.pow(1 - k, 3);
-};
+const Plate: React.FC<React.ComponentProps<typeof KitPlate>> = (p) => <KitPlate size={46} {...p} />;
+const Shot: React.FC<ShotProps> = (p) => <KitShot wall={"#26303A"} {...p} />;
+
 
 /* Characters */
 const Patch: React.FC = () => (
@@ -66,40 +63,7 @@ const bowing = (t: number): Pose => ({...idle(t), lean: 34, headTilt: 26, shL: 1
 const laughing = (t: number, seed = 0): Pose => ({...idle(t, seed), lean: -6 + Math.sin(t * 14 + seed) * 4, shL: -30, elL: 80, shR: 40, elR: 70, bob: -Math.abs(Math.sin(t * 12 + seed)) * 4});
 const pointAt = (t: number, seed = 0): Pose => point(laughing(t, seed), 1, 90);
 
-const Plate: React.FC<{x: number; y: number; text: string; k: number; size?: number; color?: string; border?: string; w?: number}> = ({x, y, text, k, size = 46, color = C.bone, border = C.yellow, w}) => {
-  if (k <= 0) return null;
-  const ww = w ?? text.length * size * 0.66 + size * 1.2;
-  return (
-    <g transform={`translate(${x} ${y}) scale(${k})`}>
-      <rect x={-ww / 2} y={-size * 0.95} width={ww} height={size * 1.7} rx={size * 0.3} fill={C.charcoal} stroke={border} strokeWidth={6} />
-      <Label x={0} y={size * 0.3} text={text} size={size} color={color} />
-    </g>
-  );
-};
 
-type ShotProps = {len: number; wall?: string; z0?: number; z1?: number; y0?: number; x0?: number; x1?: number; handheld?: number; filter?: string; back?: React.ReactNode; floor?: boolean; children: React.ReactNode};
-const Shot: React.FC<ShotProps> = ({len, wall = "#26303A", z0 = 1.0, z1 = 1.13, y0 = 120, x0 = 0, x1 = 0, handheld = 0, filter, back, floor = true, children}) => {
-  const frame = useSceneFrame();
-  const t = frame / FPS;
-  const cam = keysObj(frame, [
-    [0, {x: x0, y: y0, zoom: z0, rot: 0}],
-    [len, {x: x1, y: y0 - 20, zoom: z1, rot: 0}],
-  ]);
-  return (
-    <AbsoluteFill style={{filter}}>
-      <Camera2D cam={cam} t={t} handheld={handheld}>
-        <Layer depth={0.5}>
-          <Wall x0={-1400} x1={1400} y0={-1200} y1={FLOOR} color={wall} />
-          {back}
-        </Layer>
-        <Layer depth={1}>
-          {floor ? <Floor x0={-1400} x1={1400} /> : null}
-          {children}
-        </Layer>
-      </Camera2D>
-    </AbsoluteFill>
-  );
-};
 
 /** A seated figure on a bench (bench anchor at bx, facing f). */
 const SeatedOnBench: React.FC<{bx: number; f: 1 | -1; t: number; look: Look; expr?: "sad" | "worried" | "neutral" | "surprised"; slump?: number; standK?: number}> = ({bx, f, t, look, expr = "sad", slump = 1, standK = 0}) => {
@@ -150,7 +114,8 @@ const Mocked: React.FC<{len: number}> = ({len}) => {
     [400, -1],
   ];
   return (
-    <Shot len={len} wall="#3A3430" filter={SEPIA} back={<Plate x={0} y={-560} text="UMUR 15 TAHUN" k={1} size={44} border={C.bone} />}>
+    <Shot len={len} wall="#3A3430" filter={SEPIA}>
+      <Plate x={0} y={-560} text="UMUR 15 TAHUN" k={1} size={44} border={C.bone} />
       {/* school wall */}
       <rect x={-1400} y={-120} width={2800} height={20} fill="#5E5248" />
       <Stickman x={-40} y={FLOOR} scale={KID} pose={slumped(t)} look={HERO_KID} expr="sad" />
@@ -511,16 +476,14 @@ const SCENES = [Hook, Mocked, Classroom, Promise, Grind, Remember, TenYears, Wea
 const TRANSITIONS: TransitionKind[] = ["fade", "cut", "fade", "zoom", "fade", "whip", "zoom", "fade", "fade", "cut", "zoom", "fade", "fade", "fade", "fade"];
 
 export const DendamFilm: React.FC<{narration?: string}> = ({narration}) => (
-  <AbsoluteFill>
-    <ScenesWithTransitions
-      scenes={D_SCENES}
-      kinds={TRANSITIONS}
-      render={(i) => {
+  <Film
+    scenes={D_SCENES}
+    cues={D_CUES}
+    kinds={TRANSITIONS}
+    narration={narration}
+    render={(i) => {
         const Scene = SCENES[i];
         return <Scene len={D_SCENES[i].len} />;
-      }}
-    />
-    <CaptionTrack cues={D_CUES} />
-    <Narration file={narration} />
-  </AbsoluteFill>
+    }}
+  />
 );

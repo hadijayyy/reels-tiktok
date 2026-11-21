@@ -158,6 +158,18 @@ tip yang dikembalikan, "uang bukan ukuran harga diri", grafik bangkrut, rumah di
 pintu wawancara terbuka, direktur yang sekilas berubah jadi tukang parkir (kacamata bundar yang sama), wajah memerah,
 "Duduk. Kita mulai dari pengalamanmu.", jabat tangan, dan bekerja di kantor.
 
+## Alat bantu produksi
+
+- `scripts/make_narration.py`: narasi per baris (VoiceStudio/OmniVoice) + penyelarasan per kata dengan
+  faster-whisper. Menulis waktu tiap kata ke `<slug>Timing.ts` (caption karaoke) dan mencetak `CEK SUARA`
+  untuk kata yang terlewat atau terdengar lain. `[take=N]` di akhir baris meminta take lain.
+- `scripts/estimate_duration.py <slug> --voice young|middle|female --target <detik>`: perkiraan durasi dan
+  anggaran kata sebelum narasi dibuat.
+- `scripts/check_pacing.py out/<slug>.mp4`: memeriksa frame pertama dan bagian lebih dari 4 detik tanpa
+  perubahan visual.
+- `src/story/StoryKit.tsx`: `Film`, `Shot` (punch-in per frasa), `Plate`/`Bubble`/`Actor` dengan cek area
+  aman (`--props='{"check":true}'`), pose dan potongan cerita yang dipakai ulang.
+
 ## Cara render ulang
 
 ```bash

@@ -1,16 +1,13 @@
 import React from "react";
-import {AbsoluteFill} from "remotion";
-import {Narration} from "../audio/Narration";
-import {Camera2D, Layer} from "../camera/Camera2D";
-import {ScenesWithTransitions, TransitionKind, useSceneFrame} from "../camera/Transitions";
-import {CaptionTrack} from "../captions/CaptionTrack";
-import {Board, Desk, Floor, FLOOR, Glow, Label, Wall} from "../environment/Furniture";
+import {TransitionKind, useSceneFrame} from "../camera/Transitions";
+import {Board, Desk, FLOOR, Glow, Label} from "../environment/Furniture";
 import {BigPhone, handPhone, Stamp, Tick} from "../environment/MoneyProps";
 import {APP_COLORS, Awning, Counter, Flag, Institution, PersonIcon, QRCode, Sticker, Suitcase, WalletScreen} from "../environment/QrisProps";
-import {clamp, eInOut, eOut, keysObj, lerp, prog, rand} from "../motion/ease";
+import {clamp, eInOut, eOut, lerp, prog, rand} from "../motion/ease";
 import {CASUAL, JACKET_BLUE, SHIRT_ORANGE} from "../rig/looks";
 import {cheer, idle, mix, point} from "../rig/poses";
 import {Look, Stickman} from "../rig/Stickman";
+import {Film, Plate as KitPlate, pop, Shot as KitShot, ShotProps} from "../story/StoryKit";
 import {C, FPS} from "../styles/palette";
 import {CUES as Q_CUES, SCENES as Q_SCENES} from "./qrisTiming";
 
@@ -35,14 +32,13 @@ const FIRST = [0, 3, 5, 8, 11, 13, 15, 17, 20, 23, 25, 28, 31, 34, 36, 39, 42, 4
 /** Frame, local to scene i, at which phrase j of that scene starts. */
 const at = (i: number, j: number) => Q_CUES[FIRST[i] + j].from - Q_SCENES[i].from;
 
+const Plate: React.FC<React.ComponentProps<typeof KitPlate>> = (p) => <KitPlate size={50} {...p} />;
+const Shot: React.FC<ShotProps> = (p) => <KitShot wall={WALL} {...p} />;
+
 const SCALE = 1.4;
 const WALL = "#26303A";
 const WARM = "#33291F";
 
-const pop = (frame: number, a: number) => {
-  const k = clamp((frame - a) / 10);
-  return k === 0 ? 0 : 1 + Math.sin(k * Math.PI) * 0.18 * (1 - k) - Math.pow(1 - k, 3);
-};
 
 const withPhone = (look: Look, color: string, ok = 0): Look => ({...look, handR: handPhone(<WalletScreen color={color} ok={ok} />)});
 const OFFICIAL: Look = {...JACKET_BLUE, tie: C.red};
@@ -50,16 +46,6 @@ const SELLER: Look = {...SHIRT_ORANGE};
 const BUYER: Look = CASUAL;
 const TECH: Look = {top: "#E9E7DF", sleeve: "#E9E7DF", trousers: "#2E3135", headExtra: JACKET_BLUE.headExtra};
 
-const Plate: React.FC<{x: number; y: number; text: string; k: number; w?: number; size?: number; color?: string; border?: string; rot?: number}> = ({x, y, text, k, w, size = 50, color = C.bone, border = C.yellow, rot = 0}) => {
-  if (k <= 0) return null;
-  const ww = w ?? text.length * size * 0.68 + size * 1.2;
-  return (
-    <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${k})`}>
-      <rect x={-ww / 2} y={-size * 0.95} width={ww} height={size * 1.7} rx={size * 0.3} fill={C.charcoal} stroke={border} strokeWidth={6} />
-      <Label x={0} y={size * 0.3} text={text} size={size} color={color} />
-    </g>
-  );
-};
 
 const RedX: React.FC<{x: number; y: number; k: number; r?: number}> = ({x, y, k, r = 34}) =>
   k <= 0 ? null : (
@@ -70,28 +56,6 @@ const RedX: React.FC<{x: number; y: number; k: number; r?: number}> = ({x, y, k,
   );
 
 /** Shared scene frame: wall, floor, slow push-in. */
-const Shot: React.FC<{len: number; wall?: string; z0?: number; z1?: number; y0?: number; x1?: number; handheld?: number; children: React.ReactNode; back?: React.ReactNode}> = ({len, wall = WALL, z0 = 1.0, z1 = 1.13, y0 = 120, x1 = 0, handheld = 0, children, back}) => {
-  const frame = useSceneFrame();
-  const t = frame / FPS;
-  const cam = keysObj(frame, [
-    [0, {x: 0, y: y0, zoom: z0, rot: 0}],
-    [len, {x: x1, y: y0 - 20, zoom: z1, rot: 0}],
-  ]);
-  return (
-    <AbsoluteFill>
-      <Camera2D cam={cam} t={t} handheld={handheld}>
-        <Layer depth={0.5}>
-          <Wall x0={-1400} x1={1400} y0={-1200} y1={FLOOR} color={wall} />
-          {back}
-        </Layer>
-        <Layer depth={1}>
-          <Floor x0={-1400} x1={1400} />
-          {children}
-        </Layer>
-      </Camera2D>
-    </AbsoluteFill>
-  );
-};
 
 /** Stickers stuck all over a counter front (local to the counter top, w x h). */
 const StickerWall: React.FC<{frame: number; from: number; to: number; w?: number; n?: number}> = ({frame, from, to, w = 560, n = 12}) => (
@@ -571,16 +535,14 @@ const SCENES = [Hook, Wallets, NoTalk, Stickers, Confused, BankIndonesia, Meetin
 const TRANSITIONS: TransitionKind[] = ["whip", "zoom", "whip", "zoom", "whip", "zoom", "whip", "zoom", "whip", "zoom", "whip", "zoom", "whip", "zoom", "whip", "zoom", "fade"];
 
 export const AsalQris: React.FC<{narration?: string}> = ({narration}) => (
-  <AbsoluteFill>
-    <ScenesWithTransitions
-      scenes={Q_SCENES}
-      kinds={TRANSITIONS}
-      render={(i) => {
+  <Film
+    scenes={Q_SCENES}
+    cues={Q_CUES}
+    kinds={TRANSITIONS}
+    narration={narration}
+    render={(i) => {
         const Scene = SCENES[i];
         return <Scene len={Q_SCENES[i].len} />;
-      }}
-    />
-    <CaptionTrack cues={Q_CUES} />
-    <Narration file={narration} />
-  </AbsoluteFill>
+    }}
+  />
 );

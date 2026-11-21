@@ -1,21 +1,19 @@
 import React from "react";
 import {AbsoluteFill} from "remotion";
-import {Narration} from "../audio/Narration";
-import {Camera2D, Layer} from "../camera/Camera2D";
-import {ScenesWithTransitions, TransitionKind, useSceneFrame} from "../camera/Transitions";
-import {CaptionTrack} from "../captions/CaptionTrack";
-import {Desk, Floor, FLOOR, Glow, Label, Wall} from "../environment/Furniture";
+import {TransitionKind, useSceneFrame} from "../camera/Transitions";
+import {Desk, Floor, FLOOR, Glow, Label} from "../environment/Furniture";
 import {ANAK, AYAH, Motorbike, PhotoFrame, SideChair, SkyBand} from "../environment/FamilyProps";
 import {Tears} from "../environment/MotherProps";
 import {SkyWindow} from "../environment/SleepProps";
 import {Banknote, Sneaker} from "../environment/SpendProps";
 import {SpeechBubble} from "../environment/StoryProps";
 import {BudgetSheet, DeskLamp, GiftBox, GradPhoto, handNeedle, handWallet, KeepBox, NoteCard, OldShoe, Receipts, SchoolBag, Shirt, ToyCar, Wardrobe} from "../environment/FatherProps";
-import {clamp, eInOut, eOut, keysObj, lerp, prog} from "../motion/ease";
+import {clamp, eInOut, eOut, lerp, prog} from "../motion/ease";
 import {CASUAL} from "../rig/looks";
 import {cheer, idle, mix, point, sit, STRIDE, walk} from "../rig/poses";
 import {seatedAnchor} from "../rig/seat";
 import {Look, Pose, Stickman} from "../rig/Stickman";
+import {Film, Plate as KitPlate, pop, Shot as KitShot, ShotProps} from "../story/StoryKit";
 import {C, FONT, FPS} from "../styles/palette";
 import {CUES as A_CUES, SCENES as A_SCENES} from "./ayahsepatuTiming";
 
@@ -38,10 +36,9 @@ export {FRAMES as AYAHSEPATU_FRAMES} from "./ayahsepatuTiming";
 const FIRST = [0, 4, 7, 11, 14, 17, 20, 23, 26, 29, 33, 37, 40, 46, 49, 52, 55, 58];
 const at = (i: number, j: number) => A_CUES[FIRST[i] + j].from - A_SCENES[i].from;
 
-const pop = (frame: number, a: number) => {
-  const k = clamp((frame - a) / 10);
-  return k === 0 ? 0 : 1 + Math.sin(k * Math.PI) * 0.18 * (1 - k) - Math.pow(1 - k, 3);
-};
+const Plate: React.FC<React.ComponentProps<typeof KitPlate>> = (p) => <KitPlate size={44} {...p} />;
+const Shot: React.FC<ShotProps> = (p) => <KitShot wall={WARM} {...p} />;
+
 
 const Patch: React.FC = () => <rect x={-4} y={4} width={18} height={16} fill="#8A7A60" stroke={C.ink} strokeWidth={2} transform="rotate(-8)" />;
 const FATHER: Look = {...AYAH, chest: <Patch />, shoe: "#4A3424"};
@@ -53,40 +50,7 @@ const AS = 1.4; // adult scale
 const WARM = "#3A2C22";
 const NIGHT = "#161B2A";
 
-const Plate: React.FC<{x: number; y: number; text: string; k: number; size?: number; color?: string; border?: string; w?: number}> = ({x, y, text, k, size = 44, color = C.bone, border = C.yellow, w}) => {
-  if (k <= 0) return null;
-  const ww = w ?? text.length * size * 0.66 + size * 1.2;
-  return (
-    <g transform={`translate(${x} ${y}) scale(${k})`}>
-      <rect x={-ww / 2} y={-size * 0.95} width={ww} height={size * 1.7} rx={size * 0.3} fill={C.charcoal} stroke={border} strokeWidth={6} />
-      <Label x={0} y={size * 0.3} text={text} size={size} color={color} />
-    </g>
-  );
-};
 
-type ShotProps = {len: number; wall?: string; z0?: number; z1?: number; y0?: number; x0?: number; x1?: number; handheld?: number; filter?: string; back?: React.ReactNode; children: React.ReactNode};
-const Shot: React.FC<ShotProps> = ({len, wall = WARM, z0 = 1.0, z1 = 1.13, y0 = 120, x0 = 0, x1 = 0, handheld = 0, filter, back, children}) => {
-  const frame = useSceneFrame();
-  const t = frame / FPS;
-  const cam = keysObj(frame, [
-    [0, {x: x0, y: y0, zoom: z0, rot: 0}],
-    [len, {x: x1, y: y0 - 20, zoom: z1, rot: 0}],
-  ]);
-  return (
-    <AbsoluteFill style={{filter}}>
-      <Camera2D cam={cam} t={t} handheld={handheld}>
-        <Layer depth={0.5}>
-          <Wall x0={-1400} x1={1400} y0={-1200} y1={FLOOR} color={wall} />
-          {back}
-        </Layer>
-        <Layer depth={1}>
-          <Floor x0={-1400} x1={1400} />
-          {children}
-        </Layer>
-      </Camera2D>
-    </AbsoluteFill>
-  );
-};
 
 const Flash: React.FC<{frame: number; at: number[]}> = ({frame, at: points}) => {
   const k = Math.max(0, ...points.map((p) => 1 - Math.abs(frame - p) / 5));
@@ -499,16 +463,14 @@ const SCENES = [Hook, Asks, OldClothes, Carefree, Worn, Counting, List, Strike, 
 const TRANSITIONS: TransitionKind[] = ["fade", "cut", "fade", "fade", "fade", "cut", "zoom", "fade", "fade", "zoom", "cut", "fade", "fade", "cut", "fade", "fade", "fade"];
 
 export const AyahSepatu: React.FC<{narration?: string}> = ({narration}) => (
-  <AbsoluteFill>
-    <ScenesWithTransitions
-      scenes={A_SCENES}
-      kinds={TRANSITIONS}
-      render={(i) => {
+  <Film
+    scenes={A_SCENES}
+    cues={A_CUES}
+    kinds={TRANSITIONS}
+    narration={narration}
+    render={(i) => {
         const Scene = SCENES[i];
         return <Scene len={A_SCENES[i].len} />;
-      }}
-    />
-    <CaptionTrack cues={A_CUES} />
-    <Narration file={narration} />
-  </AbsoluteFill>
+    }}
+  />
 );

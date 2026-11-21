@@ -93,6 +93,10 @@ Ini naskah untuk *didengar*, bukan dibaca:
   suara membaca "O J K". Tanpa itu, "OJK" bisa terbaca "ojek". Pengecekan transkripsi di skill
   stickman-video akan menangkap kasus seperti ini.
 - Penutup memberi ajakan yang bisa langsung dilakukan, bukan "like dan follow".
+- Kata kunci yang harus menonjol di caption ditulis `*kata*` (warnanya kuning di caption karaoke).
+- Untuk cerita 60-120 detik, pakai anggaran kata di skill `stickman-video` bagian 1b (sekitar 2 kata per
+  detik total, termasuk jeda) dan cek dengan `python3 scripts/estimate_duration.py <slug> --target <detik>`
+  sebelum narasi dibuat.
 
 ## Kisah nyata, misteri, dan horor
 

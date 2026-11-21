@@ -9,10 +9,18 @@ environment with torch, torchaudio, transformers, accelerate, pydub and soundfil
 It reads scripts/narasi/<slug>.txt (one line per scene, "|" splits a line into caption
 phrases, "#" starts a comment, and {caption=speech} shows "caption" in the captions but
 speaks "speech", e.g. {OJK=O J K} for an acronym the voice would read as a word, and a
-trailing [jeda=1.5] adds 1.5 s of silence after that line, for a dramatic pause), writes one WAV per line to public/audio/<slug>-lines/, joins
-them into public/audio/<slug>-narasi.wav and writes src/scenes/<slug>Timing.ts (scene lengths
-and caption cues, in frames) so the animation follows the voice. Lines that already have a
-WAV are not generated again: delete the WAV to redo a line.
+trailing [jeda=1.5] adds 1.5 s of silence after that line, for a dramatic pause, *word* draws a
+word in the accent colour, and [take=2] asks for a different take of that line), writes one WAV
+per line to public/audio/<slug>-lines/, joins them into public/audio/<slug>-narasi.wav and writes
+src/scenes/<slug>Timing.ts (scene lengths and caption cues, in frames) so the animation follows
+the voice. Lines that already have a WAV are not generated again: delete the WAV to redo a line.
+The voice model is only loaded when a line has to be generated.
+
+Every line is then transcribed with faster-whisper (scripts/align_words.py): each caption cue gets
+the frames of its words, so captions highlight word by word and cueAt() lands on the spoken phrase,
+not on an estimate. Words the voice skipped or said differently are listed under "CEK SUARA";
+redo such a line with [take=N] (the generator is deterministic, so the same text gives the same take).
+Use --no-align to fall back to the old estimate (cue length proportional to the phrase length).
 """
 
 import json
@@ -22,9 +30,9 @@ import sys
 
 import numpy as np
 import soundfile as sf
-import torch
 
-from omnivoice.models.omnivoice import OmniVoice
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from align_words import SPOKEN as SPOKEN_RE, align_line, transcribe  # noqa: E402
 
 FPS = 30
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -55,34 +63,43 @@ def main() -> None:
     ap.add_argument("--voice", default=VOICE, help="voice design prompt (gender, age, pitch, style)")
     ap.add_argument("--speed", type=float, default=SPEED)
     ap.add_argument("--tail", type=float, default=TAIL, help="seconds held after the last line (e.g. for a closing title)")
+    ap.add_argument("--seed", type=int, default=7, help="generator seed; a line's [take=N] adds N to it")
+    ap.add_argument("--no-align", action="store_true", help="skip word alignment (cues estimated from phrase length)")
     args = ap.parse_args()
     slug, language, voice, speed = args.slug, args.language, args.voice, args.speed
     with open(os.path.join(ROOT, "scripts", "narasi", f"{slug}.txt"), encoding="utf-8") as f:
         LINES = [ln.strip() for ln in f if ln.strip() and not ln.startswith("#")]
     LINE_DIR = os.path.join(OUT_DIR, f"{slug}-lines")
     os.makedirs(LINE_DIR, exist_ok=True)
-    model = OmniVoice.from_pretrained("k2-fsa/OmniVoice", device_map="cpu", dtype=torch.float32)
-    sr = model.sampling_rate
-    PAUSE = re.compile(r"\s*\[jeda=([\d.]+)\]\s*$")
+    PAUSE = re.compile(r"\s*\[jeda=([\d.]+)\]\s*")
+    TAKE = re.compile(r"\s*\[take=(\d+)\]\s*")
     pauses = [float(m.group(1)) if (m := PAUSE.search(line)) else 0.0 for line in LINES]
-    LINES = [PAUSE.sub("", line) for line in LINES]
-    SPOKEN = re.compile(r"\{([^=}]+)=([^}]+)\}")
-    texts = [SPOKEN.sub(r"\2", line).replace("|", " ") for line in LINES]
-    LINES = [SPOKEN.sub(r"\1", line) for line in LINES]
+    takes = [int(m.group(1)) if (m := TAKE.search(line)) else 0 for line in LINES]
+    LINES = [TAKE.sub("", PAUSE.sub("", line)).strip() for line in LINES]
+    RAW = LINES  # with {shown=spoken} and *emphasis* markup, for the word alignment
+    texts = [SPOKEN_RE.sub(r"\2", line).replace("|", " ").replace("*", "") for line in LINES]
+    LINES = [SPOKEN_RE.sub(r"\1", line).replace("*", "") for line in LINES]
 
     # Line 1 designs the voice; the other lines clone it, so the narrator stays the same person.
     ref_path = os.path.join(LINE_DIR, "line1.wav")
+    model, sr = None, None
     clips = []
     for i, text in enumerate(texts):
         path = os.path.join(LINE_DIR, f"line{i + 1}.wav")
         if not os.path.exists(path):
+            if model is None:
+                import torch
+                from omnivoice.models.omnivoice import OmniVoice
+
+                model = OmniVoice.from_pretrained("k2-fsa/OmniVoice", device_map="cpu", dtype=torch.float32)
+            seed = args.seed + takes[i]
             if i == 0:
-                audio = model.generate(text=text, language=language, instruct=voice, speed=speed, seed=7)[0]
+                audio = model.generate(text=text, language=language, instruct=voice, speed=speed, seed=seed)[0]
             else:
-                audio = model.generate(text=text, language=language, ref_audio=ref_path, ref_text=texts[0], speed=speed, seed=7)[0]
+                audio = model.generate(text=text, language=language, ref_audio=ref_path, ref_text=texts[0], speed=speed, seed=seed)[0]
             wav = np.asarray(audio.cpu() if hasattr(audio, "cpu") else audio, dtype=np.float32).squeeze()
-            sf.write(path, trim(wav, sr), sr)
-        wav, _ = sf.read(path, dtype="float32")
+            sf.write(path, trim(wav, model.sampling_rate), model.sampling_rate)
+        wav, sr = sf.read(path, dtype="float32")
         clips.append(wav)
         print(f"line {i + 1}: {len(wav) / sr:.2f}s", file=sys.stderr)
 
@@ -96,12 +113,25 @@ def main() -> None:
         scene_from = 0 if i == 0 else round((start - GAP / 2) * FPS)
         scenes.append({"from": scene_from})
         phrases = LINES[i].split("|")
-        total = sum(len(p) for p in phrases)
-        at = start
-        for p in phrases:
-            span = dur * len(p) / total
-            cues.append({"from": round(at * FPS), "to": round((at + span) * FPS), "text": p})
-            at += span
+        if args.no_align:
+            total = sum(len(p) for p in phrases)
+            at = start
+            for p in phrases:
+                span = dur * len(p) / total
+                cues.append({"from": round(at * FPS), "to": round((at + span) * FPS), "text": p})
+                at += span
+        else:
+            units, problems = align_line(RAW[i].split("|"), transcribe(os.path.join(LINE_DIR, f"line{i + 1}.wav"), language), dur)
+            for prob in problems:
+                print(f"CEK SUARA baris {i + 1}: {prob}", file=sys.stderr)
+            line_cues = []
+            for p, us in zip(phrases, units):
+                f0 = max(round((start + us[0]["start"]) * FPS) - 2, line_cues[-1]["from"] + 1 if line_cues else round(start * FPS))
+                words = [{"t": u["text"], "f": round((start + u["start"]) * FPS), "e": round((start + u["end"]) * FPS), **({"k": 1} if u["emph"] else {})} for u in us]
+                line_cues.append({"from": f0, "to": 0, "text": p.strip(), "words": words})
+            for k, c in enumerate(line_cues):
+                c["to"] = line_cues[k + 1]["from"] if k + 1 < len(line_cues) else round(end * FPS)
+            cues.extend(line_cues)
         parts.append(wav)
         parts.append(silence(args.tail if i == len(clips) - 1 else GAP + pauses[i]))
         cursor = end + GAP + pauses[i]

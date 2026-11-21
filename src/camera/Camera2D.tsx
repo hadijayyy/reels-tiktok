@@ -45,3 +45,6 @@ export const Layer: React.FC<{depth?: number; opacity?: number; children: React.
     </g>
   );
 };
+
+/** The camera in effect for the current Camera2D (after the handheld drift). Lets props work out where they land on screen. */
+export const useCam = () => React.useContext(CamContext);
