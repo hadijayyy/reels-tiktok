@@ -45,12 +45,12 @@ export const BankScreen: React.FC<{call?: boolean; t?: number; share?: boolean}>
 );
 
 /** The countdown ring: `k` 0..1 is how much time has passed; `n` is the number shown. */
-export const Countdown: React.FC<{x: number; y: number; r: number; k: number; n: number; color?: string}> = ({x, y, r, k, n, color = C.yellow}) => {
+export const Countdown: React.FC<{x: number; y: number; r: number; k: number; n: number}> = ({x, y, r, k, n}) => {
   const len = 2 * Math.PI * r;
   return (
     <g transform={`translate(${x} ${y})`}>
       <circle r={r} fill="#10151C" stroke="#2C3542" strokeWidth={r * 0.16} />
-      <circle r={r} fill="none" stroke={color} strokeWidth={r * 0.16} strokeLinecap="round" strokeDasharray={`${len * (1 - k)} ${len}`} transform="rotate(-90)" />
+      <circle r={r} fill="none" stroke={C.yellow} strokeWidth={r * 0.16} strokeLinecap="round" strokeDasharray={`${len * (1 - k)} ${len}`} transform="rotate(-90)" />
       <text y={r * 0.34} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={r * 0.95} fill="#FFFFFF">
         {n}
       </text>
@@ -87,18 +87,18 @@ export const PausePopup: React.FC<{k: number; elapsed: number; n: number; ready:
   );
 
 /** A "on a call" badge: a handset in a green circle with sound waves, centred on (x, y). */
-export const CallBadge: React.FC<{x: number; y: number; t: number; s?: number; color?: string}> = ({x, y, t, s = 1, color = "#3BAA5C"}) => (
+export const CallBadge: React.FC<{x: number; y: number; t: number; s?: number}> = ({x, y, t, s = 1}) => (
   <g transform={`translate(${x} ${y}) scale(${s})`}>
     {[0, 1].map((i) => (
       <path key={i} d={`M ${34 + i * 16} -22 q 14 22 0 44`} stroke="#EDE6D6" strokeWidth={5} fill="none" strokeLinecap="round" opacity={0.4 + 0.4 * Math.max(0, Math.sin(t * 5 - i))} />
     ))}
-    <circle r={28} fill={color} stroke={C.ink} strokeWidth={3} />
+    <circle r={28} fill="#3BAA5C" stroke={C.ink} strokeWidth={3} />
     <path d="M -12 -12 q -4 14 8 26 q 12 12 26 8 l 2 -9 l -10 -5 l -5 5 q -9 -4 -13 -13 l 5 -5 l -5 -10 Z" fill="#FFFFFF" transform="translate(-2 -2) scale(0.9)" />
   </g>
 );
 
 /** A straight arrow from a to b drawn to progress k (0..1). */
-export const Arrow: React.FC<{ax: number; ay: number; bx: number; by: number; k: number; color?: string; w?: number}> = ({ax, ay, bx, by, k, color = C.red, w = 12}) => {
+export const Arrow: React.FC<{ax: number; ay: number; bx: number; by: number; k: number}> = ({ax, ay, bx, by, k}) => {
   if (k <= 0) return null;
   const x = ax + (bx - ax) * k;
   const y = ay + (by - ay) * k;
@@ -106,8 +106,8 @@ export const Arrow: React.FC<{ax: number; ay: number; bx: number; by: number; k:
   const hl = 34;
   return (
     <g>
-      <line x1={ax} y1={ay} x2={x} y2={y} stroke={color} strokeWidth={w} strokeLinecap="round" />
-      <path d={`M ${x} ${y} L ${x - Math.cos(ang - 0.45) * hl} ${y - Math.sin(ang - 0.45) * hl} M ${x} ${y} L ${x - Math.cos(ang + 0.45) * hl} ${y - Math.sin(ang + 0.45) * hl}`} stroke={color} strokeWidth={w} strokeLinecap="round" fill="none" />
+      <line x1={ax} y1={ay} x2={x} y2={y} stroke={C.red} strokeWidth={12} strokeLinecap="round" />
+      <path d={`M ${x} ${y} L ${x - Math.cos(ang - 0.45) * hl} ${y - Math.sin(ang - 0.45) * hl} M ${x} ${y} L ${x - Math.cos(ang + 0.45) * hl} ${y - Math.sin(ang + 0.45) * hl}`} stroke={C.red} strokeWidth={12} strokeLinecap="round" fill="none" />
     </g>
   );
 };
@@ -121,20 +121,20 @@ export const Cross: React.FC<{x: number; y: number; r?: number; k: number; w?: n
   );
 
 /** A shield with a tick, centred on (x, y), w wide. */
-export const Shield: React.FC<{x: number; y: number; w?: number; k?: number; color?: string}> = ({x, y, w = 300, k = 1, color = "#2F5F8F"}) => {
+export const Shield: React.FC<{x: number; y: number; w?: number; k?: number}> = ({x, y, w = 300, k = 1}) => {
   const h = w * 1.2;
   return (
     <g transform={`translate(${x} ${y}) scale(${k})`} opacity={Math.min(1, k * 1.5)}>
-      <path d={`M 0 ${-h / 2} L ${w / 2} ${-h / 2 + h * 0.14} L ${w / 2} ${h * 0.08} Q ${w / 2} ${h * 0.36} 0 ${h / 2} Q ${-w / 2} ${h * 0.36} ${-w / 2} ${h * 0.08} L ${-w / 2} ${-h / 2 + h * 0.14} Z`} fill={color} stroke={C.ink} strokeWidth={6} strokeLinejoin="round" />
+      <path d={`M 0 ${-h / 2} L ${w / 2} ${-h / 2 + h * 0.14} L ${w / 2} ${h * 0.08} Q ${w / 2} ${h * 0.36} 0 ${h / 2} Q ${-w / 2} ${h * 0.36} ${-w / 2} ${h * 0.08} L ${-w / 2} ${-h / 2 + h * 0.14} Z`} fill="#2F5F8F" stroke={C.ink} strokeWidth={6} strokeLinejoin="round" />
       <path d={`M 0 ${-h / 2 + 22} L ${w / 2 - 22} ${-h / 2 + h * 0.14 + 4} L ${w / 2 - 22} ${h * 0.08} Q ${w / 2 - 22} ${h * 0.32} 0 ${h / 2 - 28} Q ${-w / 2 + 22} ${h * 0.32} ${-w / 2 + 22} ${h * 0.08} L ${-w / 2 + 22} ${-h / 2 + h * 0.14 + 4} Z`} fill="none" stroke="#FFFFFF" strokeWidth={4} opacity={0.35} />
     </g>
   );
 };
 
 /** A red hang-up button (handset turned down) in a circle, centred on (x, y). */
-export const HangUp: React.FC<{x: number; y: number; s?: number; k?: number}> = ({x, y, s = 1, k = 1}) =>
+export const HangUp: React.FC<{x: number; y: number; k?: number}> = ({x, y, k = 1}) =>
   k <= 0 ? null : (
-    <g transform={`translate(${x} ${y}) scale(${s * k})`}>
+    <g transform={`translate(${x} ${y}) scale(${k})`}>
       <circle r={70} fill={C.red} stroke={C.ink} strokeWidth={6} />
       <path d="M -40 8 q 0 -22 40 -22 q 40 0 40 22 l -4 12 l -22 -6 l -2 -12 q -12 -4 -24 0 l -2 12 l -22 6 Z" fill="#FFFFFF" />
     </g>

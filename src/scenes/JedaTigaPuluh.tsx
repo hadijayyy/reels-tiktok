@@ -202,7 +202,7 @@ const Rule: React.FC<{len: number}> = ({len}) => {
             <Cross x={0} y={0} r={56} k={pop(frame, c1 + 16 + i * 8)} w={10} />
           </g>
         ))}
-        <HangUp x={-190} y={-170} s={1.0} k={pop(frame, c2)} />
+        <HangUp x={-190} y={-170} k={pop(frame, c2)} />
         <g transform={`translate(190 -170) scale(${pop(frame, c2 + 12)})`}>
           <Card x={0} y={0} w={330} h={170} color={C.charcoal} border={C.yellow}>
             <Label x={0} y={-24} text="HALO BCA" size={44} color={C.yellow} />
