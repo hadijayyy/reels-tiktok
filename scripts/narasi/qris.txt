@@ -1,0 +1,19 @@
+# Satu baris = satu adegan. Tanda | memisahkan frasa caption.
+Tiap hari kamu scan {QRIS=kris}.|Tapi pernah kepikiran,|siapa sih yang bikin?
+Kita mundur dulu ke sekitar tahun {2018=dua ribu delapan belas}.|Dompet digital lagi rame-ramenya.
+Masalahnya, tiap aplikasi|punya kode QR sendiri,|dan nggak bisa saling baca.
+Akibatnya, meja kasir warung|penuh tempelan stiker QR|dari macam-macam aplikasi.
+Pembeli bingung cari stiker yang cocok.|Penjual repot ngurus banyak akun.
+Di sinilah Bank Indonesia turun tangan,|di bawah Gubernur Perry Warjiyo.
+Bareng {ASPI=A S P I}, asosiasi industri pembayaran,|mereka bikin satu standar nasional.
+Standarnya mengacu ke|aturan internasional {EMVCo=E M V ko},|supaya semua aplikasi bisa saling baca.
+Namanya {QRIS=kris}.|Singkatan dari Quick Response Code|Indonesian Standard.
+Uji cobanya dimulai akhir {2018=dua ribu delapan belas},|lalu lanjut lagi April {2019=dua ribu sembilan belas}.
+Tanggal {17 Agustus 2019=tujuh belas Agustus, dua ribu sembilan belas},|pas hari kemerdekaan,|{QRIS=kris} resmi diluncurkan.
+Mulai {1 Januari 2020=satu Januari, dua ribu dua puluh},|semua pembayaran QR di Indonesia|wajib pakai {QRIS=kris}.
+Hasilnya? Cukup satu kode di kasir,|bisa discan dari aplikasi bank|atau dompet digital mana pun.
+Sekarang penggunanya sekitar {67=enam puluh tujuh} juta orang.|Kira-kira seperempat penduduk Indonesia.
+Merchant-nya sekitar {45=empat puluh lima} juta,|dan hampir semuanya {UMKM=u em ka em},|kayak warung dan pedagang kaki lima.
+Bahkan {QRIS=kris} udah bisa dipakai|di Malaysia, Singapura,|Thailand, dan Korea Selatan.
+Jadi {QRIS=kris} bukan buatan satu aplikasi.|Ini standar bersama,|biar bayar cukup sekali scan.
+Lain kali kamu scan {QRIS=kris},|inget: dulu kasirnya|penuh stiker.
