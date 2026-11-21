@@ -185,8 +185,8 @@ const Stickers: React.FC<{len: number}> = ({len}) => {
       <Stickman x={0} y={FLOOR - 10} scale={SCALE} pose={idle(t)} look={SELLER} expr="neutral" />
       <Counter x={0} y={FLOOR} w={620} h={240}>
         <StickerWall frame={frame} from={at(3, 1) - 4} to={len - 30} w={620} n={12} />
-        {[0, 1, 2].map((i) => (
-          <Sticker key={i} x={-200 + i * 200} y={-60} s={0.9} color={APP_COLORS[(i + 2) % 5]} seed={i + 30} rot={(i - 1) * 8} k={pop(frame, at(3, 2) + i * 6)} />
+        {[0, 1].map((i) => (
+          <Sticker key={i} x={-230 + i * 460} y={-60} s={0.9} color={APP_COLORS[(i + 2) % 5]} seed={i + 30} rot={(i - 1) * 8} k={pop(frame, at(3, 2) + i * 6)} />
         ))}
       </Counter>
     </Shot>
@@ -308,10 +308,10 @@ const Name: React.FC<{len: number}> = ({len}) => {
   return (
     <Shot len={len} z1={1.1}>
       <Glow x={0} y={-300} r={500} color={C.red} opacity={0.12} />
-      <QRCode x={0} y={-310} size={240} seed={7} frame={C.red} label="QRIS" k={pop(frame, 2)} />
-      <Plate x={0} y={-30} text="QUICK RESPONSE CODE" k={pop(frame, q)} size={40} border={C.cyan} />
-      <Plate x={0} y={80} text="INDONESIAN STANDARD" k={pop(frame, s)} size={40} border={C.yellow} />
-      <Stickman x={-380} y={FLOOR} scale={1.3} pose={point(idle(t), 1, 125)} look={BUYER} expr="happy" />
+      <QRCode x={60} y={-400} size={200} seed={7} frame={C.red} label="QRIS" k={pop(frame, 2)} />
+      <Plate x={60} y={-170} text="QUICK RESPONSE CODE" k={pop(frame, q)} size={40} border={C.cyan} />
+      <Plate x={60} y={-70} text="INDONESIAN STANDARD" k={pop(frame, s)} size={40} border={C.yellow} />
+      <Stickman x={-380} y={FLOOR} scale={1.3} pose={point(idle(t), 1, 150)} look={BUYER} expr="happy" />
     </Shot>
   );
 };
@@ -470,8 +470,8 @@ const Merchants: React.FC<{len: number}> = ({len}) => {
       <Counter x={-250} y={FLOOR} w={380} h={190}>
         <Sticker x={0} y={80} s={1.1} color={C.red} seed={7} k={pop(frame, small)} />
       </Counter>
-      <Cart x={270} y={FLOOR} frame={frame} qrAt={small + 8} />
-      <Stickman x={440} y={FLOOR} scale={1.15} facing={-1} pose={idle(t, 3)} look={{...CASUAL, top: "#8A5A3A"}} expr="happy" />
+      <Cart x={230} y={FLOOR} frame={frame} qrAt={small + 8} />
+      <Stickman x={400} y={FLOOR} scale={1.15} facing={-1} pose={idle(t, 3)} look={{...CASUAL, top: "#8A5A3A"}} expr="happy" />
       <Plate x={0} y={-520} text="45 JUTA MERCHANT" k={pop(frame, 4)} size={48} />
       <Plate x={0} y={-410} text="HAMPIR SEMUA UMKM" k={pop(frame, umkm)} size={40} border={C.cyan} />
     </Shot>
@@ -548,20 +548,20 @@ const Outro: React.FC<{len: number}> = ({len}) => {
   const past = at(17, 1);
   const k = prog(frame, past - 4, past + 12, eInOut);
   return (
-    <Shot len={len} wall={WARM} z1={1.08}>
+    <Shot len={len} wall={WARM} z0={1.04} z1={1.14}>
       <g opacity={lerp(1, 0.55, k)}>
-        <Label x={-260} y={-420} text="DULU" size={54} color={C.steel} />
-        <Counter x={-260} y={FLOOR - 140} w={380} h={200}>
-          <StickerWall frame={1000} from={0} to={1} w={380} n={8} />
+        <Label x={-250} y={-170} text="DULU" size={60} color={C.bone} />
+        <Counter x={-250} y={FLOOR} w={330} h={220}>
+          <StickerWall frame={1000} from={0} to={1} w={330} n={8} />
         </Counter>
       </g>
       <g opacity={lerp(0.55, 1, k)}>
-        <Label x={260} y={-420} text="SEKARANG" size={54} color={C.yellow} />
-        <Counter x={260} y={FLOOR - 140} w={380} h={200}>
-          <QRCode x={0} y={100} size={120} seed={7} frame={C.red} />
+        <Label x={250} y={-170} text="SEKARANG" size={60} color={C.yellow} />
+        <Counter x={250} y={FLOOR} w={330} h={220}>
+          <QRCode x={0} y={110} size={130} seed={7} frame={C.red} />
         </Counter>
       </g>
-      <Stickman x={0} y={FLOOR + 40} scale={1.15} pose={mix(idle(t), cheer(t), prog(frame, len - 70, len - 55))} look={BUYER} expr="happy" />
+      <Stickman x={0} y={FLOOR} scale={1.3} pose={mix(idle(t), cheer(t), prog(frame, len - 70, len - 55))} look={BUYER} expr="happy" />
     </Shot>
   );
 };

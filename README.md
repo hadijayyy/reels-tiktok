@@ -96,6 +96,16 @@ Naskah dari user (berita 19-20 November 2026), 9 adegan: rumah panggung Baduy te
 pemindahan Badak Jawa, penolakan masyarakat adat, amanat leluhur, dua peristiwa yang tidak berkaitan, payung
 pelindung, dan pertanyaan penutup. Narasi dipercepat 15%, musik piano. Properti baru: `src/environment/BaduyProps.tsx`.
 
+## Video: "Siapa yang Bikin QRIS?" (107 detik, edukasi keuangan)
+
+Hasil jadi: [`out/qris.mp4`](out/qris.mp4).
+Caption, hashtag, teks cover, cek fakta dan sumber: [`scripts/narasi/qris-copy.md`](scripts/narasi/qris-copy.md).
+
+18 adegan: kasir warung penuh stiker QR dari banyak aplikasi, Bank Indonesia (Gubernur Perry Warjiyo) bersama
+ASPI menyusun satu standar berbasis EMVCo, uji coba 2018-2019, peluncuran 17 Agustus 2019, wajib mulai
+1 Januari 2020, 67 juta pengguna, 45 juta merchant, QRIS antarnegara, dan penutup "dulu vs sekarang".
+Properti baru: `src/environment/QrisProps.tsx` (kode QR, meja warung, gedung, bendera, ikon orang, koper).
+
 ## Cara render ulang
 
 ```bash
@@ -110,6 +120,7 @@ npm run render -- BlackHole out/black-hole.mp4
 npm run render -- GajiSama out/gaji-sama.mp4
 npm run render -- PintarSaja out/pintar.mp4
 npm run render -- BaduyBadak out/baduy.mp4
+npm run render -- AsalQris out/qris.mp4
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di
