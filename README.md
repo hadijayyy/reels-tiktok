@@ -106,6 +106,16 @@ ASPI menyusun satu standar berbasis EMVCo, uji coba 2018-2019, peluncuran 17 Agu
 1 Januari 2020, 67 juta pengguna, 45 juta merchant, QRIS antarnegara, dan penutup "dulu vs sekarang".
 Properti baru: `src/environment/QrisProps.tsx` (kode QR, meja warung, gedung, bendera, ikon orang, koper).
 
+## Video: "Mereka Menggunakan Uang dengan Cara Berbeda" (52 detik, keuangan pribadi)
+
+Hasil jadi: [`out/uang.mp4`](out/uang.mp4).
+Caption, hashtag, teks cover: [`scripts/narasi/uang-copy.md`](scripts/narasi/uang-copy.md).
+
+Naskah dan arahan visual dari user, 6 adegan + kartu penutup: dua orang sama-sama dapat Rp1 juta; Orang 1 belanja
+sepatu, gadget dan makanan mahal sampai saldo Rp0; Orang 2 beli buku, kursus dan alat kerja dan masih menyisakan
+Rp400.000; kesenangan memudar (layar jadi kelabu); klien dan penghasilan Orang 2 tumbuh; perbandingan
+"KESENANGAN vs KEMAMPUAN" dan ending text. Properti baru: `src/environment/SpendProps.tsx`.
+
 ## Cara render ulang
 
 ```bash
@@ -121,6 +131,7 @@ npm run render -- GajiSama out/gaji-sama.mp4
 npm run render -- PintarSaja out/pintar.mp4
 npm run render -- BaduyBadak out/baduy.mp4
 npm run render -- AsalQris out/qris.mp4
+npm run render -- DuaCaraUang out/uang.mp4
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di

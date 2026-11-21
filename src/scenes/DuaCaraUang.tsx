@@ -128,7 +128,7 @@ const Start: React.FC<{len: number}> = ({len}) => {
       <Plate x={-270} y={-430} text={goneK > 0.5 ? "Rp0" : "Rp1 JUTA"} k={pop(frame, 4)} size={42} w={290} border={goneK > 0.5 ? C.red : C.yellow} color={goneK > 0.5 ? C.red : C.bone} />
       <Plate x={270} y={-430} text="Rp1 JUTA" k={pop(frame, 8)} size={42} w={290} />
       <Plate x={0} y={-570} text="SEBULAN KEMUDIAN" k={pop(frame, month)} size={44} border={C.cyan} />
-      <g transform={`translate(420 ${FLOOR}) scale(${pop(frame, asset)})`}>
+      <g transform={`translate(130 ${FLOOR}) scale(${pop(frame, asset)})`}>
         <Laptop x={0} y={0} s={0.8} screen={<WorkScreen t={t} />} />
       </g>
       <Plate x={270} y={-200} text="ASET BARU" k={pop(frame, asset + 6)} size={38} border={GOOD} w={280} />
@@ -144,32 +144,32 @@ const Spend: React.FC<{len: number}> = ({len}) => {
   const c2 = at(1, 2);
   const c3 = at(1, 3);
   const items: [number, number][] = [
-    [-300, c1],
+    [-270, c1],
     [0, c2],
-    [300, c3],
+    [230, c3],
   ];
   return (
     <Shot len={len} wall="#3A2A2E">
       <Glow x={0} y={-200} r={600} color={C.orange} opacity={0.12} />
       <Balance x={0} y={-560} frame={frame} steps={[[c1, 600000], [c2, 250000], [c3, 0]]} />
-      <g transform={`translate(-300 -260) scale(${pop(frame, c1)})`}>
+      <g transform={`translate(-270 -260) scale(${pop(frame, c1)})`}>
         <Sneaker x={0} y={0} s={1.2} />
       </g>
-      <g transform={`translate(0 -230) scale(${pop(frame, c2)})`}>
+      <g transform={`translate(0 -320) scale(${pop(frame, c2)})`}>
         <Gadget x={0} y={0} s={1.1} />
       </g>
-      <g transform={`translate(300 -250) scale(${pop(frame, c3)})`}>
+      <g transform={`translate(230 -250) scale(${pop(frame, c3)})`}>
         <FancyMeal x={0} y={0} s={1.1} t={t} />
       </g>
-      <ItemTag x={-300} y={-180} text="SEPATU" k={pop(frame, c1 + 6)} />
-      <ItemTag x={0} y={-180} text="GADGET" k={pop(frame, c2 + 6)} />
-      <ItemTag x={300} y={-180} text="MAKAN MEWAH" k={pop(frame, c3 + 6)} />
+      <ItemTag x={-270} y={-180} text="SEPATU" k={pop(frame, c1 + 6)} />
+      <ItemTag x={0} y={-270} text="GADGET" k={pop(frame, c2 + 6)} />
+      <ItemTag x={230} y={-180} text="MAKANAN MAHAL" k={pop(frame, c3 + 6)} />
       {/* notes flying out to each item */}
       {items.map(([x, a], i) =>
         [0, 1, 2].map((j) => {
           const k = prog(frame, a - 6 + j * 4, a + 14 + j * 4, eInOut);
           if (k <= 0 || k >= 1) return null;
-          return <Banknote key={`${i}-${j}`} x={lerp(0, x, k)} y={lerp(-40, -260, k) - Math.sin(k * Math.PI) * 120} s={0.6} rot={k * 360 + j * 30} />;
+          return <Banknote key={`${i}-${j}`} x={lerp(0, x, k)} y={lerp(-40, i === 1 ? -330 : -260, k) - Math.sin(k * Math.PI) * 120} s={0.6} rot={k * 360 + j * 30} />;
         }),
       )}
       <Stickman x={0} y={FLOOR} scale={1.35} pose={cheer(t)} look={A} expr="happy" />
@@ -188,18 +188,18 @@ const Invest: React.FC<{len: number}> = ({len}) => {
     <Shot len={len} wall="#22303A">
       <Glow x={0} y={-200} r={600} color={C.cyan} opacity={0.1} />
       <Balance x={0} y={-560} frame={frame} steps={[[c1, 800000], [c2, 600000], [c3, 400000]]} />
-      <g transform={`translate(-300 -230) scale(${pop(frame, c1)})`}>
+      <g transform={`translate(-270 -230) scale(${pop(frame, c1)})`}>
         <BookStack x={0} y={0} n={4} />
       </g>
-      <g transform={`translate(0 -230) scale(${pop(frame, c2)})`}>
+      <g transform={`translate(0 -320) scale(${pop(frame, c2)})`}>
         <Laptop x={0} y={0} s={1.0} screen={<CourseScreen />} />
       </g>
-      <g transform={`translate(300 -230) scale(${pop(frame, c3)})`}>
+      <g transform={`translate(250 -230) scale(${pop(frame, c3)})`}>
         <Toolbox x={0} y={0} s={1.0} />
       </g>
-      <ItemTag x={-300} y={-170} text="BUKU" k={pop(frame, c1 + 6)} color={C.cyan} />
-      <ItemTag x={0} y={-170} text="KURSUS" k={pop(frame, c2 + 6)} color={C.cyan} />
-      <ItemTag x={300} y={-170} text="ALAT KERJA" k={pop(frame, c3 + 6)} color={C.cyan} />
+      <ItemTag x={-270} y={-170} text="BUKU" k={pop(frame, c1 + 6)} color={C.cyan} />
+      <ItemTag x={0} y={-260} text="KURSUS" k={pop(frame, c2 + 6)} color={C.cyan} />
+      <ItemTag x={250} y={-170} text="ALAT KERJA" k={pop(frame, c3 + 6)} color={C.cyan} />
       <Stickman x={0} y={FLOOR} scale={1.35} pose={{...idle(t), shR: 70, elR: 30}} look={B} expr="focused" />
     </Shot>
   );
