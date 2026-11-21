@@ -204,6 +204,11 @@ Properti baru: `src/environment/JobsProps.tsx` (tanpa logo; perangkat berupa ben
   untuk kata yang terlewat atau terdengar lain. `[take=N]` di akhir baris meminta take lain.
 - `scripts/estimate_duration.py <slug> --voice young|middle|female --target <detik>`: perkiraan durasi dan
   anggaran kata sebelum narasi dibuat.
+- `scripts/lint_script.py <slug>`: memeriksa naskah sebelum suara dibuat (angka mentah, singkatan, nama asing
+  yang perlu cara baca, frasa terlalu panjang) dan memperkirakan durasi.
+- `node scripts/check_layout.mjs <Id> <slug>`: cek tata letak, bundling sekali, dua still per adegan, lembar
+  kontak, dan daftar `LUAR AREA`; `--scene 3,5` mengulang hanya adegan yang diubah.
+- `scripts/finish.sh <slug> <Id>`: musik, mix, render, ffprobe, dan pacing dalam satu perintah.
 - `scripts/check_pacing.py out/<slug>.mp4`: memeriksa frame pertama dan bagian lebih dari 4 detik tanpa
   perubahan visual.
 - `src/story/StoryKit.tsx`: `Film`, `Shot` (punch-in per frasa), `Plate`/`Bubble`/`Actor` dengan cek area

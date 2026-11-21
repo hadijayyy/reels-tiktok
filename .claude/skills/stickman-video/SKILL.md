@@ -10,6 +10,30 @@ Membuat satu video stickman vertikal dalam dua format: **penjelasan** 30-45 deti
 `ahmadaryanto/stickman-story`, MIT), kit cerita `src/story/StoryKit.tsx`, dan banyak film contoh.
 Film baru = naskah baru + file adegan baru; kit-nya dipakai ulang.
 
+## Urutan kerja (hemat waktu)
+
+Waktu terbuang di film Steve Jobs karena: still dirender tiga kali (dua kali sebelum timing final, tiap
+`remotion still` mem-bundle ulang), tiga baris narasi digenerate ulang (nama asing "Sculley" dan satu baris
+yang kemasukan kata tambahan), naskah awal kepanjangan, dan puluhan properti baru. Urutan di bawah mencegahnya.
+Yang paling lama adalah suara (menit per baris), jadi jalankan secepat mungkin dan kerjakan yang lain sambil menunggu.
+
+1. **Naskah** (bagian 2) lalu `python3 scripts/lint_script.py <slug> --voice middle --target <detik> --tail 5.5`.
+   Selesaikan semua SALAH dan CEK (angka mentah, singkatan, nama asing yang perlu `{Nama=cara baca}`) dan
+   panjangnya, **sebelum** langkah berikutnya.
+2. **Narasi di latar belakang** (bagian 3), langsung setelah lint bersih. Jangan menunggu adegan.
+3. **Sambil menunggu: tulis adegan** (bagian 4) dan `npm run typecheck`. Jangan render still di tahap ini:
+   timing masih perkiraan, jadi hasilnya dibuang.
+4. **Narasi selesai:** baca `CEK SUARA`. Kumpulkan semua baris yang perlu diulang, hapus semua WAV-nya,
+   dan jalankan skrip **sekali** (model suara dimuat ulang tiap jalan).
+5. **Cek tata letak sekali** dengan `node scripts/check_layout.mjs <Id> <slug>` (bagian 5), perbaiki semua
+   temuan, lalu cek ulang hanya adegan yang berubah dengan `--scene`.
+6. **`scripts/finish.sh <slug> <Id>`**: musik, mix, render, ffprobe, pacing, sekali jalan.
+7. Satu commit di akhir (README, MP4, MP3, naskah, copy, adegan, timing). Commit WIP hanya kalau dipaksa hook.
+
+Anggaran: film cerita 10-13 adegan. Setiap keluarga properti baru (gedung, perangkat, grafik khusus)
+menambah satu putaran perbaikan tata letak; pakai ulang properti yang ada dulu, dan gambar yang baru hanya
+kalau ide visual adegannya tidak bisa dibuat dari yang ada.
+
 ## 0. Kalau user minta visual realistis
 
 Repo ini hanya membuat animasi stickman. Kalau user minta "realistis/sinematik, bukan animasi", jangan
@@ -72,6 +96,10 @@ Pakai skill `video-script` (`.claude/skills/video-script/SKILL.md`): riset dan c
 alur 6 adegan, skor + revisi, dan paket posting. Hasilnya `scripts/narasi/<slug>.txt` (naskah) dan
 `scripts/narasi/<slug>-copy.md` (hook alternatif, judul, caption, hashtag, teks cover, skor, sumber).
 
+Setelah naskah jadi, jalankan `scripts/lint_script.py` (lihat Urutan kerja): ia menangkap angka di luar
+`{tampil=baca}`, singkatan tanpa cara eja, nama asing yang akan salah baca, frasa terlalu panjang, dan
+memperkirakan durasi.
+
 Batasan tambahan dari sisi animasi:
 
 - 11-16 kata per baris (sekitar 5 detik per adegan pada tempo 0.78). Enam baris menghasilkan ~35 detik.
@@ -97,7 +125,13 @@ Lalu, dari akar repo:
 PYTHONPATH=../VoiceStudio python scripts/make_narration.py <slug>      # jalankan di latar belakang
 ```
 
-Tanpa GPU, tiap baris butuh ~25 detik, jadi jalankan di latar belakang dan tulis adegan sambil menunggu.
+Tanpa GPU, tiap baris butuh ~25-60 detik (baris 1, perancangan suara, paling lama), jadi jalankan di latar belakang
+dan tulis adegan sambil menunggu. Semua skrip Python yang memakai `soundfile` (`make_music.py`) harus dijalankan
+dari venv ini (`. ../tts-venv/bin/activate`); `scripts/finish.sh` melakukannya sendiri.
+
+Nama dan istilah asing (Sculley, Exxon, iPhone) hampir selalu salah dibaca bila ditulis apa adanya: beri
+`{Nama=cara baca}` dari awal (`lint_script.py` menandainya). Mengulang baris berarti memuat ulang model, jadi
+kumpulkan semua baris yang bermasalah lalu hapus WAV-nya sekaligus.
 Skrip menulis `public/audio/<slug>-narasi.wav` dan `src/scenes/<slug>Timing.ts` (`FRAMES`, `SCENES`,
 `CUES`), serta mencetak indeks cue pertama tiap adegan. Baris 1 merancang suara; baris lain mengkloningnya
 supaya naratornya orang yang sama. Untuk mengulang satu baris, hapus WAV-nya di
@@ -147,6 +181,8 @@ dari film lama:
 - `<Plate>`, `<Bubble>`, `<Actor>` = label, balon kata, stickman; `Plate` otomatis bergeser masuk area aman.
 - Pose `slumped`, `bowing`, `laughing`, `tired`, `kneel`; `<Kneeling>` (berlutut tanpa tembus lantai),
   `<Seated>`, `<MemoryBubble>` (sepia, terpotong rapi), `<Flash>`, `<EndCard>`.
+- `stroll(frame, t, a, b, f0, f1, scale)` = jalan dari x=a ke x=b tanpa kaki meluncur (hasilnya `{x, pose}`);
+  `<Gate k>` = memunculkan grafik/anak-anaknya pelan-pelan supaya sumbu kosong tidak tampil sebelum datanya.
 
 Daftarkan film sebagai `<Composition>` di `src/Root.tsx` dengan `defaultProps={{narration: "audio/<slug>.mp3"}}`.
 Film contoh:
@@ -255,22 +291,41 @@ Aturan yang membuat video ini berhasil:
 - **Kekerasan:** kecelakaan atau kematian tidak digambarkan langsung. Pakai potongan ke hitam, kilatan,
   atau akibatnya (benda yang tertinggal), tanpa darah atau tubuh.
 - **Teks tidak boleh bertumpuk:** stempel, kartu, dan label harus punya tempat sendiri; cek still di
-  frame saat elemen terakhir sudah muncul.
+  frame saat elemen terakhir sudah muncul. Dua `Plate` yang tumpang tindih secara horizontal butuh jarak
+  tengah-ke-tengah vertikal minimal ~2 x ukuran huruf terbesar (mis. judul size 72 dan label di bawahnya: 120+ px).
+  Plate lebar dekat tepi (nama gedung, label panjang) terpotong pada zoom akhir: simpan di x -350..350.
+- **Grafik/papan yang tumbuh** harus dibungkus `<Gate>`; kalau tidak, sumbu kosong terlihat sebelum datanya.
+- **Elemen yang berjalan bersama** (gedung yang bergeser sambil tokoh berjalan) jangan saling menumpuk;
+  beri satu mulai dari belakang yang lain, atau pisahkan jalurnya.
 - **Label di layar** pendek, huruf kapital, 2-3 kata. Tanpa logo atau merek.
 - **Font** Inter dibundel di `public/fonts`. Jangan memuat font dari jaringan: render akan gagal.
 
-## 5. Cek still, lalu audio, lalu render
+## 5. Cek tata letak, lalu audio dan render
 
 ```bash
 npm run typecheck
-npx remotion still src/index.ts <Id> out/check/f<n>.png --frame=<n> --props='{"narration":null,"check":true}' --scale=0.35
+node scripts/check_layout.mjs <Id> <slug>                 # bundling sekali; 2 still per adegan; lembar kontak 3 adegan
+node scripts/check_layout.mjs <Id> <slug> --scene 3,5     # ulang hanya adegan yang diubah (0-based)
+node scripts/check_layout.mjs <Id> <slug> --per 3         # tambah satu frame (elemen frasa ke-2 sudah muncul)
+node scripts/check_layout.mjs <Id> <slug> --frames 640,1200   # frame tertentu
 ```
 
-Ambil dua still per adegan (awal dan menjelang akhir), gabungkan dengan `ffmpeg hstack`, dan lihat
-sendiri gambarnya. Dengan `"check":true`, setiap `Plate`, `Bubble`, `Actor` atau `MemoryBubble` dari kit yang
-keluar area aman diberi kotak merah bertulisan **LUAR AREA**: perbaiki semuanya. Cari juga: karakter
-tertutup properti, teks saling tumpuk, elemen muncul di frasa yang salah, pose yang tembus lantai.
-Render still berjalan paralel dengan `xargs -P 3`; satu still kadang gagal tanpa pesan, render ulang saja.
+Skrip memerlukan `src/scenes/<slug>Timing.ts` asli (setelah narasi selesai) dan menulis `out/check/sheet_N.png`.
+Lihat sheet-nya sendiri (Read). Dengan mode cek, setiap `Plate`, `Bubble`, `Actor` atau `MemoryBubble` dari kit yang
+keluar area aman diberi kotak merah **LUAR AREA** dan juga dicetak skrip sebagai daftar. Perbaiki semuanya. Cari juga:
+karakter tertutup properti, teks saling tumpuk, elemen muncul di frasa yang salah, pose yang tembus lantai, sumbu
+kosong. Satu still yang gagal diulang otomatis sekali; kalau masih gagal skrip mencetak frame-nya.
+Jangan memakai `npx remotion still` berulang: tiap perintah mem-bundle ulang (~25 detik) dan bisa macet tanpa pesan.
+Hapus `out/check/` setelah selesai.
+
+Lalu satu perintah untuk sisanya:
+
+```bash
+scripts/finish.sh <slug> <Id> [calm|horror|piano|space] [puncak|detik_dentuman] [volume musik]
+```
+
+Ia menghitung durasi dari timing, membuat musik (di venv TTS), mixing ke `public/audio/<slug>.mp3` (horor: volume 0.3),
+merender `out/<slug>.mp4`, lalu menjalankan ffprobe dan `check_pacing.py`. Perintah lepasnya, kalau perlu satu per satu:
 
 ```bash
 python scripts/make_music.py <slug> <detik> [calm|horror|piano|space|race] [puncak|detik_dentuman]   # detik = FRAMES / 30; piano naik sampai `puncak` (0..1); space: satu dentuman di detik itu
@@ -278,8 +333,8 @@ scripts/mix_audio.sh <slug> <detik> [volume musik]         # -> public/audio/<sl
 npx remotion render src/index.ts <Id> out/<slug>.mp4 --crf=20
 ```
 
-Setelah render: `ffprobe` untuk memastikan 1080x1920, 30 fps dan ada trek audio, lalu ambil beberapa
-frame dari MP4-nya dan lihat sekali lagi. Jalankan juga:
+Setelah render (`finish.sh` sudah menjalankan ffprobe dan pacing): ambil tiga sampai lima frame dari MP4-nya
+(`ffmpeg -ss <detik> -i out/<slug>.mp4 -frames:v 1`) dan lihat sekali lagi. Pemeriksaan pacing:
 
 ```bash
 python3 scripts/check_pacing.py out/<slug>.mp4      # frame pertama + bagian > 4 detik tanpa perubahan visual
@@ -290,7 +345,7 @@ sengaja hening (misalnya jeda dramatis sebelum twist); sebutkan di laporan. Hapu
 
 ## 6. Serahkan
 
-Kirim MP4 ke user beserta caption, hashtag dan teks cover dari `<slug>-copy.md`, commit
+Kirim MP4 ke user beserta caption, hashtag dan teks cover dari `<slug>-copy.md`, satu commit
 (`out/<slug>.mp4`, `public/audio/<slug>.mp3`, naskah, file copy, adegan, timing) dan
 push ke branch kerja. Tambahkan film baru ke tabel di `README.md`. Laporan akhir menyebut: topik yang
 dipilih, durasi, isi tiap adegan, apa saja yang sudah diverifikasi, dan apa yang belum (suara).

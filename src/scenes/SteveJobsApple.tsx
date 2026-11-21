@@ -12,8 +12,8 @@ import {
   MusicPlayer, Note, OilBarrel, RIVAL, Sparks, SUIT, SUIT2, SUIT3, WOZ, staff,
 } from "../environment/JobsProps";
 import {eInOut, eOut, lerp, prog} from "../motion/ease";
-import {cheer, idle, mix, point, STRIDE, walk} from "../rig/poses";
-import {Actor, EndCard, Film, Flash, Plate as KitPlate, pop, Shot as KitShot, ShotProps, slumped, useScene} from "../story/StoryKit";
+import {cheer, idle, mix, point} from "../rig/poses";
+import {Actor, EndCard, Film, Flash, Plate as KitPlate, pop, Shot as KitShot, ShotProps, slumped, stroll, useScene} from "../story/StoryKit";
 import {C, FPS} from "../styles/palette";
 import {CUES as J_CUES, SCENES as J_SCENES} from "./jobsTiming";
 
@@ -41,14 +41,6 @@ export {FRAMES as JOBS_FRAMES} from "./jobsTiming";
 const Plate: React.FC<React.ComponentProps<typeof KitPlate>> = (p) => <KitPlate size={46} {...p} />;
 const Shot: React.FC<ShotProps> = (p) => <KitShot wall="#26303A" {...p} />;
 const GOOD = "#5E9347";
-
-/** Walks from a to b between frames f0 and f1 (feet do not skate), idle otherwise. */
-const stroll = (frame: number, t: number, a: number, b: number, f0: number, f1: number, s: number, seed = 0) => {
-  const k = prog(frame, f0, f1, (v) => v);
-  const dist = Math.abs(b - a) * k;
-  const moving = k > 0 && k < 1;
-  return {x: lerp(a, b, k), pose: moving ? walk(dist / (STRIDE * s), t, seed) : idle(t, seed), moving};
-};
 
 /* 1 — Hook: pushed out, then back */
 const Hook: React.FC<{len: number}> = ({len}) => {

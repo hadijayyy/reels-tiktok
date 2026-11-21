@@ -7,8 +7,8 @@ import {CaptionCue, CaptionTrack} from "../captions/CaptionTrack";
 import {Floor, FLOOR, Label, Wall} from "../environment/Furniture";
 import {SideChair} from "../environment/FamilyProps";
 import {SpeechBubble} from "../environment/StoryProps";
-import {clamp, eOut, keysObj, lerp} from "../motion/ease";
-import {idle} from "../rig/poses";
+import {clamp, eOut, keysObj, lerp, prog} from "../motion/ease";
+import {idle, STRIDE, walk} from "../rig/poses";
 import {seatedAnchor} from "../rig/seat";
 import {Expr, Look, Pose, Stickman} from "../rig/Stickman";
 import {C, FONT, FPS, H, W} from "../styles/palette";
@@ -21,6 +21,8 @@ import {C, FONT, FPS, H, W} from "../styles/palette";
  *   <Shot>                                      a scene's camera, wall and floor; punches in a little on every phrase
  *   <Plate> <Bubble> <Actor>                    label plate, speech bubble, stickman; flagged in red when off the safe area
  *   pop(frame, at)                              0 -> 1 pop-in with a small overshoot
+ *   stroll(frame, t, a, b, f0, f1, scale)       walks from x=a to x=b between frames f0..f1 without foot skate -> {x, pose, moving}
+ *   <Gate k>                                    fades its children in (k 0..1): hides chart axes / frames that are empty before their data arrives
  *   slumped / bowing / laughing / tired / kneel poses, <Kneeling>, <Seated>, <MemoryBubble>, <Flash>, <EndCard>, SEPIA
  *
  * Check mode: render stills with --props='{"narration":null,"check":true}'. Any Plate, Bubble or Actor that
@@ -36,6 +38,19 @@ export const pop = (frame: number, at: number) => {
   const k = clamp((frame - at) / 10);
   return k === 0 ? 0 : 1 + Math.sin(k * Math.PI) * 0.18 * (1 - k) - Math.pow(1 - k, 3);
 };
+
+/**
+ * Walks from x=a to x=b between scene frames f0 and f1 (linear, so the feet do not skate) and idles otherwise.
+ * Use the result as <Actor x={w.x} pose={w.pose} facing={b > a ? 1 : -1} />.
+ */
+export const stroll = (frame: number, t: number, a: number, b: number, f0: number, f1: number, scale: number, seed = 0) => {
+  const k = prog(frame, f0, f1, (v) => v);
+  const moving = k > 0 && k < 1;
+  return {x: lerp(a, b, k), pose: moving ? walk((Math.abs(b - a) * k) / (STRIDE * scale), t, seed) : idle(t, seed), moving};
+};
+
+/** Fades its children in with k (0..1); renders nothing at 0. Use it for charts whose axes would show empty. */
+export const Gate: React.FC<{k: number; children: React.ReactNode}> = ({k, children}) => (k <= 0 ? null : <g opacity={Math.min(1, k)}>{children}</g>);
 
 /* ---------- Film and per-scene timing ---------- */
 

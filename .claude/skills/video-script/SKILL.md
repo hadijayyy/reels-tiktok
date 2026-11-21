@@ -94,6 +94,8 @@ Ini naskah untuk *didengar*, bukan dibaca:
   stickman-video akan menangkap kasus seperti ini.
 - Penutup memberi ajakan yang bisa langsung dilakukan, bukan "like dan follow".
 - Kata kunci yang harus menonjol di caption ditulis `*kata*` (warnanya kuning di caption karaoke).
+- Setelah naskah ditulis, jalankan `python3 scripts/lint_script.py <slug> --voice middle --target <detik>`: ia menangkap
+  angka mentah, singkatan tanpa cara eja, nama asing yang perlu `{Nama=cara baca}`, dan frasa terlalu panjang.
 - Untuk cerita 60-120 detik, pakai anggaran kata di skill `stickman-video` bagian 1b (sekitar 2 kata per
   detik total, termasuk jeda) dan cek dengan `python3 scripts/estimate_duration.py <slug> --target <detik>`
   sebelum narasi dibuat.
