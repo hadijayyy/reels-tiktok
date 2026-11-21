@@ -1,0 +1,19 @@
+# Satu baris = satu adegan. Tanda | memisahkan frasa caption.
+Dia mengira ayahnya pelit.|Sampai suatu hari,|dia membuka lemari ayahnya...|dan tidak bisa berhenti menangis. [jeda=1.2]
+Setiap kali dia meminta sesuatu,|ayahnya selalu berusaha membelikan.|Sepatu baru. Tas sekolah. Mainan.
+Tapi ketika dia bertanya|kenapa Ayah tidak pernah beli baju baru,|Ayah hanya menjawab,|"Ayah masih punya yang lama." [jeda=1.0]
+Dia tidak pernah memikirkan jawaban itu.|Baginya, ayahnya memang|tidak suka belanja.
+Dia tidak tahu,|sol sepatu ayahnya sudah lama terlepas,|dan bajunya dia jahit sendiri.
+Dia juga tidak tahu,|setiap malam, ayahnya menghitung uang|sebelum tidur. [jeda=1.0]
+Setiap bulan, ayah punya|daftar panjang kebutuhan.|Listrik. Sekolah. Makan.
+Tapi selalu ada satu hal|yang dia hapus.|Kebutuhan dirinya sendiri. [jeda=1.2]
+Dia menunda membeli sepatu.|Menunda memperbaiki motornya.|Menunda semua hal yang bisa menunggu. [jeda=0.8]
+Bertahun-tahun kemudian,|anaknya yang sudah dewasa|menemukan sebuah kotak|di lemari ayahnya.
+Isinya sepatu lama ayahnya...|dan catatan kecil.|"Sepatu ini masih bisa dipakai.|Uang lebih baik untuk sekolah anak." [jeda=1.4]
+Di bawahnya, ada tumpukan nota|uang sekolahnya,|dan fotonya waktu wisuda. [jeda=1.0]
+Dia terdiam.|Baru kali ini dia mengerti.|Ayahnya bukan tidak ingin|memiliki sesuatu.|Ayahnya hanya selalu menginginkan|sesuatu yang lebih penting. [jeda=1.4]
+Hari itu juga,|dia pulang|dan membelikan ayahnya sepatu baru.
+Ayahnya tertawa kecil.|"Kenapa mahal-mahal?|Sepatu lama Ayah masih bagus." [jeda=1.0]
+Tapi malam itu,|dia melihat ayahnya diam-diam|mencoba sepatu itu... berkali-kali. [jeda=1.4]
+Kadang, orang yang|paling sedikit meminta...|adalah orang yang paling banyak memberi. [jeda=1.2]
+Kapan terakhir kali|kamu bilang terima kasih ke ayahmu?
