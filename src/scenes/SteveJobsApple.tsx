@@ -132,7 +132,9 @@ const Ipo: React.FC<{len: number}> = ({len}) => {
     <Shot len={len} wall="#242A31" z1={1.06}>
       <Plate x={0} y={-570} text="AKHIR 1980" k={pop(frame, -10)} size={60} />
       <Plate x={-190} y={-440} text="IPO: JUAL SAHAM" k={pop(frame, c1 + 2)} size={44} border={C.cyan} />
-      <GrowthChart x={-420} y={140} k={prog(frame, c1, c1 + 50, eInOut)} s={1.15} />
+      <g opacity={prog(frame, c1 - 6, c1)}>
+        <GrowthChart x={-420} y={140} k={prog(frame, c1, c1 + 50, eInOut)} s={1.15} />
+      </g>
       {shirts.map((s, i) => (
         <Actor key={i} x={150 + i * 130} y={FLOOR} scale={1.05} facing={-1} pose={mix(idle(t, i + 1), cheer(t, i), cheerK)} look={staff(s)} expr={cheerK > 0.5 ? "happy" : "neutral"} />
       ))}
@@ -188,7 +190,7 @@ const Leave: React.FC<{len: number}> = ({len}) => {
   const c0 = cueAt(0);
   const c1 = cueAt(1);
   const c2 = cueAt(2);
-  const going = stroll(frame, t, -80, -220, c1 + 6, c2 - 2, 1.3, 1);
+  const going = stroll(frame, t, -40, -170, c1 + 6, c2 - 2, 1.3, 1);
   const boxK = pop(frame, c1 + 2);
   const nextK = pop(frame, c2);
   const turned = frame >= c1 + 4;
@@ -204,12 +206,12 @@ const Leave: React.FC<{len: number}> = ({len}) => {
       <Plate x={280} y={-250} text="DEWAN DIREKSI" k={pop(frame, c0 - 6)} size={40} border={C.cyan} />
       <Actor x={going.x} y={FLOOR} scale={1.3} facing={turned ? -1 : 1} pose={turned ? mix(going.pose, {...going.pose, lean: 14, headTilt: 16, shL: 4, shR: 8}, going.moving ? 0.5 : 1) : slumped(t)} look={JOBS} expr="sad" />
       {turned ? <CardBox x={going.x + 70} y={FLOOR - 44} s={boxK} /> : null}
-      <Building x={-460} y={FLOOR} w={150} h={290} name="NeXT" color="#44505E" lit={0.5} />
+      <Building x={-350} y={FLOOR} w={150} h={290} name="NeXT" color="#44505E" lit={0.5} />
       <g opacity={nextK}>
-        <Sparks x={-460} y={-60} k={prog(frame, c2 + 2, c2 + 24)} r={110} />
+        <Sparks x={-350} y={-60} k={prog(frame, c2 + 2, c2 + 24)} r={110} />
       </g>
       <Plate x={-170} y={-590} text="1985" k={pop(frame, c1)} size={72} border={C.red} />
-      <Plate x={-220} y={-410} text="MENDIRIKAN NeXT" k={nextK} size={40} border={GOOD} />
+      <Plate x={-200} y={-410} text="MENDIRIKAN NeXT" k={nextK} size={40} border={GOOD} />
     </Shot>
   );
 };
@@ -228,12 +230,14 @@ const Trouble: React.FC<{len: number}> = ({len}) => {
     <Shot len={len} wall="#2A2427" grey={prog(frame, 0, len, (v) => v) * 0.5} z1={1.08}>
       <Building x={-300} y={FLOOR} w={250} h={420} name="APPLE" lit={0.15} tilt={lean} />
       <Cross x={-300} y={FLOOR - 220} r={50} k={pop(frame, c0 + 14)} />
-      <Actor x={-30} y={FLOOR} scale={1.1} pose={slumped(t, 3)} look={staff("#5E7AA8")} expr="sad" />
-      <LossChart x={80} y={-150} k={loss} s={0.95} />
+      <Actor x={-90} y={FLOOR} scale={1.1} pose={slumped(t, 3)} look={staff("#5E7AA8")} expr="sad" />
+      <g opacity={prog(frame, c2 - 8, c2)}>
+        <LossChart x={80} y={-150} k={loss} s={0.95} />
+      </g>
       <Plate x={0} y={-570} text="TANPA JOBS: GOYAH" k={pop(frame, c0 - 8)} size={46} border={C.red} />
       <Plate x={0} y={-410} text="1997" k={pop(frame, c1)} size={72} />
-      <Plate x={290} y={250} text="RUGI US$ 1 MILIAR" k={pop(frame, c2 + 4)} size={40} border={C.red} color={C.red} />
-      <Plate x={290} y={340} text="NYARIS BANGKRUT" k={pop(frame, c2 + 22)} size={38} border={C.red} />
+      <Plate x={320} y={250} text="RUGI US$ 1 MILIAR" k={pop(frame, c2 + 4)} size={40} border={C.red} color={C.red} />
+      <Plate x={320} y={340} text="NYARIS BANGKRUT" k={pop(frame, c2 + 22)} size={38} border={C.red} />
     </Shot>
   );
 };
@@ -248,7 +252,7 @@ const Return: React.FC<{len: number}> = ({len}) => {
   const c2 = cueAt(2);
   const slide = prog(frame, c0 + 4, c0 + 36, eInOut);
   const handsOn = prog(frame, c1 + 8, c1 + 22);
-  const jobs = stroll(frame, t, -380, -130, c0 + 4, c0 + 40, 1.3, 2);
+  const jobs = stroll(frame, t, -420, -110, c0 + 4, c0 + 40, 1.3, 2);
   const buildingsOut = 1 - prog(frame, c1 - 2, c1 + 8);
   const rival = stroll(frame, t, 560, 130, c1 - 4, c1 + 22, 1.3, 5);
   const reach = {...idle(t), shR: 82, elR: 10, lean: 3};
@@ -256,7 +260,7 @@ const Return: React.FC<{len: number}> = ({len}) => {
     <Shot len={len} wall="#26303A" z1={1.08}>
       <Flash frame={frame} at={[c0 + 2]} strength={0.4} />
       <g opacity={buildingsOut}>
-        <Building x={lerp(-430, 230, slide)} y={FLOOR} w={150} h={290} name="NeXT" color="#44505E" lit={0.5} />
+        <Building x={lerp(-300, 200, slide)} y={FLOOR} w={150} h={290} name="NeXT" color="#44505E" lit={0.5} />
         <Building x={380} y={FLOOR} w={250} h={420} name="APPLE" lit={0.3 + 0.5 * slide} />
       </g>
       <Actor x={jobs.x} y={FLOOR} scale={1.3} pose={frame >= c1 + 8 ? mix(jobs.pose, reach, handsOn) : jobs.pose} look={JOBS} expr={frame >= c0 + 40 ? "determined" : "neutral"} />
@@ -301,7 +305,9 @@ const IMac: React.FC<{len: number}> = ({len}) => {
       })}
       <Actor x={-410} y={FLOOR} scale={1.0} pose={point(idle(t, 1), prog(frame, c0, c0 + 12), 60)} look={JOBS} expr="calm" />
       <Plate x={0} y={70} text="iMac" k={pop(frame, c1)} size={54} border={C.yellow} />
-      <GrowthChart x={-150} y={-60} k={prog(frame, c2, c2 + 44, eInOut)} s={0.75} />
+      <g opacity={prog(frame, c2 - 4, c2 + 4)}>
+        <GrowthChart x={-150} y={-60} k={prog(frame, c2, c2 + 44, eInOut)} s={0.75} />
+      </g>
       <Tick x={150} y={-270} r={34} k={pop(frame, c2 + 40)} />
       <Plate x={0} y={-400} text="UNTUNG LAGI" k={pop(frame, c2)} size={48} border={GOOD} />
       <Plate x={270} y={-20} text="US$ 309 JUTA" k={pop(frame, c2 + 24)} size={36} border={GOOD} />
