@@ -1,0 +1,18 @@
+# Satu baris = satu adegan. Tanda | memisahkan frasa caption.
+Selama {3=tiga} tahun,|dia mengirim uang kepada orang asing.|Bahkan keluarganya tidak tahu. [jeda=1.0]
+Dia bukan orang kaya.|Gajinya hanya cukup untuk makan,|bayar kos, dan sedikit tabungan.
+Tapi setiap tanggal {15=lima belas},|dia selalu mengirim uang|dengan jumlah yang sama|kepada seseorang. [jeda=0.8]
+Suatu hari,|temannya melihat transaksi itu.|"Siapa orang ini? Pacarmu?"
+Dia hanya tersenyum dan menjawab,|"Bukan. Aku bahkan belum pernah|bertemu dengannya." [jeda=1.0]
+Temannya menganggap dia bodoh.|"Kamu sendiri hidup susah.|Kenapa membantu orang|yang bahkan tidak kamu kenal?"
+Dia tidak menjawab.|Tapi malam itu,|dia hampir menghentikan transfer tersebut. [jeda=1.2]
+Tiga tahun sebelumnya,|ketika dia hampir putus sekolah|karena tidak punya uang,
+seseorang {diam-diam=diam diam}|membayar biaya sekolahnya.
+Dia hanya menemukan sebuah pesan:|"Suatu hari, kalau kamu sudah mampu,|bantu orang lain.|Tidak perlu mencari tahu siapa aku." [jeda=1.4]
+Dia akhirnya mengetahui|siapa orang itu.|Seorang guru yang dulu sering mengajar|anak-anak miskin secara gratis.
+Guru itu sudah meninggal. [jeda=1.4]
+Tapi sebelum meninggal,|dia meninggalkan daftar beberapa anak|yang masih membutuhkan bantuan. [jeda=0.8]
+Dia memilih melanjutkan|satu nama dalam daftar itu.|Bukan karena dia kaya.
+Tapi karena dia tahu rasanya|hampir kehilangan masa depan|hanya karena tidak punya uang. [jeda=1.2]
+Orang baik tidak selalu|bisa mengubah dunia.
+Tapi terkadang,|satu orang yang menolongmu...|membuatmu ingin menolong|seribu orang lainnya.
