@@ -1,0 +1,18 @@
+# Satu baris = satu adegan. Tanda | memisahkan frasa caption.
+Lima tahun lalu,|dia menghina seorang tukang parkir.|Hari ini, dia harus meminta pekerjaan|kepada orang yang sama. [jeda=1.2]
+Dia adalah anak orang kaya.|Hidupnya mudah.
+Dia merasa semua orang|yang bekerja dengan gaji kecil|adalah orang yang gagal. [jeda=0.8]
+Ketika tukang parkir mengembalikan|uang tip yang terlalu besar,|dia malah tertawa.
+"Ambil saja.|Hidupmu mungkin tidak akan pernah|lebih baik dari ini." [jeda=1.0]
+Tukang parkir itu tidak marah.|Dia hanya berkata,
+"Semoga suatu hari kamu mengerti|bahwa uang bukan ukuran harga diri."
+Tapi anak muda itu|menganggapnya lelucon. [jeda=1.0]
+Lima tahun kemudian,|bisnis keluarganya bangkrut.
+Dia kehilangan mobil, rumah,|dan teman-teman yang dulu selalu ada|saat dia punya uang.
+Untuk pertama kalinya,|dia harus mencari pekerjaan sendiri. [jeda=0.8]
+Dia datang untuk wawancara|di sebuah perusahaan.|Ketika pintu terbuka,|dia melihat direktur perusahaan itu.
+Orang yang dulu dia hina. [jeda=1.4]
+Dia langsung mengenalinya.|Wajahnya memerah.|Dia menunggu hinaan yang sama.
+Tapi direktur itu hanya berkata,|"Duduk. Kita mulai dari pengalamanmu.|Bukan dari masa lalumu." [jeda=1.2]
+Dia memberinya kesempatan.|Bukan karena kasihan.|Tapi karena dia tahu,|seseorang yang pernah salah|masih bisa berubah. [jeda=1.0]
+Jangan pernah merendahkan seseorang|karena posisinya hari ini.|Kamu tidak tahu|di mana dia akan berdiri besok.
