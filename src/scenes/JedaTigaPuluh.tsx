@@ -5,7 +5,7 @@ import {Card, BigPhone, Magnifier, Padlock, Stamp, Tick} from "../environment/Mo
 import {Arrow, BankScreen, CallBadge, Cross, Eye, HangUp, PausePopup, Shield, earAt} from "../environment/CallProps";
 import {earPhone} from "../environment/MotherProps";
 import {FLOOR, Glow, Label} from "../environment/Furniture";
-import {clamp, eInOut, eOut, prog} from "../motion/ease";
+import {eOut, prog} from "../motion/ease";
 import {CASUAL, JACKET_BLUE} from "../rig/looks";
 import {idle, point} from "../rig/poses";
 import {Look} from "../rig/Stickman";
@@ -56,13 +56,13 @@ const Hook: React.FC<{len: number}> = ({len}) => {
   const elapsed = prog(frame, warn + 8, len - 6, (v) => v);
   const popK = pop(frame, warn + 4);
   return (
-    <Shot len={len} z1={1.15}>
-      <Glow x={170} y={-240} r={460} color={popK > 0 ? C.yellow : "#8FC7FF"} opacity={0.14} />
+    <Shot len={len} z1={1.07} y0={140}>
+      <Glow x={170} y={-200} r={460} color={popK > 0 ? C.yellow : "#8FC7FF"} opacity={0.14} />
       <Actor x={-270} y={FLOOR} scale={S} pose={{...idle(t, 2), look: 0.6}} look={YOU} expr={popK > 0 ? "surprised" : "worried"} reachL={earAt(-270, 1)} />
       <CallBadge x={-250} y={-90} t={t} s={1.1} />
-      <BankPhone x={170} y={-250} t={t} call popup={{k: popK, elapsed, n: count(elapsed), ready: false}} />
-      <Plate x={0} y={-560} text="TELEPON + M-BANKING?" k={pop(frame, -10)} border={C.yellow} />
-      <Plate x={170} y={150} text="TAHAN 30 DETIK" k={pop(frame, warn + 26)} color={C.yellow} border={C.yellow} />
+      <BankPhone x={170} y={-200} s={1.25} t={t} call popup={{k: popK, elapsed, n: count(elapsed), ready: false}} />
+      <Plate x={0} y={-590} text="TELEPON + M-BANKING?" k={pop(frame, -10)} border={C.yellow} />
+      <Plate x={170} y={110} text="TAHAN 30 DETIK" k={pop(frame, warn + 26)} color={C.yellow} border={C.yellow} />
     </Shot>
   );
 };
@@ -77,7 +77,7 @@ const Scam: React.FC<{len: number}> = ({len}) => {
   const show = (a: number, b: number) => Math.min(pop(frame, a), 1 - prog(frame, b - 4, b));
   const wave = 0.5 + 0.5 * Math.sin(t * 6);
   return (
-    <Shot len={len} z1={1.12} y0={110}>
+    <Shot len={len} z1={1.07} y0={140}>
       <line x1={-250} y1={-140} x2={250} y2={-140} stroke="#8FC7FF" strokeWidth={5} strokeDasharray="14 16" opacity={0.3 + 0.4 * wave} />
       <Actor x={-330} y={FLOOR} scale={S} pose={{...idle(t, 4), look: 0.6}} look={{...SCAMMER, handL: earPhone()}} expr="smug" reachL={earAt(-330, 1)} />
       <Actor x={300} y={FLOOR} scale={S} facing={-1} pose={{...idle(t, 1), look: 0.6}} look={YOU} expr={frame >= c2 ? "surprised" : "worried"} reachL={earAt(300, -1)} />
@@ -85,7 +85,7 @@ const Scam: React.FC<{len: number}> = ({len}) => {
       <Bubble x={-150} y={-330} lines={["Coba buka", "m-banking."]} k={show(c1 + 2, c2)} tx={-290} ty={-30} size={38} />
       <Bubble x={-150} y={-330} lines={["Bagikan layar", "kamu, ya."]} k={pop(frame, c2 + 2)} tx={-290} ty={-30} size={38} />
       <BankPhone x={170} y={-380} s={1.0} k={pop(frame, c1 + 4)} t={t} call={false} share={frame >= c2 + 6} />
-      <Eye x={330} y={-620} s={0.9} k={pop(frame, c2 + 10)} t={t} />
+      <Eye x={430} y={-470} s={0.8} k={pop(frame, c2 + 10)} t={t} />
     </Shot>
   );
 };
@@ -100,7 +100,7 @@ const Why: React.FC<{len: number}> = ({len}) => {
   const c2 = cueAt(2);
   const shake = prog(frame, c2 + 12, c2 + 40) * Math.sin(t * 40) * 3;
   return (
-    <Shot len={len} wall="#2A2427" z1={1.12} y0={110}>
+    <Shot len={len} wall="#2A2427" z1={1.07} y0={140}>
       <Glow x={250} y={-100} r={420} color={C.red} opacity={0.1 + 0.1 * prog(frame, c2, c2 + 20)} />
       <Plate x={0} y={-560} text="SOCIAL ENGINEERING" k={pop(frame, c0 + 2)} color={C.red} border={C.red} />
       <CallBadge x={0} y={-390} t={t} s={1.5} />
@@ -138,13 +138,13 @@ const Feature: React.FC<{len: number}> = ({len}) => {
   const elapsed = prog(frame, c1 + 8, len - 8, (v) => v);
   const pulse = frame >= c2 ? 0.5 + 0.5 * Math.sin((frame - c2) * 0.45) : 0;
   return (
-    <Shot len={len} z1={1.1} y0={100}>
+    <Shot len={len} z1={1.07} y0={140}>
       <Glow x={140} y={-180} r={500} color={C.yellow} opacity={0.08 + 0.1 * prog(frame, c1, c1 + 12)} />
       <Actor x={-390} y={FLOOR} scale={S} pose={frame >= c2 ? point(idle(t), prog(frame, c2, c2 + 10, eOut), 70) : idle(t)} look={CASUAL} expr="focused" />
       <CallBadge x={-300} y={-60} t={t} s={1.1} />
-      <BankPhone x={140} y={-170} s={1.5} k={pop(frame, 2)} t={t} call popup={{k: pop(frame, c1 + 2), elapsed, n: count(elapsed), ready: elapsed >= 1, pulse}} />
-      <Plate x={0} y={-560} text="BUKA M-BANKING SAAT TELEPON" k={pop(frame, c0 + 2) * (1 - prog(frame, c1 - 4, c1))} size={36} />
-      <Plate x={140} y={-560} text="JEDA 30 DETIK" k={pop(frame, c1 + 8)} color={C.yellow} border={C.yellow} />
+      <BankPhone x={140} y={-140} s={1.45} k={pop(frame, 2)} t={t} call popup={{k: pop(frame, c1 + 2), elapsed, n: count(elapsed), ready: elapsed >= 1, pulse}} />
+      <Plate x={0} y={-600} text="BUKA M-BANKING SAAT TELEPON" k={pop(frame, c0 + 2) * (1 - prog(frame, c1 - 4, c1))} size={36} />
+      <Plate x={140} y={-600} text="JEDA 30 DETIK" k={pop(frame, c1 + 8)} color={C.yellow} border={C.yellow} />
     </Shot>
   );
 };
@@ -159,7 +159,7 @@ const Limit: React.FC<{len: number}> = ({len}) => {
   const c2 = cueAt(2);
   const mag = pop(frame, c1 + 2) * (1 - prog(frame, c2 - 4, c2 + 4));
   return (
-    <Shot len={len} z1={1.12} y0={110}>
+    <Shot len={len} z1={1.07} y0={140}>
       <BankPhone x={-260} y={-260} s={0.95} k={pop(frame, 2)} t={t} call popup={{k: 1, elapsed: 0.5, n: 15, ready: false}} />
       <Plate x={-260} y={-560} text="CUMA PENGINGAT" k={pop(frame, c0 + 2)} color={C.yellow} border={C.yellow} />
       <g transform={`translate(180 -330) scale(${mag})`}>
@@ -191,15 +191,15 @@ const Rule: React.FC<{len: number}> = ({len}) => {
   const end = prog(frame, lastEnd + 10, lastEnd + 28);
   return (
     <AbsoluteFill>
-      <Shot len={len} z1={1.1} y0={110}>
+      <Shot len={len} z1={1.07} y0={140}>
         <Glow x={0} y={-300} r={520} color={C.red} opacity={0.08} />
-        <Plate x={0} y={-570} text="INGAT!" k={pop(frame, c0 + 2)} color={C.yellow} border={C.yellow} size={56} />
+        <Plate x={0} y={-610} text="INGAT!" k={pop(frame, c0 + 2)} color={C.yellow} border={C.yellow} size={56} />
         {["OTP", "PIN"].map((s, i) => (
-          <g key={s} transform={`translate(${i ? 190 : -190} -400) scale(${pop(frame, c1 + 2 + i * 8)})`}>
+          <g key={s} transform={`translate(${i ? 190 : -190} -380) scale(${pop(frame, c1 + 2 + i * 8)})`}>
             <Card x={0} y={0} w={280} h={130} color={C.charcoal} border={C.bone}>
               <Label x={0} y={26} text={s} size={80} color={C.bone} />
             </Card>
-            <Cross x={0} y={0} r={60} k={pop(frame, c1 + 16 + i * 8)} w={16} />
+            <Cross x={0} y={0} r={56} k={pop(frame, c1 + 16 + i * 8)} w={10} />
           </g>
         ))}
         <HangUp x={-190} y={-170} s={1.0} k={pop(frame, c2)} />
@@ -212,7 +212,7 @@ const Rule: React.FC<{len: number}> = ({len}) => {
         <Actor x={-390} y={FLOOR} scale={1.3} pose={frame >= c2 ? point(idle(t), prog(frame, c2, c2 + 10, eOut), 80) : idle(t)} look={CASUAL} expr={frame >= c2 ? "happy" : "determined"} />
         <Stamp x={190} y={110} text="TUTUP DULU" k={prog(frame, c2 + 20, c2 + 28, eOut)} size={46} />
       </Shot>
-      <EndCard lines={["Tutup dulu.", "Ragu? Halo BCA 1500888"]} k={end} accent={1} dim={0.82} />
+      <EndCard lines={["Tutup dulu.", "Ragu? Halo BCA 1500888"]} k={end} accent={1} dim={0.96} />
     </AbsoluteFill>
   );
 };
