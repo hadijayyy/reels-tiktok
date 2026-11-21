@@ -4,122 +4,616 @@ export const SCENES = [{"from": 0, "len": 270}, {"from": 270, "len": 159}, {"fro
 export const CUES = [
   {
     "from": 10,
-    "to": 74,
-    "text": "Dua orang mendapatkan Rp1 juta."
+    "to": 88,
+    "text": "Dua orang mendapatkan Rp1 juta.",
+    "words": [
+      {
+        "t": "Dua",
+        "f": 10,
+        "e": 16
+      },
+      {
+        "t": "orang",
+        "f": 16,
+        "e": 24
+      },
+      {
+        "t": "mendapatkan",
+        "f": 24,
+        "e": 40
+      },
+      {
+        "t": "Rp1 juta",
+        "f": 40,
+        "e": 76,
+        "k": 1
+      },
+      {
+        "t": ".",
+        "f": 76,
+        "e": 77
+      }
+    ]
   },
   {
-    "from": 74,
-    "to": 109,
-    "text": "Sebulan kemudian,"
+    "from": 88,
+    "to": 119,
+    "text": "Sebulan kemudian,",
+    "words": [
+      {
+        "t": "Sebulan",
+        "f": 90,
+        "e": 105
+      },
+      {
+        "t": "kemudian,",
+        "f": 105,
+        "e": 121
+      }
+    ]
   },
   {
-    "from": 109,
-    "to": 173,
-    "text": "satu orang tidak punya apa-apa."
+    "from": 119,
+    "to": 170,
+    "text": "satu orang tidak punya apa-apa.",
+    "words": [
+      {
+        "t": "satu",
+        "f": 121,
+        "e": 130
+      },
+      {
+        "t": "orang",
+        "f": 130,
+        "e": 141
+      },
+      {
+        "t": "tidak",
+        "f": 141,
+        "e": 148
+      },
+      {
+        "t": "punya",
+        "f": 148,
+        "e": 158
+      },
+      {
+        "t": "apa-apa.",
+        "f": 158,
+        "e": 172
+      }
+    ]
   },
   {
-    "from": 173,
+    "from": 170,
     "to": 233,
-    "text": "Yang lain memiliki aset baru."
+    "text": "Yang lain memiliki aset baru.",
+    "words": [
+      {
+        "t": "Yang",
+        "f": 172,
+        "e": 190
+      },
+      {
+        "t": "lain",
+        "f": 190,
+        "e": 198
+      },
+      {
+        "t": "memiliki",
+        "f": 198,
+        "e": 212
+      },
+      {
+        "t": "aset",
+        "f": 212,
+        "e": 220
+      },
+      {
+        "t": "baru.",
+        "f": 220,
+        "e": 229
+      }
+    ]
   },
   {
     "from": 276,
-    "to": 310,
-    "text": "Orang pertama langsung"
+    "to": 305,
+    "text": "Orang pertama langsung",
+    "words": [
+      {
+        "t": "Orang",
+        "f": 276,
+        "e": 284
+      },
+      {
+        "t": "pertama",
+        "f": 284,
+        "e": 293
+      },
+      {
+        "t": "langsung",
+        "f": 293,
+        "e": 307
+      }
+    ]
   },
   {
-    "from": 310,
-    "to": 340,
-    "text": "menghabiskan uangnya"
+    "from": 305,
+    "to": 336,
+    "text": "menghabiskan uangnya",
+    "words": [
+      {
+        "t": "menghabiskan",
+        "f": 307,
+        "e": 325
+      },
+      {
+        "t": "uangnya",
+        "f": 325,
+        "e": 338
+      }
+    ]
   },
   {
-    "from": 340,
-    "to": 380,
-    "text": "untuk membuat hidup terasa"
+    "from": 336,
+    "to": 377,
+    "text": "untuk membuat hidup terasa",
+    "words": [
+      {
+        "t": "untuk",
+        "f": 338,
+        "e": 346
+      },
+      {
+        "t": "membuat",
+        "f": 346,
+        "e": 358
+      },
+      {
+        "t": "hidup",
+        "f": 358,
+        "e": 367
+      },
+      {
+        "t": "terasa",
+        "f": 367,
+        "e": 379
+      }
+    ]
   },
   {
-    "from": 380,
+    "from": 377,
     "to": 422,
-    "text": "lebih menyenangkan hari ini."
+    "text": "lebih menyenangkan hari ini.",
+    "words": [
+      {
+        "t": "lebih",
+        "f": 379,
+        "e": 388
+      },
+      {
+        "t": "menyenangkan",
+        "f": 388,
+        "e": 405
+      },
+      {
+        "t": "hari",
+        "f": 405,
+        "e": 412
+      },
+      {
+        "t": "ini.",
+        "f": 412,
+        "e": 418
+      }
+    ]
   },
   {
     "from": 436,
-    "to": 516,
-    "text": "Orang kedua menggunakan sebagian uangnya"
+    "to": 504,
+    "text": "Orang kedua menggunakan sebagian uangnya",
+    "words": [
+      {
+        "t": "Orang",
+        "f": 436,
+        "e": 445
+      },
+      {
+        "t": "kedua",
+        "f": 445,
+        "e": 455
+      },
+      {
+        "t": "menggunakan",
+        "f": 455,
+        "e": 476
+      },
+      {
+        "t": "sebagian",
+        "f": 476,
+        "e": 493
+      },
+      {
+        "t": "uangnya",
+        "f": 493,
+        "e": 506
+      }
+    ]
   },
   {
-    "from": 516,
-    "to": 558,
-    "text": "untuk membeli sesuatu"
+    "from": 504,
+    "to": 553,
+    "text": "untuk membeli sesuatu",
+    "words": [
+      {
+        "t": "untuk",
+        "f": 506,
+        "e": 525
+      },
+      {
+        "t": "membeli",
+        "f": 525,
+        "e": 540
+      },
+      {
+        "t": "sesuatu",
+        "f": 540,
+        "e": 555
+      }
+    ]
   },
   {
-    "from": 558,
-    "to": 623,
-    "text": "yang bisa meningkatkan kemampuan"
+    "from": 553,
+    "to": 624,
+    "text": "yang bisa meningkatkan kemampuan",
+    "words": [
+      {
+        "t": "yang",
+        "f": 555,
+        "e": 567
+      },
+      {
+        "t": "bisa",
+        "f": 567,
+        "e": 585
+      },
+      {
+        "t": "meningkatkan",
+        "f": 585,
+        "e": 608
+      },
+      {
+        "t": "kemampuan",
+        "f": 608,
+        "e": 626
+      }
+    ]
   },
   {
-    "from": 623,
+    "from": 624,
     "to": 663,
-    "text": "atau penghasilannya."
+    "text": "atau penghasilannya.",
+    "words": [
+      {
+        "t": "atau",
+        "f": 626,
+        "e": 636
+      },
+      {
+        "t": "penghasilannya.",
+        "f": 636,
+        "e": 659
+      }
+    ]
   },
   {
     "from": 676,
-    "to": 724,
-    "text": "Yang pertama mendapatkan"
+    "to": 712,
+    "text": "Yang pertama mendapatkan",
+    "words": [
+      {
+        "t": "Yang",
+        "f": 676,
+        "e": 682
+      },
+      {
+        "t": "pertama",
+        "f": 682,
+        "e": 694
+      },
+      {
+        "t": "mendapatkan",
+        "f": 694,
+        "e": 714
+      }
+    ]
   },
   {
-    "from": 724,
-    "to": 760,
-    "text": "kesenangan instan."
+    "from": 712,
+    "to": 754,
+    "text": "kesenangan instan.",
+    "words": [
+      {
+        "t": "kesenangan",
+        "f": 714,
+        "e": 732
+      },
+      {
+        "t": "instan.",
+        "f": 732,
+        "e": 750
+      }
+    ]
   },
   {
-    "from": 760,
-    "to": 813,
-    "text": "Tapi kesenangan itu hilang,"
+    "from": 754,
+    "to": 818,
+    "text": "Tapi kesenangan itu hilang,",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 756,
+        "e": 774
+      },
+      {
+        "t": "kesenangan",
+        "f": 774,
+        "e": 793
+      },
+      {
+        "t": "itu",
+        "f": 793,
+        "e": 801
+      },
+      {
+        "t": "hilang,",
+        "f": 801,
+        "e": 820
+      }
+    ]
   },
   {
-    "from": 813,
+    "from": 818,
     "to": 861,
-    "text": "dan uangnya juga hilang."
+    "text": "dan uangnya juga hilang.",
+    "words": [
+      {
+        "t": "dan",
+        "f": 820,
+        "e": 826
+      },
+      {
+        "t": "uangnya",
+        "f": 826,
+        "e": 840
+      },
+      {
+        "t": "juga",
+        "f": 840,
+        "e": 846
+      },
+      {
+        "t": "hilang.",
+        "f": 846,
+        "e": 859
+      }
+    ]
   },
   {
     "from": 904,
-    "to": 936,
-    "text": "Yang kedua mungkin"
+    "to": 927,
+    "text": "Yang kedua mungkin",
+    "words": [
+      {
+        "t": "Yang",
+        "f": 904,
+        "e": 910
+      },
+      {
+        "t": "kedua",
+        "f": 910,
+        "e": 921
+      },
+      {
+        "t": "mungkin",
+        "f": 921,
+        "e": 929
+      }
+    ]
   },
   {
-    "from": 936,
-    "to": 990,
-    "text": "tidak terlihat keren hari ini."
+    "from": 927,
+    "to": 983,
+    "text": "tidak terlihat keren hari ini.",
+    "words": [
+      {
+        "t": "tidak",
+        "f": 929,
+        "e": 940
+      },
+      {
+        "t": "terlihat",
+        "f": 940,
+        "e": 953
+      },
+      {
+        "t": "keren",
+        "f": 953,
+        "e": 961
+      },
+      {
+        "t": "hari",
+        "f": 961,
+        "e": 967
+      },
+      {
+        "t": "ini.",
+        "f": 967,
+        "e": 974
+      }
+    ]
   },
   {
-    "from": 990,
-    "to": 1036,
-    "text": "Tapi investasinya perlahan"
+    "from": 983,
+    "to": 1040,
+    "text": "Tapi investasinya perlahan",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 985,
+        "e": 997
+      },
+      {
+        "t": "investasinya",
+        "f": 997,
+        "e": 1024
+      },
+      {
+        "t": "perlahan",
+        "f": 1024,
+        "e": 1042
+      }
+    ]
   },
   {
-    "from": 1036,
+    "from": 1040,
     "to": 1082,
-    "text": "menghasilkan peluang baru."
+    "text": "menghasilkan peluang baru.",
+    "words": [
+      {
+        "t": "menghasilkan",
+        "f": 1042,
+        "e": 1058
+      },
+      {
+        "t": "peluang",
+        "f": 1058,
+        "e": 1069
+      },
+      {
+        "t": "baru.",
+        "f": 1069,
+        "e": 1078
+      }
+    ]
   },
   {
     "from": 1125,
-    "to": 1174,
-    "text": "Perbedaan terbesar bukan"
+    "to": 1177,
+    "text": "Perbedaan terbesar bukan",
+    "words": [
+      {
+        "t": "Perbedaan",
+        "f": 1125,
+        "e": 1140
+      },
+      {
+        "t": "terbesar",
+        "f": 1140,
+        "e": 1158
+      },
+      {
+        "t": "bukan",
+        "f": 1158,
+        "e": 1179
+      }
+    ]
   },
   {
-    "from": 1174,
-    "to": 1241,
-    "text": "berapa uang yang mereka dapatkan."
+    "from": 1177,
+    "to": 1237,
+    "text": "berapa uang yang mereka dapatkan.",
+    "words": [
+      {
+        "t": "berapa",
+        "f": 1179,
+        "e": 1191
+      },
+      {
+        "t": "uang",
+        "f": 1191,
+        "e": 1199
+      },
+      {
+        "t": "yang",
+        "f": 1199,
+        "e": 1203
+      },
+      {
+        "t": "mereka",
+        "f": 1203,
+        "e": 1210
+      },
+      {
+        "t": "dapatkan.",
+        "f": 1210,
+        "e": 1229
+      }
+    ]
   },
   {
-    "from": 1241,
-    "to": 1298,
-    "text": "Tapi apa yang mereka lakukan"
+    "from": 1237,
+    "to": 1308,
+    "text": "Tapi apa yang mereka lakukan",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 1239,
+        "e": 1268
+      },
+      {
+        "t": "apa",
+        "f": 1268,
+        "e": 1280
+      },
+      {
+        "t": "yang",
+        "f": 1280,
+        "e": 1287
+      },
+      {
+        "t": "mereka",
+        "f": 1287,
+        "e": 1296
+      },
+      {
+        "t": "lakukan",
+        "f": 1296,
+        "e": 1310
+      }
+    ]
   },
   {
-    "from": 1298,
+    "from": 1308,
     "to": 1364,
-    "text": "dengan uang yang mereka dapatkan."
+    "text": "dengan uang yang mereka dapatkan.",
+    "words": [
+      {
+        "t": "dengan",
+        "f": 1310,
+        "e": 1319
+      },
+      {
+        "t": "uang",
+        "f": 1319,
+        "e": 1331
+      },
+      {
+        "t": "yang",
+        "f": 1331,
+        "e": 1337
+      },
+      {
+        "t": "mereka",
+        "f": 1337,
+        "e": 1343
+      },
+      {
+        "t": "dapatkan.",
+        "f": 1343,
+        "e": 1361
+      }
+    ]
   }
 ];

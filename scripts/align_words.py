@@ -41,13 +41,17 @@ def terbilang(n: int) -> str:
     return str(n)
 
 
+# Spoken variants that count as the same word (colloquial spellings Whisper tends to pick).
+SAME = {"nggak": "gak", "ngga": "gak", "enggak": "gak", "ga": "gak", "tahu": "tau", "badui": "baduy", "km": "kilometer"}
+
+
 def norm_tokens(text: str) -> list[str]:
-    """Lower-case word tokens for matching: hyphens split, digits spelled out, punctuation dropped."""
+    """Lower-case word tokens for matching: hyphens split, digits spelled out, punctuation dropped, variants merged."""
     text = text.lower().replace("-", " ").replace("*", " ")
     text = re.sub(r"(?<=\d)\.(?=\d{3})", "", text)  # 250.000 -> 250000
     out: list[str] = []
     for tok in re.findall(r"[a-zÀ-ɏ]+|\d+", text):
-        out.extend(terbilang(int(tok)).split() if tok.isdigit() else [tok])
+        out.extend(terbilang(int(tok)).split() if tok.isdigit() else [SAME.get(tok, tok)])
     return out
 
 
@@ -59,7 +63,7 @@ def phrase_units(phrase: str) -> list[dict]:
         sm = SPOKEN.fullmatch(raw)
         shown, spoken = (sm.group(1), sm.group(2)) if sm else (raw, raw)
         emph = shown.startswith("*") or shown.rstrip(".,!?:;\"'").endswith("*") or bool(re.search(r"\d", shown))
-        units.append({"text": shown.replace("*", ""), "spoken": norm_tokens(spoken), "emph": emph})
+        units.append({"text": shown.replace("*", ""), "spoken": norm_tokens(spoken), "shown": norm_tokens(shown), "emph": emph})
     return units
 
 
@@ -83,24 +87,74 @@ def align_line(phrases: list[str], heard: list[tuple[str, float, float]], dur: f
     times: list[tuple[float, float] | None] = [None] * len(script)
     problems: list[str] = []
     sm = difflib.SequenceMatcher(None, [t for _, t in script], [h[0] for h in heard_tok], autojunk=False)
+    regions: list[list[int]] = []  # runs of adjacent differences, judged together
     for op, i1, i2, j1, j2 in sm.get_opcodes():
         if op == "equal":
             for k in range(i2 - i1):
                 times[i1 + k] = heard_tok[j1 + k][1:3]
-        elif op == "replace":
+            continue
+        if op == "replace":
             n, m = i2 - i1, j2 - j1
             for k in range(n):
-                j = j1 + min(m - 1, int(k * m / n))
-                times[i1 + k] = heard_tok[j][1:3]
-            said = " ".join(dict.fromkeys(h[3] for h in heard_tok[j1:j2]))
-            want = " ".join(t for _, t in script[i1:i2])
-            ratio = difflib.SequenceMatcher(None, want.replace(" ", ""), said.lower().replace(" ", "").replace("-", "")).ratio()
-            if ratio < 0.8:  # "di mana" vs "dimana" is fine; "temannya" vs "teman temannya" is not
-                problems.append(f'"{want}" terdengar "{said}"')
-        elif op == "delete":
-            problems.append(f'"{" ".join(t for _, t in script[i1:i2])}" tidak terdengar')
-        elif op == "insert":
-            problems.append(f'kata tambahan terdengar: "{" ".join(dict.fromkeys(h[3] for h in heard_tok[j1:j2]))}"')
+                times[i1 + k] = heard_tok[j1 + min(m - 1, int(k * m / n))][1:3]
+        if regions and regions[-1][1] == i1 and regions[-1][3] == j1:
+            regions[-1][1], regions[-1][3] = i2, j2
+        else:
+            regions.append([i1, i2, j1, j2])
+
+    # A difference is only reported when the letters differ too: Whisper joins or splits words
+    # ("di kasir" -> "dikasir") and often writes what the caption shows ({Black Hole=blek hol} heard
+    # as "Black Hole", {QRIS=kris} as "Chris"), so compare with both the spoken and the shown text.
+    # Judge at letter level with spaces removed, so joins and splits vanish; map differences back to words.
+    s_chars, s_owner = [], []
+    for k, (_, t) in enumerate(script):
+        s_chars.extend(t)
+        s_owner.extend([k] * len(t))
+    h_chars, h_owner = [], []
+    for k, h in enumerate(heard_tok):
+        h_chars.extend(h[0])
+        h_owner.extend([k] * len(h[0]))
+    regions = []
+    for op, a1, a2, b1, b2 in difflib.SequenceMatcher(None, s_chars, h_chars, autojunk=False).get_opcodes():
+        if op == "equal" or (a2 - a1) + (b2 - b1) < 3:
+            continue
+        i1 = s_owner[a1] if a1 < len(s_owner) else len(script)
+        i2 = s_owner[a2 - 1] + 1 if a2 > a1 else i1
+        j1 = h_owner[b1] if b1 < len(h_owner) else len(heard_tok)
+        j2 = h_owner[b2 - 1] + 1 if b2 > b1 else j1
+        if regions and i1 <= regions[-1][1] and j1 <= regions[-1][3]:
+            regions[-1][1], regions[-1][3] = max(i2, regions[-1][1]), max(j2, regions[-1][3])
+        else:
+            regions.append([i1, i2, j1, j2])
+
+    for i1, i2, j1, j2 in regions:
+        want = " ".join(t for _, t in script[i1:i2])
+        said = " ".join(dict.fromkeys(h[3] for h in heard_tok[j1:j2]))
+        heard_s = "".join(h[0] for h in heard_tok[j1:j2])
+        if i1 == i2:
+            if len(heard_s) > 3:
+                problems.append(f'kata tambahan terdengar: "{said}"')
+            continue
+        if j1 == j2:
+            problems.append(f'"{want}" tidak terdengar')
+            continue
+        ratio = difflib.SequenceMatcher(None, want.replace(" ", ""), heard_s).ratio()
+        # Units written {shown=spoken}: Whisper usually writes the shown form ("Black Hole" for "blek hol",
+        # "Chris" for {QRIS=kris}); compare the whole unit with everything heard over its time span.
+        uis = list(dict.fromkeys(script[k][0] for k in range(i1, i2)))
+        marked = [ui for ui in uis if flat[ui]["shown"] != flat[ui]["spoken"]]
+        if marked:
+            ks = [k for k, (ui, _) in enumerate(script) if ui in marked]
+            t0 = min(times[k][0] for k in ks if times[k]) if any(times[k] for k in ks) else None
+            t1 = max(times[k][1] for k in ks if times[k]) if any(times[k] for k in ks) else None
+            if t0 is not None:
+                span = "".join(h[0] for h in heard_tok if h[2] > t0 + 0.02 and h[1] < t1 - 0.02)
+                shown = "".join(t for ui in marked for t in flat[ui]["shown"])
+                spoken = "".join(t for ui in marked for t in flat[ui]["spoken"])
+                if max(difflib.SequenceMatcher(None, shown, span).ratio(), difflib.SequenceMatcher(None, spoken, span).ratio()) >= 0.6:
+                    continue
+        if ratio < 0.8:  # "di mana" vs "dimana" is fine; "temannya" vs "teman temannya" is not
+            problems.append(f'"{want}" terdengar "{said}"')
 
     # Fill gaps by interpolating between known neighbours, weighted by token length.
     i = 0

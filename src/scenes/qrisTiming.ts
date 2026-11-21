@@ -4,242 +4,1420 @@ export const SCENES = [{"from": 0, "len": 136}, {"from": 136, "len": 197}, {"fro
 export const CUES = [
   {
     "from": 10,
-    "to": 54,
-    "text": "Tiap hari kamu scan QRIS."
+    "to": 57,
+    "text": "Tiap hari kamu scan QRIS.",
+    "words": [
+      {
+        "t": "Tiap",
+        "f": 10,
+        "e": 17
+      },
+      {
+        "t": "hari",
+        "f": 17,
+        "e": 23
+      },
+      {
+        "t": "kamu",
+        "f": 23,
+        "e": 31
+      },
+      {
+        "t": "scan",
+        "f": 31,
+        "e": 39
+      },
+      {
+        "t": "QRIS",
+        "f": 39,
+        "e": 50
+      },
+      {
+        "t": ".",
+        "f": 50,
+        "e": 52
+      }
+    ]
   },
   {
-    "from": 54,
-    "to": 93,
-    "text": "Tapi pernah kepikiran,"
+    "from": 57,
+    "to": 92,
+    "text": "Tapi pernah kepikiran,",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 59,
+        "e": 71
+      },
+      {
+        "t": "pernah",
+        "f": 71,
+        "e": 79
+      },
+      {
+        "t": "kepikiran,",
+        "f": 79,
+        "e": 94
+      }
+    ]
   },
   {
-    "from": 93,
+    "from": 92,
     "to": 130,
-    "text": "siapa sih yang bikin?"
+    "text": "siapa sih yang bikin?",
+    "words": [
+      {
+        "t": "siapa",
+        "f": 94,
+        "e": 105
+      },
+      {
+        "t": "sih",
+        "f": 105,
+        "e": 110
+      },
+      {
+        "t": "yang",
+        "f": 110,
+        "e": 114
+      },
+      {
+        "t": "bikin?",
+        "f": 114,
+        "e": 126
+      }
+    ]
   },
   {
     "from": 143,
-    "to": 242,
-    "text": "Kita mundur dulu ke sekitar tahun 2018."
+    "to": 241,
+    "text": "Kita mundur dulu ke sekitar tahun 2018.",
+    "words": [
+      {
+        "t": "Kita",
+        "f": 143,
+        "e": 158
+      },
+      {
+        "t": "mundur",
+        "f": 158,
+        "e": 169
+      },
+      {
+        "t": "dulu",
+        "f": 169,
+        "e": 174
+      },
+      {
+        "t": "ke",
+        "f": 174,
+        "e": 178
+      },
+      {
+        "t": "sekitar",
+        "f": 178,
+        "e": 187
+      },
+      {
+        "t": "tahun",
+        "f": 187,
+        "e": 196
+      },
+      {
+        "t": "2018",
+        "f": 196,
+        "e": 221,
+        "k": 1
+      },
+      {
+        "t": ".",
+        "f": 221,
+        "e": 223
+      }
+    ]
   },
   {
-    "from": 242,
+    "from": 241,
     "to": 326,
-    "text": "Dompet digital lagi rame-ramenya."
+    "text": "Dompet digital lagi rame-ramenya.",
+    "words": [
+      {
+        "t": "Dompet",
+        "f": 243,
+        "e": 272
+      },
+      {
+        "t": "digital",
+        "f": 272,
+        "e": 284
+      },
+      {
+        "t": "lagi",
+        "f": 284,
+        "e": 290
+      },
+      {
+        "t": "rame-ramenya.",
+        "f": 290,
+        "e": 310
+      }
+    ]
   },
   {
     "from": 340,
-    "to": 393,
-    "text": "Masalahnya, tiap aplikasi"
+    "to": 401,
+    "text": "Masalahnya, tiap aplikasi",
+    "words": [
+      {
+        "t": "Masalahnya,",
+        "f": 340,
+        "e": 360
+      },
+      {
+        "t": "tiap",
+        "f": 369,
+        "e": 386
+      },
+      {
+        "t": "aplikasi",
+        "f": 386,
+        "e": 403
+      }
+    ]
   },
   {
-    "from": 393,
-    "to": 440,
-    "text": "punya kode QR sendiri,"
+    "from": 401,
+    "to": 439,
+    "text": "punya kode QR sendiri,",
+    "words": [
+      {
+        "t": "punya",
+        "f": 403,
+        "e": 412
+      },
+      {
+        "t": "kode",
+        "f": 412,
+        "e": 421
+      },
+      {
+        "t": "QR",
+        "f": 421,
+        "e": 429
+      },
+      {
+        "t": "sendiri,",
+        "f": 429,
+        "e": 441
+      }
+    ]
   },
   {
-    "from": 440,
+    "from": 439,
     "to": 497,
-    "text": "dan nggak bisa saling baca."
+    "text": "dan nggak bisa saling baca.",
+    "words": [
+      {
+        "t": "dan",
+        "f": 441,
+        "e": 462
+      },
+      {
+        "t": "nggak",
+        "f": 462,
+        "e": 468
+      },
+      {
+        "t": "bisa",
+        "f": 468,
+        "e": 475
+      },
+      {
+        "t": "saling",
+        "f": 475,
+        "e": 485
+      },
+      {
+        "t": "baca.",
+        "f": 485,
+        "e": 495
+      }
+    ]
   },
   {
     "from": 511,
-    "to": 571,
-    "text": "Akibatnya, meja kasir warung"
+    "to": 576,
+    "text": "Akibatnya, meja kasir warung",
+    "words": [
+      {
+        "t": "Akibatnya,",
+        "f": 511,
+        "e": 540
+      },
+      {
+        "t": "meja",
+        "f": 546,
+        "e": 555
+      },
+      {
+        "t": "kasir",
+        "f": 555,
+        "e": 567
+      },
+      {
+        "t": "warung",
+        "f": 567,
+        "e": 578
+      }
+    ]
   },
   {
-    "from": 571,
-    "to": 622,
-    "text": "penuh tempelan stiker QR"
+    "from": 576,
+    "to": 619,
+    "text": "penuh tempelan stiker QR",
+    "words": [
+      {
+        "t": "penuh",
+        "f": 578,
+        "e": 587
+      },
+      {
+        "t": "tempelan",
+        "f": 587,
+        "e": 600
+      },
+      {
+        "t": "stiker",
+        "f": 600,
+        "e": 607
+      },
+      {
+        "t": "QR",
+        "f": 607,
+        "e": 621
+      }
+    ]
   },
   {
-    "from": 622,
+    "from": 619,
     "to": 677,
-    "text": "dari macam-macam aplikasi."
+    "text": "dari macam-macam aplikasi.",
+    "words": [
+      {
+        "t": "dari",
+        "f": 621,
+        "e": 637
+      },
+      {
+        "t": "macam-macam",
+        "f": 637,
+        "e": 657
+      },
+      {
+        "t": "aplikasi.",
+        "f": 657,
+        "e": 673
+      }
+    ]
   },
   {
     "from": 691,
-    "to": 765,
-    "text": "Pembeli bingung cari stiker yang cocok."
+    "to": 764,
+    "text": "Pembeli bingung cari stiker yang cocok.",
+    "words": [
+      {
+        "t": "Pembeli",
+        "f": 691,
+        "e": 702
+      },
+      {
+        "t": "bingung",
+        "f": 702,
+        "e": 710
+      },
+      {
+        "t": "cari",
+        "f": 710,
+        "e": 720
+      },
+      {
+        "t": "stiker",
+        "f": 720,
+        "e": 729
+      },
+      {
+        "t": "yang",
+        "f": 729,
+        "e": 733
+      },
+      {
+        "t": "cocok.",
+        "f": 733,
+        "e": 748
+      }
+    ]
   },
   {
-    "from": 765,
+    "from": 764,
     "to": 828,
-    "text": "Penjual repot ngurus banyak akun."
+    "text": "Penjual repot ngurus banyak akun.",
+    "words": [
+      {
+        "t": "Penjual",
+        "f": 766,
+        "e": 785
+      },
+      {
+        "t": "repot",
+        "f": 785,
+        "e": 796
+      },
+      {
+        "t": "ngurus",
+        "f": 796,
+        "e": 805
+      },
+      {
+        "t": "banyak",
+        "f": 805,
+        "e": 811
+      },
+      {
+        "t": "akun.",
+        "f": 811,
+        "e": 823
+      }
+    ]
   },
   {
     "from": 841,
-    "to": 912,
-    "text": "Di sinilah Bank Indonesia turun tangan,"
+    "to": 905,
+    "text": "Di sinilah Bank Indonesia turun tangan,",
+    "words": [
+      {
+        "t": "Di",
+        "f": 841,
+        "e": 858
+      },
+      {
+        "t": "sinilah",
+        "f": 841,
+        "e": 858
+      },
+      {
+        "t": "Bank",
+        "f": 858,
+        "e": 865
+      },
+      {
+        "t": "Indonesia",
+        "f": 865,
+        "e": 880
+      },
+      {
+        "t": "turun",
+        "f": 880,
+        "e": 894
+      },
+      {
+        "t": "tangan,",
+        "f": 894,
+        "e": 907
+      }
+    ]
   },
   {
-    "from": 912,
+    "from": 905,
     "to": 971,
-    "text": "di bawah Gubernur Perry Warjiyo."
+    "text": "di bawah Gubernur Perry Warjiyo.",
+    "words": [
+      {
+        "t": "di",
+        "f": 907,
+        "e": 913
+      },
+      {
+        "t": "bawah",
+        "f": 913,
+        "e": 922
+      },
+      {
+        "t": "Gubernur",
+        "f": 922,
+        "e": 939
+      },
+      {
+        "t": "Perry",
+        "f": 939,
+        "e": 957
+      },
+      {
+        "t": "Warjiyo.",
+        "f": 957,
+        "e": 968
+      }
+    ]
   },
   {
     "from": 984,
-    "to": 1079,
-    "text": "Bareng ASPI, asosiasi industri pembayaran,"
+    "to": 1096,
+    "text": "Bareng ASPI, asosiasi industri pembayaran,",
+    "words": [
+      {
+        "t": "Bareng",
+        "f": 984,
+        "e": 1005
+      },
+      {
+        "t": "ASPI",
+        "f": 1005,
+        "e": 1056
+      },
+      {
+        "t": ",",
+        "f": 1056,
+        "e": 1058
+      },
+      {
+        "t": "asosiasi",
+        "f": 1056,
+        "e": 1058
+      },
+      {
+        "t": "industri",
+        "f": 1056,
+        "e": 1071
+      },
+      {
+        "t": "pembayaran,",
+        "f": 1071,
+        "e": 1091
+      }
+    ]
   },
   {
-    "from": 1079,
+    "from": 1096,
     "to": 1158,
-    "text": "mereka bikin satu standar nasional."
+    "text": "mereka bikin satu standar nasional.",
+    "words": [
+      {
+        "t": "mereka",
+        "f": 1098,
+        "e": 1108
+      },
+      {
+        "t": "bikin",
+        "f": 1108,
+        "e": 1119
+      },
+      {
+        "t": "satu",
+        "f": 1119,
+        "e": 1125
+      },
+      {
+        "t": "standar",
+        "f": 1125,
+        "e": 1139
+      },
+      {
+        "t": "nasional.",
+        "f": 1139,
+        "e": 1153
+      }
+    ]
   },
   {
     "from": 1172,
-    "to": 1216,
-    "text": "Standarnya mengacu ke"
+    "to": 1198,
+    "text": "Standarnya mengacu ke",
+    "words": [
+      {
+        "t": "Standarnya",
+        "f": 1172,
+        "e": 1187
+      },
+      {
+        "t": "mengacu",
+        "f": 1187,
+        "e": 1200
+      },
+      {
+        "t": "ke",
+        "f": 1200,
+        "e": 1213
+      }
+    ]
   },
   {
-    "from": 1216,
-    "to": 1273,
-    "text": "aturan internasional EMVCo,"
+    "from": 1198,
+    "to": 1259,
+    "text": "aturan internasional EMVCo,",
+    "words": [
+      {
+        "t": "aturan",
+        "f": 1200,
+        "e": 1213
+      },
+      {
+        "t": "internasional",
+        "f": 1213,
+        "e": 1237
+      },
+      {
+        "t": "EMVCo",
+        "f": 1237,
+        "e": 1261
+      },
+      {
+        "t": ",",
+        "f": 1261,
+        "e": 1262
+      }
+    ]
   },
   {
-    "from": 1273,
+    "from": 1259,
     "to": 1356,
-    "text": "supaya semua aplikasi bisa saling baca."
+    "text": "supaya semua aplikasi bisa saling baca.",
+    "words": [
+      {
+        "t": "supaya",
+        "f": 1261,
+        "e": 1302
+      },
+      {
+        "t": "semua",
+        "f": 1302,
+        "e": 1309
+      },
+      {
+        "t": "aplikasi",
+        "f": 1309,
+        "e": 1328
+      },
+      {
+        "t": "bisa",
+        "f": 1328,
+        "e": 1334
+      },
+      {
+        "t": "saling",
+        "f": 1334,
+        "e": 1344
+      },
+      {
+        "t": "baca.",
+        "f": 1344,
+        "e": 1353
+      }
+    ]
   },
   {
     "from": 1370,
     "to": 1398,
-    "text": "Namanya QRIS."
+    "text": "Namanya QRIS.",
+    "words": [
+      {
+        "t": "Namanya",
+        "f": 1370,
+        "e": 1382
+      },
+      {
+        "t": "QRIS",
+        "f": 1382,
+        "e": 1391
+      },
+      {
+        "t": ".",
+        "f": 1391,
+        "e": 1393
+      }
+    ]
   },
   {
     "from": 1398,
-    "to": 1471,
-    "text": "Singkatan dari Quick Response Code"
+    "to": 1463,
+    "text": "Singkatan dari Quick Response Code",
+    "words": [
+      {
+        "t": "Singkatan",
+        "f": 1400,
+        "e": 1423
+      },
+      {
+        "t": "dari",
+        "f": 1423,
+        "e": 1431
+      },
+      {
+        "t": "Quick",
+        "f": 1431,
+        "e": 1439
+      },
+      {
+        "t": "Response",
+        "f": 1439,
+        "e": 1452
+      },
+      {
+        "t": "Code",
+        "f": 1452,
+        "e": 1465
+      }
+    ]
   },
   {
-    "from": 1471,
+    "from": 1463,
     "to": 1514,
-    "text": "Indonesian Standard."
+    "text": "Indonesian Standard.",
+    "words": [
+      {
+        "t": "Indonesian",
+        "f": 1465,
+        "e": 1487
+      },
+      {
+        "t": "Standard.",
+        "f": 1487,
+        "e": 1506
+      }
+    ]
   },
   {
     "from": 1527,
-    "to": 1600,
-    "text": "Uji cobanya dimulai akhir 2018,"
+    "to": 1594,
+    "text": "Uji cobanya dimulai akhir 2018,",
+    "words": [
+      {
+        "t": "Uji",
+        "f": 1527,
+        "e": 1535
+      },
+      {
+        "t": "cobanya",
+        "f": 1535,
+        "e": 1547
+      },
+      {
+        "t": "dimulai",
+        "f": 1547,
+        "e": 1557
+      },
+      {
+        "t": "akhir",
+        "f": 1557,
+        "e": 1565
+      },
+      {
+        "t": "2018",
+        "f": 1565,
+        "e": 1590,
+        "k": 1
+      },
+      {
+        "t": ",",
+        "f": 1590,
+        "e": 1591
+      }
+    ]
   },
   {
-    "from": 1600,
+    "from": 1594,
     "to": 1666,
-    "text": "lalu lanjut lagi April 2019."
+    "text": "lalu lanjut lagi April 2019.",
+    "words": [
+      {
+        "t": "lalu",
+        "f": 1596,
+        "e": 1602
+      },
+      {
+        "t": "lanjut",
+        "f": 1602,
+        "e": 1610
+      },
+      {
+        "t": "lagi",
+        "f": 1610,
+        "e": 1617
+      },
+      {
+        "t": "April",
+        "f": 1617,
+        "e": 1626
+      },
+      {
+        "t": "2019",
+        "f": 1626,
+        "e": 1644,
+        "k": 1
+      },
+      {
+        "t": ".",
+        "f": 1644,
+        "e": 1645
+      }
+    ]
   },
   {
     "from": 1680,
-    "to": 1752,
-    "text": "Tanggal 17 Agustus 2019,"
+    "to": 1753,
+    "text": "Tanggal 17 Agustus 2019,",
+    "words": [
+      {
+        "t": "Tanggal",
+        "f": 1680,
+        "e": 1690
+      },
+      {
+        "t": "17 Agustus 2019",
+        "f": 1690,
+        "e": 1755,
+        "k": 1
+      },
+      {
+        "t": ",",
+        "f": 1755,
+        "e": 1757
+      }
+    ]
   },
   {
-    "from": 1752,
-    "to": 1816,
-    "text": "pas hari kemerdekaan,"
+    "from": 1753,
+    "to": 1834,
+    "text": "pas hari kemerdekaan,",
+    "words": [
+      {
+        "t": "pas",
+        "f": 1755,
+        "e": 1788
+      },
+      {
+        "t": "hari",
+        "f": 1788,
+        "e": 1798
+      },
+      {
+        "t": "kemerdekaan,",
+        "f": 1798,
+        "e": 1822
+      }
+    ]
   },
   {
-    "from": 1816,
+    "from": 1834,
     "to": 1886,
-    "text": "QRIS resmi diluncurkan."
+    "text": "QRIS resmi diluncurkan.",
+    "words": [
+      {
+        "t": "QRIS",
+        "f": 1836,
+        "e": 1843
+      },
+      {
+        "t": "resmi",
+        "f": 1843,
+        "e": 1859
+      },
+      {
+        "t": "diluncurkan.",
+        "f": 1859,
+        "e": 1882
+      }
+    ]
   },
   {
     "from": 1899,
-    "to": 1952,
-    "text": "Mulai 1 Januari 2020,"
+    "to": 1971,
+    "text": "Mulai 1 Januari 2020,",
+    "words": [
+      {
+        "t": "Mulai",
+        "f": 1899,
+        "e": 1908
+      },
+      {
+        "t": "1 Januari 2020",
+        "f": 1908,
+        "e": 1962,
+        "k": 1
+      },
+      {
+        "t": ",",
+        "f": 1962,
+        "e": 1963
+      }
+    ]
   },
   {
-    "from": 1952,
-    "to": 2032,
-    "text": "semua pembayaran QR di Indonesia"
+    "from": 1971,
+    "to": 2020,
+    "text": "semua pembayaran QR di Indonesia",
+    "words": [
+      {
+        "t": "semua",
+        "f": 1973,
+        "e": 1983
+      },
+      {
+        "t": "pembayaran",
+        "f": 1983,
+        "e": 1996
+      },
+      {
+        "t": "QR",
+        "f": 1996,
+        "e": 2003
+      },
+      {
+        "t": "di",
+        "f": 2003,
+        "e": 2009
+      },
+      {
+        "t": "Indonesia",
+        "f": 2009,
+        "e": 2022
+      }
+    ]
   },
   {
-    "from": 2032,
+    "from": 2020,
     "to": 2075,
-    "text": "wajib pakai QRIS."
+    "text": "wajib pakai QRIS.",
+    "words": [
+      {
+        "t": "wajib",
+        "f": 2022,
+        "e": 2049
+      },
+      {
+        "t": "pakai",
+        "f": 2049,
+        "e": 2056
+      },
+      {
+        "t": "QRIS",
+        "f": 2056,
+        "e": 2065
+      },
+      {
+        "t": ".",
+        "f": 2065,
+        "e": 2067
+      }
+    ]
   },
   {
     "from": 2088,
-    "to": 2156,
-    "text": "Hasilnya? Cukup satu kode di kasir,"
+    "to": 2182,
+    "text": "Hasilnya? Cukup satu kode di kasir,",
+    "words": [
+      {
+        "t": "Hasilnya?",
+        "f": 2088,
+        "e": 2105
+      },
+      {
+        "t": "Cukup",
+        "f": 2126,
+        "e": 2138
+      },
+      {
+        "t": "satu",
+        "f": 2138,
+        "e": 2144
+      },
+      {
+        "t": "kode",
+        "f": 2144,
+        "e": 2153
+      },
+      {
+        "t": "di",
+        "f": 2178,
+        "e": 2184
+      },
+      {
+        "t": "kasir,",
+        "f": 2184,
+        "e": 2192
+      }
+    ]
   },
   {
-    "from": 2156,
-    "to": 2215,
-    "text": "bisa discan dari aplikasi bank"
+    "from": 2182,
+    "to": 2218,
+    "text": "bisa discan dari aplikasi bank",
+    "words": [
+      {
+        "t": "bisa",
+        "f": 2184,
+        "e": 2192
+      },
+      {
+        "t": "discan",
+        "f": 2184,
+        "e": 2192
+      },
+      {
+        "t": "dari",
+        "f": 2192,
+        "e": 2197
+      },
+      {
+        "t": "aplikasi",
+        "f": 2197,
+        "e": 2213
+      },
+      {
+        "t": "bank",
+        "f": 2213,
+        "e": 2220
+      }
+    ]
   },
   {
-    "from": 2215,
+    "from": 2218,
     "to": 2271,
-    "text": "atau dompet digital mana pun."
+    "text": "atau dompet digital mana pun.",
+    "words": [
+      {
+        "t": "atau",
+        "f": 2220,
+        "e": 2228
+      },
+      {
+        "t": "dompet",
+        "f": 2228,
+        "e": 2239
+      },
+      {
+        "t": "digital",
+        "f": 2239,
+        "e": 2250
+      },
+      {
+        "t": "mana",
+        "f": 2250,
+        "e": 2267
+      },
+      {
+        "t": "pun.",
+        "f": 2250,
+        "e": 2267
+      }
+    ]
   },
   {
     "from": 2284,
-    "to": 2381,
-    "text": "Sekarang penggunanya sekitar 67 juta orang."
+    "to": 2404,
+    "text": "Sekarang penggunanya sekitar 67 juta orang.",
+    "words": [
+      {
+        "t": "Sekarang",
+        "f": 2284,
+        "e": 2308
+      },
+      {
+        "t": "penggunanya",
+        "f": 2308,
+        "e": 2326
+      },
+      {
+        "t": "sekitar",
+        "f": 2326,
+        "e": 2338
+      },
+      {
+        "t": "67",
+        "f": 2338,
+        "e": 2356,
+        "k": 1
+      },
+      {
+        "t": "juta",
+        "f": 2356,
+        "e": 2370
+      },
+      {
+        "t": "orang.",
+        "f": 2370,
+        "e": 2379
+      }
+    ]
   },
   {
-    "from": 2381,
+    "from": 2404,
     "to": 2470,
-    "text": "Kira-kira seperempat penduduk Indonesia."
+    "text": "Kira-kira seperempat penduduk Indonesia.",
+    "words": [
+      {
+        "t": "Kira-kira",
+        "f": 2406,
+        "e": 2425
+      },
+      {
+        "t": "seperempat",
+        "f": 2425,
+        "e": 2443
+      },
+      {
+        "t": "penduduk",
+        "f": 2443,
+        "e": 2454
+      },
+      {
+        "t": "Indonesia.",
+        "f": 2454,
+        "e": 2460
+      }
+    ]
   },
   {
     "from": 2483,
-    "to": 2547,
-    "text": "Merchant-nya sekitar 45 juta,"
+    "to": 2554,
+    "text": "Merchant-nya sekitar 45 juta,",
+    "words": [
+      {
+        "t": "Merchant-nya",
+        "f": 2483,
+        "e": 2500
+      },
+      {
+        "t": "sekitar",
+        "f": 2500,
+        "e": 2512
+      },
+      {
+        "t": "45",
+        "f": 2512,
+        "e": 2527,
+        "k": 1
+      },
+      {
+        "t": "juta,",
+        "f": 2527,
+        "e": 2549
+      }
+    ]
   },
   {
-    "from": 2547,
-    "to": 2603,
-    "text": "dan hampir semuanya UMKM,"
+    "from": 2554,
+    "to": 2618,
+    "text": "dan hampir semuanya UMKM,",
+    "words": [
+      {
+        "t": "dan",
+        "f": 2556,
+        "e": 2558
+      },
+      {
+        "t": "hampir",
+        "f": 2557,
+        "e": 2570
+      },
+      {
+        "t": "semuanya",
+        "f": 2570,
+        "e": 2586
+      },
+      {
+        "t": "UMKM",
+        "f": 2586,
+        "e": 2611
+      },
+      {
+        "t": ",",
+        "f": 2611,
+        "e": 2613
+      }
+    ]
   },
   {
-    "from": 2603,
+    "from": 2618,
     "to": 2682,
-    "text": "kayak warung dan pedagang kaki lima."
+    "text": "kayak warung dan pedagang kaki lima.",
+    "words": [
+      {
+        "t": "kayak",
+        "f": 2620,
+        "e": 2629
+      },
+      {
+        "t": "warung",
+        "f": 2629,
+        "e": 2642
+      },
+      {
+        "t": "dan",
+        "f": 2642,
+        "e": 2647
+      },
+      {
+        "t": "pedagang",
+        "f": 2647,
+        "e": 2662
+      },
+      {
+        "t": "kaki",
+        "f": 2662,
+        "e": 2670
+      },
+      {
+        "t": "lima.",
+        "f": 2670,
+        "e": 2681
+      }
+    ]
   },
   {
     "from": 2695,
-    "to": 2757,
-    "text": "Bahkan QRIS udah bisa dipakai"
+    "to": 2741,
+    "text": "Bahkan QRIS udah bisa dipakai",
+    "words": [
+      {
+        "t": "Bahkan",
+        "f": 2695,
+        "e": 2707
+      },
+      {
+        "t": "QRIS",
+        "f": 2707,
+        "e": 2714
+      },
+      {
+        "t": "udah",
+        "f": 2714,
+        "e": 2721
+      },
+      {
+        "t": "bisa",
+        "f": 2721,
+        "e": 2728
+      },
+      {
+        "t": "dipakai",
+        "f": 2728,
+        "e": 2743
+      }
+    ]
   },
   {
-    "from": 2757,
-    "to": 2806,
-    "text": "di Malaysia, Singapura,"
+    "from": 2741,
+    "to": 2800,
+    "text": "di Malaysia, Singapura,",
+    "words": [
+      {
+        "t": "di",
+        "f": 2743,
+        "e": 2748
+      },
+      {
+        "t": "Malaysia,",
+        "f": 2748,
+        "e": 2760
+      },
+      {
+        "t": "Singapura,",
+        "f": 2775,
+        "e": 2794
+      }
+    ]
   },
   {
-    "from": 2806,
+    "from": 2800,
     "to": 2866,
-    "text": "Thailand, dan Korea Selatan."
+    "text": "Thailand, dan Korea Selatan.",
+    "words": [
+      {
+        "t": "Thailand,",
+        "f": 2802,
+        "e": 2811
+      },
+      {
+        "t": "dan",
+        "f": 2824,
+        "e": 2833
+      },
+      {
+        "t": "Korea",
+        "f": 2833,
+        "e": 2845
+      },
+      {
+        "t": "Selatan.",
+        "f": 2845,
+        "e": 2861
+      }
+    ]
   },
   {
     "from": 2880,
-    "to": 2956,
-    "text": "Jadi QRIS bukan buatan satu aplikasi."
+    "to": 2949,
+    "text": "Jadi QRIS bukan buatan satu aplikasi.",
+    "words": [
+      {
+        "t": "Jadi",
+        "f": 2880,
+        "e": 2886
+      },
+      {
+        "t": "QRIS",
+        "f": 2886,
+        "e": 2893
+      },
+      {
+        "t": "bukan",
+        "f": 2893,
+        "e": 2901
+      },
+      {
+        "t": "buatan",
+        "f": 2901,
+        "e": 2911
+      },
+      {
+        "t": "satu",
+        "f": 2911,
+        "e": 2918
+      },
+      {
+        "t": "aplikasi.",
+        "f": 2918,
+        "e": 2937
+      }
+    ]
   },
   {
-    "from": 2956,
-    "to": 2998,
-    "text": "Ini standar bersama,"
+    "from": 2949,
+    "to": 2996,
+    "text": "Ini standar bersama,",
+    "words": [
+      {
+        "t": "Ini",
+        "f": 2951,
+        "e": 2971
+      },
+      {
+        "t": "standar",
+        "f": 2971,
+        "e": 2982
+      },
+      {
+        "t": "bersama,",
+        "f": 2982,
+        "e": 2998
+      }
+    ]
   },
   {
-    "from": 2998,
+    "from": 2996,
     "to": 3058,
-    "text": "biar bayar cukup sekali scan."
+    "text": "biar bayar cukup sekali scan.",
+    "words": [
+      {
+        "t": "biar",
+        "f": 2998,
+        "e": 3017
+      },
+      {
+        "t": "bayar",
+        "f": 3017,
+        "e": 3026
+      },
+      {
+        "t": "cukup",
+        "f": 3026,
+        "e": 3046
+      },
+      {
+        "t": "sekali",
+        "f": 3046,
+        "e": 3047
+      },
+      {
+        "t": "scan.",
+        "f": 3047,
+        "e": 3054
+      }
+    ]
   },
   {
     "from": 3071,
-    "to": 3117,
-    "text": "Lain kali kamu scan QRIS,"
+    "to": 3107,
+    "text": "Lain kali kamu scan QRIS,",
+    "words": [
+      {
+        "t": "Lain",
+        "f": 3071,
+        "e": 3079
+      },
+      {
+        "t": "kali",
+        "f": 3079,
+        "e": 3085
+      },
+      {
+        "t": "kamu",
+        "f": 3085,
+        "e": 3094
+      },
+      {
+        "t": "scan",
+        "f": 3094,
+        "e": 3100
+      },
+      {
+        "t": "QRIS",
+        "f": 3100,
+        "e": 3109
+      },
+      {
+        "t": ",",
+        "f": 3109,
+        "e": 3110
+      }
+    ]
   },
   {
-    "from": 3117,
-    "to": 3154,
-    "text": "inget: dulu kasirnya"
+    "from": 3107,
+    "to": 3151,
+    "text": "inget: dulu kasirnya",
+    "words": [
+      {
+        "t": "inget:",
+        "f": 3109,
+        "e": 3127
+      },
+      {
+        "t": "dulu",
+        "f": 3130,
+        "e": 3134
+      },
+      {
+        "t": "kasirnya",
+        "f": 3134,
+        "e": 3153
+      }
+    ]
   },
   {
-    "from": 3154,
+    "from": 3151,
     "to": 3177,
-    "text": "penuh stiker."
+    "text": "penuh stiker.",
+    "words": [
+      {
+        "t": "penuh",
+        "f": 3153,
+        "e": 3162
+      },
+      {
+        "t": "stiker.",
+        "f": 3162,
+        "e": 3170
+      }
+    ]
   }
 ];

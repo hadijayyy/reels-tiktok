@@ -4,92 +4,528 @@ export const SCENES = [{"from": 0, "len": 155}, {"from": 155, "len": 193}, {"fro
 export const CUES = [
   {
     "from": 10,
-    "to": 66,
-    "text": "Orang paling pintar di ruangan"
+    "to": 56,
+    "text": "Orang paling pintar di ruangan",
+    "words": [
+      {
+        "t": "Orang",
+        "f": 10,
+        "e": 20
+      },
+      {
+        "t": "paling",
+        "f": 20,
+        "e": 27
+      },
+      {
+        "t": "pintar",
+        "f": 27,
+        "e": 42
+      },
+      {
+        "t": "di",
+        "f": 42,
+        "e": 46
+      },
+      {
+        "t": "ruangan",
+        "f": 46,
+        "e": 58
+      }
+    ]
   },
   {
-    "from": 66,
-    "to": 115,
-    "text": "belum tentu paling sukses."
+    "from": 56,
+    "to": 107,
+    "text": "belum tentu paling sukses.",
+    "words": [
+      {
+        "t": "belum",
+        "f": 58,
+        "e": 65
+      },
+      {
+        "t": "tentu",
+        "f": 65,
+        "e": 78
+      },
+      {
+        "t": "paling",
+        "f": 78,
+        "e": 84
+      },
+      {
+        "t": "sukses.",
+        "f": 84,
+        "e": 109
+      }
+    ]
   },
   {
-    "from": 115,
+    "from": 107,
     "to": 148,
-    "text": "Dan ini alasannya."
+    "text": "Dan ini alasannya.",
+    "words": [
+      {
+        "t": "Dan",
+        "f": 109,
+        "e": 118
+      },
+      {
+        "t": "ini",
+        "f": 118,
+        "e": 126
+      },
+      {
+        "t": "alasannya.",
+        "f": 126,
+        "e": 142
+      }
+    ]
   },
   {
     "from": 162,
-    "to": 228,
-    "text": "Karena pintar itu cuma modal."
+    "to": 214,
+    "text": "Karena pintar itu cuma modal.",
+    "words": [
+      {
+        "t": "Karena",
+        "f": 162,
+        "e": 169
+      },
+      {
+        "t": "pintar",
+        "f": 169,
+        "e": 182
+      },
+      {
+        "t": "itu",
+        "f": 182,
+        "e": 186
+      },
+      {
+        "t": "cuma",
+        "f": 186,
+        "e": 192
+      },
+      {
+        "t": "modal.",
+        "f": 192,
+        "e": 206
+      }
+    ]
   },
   {
-    "from": 228,
-    "to": 283,
-    "text": "Lu bisa punya IQ tinggi,"
+    "from": 214,
+    "to": 288,
+    "text": "Lu bisa punya IQ tinggi,",
+    "words": [
+      {
+        "t": "Lu",
+        "f": 216,
+        "e": 226
+      },
+      {
+        "t": "bisa",
+        "f": 226,
+        "e": 232
+      },
+      {
+        "t": "punya",
+        "f": 232,
+        "e": 244
+      },
+      {
+        "t": "IQ",
+        "f": 244,
+        "e": 260
+      },
+      {
+        "t": "tinggi,",
+        "f": 260,
+        "e": 284
+      }
+    ]
   },
   {
-    "from": 283,
+    "from": 288,
     "to": 342,
-    "text": "nilai bagus, gelar banyak,"
+    "text": "nilai bagus, gelar banyak,",
+    "words": [
+      {
+        "t": "nilai",
+        "f": 290,
+        "e": 299
+      },
+      {
+        "t": "bagus,",
+        "f": 299,
+        "e": 310
+      },
+      {
+        "t": "gelar",
+        "f": 322,
+        "e": 329
+      },
+      {
+        "t": "banyak,",
+        "f": 329,
+        "e": 337
+      }
+    ]
   },
   {
     "from": 355,
-    "to": 452,
-    "text": "tapi kalau lu nggak berani mengambil risiko,"
+    "to": 459,
+    "text": "tapi kalau lu nggak berani mengambil risiko,",
+    "words": [
+      {
+        "t": "tapi",
+        "f": 355,
+        "e": 365
+      },
+      {
+        "t": "kalau",
+        "f": 365,
+        "e": 379
+      },
+      {
+        "t": "lu",
+        "f": 379,
+        "e": 402
+      },
+      {
+        "t": "nggak",
+        "f": 402,
+        "e": 409
+      },
+      {
+        "t": "berani",
+        "f": 409,
+        "e": 420
+      },
+      {
+        "t": "mengambil",
+        "f": 420,
+        "e": 434
+      },
+      {
+        "t": "risiko,",
+        "f": 434,
+        "e": 452
+      }
+    ]
   },
   {
-    "from": 452,
-    "to": 507,
-    "text": "nggak bisa berkomunikasi,"
+    "from": 459,
+    "to": 509,
+    "text": "nggak bisa berkomunikasi,",
+    "words": [
+      {
+        "t": "nggak",
+        "f": 461,
+        "e": 473
+      },
+      {
+        "t": "bisa",
+        "f": 473,
+        "e": 481
+      },
+      {
+        "t": "berkomunikasi,",
+        "f": 481,
+        "e": 511
+      }
+    ]
   },
   {
-    "from": 507,
+    "from": 509,
     "to": 577,
-    "text": "dan nggak tahu cara menjual ide,"
+    "text": "dan nggak tahu cara menjual ide,",
+    "words": [
+      {
+        "t": "dan",
+        "f": 511,
+        "e": 526
+      },
+      {
+        "t": "nggak",
+        "f": 526,
+        "e": 532
+      },
+      {
+        "t": "tahu",
+        "f": 532,
+        "e": 542
+      },
+      {
+        "t": "cara",
+        "f": 542,
+        "e": 551
+      },
+      {
+        "t": "menjual",
+        "f": 551,
+        "e": 563
+      },
+      {
+        "t": "ide,",
+        "f": 563,
+        "e": 572
+      }
+    ]
   },
   {
     "from": 591,
-    "to": 636,
-    "text": "lu bisa kalah sama orang"
+    "to": 634,
+    "text": "lu bisa kalah sama orang",
+    "words": [
+      {
+        "t": "lu",
+        "f": 591,
+        "e": 597
+      },
+      {
+        "t": "bisa",
+        "f": 597,
+        "e": 606
+      },
+      {
+        "t": "kalah",
+        "f": 606,
+        "e": 619
+      },
+      {
+        "t": "sama",
+        "f": 619,
+        "e": 625
+      },
+      {
+        "t": "orang",
+        "f": 625,
+        "e": 636
+      }
+    ]
   },
   {
-    "from": 636,
-    "to": 675,
-    "text": "yang biasa-biasa aja."
+    "from": 634,
+    "to": 683,
+    "text": "yang biasa-biasa aja.",
+    "words": [
+      {
+        "t": "yang",
+        "f": 636,
+        "e": 641
+      },
+      {
+        "t": "biasa-biasa",
+        "f": 641,
+        "e": 662
+      },
+      {
+        "t": "aja.",
+        "f": 662,
+        "e": 668
+      }
+    ]
   },
   {
-    "from": 675,
+    "from": 683,
     "to": 748,
-    "text": "Dunia nyata nggak punya sistem ranking."
+    "text": "Dunia nyata nggak punya sistem ranking.",
+    "words": [
+      {
+        "t": "Dunia",
+        "f": 685,
+        "e": 702
+      },
+      {
+        "t": "nyata",
+        "f": 702,
+        "e": 709
+      },
+      {
+        "t": "nggak",
+        "f": 709,
+        "e": 714
+      },
+      {
+        "t": "punya",
+        "f": 714,
+        "e": 721
+      },
+      {
+        "t": "sistem",
+        "f": 721,
+        "e": 730
+      },
+      {
+        "t": "ranking.",
+        "f": 730,
+        "e": 741
+      }
+    ]
   },
   {
     "from": 762,
-    "to": 829,
-    "text": "Dunia menghargai siapa yang bisa"
+    "to": 820,
+    "text": "Dunia menghargai siapa yang bisa",
+    "words": [
+      {
+        "t": "Dunia",
+        "f": 762,
+        "e": 774
+      },
+      {
+        "t": "menghargai",
+        "f": 774,
+        "e": 794
+      },
+      {
+        "t": "siapa",
+        "f": 794,
+        "e": 809
+      },
+      {
+        "t": "yang",
+        "f": 809,
+        "e": 815
+      },
+      {
+        "t": "bisa",
+        "f": 815,
+        "e": 822
+      }
+    ]
   },
   {
-    "from": 829,
-    "to": 867,
-    "text": "menciptakan value,"
+    "from": 820,
+    "to": 868,
+    "text": "menciptakan value,",
+    "words": [
+      {
+        "t": "menciptakan",
+        "f": 822,
+        "e": 842
+      },
+      {
+        "t": "value",
+        "f": 842,
+        "e": 857
+      },
+      {
+        "t": ",",
+        "f": 857,
+        "e": 858
+      }
+    ]
   },
   {
-    "from": 867,
-    "to": 913,
-    "text": "menyelesaikan masalah,"
+    "from": 868,
+    "to": 909,
+    "text": "menyelesaikan masalah,",
+    "words": [
+      {
+        "t": "menyelesaikan",
+        "f": 870,
+        "e": 894
+      },
+      {
+        "t": "masalah,",
+        "f": 894,
+        "e": 911
+      }
+    ]
   },
   {
-    "from": 913,
+    "from": 909,
     "to": 978,
-    "text": "dan membuat orang lain percaya."
+    "text": "dan membuat orang lain percaya.",
+    "words": [
+      {
+        "t": "dan",
+        "f": 911,
+        "e": 926
+      },
+      {
+        "t": "membuat",
+        "f": 926,
+        "e": 940
+      },
+      {
+        "t": "orang",
+        "f": 940,
+        "e": 948
+      },
+      {
+        "t": "lain",
+        "f": 948,
+        "e": 957
+      },
+      {
+        "t": "percaya.",
+        "f": 957,
+        "e": 972
+      }
+    ]
   },
   {
     "from": 991,
-    "to": 1071,
-    "text": "Jadi jangan cuma berusaha jadi pintar."
+    "to": 1067,
+    "text": "Jadi jangan cuma berusaha jadi pintar.",
+    "words": [
+      {
+        "t": "Jadi",
+        "f": 991,
+        "e": 1000
+      },
+      {
+        "t": "jangan",
+        "f": 1000,
+        "e": 1011
+      },
+      {
+        "t": "cuma",
+        "f": 1011,
+        "e": 1020
+      },
+      {
+        "t": "berusaha",
+        "f": 1020,
+        "e": 1037
+      },
+      {
+        "t": "jadi",
+        "f": 1037,
+        "e": 1044
+      },
+      {
+        "t": "pintar.",
+        "f": 1044,
+        "e": 1059
+      }
+    ]
   },
   {
-    "from": 1071,
+    "from": 1067,
     "to": 1115,
-    "text": "Belajar jadi berguna."
+    "text": "Belajar jadi berguna.",
+    "words": [
+      {
+        "t": "Belajar",
+        "f": 1069,
+        "e": 1089
+      },
+      {
+        "t": "jadi",
+        "f": 1089,
+        "e": 1097
+      },
+      {
+        "t": "berguna.",
+        "f": 1097,
+        "e": 1111
+      }
+    ]
   }
 ];

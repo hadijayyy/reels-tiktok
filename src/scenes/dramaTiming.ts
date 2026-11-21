@@ -4,97 +4,575 @@ export const SCENES = [{"from": 0, "len": 208}, {"from": 208, "len": 164}, {"fro
 export const CUES = [
   {
     "from": 10,
-    "to": 83,
-    "text": "Dibayar cuma buat nonton drama China?"
+    "to": 81,
+    "text": "Dibayar cuma buat nonton drama China?",
+    "words": [
+      {
+        "t": "Dibayar",
+        "f": 10,
+        "e": 26
+      },
+      {
+        "t": "cuma",
+        "f": 26,
+        "e": 31
+      },
+      {
+        "t": "buat",
+        "f": 31,
+        "e": 38
+      },
+      {
+        "t": "nonton",
+        "f": 38,
+        "e": 47
+      },
+      {
+        "t": "drama",
+        "f": 47,
+        "e": 54
+      },
+      {
+        "t": "China?",
+        "f": 54,
+        "e": 70
+      }
+    ]
   },
   {
-    "from": 83,
-    "to": 120,
-    "text": "Kedengerannya enak."
+    "from": 81,
+    "to": 122,
+    "text": "Kedengerannya enak.",
+    "words": [
+      {
+        "t": "Kedengerannya",
+        "f": 83,
+        "e": 99
+      },
+      {
+        "t": "enak.",
+        "f": 99,
+        "e": 116
+      }
+    ]
   },
   {
-    "from": 120,
+    "from": 122,
     "to": 202,
-    "text": "Tapi ternyata, gajinya kamu bayar sendiri."
+    "text": "Tapi ternyata, gajinya kamu bayar sendiri.",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 124,
+        "e": 133
+      },
+      {
+        "t": "ternyata,",
+        "f": 133,
+        "e": 150
+      },
+      {
+        "t": "gajinya",
+        "f": 150,
+        "e": 166
+      },
+      {
+        "t": "kamu",
+        "f": 166,
+        "e": 175
+      },
+      {
+        "t": "bayar",
+        "f": 175,
+        "e": 185
+      },
+      {
+        "t": "sendiri.",
+        "f": 185,
+        "e": 193
+      }
+    ]
   },
   {
     "from": 215,
-    "to": 271,
-    "text": "Awalnya tugasnya gampang banget,"
+    "to": 279,
+    "text": "Awalnya tugasnya gampang banget,",
+    "words": [
+      {
+        "t": "Awalnya",
+        "f": 215,
+        "e": 229
+      },
+      {
+        "t": "tugasnya",
+        "f": 229,
+        "e": 253
+      },
+      {
+        "t": "gampang",
+        "f": 253,
+        "e": 264
+      },
+      {
+        "t": "banget,",
+        "f": 264,
+        "e": 275
+      }
+    ]
   },
   {
-    "from": 271,
-    "to": 301,
-    "text": "bayarannya kecil,"
+    "from": 279,
+    "to": 307,
+    "text": "bayarannya kecil,",
+    "words": [
+      {
+        "t": "bayarannya",
+        "f": 281,
+        "e": 299
+      },
+      {
+        "t": "kecil,",
+        "f": 299,
+        "e": 309
+      }
+    ]
   },
   {
-    "from": 301,
+    "from": 307,
     "to": 365,
-    "text": "tapi beneran masuk ke rekening kamu."
+    "text": "tapi beneran masuk ke rekening kamu.",
+    "words": [
+      {
+        "t": "tapi",
+        "f": 309,
+        "e": 316
+      },
+      {
+        "t": "beneran",
+        "f": 316,
+        "e": 329
+      },
+      {
+        "t": "masuk",
+        "f": 329,
+        "e": 336
+      },
+      {
+        "t": "ke",
+        "f": 336,
+        "e": 342
+      },
+      {
+        "t": "rekening",
+        "f": 342,
+        "e": 352
+      },
+      {
+        "t": "kamu.",
+        "f": 352,
+        "e": 360
+      }
+    ]
   },
   {
     "from": 378,
-    "to": 435,
-    "text": "Lalu kamu diajak naik level."
+    "to": 449,
+    "text": "Lalu kamu diajak naik level.",
+    "words": [
+      {
+        "t": "Lalu",
+        "f": 378,
+        "e": 385
+      },
+      {
+        "t": "kamu",
+        "f": 385,
+        "e": 391
+      },
+      {
+        "t": "diajak",
+        "f": 391,
+        "e": 403
+      },
+      {
+        "t": "naik",
+        "f": 403,
+        "e": 411
+      },
+      {
+        "t": "level.",
+        "f": 411,
+        "e": 421
+      }
+    ]
   },
   {
-    "from": 435,
-    "to": 495,
-    "text": "Syaratnya: setor deposit dulu,"
+    "from": 449,
+    "to": 506,
+    "text": "Syaratnya: setor deposit dulu,",
+    "words": [
+      {
+        "t": "Syaratnya:",
+        "f": 451,
+        "e": 470
+      },
+      {
+        "t": "setor",
+        "f": 477,
+        "e": 489
+      },
+      {
+        "t": "deposit",
+        "f": 489,
+        "e": 499
+      },
+      {
+        "t": "dulu,",
+        "f": 499,
+        "e": 508
+      }
+    ]
   },
   {
-    "from": 495,
+    "from": 506,
     "to": 552,
-    "text": "biar bayarannya makin besar."
+    "text": "biar bayarannya makin besar.",
+    "words": [
+      {
+        "t": "biar",
+        "f": 508,
+        "e": 516
+      },
+      {
+        "t": "bayarannya",
+        "f": 516,
+        "e": 530
+      },
+      {
+        "t": "makin",
+        "f": 530,
+        "e": 540
+      },
+      {
+        "t": "besar.",
+        "f": 540,
+        "e": 546
+      }
+    ]
   },
   {
     "from": 565,
-    "to": 645,
-    "text": "Masalahnya, bayaran awal itu cuma umpan."
+    "to": 654,
+    "text": "Masalahnya, bayaran awal itu cuma umpan.",
+    "words": [
+      {
+        "t": "Masalahnya,",
+        "f": 565,
+        "e": 585
+      },
+      {
+        "t": "bayaran",
+        "f": 597,
+        "e": 609
+      },
+      {
+        "t": "awal",
+        "f": 609,
+        "e": 621
+      },
+      {
+        "t": "itu",
+        "f": 621,
+        "e": 626
+      },
+      {
+        "t": "cuma",
+        "f": 626,
+        "e": 633
+      },
+      {
+        "t": "umpan.",
+        "f": 633,
+        "e": 647
+      }
+    ]
   },
   {
-    "from": 645,
-    "to": 692,
-    "text": "Begitu kamu setor besar,"
+    "from": 654,
+    "to": 701,
+    "text": "Begitu kamu setor besar,",
+    "words": [
+      {
+        "t": "Begitu",
+        "f": 656,
+        "e": 667
+      },
+      {
+        "t": "kamu",
+        "f": 667,
+        "e": 675
+      },
+      {
+        "t": "setor",
+        "f": 675,
+        "e": 685
+      },
+      {
+        "t": "besar,",
+        "f": 685,
+        "e": 694
+      }
+    ]
   },
   {
-    "from": 692,
+    "from": 701,
     "to": 763,
-    "text": "aplikasinya hilang dan mereka kabur."
+    "text": "aplikasinya hilang dan mereka kabur.",
+    "words": [
+      {
+        "t": "aplikasinya",
+        "f": 703,
+        "e": 720
+      },
+      {
+        "t": "hilang",
+        "f": 720,
+        "e": 734
+      },
+      {
+        "t": "dan",
+        "f": 734,
+        "e": 739
+      },
+      {
+        "t": "mereka",
+        "f": 739,
+        "e": 748
+      },
+      {
+        "t": "kabur.",
+        "f": 748,
+        "e": 762
+      }
+    ]
   },
   {
     "from": 777,
-    "to": 836,
-    "text": "Dan ini bukan kasus langka."
+    "to": 832,
+    "text": "Dan ini bukan kasus langka.",
+    "words": [
+      {
+        "t": "Dan",
+        "f": 777,
+        "e": 782
+      },
+      {
+        "t": "ini",
+        "f": 782,
+        "e": 788
+      },
+      {
+        "t": "bukan",
+        "f": 788,
+        "e": 795
+      },
+      {
+        "t": "kasus",
+        "f": 795,
+        "e": 807
+      },
+      {
+        "t": "langka.",
+        "f": 807,
+        "e": 821
+      }
+    ]
   },
   {
-    "from": 836,
-    "to": 893,
-    "text": "Lebih dari lima ratus ribu"
+    "from": 832,
+    "to": 890,
+    "text": "Lebih dari lima ratus ribu",
+    "words": [
+      {
+        "t": "Lebih",
+        "f": 834,
+        "e": 851
+      },
+      {
+        "t": "dari",
+        "f": 851,
+        "e": 857
+      },
+      {
+        "t": "lima",
+        "f": 857,
+        "e": 862
+      },
+      {
+        "t": "ratus",
+        "f": 862,
+        "e": 866
+      },
+      {
+        "t": "ribu",
+        "f": 866,
+        "e": 892
+      }
+    ]
   },
   {
-    "from": 893,
+    "from": 890,
     "to": 959,
-    "text": "laporan penipuan masuk ke OJK."
+    "text": "laporan penipuan masuk ke OJK.",
+    "words": [
+      {
+        "t": "laporan",
+        "f": 892,
+        "e": 910
+      },
+      {
+        "t": "penipuan",
+        "f": 910,
+        "e": 923
+      },
+      {
+        "t": "masuk",
+        "f": 923,
+        "e": 931
+      },
+      {
+        "t": "ke",
+        "f": 931,
+        "e": 939
+      },
+      {
+        "t": "OJK",
+        "f": 939,
+        "e": 956
+      },
+      {
+        "t": ".",
+        "f": 956,
+        "e": 958
+      }
+    ]
   },
   {
     "from": 972,
-    "to": 993,
-    "text": "Jadi ingat:"
+    "to": 997,
+    "text": "Jadi ingat:",
+    "words": [
+      {
+        "t": "Jadi",
+        "f": 972,
+        "e": 979
+      },
+      {
+        "t": "ingat:",
+        "f": 979,
+        "e": 990
+      }
+    ]
   },
   {
-    "from": 993,
-    "to": 1060,
-    "text": "kerja yang minta kamu setor duluan"
+    "from": 997,
+    "to": 1052,
+    "text": "kerja yang minta kamu setor duluan",
+    "words": [
+      {
+        "t": "kerja",
+        "f": 999,
+        "e": 1014
+      },
+      {
+        "t": "yang",
+        "f": 1014,
+        "e": 1019
+      },
+      {
+        "t": "minta",
+        "f": 1019,
+        "e": 1027
+      },
+      {
+        "t": "kamu",
+        "f": 1027,
+        "e": 1035
+      },
+      {
+        "t": "setor",
+        "f": 1035,
+        "e": 1054
+      },
+      {
+        "t": "duluan",
+        "f": 1035,
+        "e": 1054
+      }
+    ]
   },
   {
-    "from": 1060,
-    "to": 1116,
-    "text": "itu bukan kerja, itu jebakan."
+    "from": 1052,
+    "to": 1111,
+    "text": "itu bukan kerja, itu jebakan.",
+    "words": [
+      {
+        "t": "itu",
+        "f": 1054,
+        "e": 1060
+      },
+      {
+        "t": "bukan",
+        "f": 1060,
+        "e": 1066
+      },
+      {
+        "t": "kerja,",
+        "f": 1066,
+        "e": 1079
+      },
+      {
+        "t": "itu",
+        "f": 1081,
+        "e": 1086
+      },
+      {
+        "t": "jebakan.",
+        "f": 1086,
+        "e": 1099
+      }
+    ]
   },
   {
-    "from": 1116,
+    "from": 1111,
     "to": 1155,
-    "text": "Cek dulu ke OJK, ya!"
+    "text": "Cek dulu ke OJK, ya!",
+    "words": [
+      {
+        "t": "Cek",
+        "f": 1113,
+        "e": 1123
+      },
+      {
+        "t": "dulu",
+        "f": 1123,
+        "e": 1129
+      },
+      {
+        "t": "ke",
+        "f": 1129,
+        "e": 1133
+      },
+      {
+        "t": "OJK,",
+        "f": 1133,
+        "e": 1147
+      },
+      {
+        "t": "ya!",
+        "f": 1147,
+        "e": 1151
+      }
+    ]
   }
 ];

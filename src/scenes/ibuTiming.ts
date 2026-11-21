@@ -4,182 +4,1029 @@ export const SCENES = [{"from": 0, "len": 121}, {"from": 121, "len": 127}, {"fro
 export const CUES = [
   {
     "from": 10,
-    "to": 51,
-    "text": "Ada satu pesan dari Ibu,"
+    "to": 49,
+    "text": "Ada satu pesan dari Ibu,",
+    "words": [
+      {
+        "t": "Ada",
+        "f": 10,
+        "e": 16
+      },
+      {
+        "t": "satu",
+        "f": 16,
+        "e": 24
+      },
+      {
+        "t": "pesan",
+        "f": 24,
+        "e": 36
+      },
+      {
+        "t": "dari",
+        "f": 36,
+        "e": 41
+      },
+      {
+        "t": "Ibu,",
+        "f": 41,
+        "e": 51
+      }
+    ]
   },
   {
-    "from": 51,
-    "to": 84,
-    "text": "yang baru aku dengar"
+    "from": 49,
+    "to": 83,
+    "text": "yang baru aku dengar",
+    "words": [
+      {
+        "t": "yang",
+        "f": 51,
+        "e": 59
+      },
+      {
+        "t": "baru",
+        "f": 59,
+        "e": 67
+      },
+      {
+        "t": "aku",
+        "f": 67,
+        "e": 74
+      },
+      {
+        "t": "dengar",
+        "f": 74,
+        "e": 85
+      }
+    ]
   },
   {
-    "from": 84,
+    "from": 83,
     "to": 114,
-    "text": "setelah Ibu pergi."
+    "text": "setelah Ibu pergi.",
+    "words": [
+      {
+        "t": "setelah",
+        "f": 85,
+        "e": 95
+      },
+      {
+        "t": "Ibu",
+        "f": 95,
+        "e": 100
+      },
+      {
+        "t": "pergi.",
+        "f": 100,
+        "e": 109
+      }
+    ]
   },
   {
     "from": 128,
-    "to": 193,
-    "text": "Setelah lulus, aku merantau ke Jakarta."
+    "to": 192,
+    "text": "Setelah lulus, aku merantau ke Jakarta.",
+    "words": [
+      {
+        "t": "Setelah",
+        "f": 128,
+        "e": 140
+      },
+      {
+        "t": "lulus,",
+        "f": 140,
+        "e": 150
+      },
+      {
+        "t": "aku",
+        "f": 150,
+        "e": 158
+      },
+      {
+        "t": "merantau",
+        "f": 158,
+        "e": 171
+      },
+      {
+        "t": "ke",
+        "f": 171,
+        "e": 174
+      },
+      {
+        "t": "Jakarta.",
+        "f": 174,
+        "e": 188
+      }
+    ]
   },
   {
-    "from": 193,
+    "from": 192,
     "to": 241,
-    "text": "Kerja dari pagi sampai malam."
+    "text": "Kerja dari pagi sampai malam.",
+    "words": [
+      {
+        "t": "Kerja",
+        "f": 194,
+        "e": 203
+      },
+      {
+        "t": "dari",
+        "f": 203,
+        "e": 208
+      },
+      {
+        "t": "pagi",
+        "f": 208,
+        "e": 218
+      },
+      {
+        "t": "sampai",
+        "f": 218,
+        "e": 225
+      },
+      {
+        "t": "malam.",
+        "f": 225,
+        "e": 238
+      }
+    ]
   },
   {
     "from": 255,
-    "to": 307,
-    "text": "Dan setiap malam, jam tujuh,"
+    "to": 299,
+    "text": "Dan setiap malam, jam tujuh,",
+    "words": [
+      {
+        "t": "Dan",
+        "f": 255,
+        "e": 260
+      },
+      {
+        "t": "setiap",
+        "f": 260,
+        "e": 271
+      },
+      {
+        "t": "malam,",
+        "f": 271,
+        "e": 281
+      },
+      {
+        "t": "jam",
+        "f": 281,
+        "e": 286
+      },
+      {
+        "t": "tujuh,",
+        "f": 286,
+        "e": 295
+      }
+    ]
   },
   {
-    "from": 307,
-    "to": 335,
-    "text": "HP-ku bergetar."
+    "from": 299,
+    "to": 330,
+    "text": "HP-ku bergetar.",
+    "words": [
+      {
+        "t": "HP-ku",
+        "f": 301,
+        "e": 309
+      },
+      {
+        "t": "bergetar.",
+        "f": 309,
+        "e": 324
+      }
+    ]
   },
   {
-    "from": 335,
+    "from": 330,
     "to": 342,
-    "text": "Ibu."
+    "text": "Ibu.",
+    "words": [
+      {
+        "t": "Ibu.",
+        "f": 332,
+        "e": 341
+      }
+    ]
   },
   {
     "from": 355,
-    "to": 384,
-    "text": "\"Sudah makan, Nak?\""
+    "to": 383,
+    "text": "\"Sudah makan, Nak?\"",
+    "words": [
+      {
+        "t": "\"Sudah",
+        "f": 355,
+        "e": 364
+      },
+      {
+        "t": "makan,",
+        "f": 364,
+        "e": 370
+      },
+      {
+        "t": "Nak?\"",
+        "f": 370,
+        "e": 378
+      }
+    ]
   },
   {
-    "from": 384,
-    "to": 421,
-    "text": "\"Jangan lupa istirahat.\""
+    "from": 383,
+    "to": 424,
+    "text": "\"Jangan lupa istirahat.\"",
+    "words": [
+      {
+        "t": "\"Jangan",
+        "f": 385,
+        "e": 390
+      },
+      {
+        "t": "lupa",
+        "f": 390,
+        "e": 398
+      },
+      {
+        "t": "istirahat.\"",
+        "f": 398,
+        "e": 416
+      }
+    ]
   },
   {
-    "from": 421,
+    "from": 424,
     "to": 461,
-    "text": "Pertanyaannya selalu sama."
+    "text": "Pertanyaannya selalu sama.",
+    "words": [
+      {
+        "t": "Pertanyaannya",
+        "f": 426,
+        "e": 441
+      },
+      {
+        "t": "selalu",
+        "f": 441,
+        "e": 449
+      },
+      {
+        "t": "sama.",
+        "f": 449,
+        "e": 455
+      }
+    ]
   },
   {
     "from": 474,
-    "to": 516,
-    "text": "Kadang aku angkat sebentar."
+    "to": 515,
+    "text": "Kadang aku angkat sebentar.",
+    "words": [
+      {
+        "t": "Kadang",
+        "f": 474,
+        "e": 483
+      },
+      {
+        "t": "aku",
+        "f": 483,
+        "e": 488
+      },
+      {
+        "t": "angkat",
+        "f": 488,
+        "e": 496
+      },
+      {
+        "t": "sebentar.",
+        "f": 496,
+        "e": 510
+      }
+    ]
   },
   {
-    "from": 516,
-    "to": 555,
-    "text": "Lebih sering aku biarkan,"
+    "from": 515,
+    "to": 549,
+    "text": "Lebih sering aku biarkan,",
+    "words": [
+      {
+        "t": "Lebih",
+        "f": 517,
+        "e": 526
+      },
+      {
+        "t": "sering",
+        "f": 526,
+        "e": 535
+      },
+      {
+        "t": "aku",
+        "f": 535,
+        "e": 540
+      },
+      {
+        "t": "biarkan,",
+        "f": 540,
+        "e": 551
+      }
+    ]
   },
   {
-    "from": 555,
+    "from": 549,
     "to": 610,
-    "text": "lalu kirim pesan: \"Lagi sibuk, Bu.\""
+    "text": "lalu kirim pesan: \"Lagi sibuk, Bu.\"",
+    "words": [
+      {
+        "t": "lalu",
+        "f": 551,
+        "e": 560
+      },
+      {
+        "t": "kirim",
+        "f": 560,
+        "e": 566
+      },
+      {
+        "t": "pesan:",
+        "f": 566,
+        "e": 578
+      },
+      {
+        "t": "\"Lagi",
+        "f": 584,
+        "e": 590
+      },
+      {
+        "t": "sibuk,",
+        "f": 590,
+        "e": 602
+      },
+      {
+        "t": "Bu.\"",
+        "f": 602,
+        "e": 606
+      }
+    ]
   },
   {
     "from": 623,
-    "to": 684,
-    "text": "Lebaran tahun lalu, aku nggak pulang."
+    "to": 693,
+    "text": "Lebaran tahun lalu, aku nggak pulang.",
+    "words": [
+      {
+        "t": "Lebaran",
+        "f": 623,
+        "e": 647
+      },
+      {
+        "t": "tahun",
+        "f": 647,
+        "e": 652
+      },
+      {
+        "t": "lalu,",
+        "f": 652,
+        "e": 664
+      },
+      {
+        "t": "aku",
+        "f": 664,
+        "e": 670
+      },
+      {
+        "t": "nggak",
+        "f": 670,
+        "e": 675
+      },
+      {
+        "t": "pulang.",
+        "f": 675,
+        "e": 687
+      }
+    ]
   },
   {
-    "from": 684,
-    "to": 726,
-    "text": "Kata Ibu, \"Nggak apa-apa,"
+    "from": 693,
+    "to": 729,
+    "text": "Kata Ibu, \"Nggak apa-apa,",
+    "words": [
+      {
+        "t": "Kata",
+        "f": 695,
+        "e": 706
+      },
+      {
+        "t": "Ibu,",
+        "f": 706,
+        "e": 713
+      },
+      {
+        "t": "\"Nggak",
+        "f": 713,
+        "e": 719
+      },
+      {
+        "t": "apa-apa,",
+        "f": 719,
+        "e": 731
+      }
+    ]
   },
   {
-    "from": 726,
+    "from": 729,
     "to": 767,
-    "text": "yang penting kamu sehat.\""
+    "text": "yang penting kamu sehat.\"",
+    "words": [
+      {
+        "t": "yang",
+        "f": 731,
+        "e": 738
+      },
+      {
+        "t": "penting",
+        "f": 738,
+        "e": 749
+      },
+      {
+        "t": "kamu",
+        "f": 749,
+        "e": 755
+      },
+      {
+        "t": "sehat.\"",
+        "f": 755,
+        "e": 767
+      }
+    ]
   },
   {
     "from": 781,
-    "to": 854,
-    "text": "Aku nggak tahu, Ibu mulai sering sakit."
+    "to": 856,
+    "text": "Aku nggak tahu, Ibu mulai sering sakit.",
+    "words": [
+      {
+        "t": "Aku",
+        "f": 781,
+        "e": 790
+      },
+      {
+        "t": "nggak",
+        "f": 790,
+        "e": 796
+      },
+      {
+        "t": "tahu,",
+        "f": 796,
+        "e": 807
+      },
+      {
+        "t": "Ibu",
+        "f": 811,
+        "e": 816
+      },
+      {
+        "t": "mulai",
+        "f": 816,
+        "e": 825
+      },
+      {
+        "t": "sering",
+        "f": 825,
+        "e": 833
+      },
+      {
+        "t": "sakit.",
+        "f": 833,
+        "e": 847
+      }
+    ]
   },
   {
-    "from": 854,
-    "to": 899,
-    "text": "Dia nggak pernah cerita."
+    "from": 856,
+    "to": 905,
+    "text": "Dia nggak pernah cerita.",
+    "words": [
+      {
+        "t": "Dia",
+        "f": 858,
+        "e": 869
+      },
+      {
+        "t": "nggak",
+        "f": 869,
+        "e": 874
+      },
+      {
+        "t": "pernah",
+        "f": 874,
+        "e": 880
+      },
+      {
+        "t": "cerita.",
+        "f": 880,
+        "e": 895
+      }
+    ]
   },
   {
-    "from": 899,
+    "from": 905,
     "to": 961,
-    "text": "Katanya, nanti anaknya kepikiran."
+    "text": "Katanya, nanti anaknya kepikiran.",
+    "words": [
+      {
+        "t": "Katanya,",
+        "f": 907,
+        "e": 921
+      },
+      {
+        "t": "nanti",
+        "f": 921,
+        "e": 931
+      },
+      {
+        "t": "anaknya",
+        "f": 931,
+        "e": 943
+      },
+      {
+        "t": "kepikiran.",
+        "f": 943,
+        "e": 957
+      }
+    ]
   },
   {
     "from": 974,
-    "to": 1042,
-    "text": "Sampai suatu malam, jam tujuh lewat."
+    "to": 1035,
+    "text": "Sampai suatu malam, jam tujuh lewat.",
+    "words": [
+      {
+        "t": "Sampai",
+        "f": 974,
+        "e": 985
+      },
+      {
+        "t": "suatu",
+        "f": 985,
+        "e": 993
+      },
+      {
+        "t": "malam,",
+        "f": 993,
+        "e": 1005
+      },
+      {
+        "t": "jam",
+        "f": 1005,
+        "e": 1012
+      },
+      {
+        "t": "tujuh",
+        "f": 1012,
+        "e": 1019
+      },
+      {
+        "t": "lewat.",
+        "f": 1019,
+        "e": 1032
+      }
+    ]
   },
   {
-    "from": 1042,
+    "from": 1035,
     "to": 1062,
-    "text": "HP-ku diam."
+    "text": "HP-ku diam.",
+    "words": [
+      {
+        "t": "HP-ku",
+        "f": 1037,
+        "e": 1052
+      },
+      {
+        "t": "diam.",
+        "f": 1052,
+        "e": 1059
+      }
+    ]
   },
   {
     "from": 1124,
-    "to": 1198,
-    "text": "Besok paginya, yang menelepon bukan Ibu."
+    "to": 1197,
+    "text": "Besok paginya, yang menelepon bukan Ibu.",
+    "words": [
+      {
+        "t": "Besok",
+        "f": 1124,
+        "e": 1140
+      },
+      {
+        "t": "paginya,",
+        "f": 1140,
+        "e": 1155
+      },
+      {
+        "t": "yang",
+        "f": 1155,
+        "e": 1166
+      },
+      {
+        "t": "menelepon",
+        "f": 1166,
+        "e": 1182
+      },
+      {
+        "t": "bukan",
+        "f": 1182,
+        "e": 1188
+      },
+      {
+        "t": "Ibu.",
+        "f": 1188,
+        "e": 1199
+      }
+    ]
   },
   {
-    "from": 1198,
+    "from": 1197,
     "to": 1234,
-    "text": "Tapi tetangga kami."
+    "text": "Tapi tetangga kami.",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 1199,
+        "e": 1208
+      },
+      {
+        "t": "tetangga",
+        "f": 1208,
+        "e": 1221
+      },
+      {
+        "t": "kami.",
+        "f": 1221,
+        "e": 1228
+      }
+    ]
   },
   {
     "from": 1295,
-    "to": 1338,
-    "text": "Aku pulang hari itu juga."
+    "to": 1341,
+    "text": "Aku pulang hari itu juga.",
+    "words": [
+      {
+        "t": "Aku",
+        "f": 1295,
+        "e": 1302
+      },
+      {
+        "t": "pulang",
+        "f": 1302,
+        "e": 1310
+      },
+      {
+        "t": "hari",
+        "f": 1310,
+        "e": 1316
+      },
+      {
+        "t": "itu",
+        "f": 1316,
+        "e": 1323
+      },
+      {
+        "t": "juga.",
+        "f": 1323,
+        "e": 1332
+      }
+    ]
   },
   {
-    "from": 1338,
-    "to": 1373,
-    "text": "Rumahnya masih sama."
+    "from": 1341,
+    "to": 1381,
+    "text": "Rumahnya masih sama.",
+    "words": [
+      {
+        "t": "Rumahnya",
+        "f": 1343,
+        "e": 1354
+      },
+      {
+        "t": "masih",
+        "f": 1354,
+        "e": 1360
+      },
+      {
+        "t": "sama.",
+        "f": 1360,
+        "e": 1371
+      }
+    ]
   },
   {
-    "from": 1373,
+    "from": 1381,
     "to": 1425,
-    "text": "Cuma Ibu yang sudah nggak ada."
+    "text": "Cuma Ibu yang sudah nggak ada.",
+    "words": [
+      {
+        "t": "Cuma",
+        "f": 1383,
+        "e": 1390
+      },
+      {
+        "t": "Ibu",
+        "f": 1390,
+        "e": 1397
+      },
+      {
+        "t": "yang",
+        "f": 1397,
+        "e": 1401
+      },
+      {
+        "t": "sudah",
+        "f": 1401,
+        "e": 1406
+      },
+      {
+        "t": "nggak",
+        "f": 1406,
+        "e": 1413
+      },
+      {
+        "t": "ada.",
+        "f": 1413,
+        "e": 1421
+      }
+    ]
   },
   {
     "from": 1438,
-    "to": 1492,
-    "text": "Di HP Ibu, ada satu pesan suara"
+    "to": 1499,
+    "text": "Di HP Ibu, ada satu pesan suara",
+    "words": [
+      {
+        "t": "Di",
+        "f": 1438,
+        "e": 1450
+      },
+      {
+        "t": "HP",
+        "f": 1450,
+        "e": 1459
+      },
+      {
+        "t": "Ibu,",
+        "f": 1459,
+        "e": 1467
+      },
+      {
+        "t": "ada",
+        "f": 1467,
+        "e": 1474
+      },
+      {
+        "t": "satu",
+        "f": 1474,
+        "e": 1481
+      },
+      {
+        "t": "pesan",
+        "f": 1481,
+        "e": 1490
+      },
+      {
+        "t": "suara",
+        "f": 1490,
+        "e": 1501
+      }
+    ]
   },
   {
-    "from": 1492,
-    "to": 1538,
-    "text": "yang belum sempat terkirim:"
+    "from": 1499,
+    "to": 1533,
+    "text": "yang belum sempat terkirim:",
+    "words": [
+      {
+        "t": "yang",
+        "f": 1501,
+        "e": 1505
+      },
+      {
+        "t": "belum",
+        "f": 1505,
+        "e": 1511
+      },
+      {
+        "t": "sempat",
+        "f": 1511,
+        "e": 1523
+      },
+      {
+        "t": "terkirim:",
+        "f": 1523,
+        "e": 1535
+      }
+    ]
   },
   {
-    "from": 1538,
+    "from": 1533,
     "to": 1569,
-    "text": "\"Nak, Ibu kangen.\""
+    "text": "\"Nak, Ibu kangen.\"",
+    "words": [
+      {
+        "t": "\"Nak,",
+        "f": 1535,
+        "e": 1542
+      },
+      {
+        "t": "Ibu",
+        "f": 1547,
+        "e": 1555
+      },
+      {
+        "t": "kangen.\"",
+        "f": 1555,
+        "e": 1563
+      }
+    ]
   },
   {
     "from": 1583,
     "to": 1647,
-    "text": "Kita selalu merasa masih ada waktu."
+    "text": "Kita selalu merasa masih ada waktu.",
+    "words": [
+      {
+        "t": "Kita",
+        "f": 1583,
+        "e": 1589
+      },
+      {
+        "t": "selalu",
+        "f": 1589,
+        "e": 1601
+      },
+      {
+        "t": "merasa",
+        "f": 1601,
+        "e": 1613
+      },
+      {
+        "t": "masih",
+        "f": 1613,
+        "e": 1620
+      },
+      {
+        "t": "ada",
+        "f": 1620,
+        "e": 1628
+      },
+      {
+        "t": "waktu.",
+        "f": 1628,
+        "e": 1638
+      }
+    ]
   },
   {
     "from": 1647,
     "to": 1702,
-    "text": "Masih ada lebaran tahun depan."
+    "text": "Masih ada lebaran tahun depan.",
+    "words": [
+      {
+        "t": "Masih",
+        "f": 1649,
+        "e": 1655
+      },
+      {
+        "t": "ada",
+        "f": 1655,
+        "e": 1664
+      },
+      {
+        "t": "lebaran",
+        "f": 1664,
+        "e": 1677
+      },
+      {
+        "t": "tahun",
+        "f": 1677,
+        "e": 1682
+      },
+      {
+        "t": "depan.",
+        "f": 1682,
+        "e": 1696
+      }
+    ]
   },
   {
     "from": 1702,
     "to": 1731,
-    "text": "Masih ada nanti."
+    "text": "Masih ada nanti.",
+    "words": [
+      {
+        "t": "Masih",
+        "f": 1704,
+        "e": 1709
+      },
+      {
+        "t": "ada",
+        "f": 1709,
+        "e": 1717
+      },
+      {
+        "t": "nanti.",
+        "f": 1717,
+        "e": 1729
+      }
+    ]
   },
   {
     "from": 1744,
-    "to": 1819,
-    "text": "Jadi kalau malam ini ibumu menelepon,"
+    "to": 1825,
+    "text": "Jadi kalau malam ini ibumu menelepon,",
+    "words": [
+      {
+        "t": "Jadi",
+        "f": 1744,
+        "e": 1759
+      },
+      {
+        "t": "kalau",
+        "f": 1759,
+        "e": 1765
+      },
+      {
+        "t": "malam",
+        "f": 1765,
+        "e": 1777
+      },
+      {
+        "t": "ini",
+        "f": 1777,
+        "e": 1783
+      },
+      {
+        "t": "ibumu",
+        "f": 1783,
+        "e": 1798
+      },
+      {
+        "t": "menelepon,",
+        "f": 1798,
+        "e": 1819
+      }
+    ]
   },
   {
-    "from": 1819,
-    "to": 1833,
-    "text": "angkat."
+    "from": 1825,
+    "to": 1844,
+    "text": "angkat.",
+    "words": [
+      {
+        "t": "angkat.",
+        "f": 1827,
+        "e": 1842
+      }
+    ]
   },
   {
-    "from": 1833,
+    "from": 1844,
     "to": 1912,
-    "text": "Selagi suaranya masih bisa kamu dengar."
+    "text": "Selagi suaranya masih bisa kamu dengar.",
+    "words": [
+      {
+        "t": "Selagi",
+        "f": 1846,
+        "e": 1863
+      },
+      {
+        "t": "suaranya",
+        "f": 1863,
+        "e": 1873
+      },
+      {
+        "t": "masih",
+        "f": 1873,
+        "e": 1880
+      },
+      {
+        "t": "bisa",
+        "f": 1880,
+        "e": 1886
+      },
+      {
+        "t": "kamu",
+        "f": 1886,
+        "e": 1893
+      },
+      {
+        "t": "dengar.",
+        "f": 1893,
+        "e": 1907
+      }
+    ]
   }
 ];

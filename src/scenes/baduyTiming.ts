@@ -4,142 +4,789 @@ export const SCENES = [{"from": 0, "len": 221}, {"from": 221, "len": 239}, {"fro
 export const CUES = [
   {
     "from": 10,
-    "to": 64,
-    "text": "19 rumah terbakar di Baduy."
+    "to": 72,
+    "text": "19 rumah terbakar di Baduy.",
+    "words": [
+      {
+        "t": "19",
+        "f": 10,
+        "e": 22,
+        "k": 1
+      },
+      {
+        "t": "rumah",
+        "f": 22,
+        "e": 38
+      },
+      {
+        "t": "terbakar",
+        "f": 38,
+        "e": 56
+      },
+      {
+        "t": "di",
+        "f": 56,
+        "e": 59
+      },
+      {
+        "t": "Baduy.",
+        "f": 59,
+        "e": 69
+      }
+    ]
   },
   {
-    "from": 64,
-    "to": 117,
-    "text": "Tapi di tengah tragedi ini,"
+    "from": 72,
+    "to": 124,
+    "text": "Tapi di tengah tragedi ini,",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 74,
+        "e": 89
+      },
+      {
+        "t": "di",
+        "f": 89,
+        "e": 94
+      },
+      {
+        "t": "tengah",
+        "f": 94,
+        "e": 104
+      },
+      {
+        "t": "tragedi",
+        "f": 104,
+        "e": 118
+      },
+      {
+        "t": "ini,",
+        "f": 118,
+        "e": 126
+      }
+    ]
   },
   {
-    "from": 117,
+    "from": 124,
     "to": 214,
-    "text": "ada isu lain yang bikin masyarakat ikut bersuara."
+    "text": "ada isu lain yang bikin masyarakat ikut bersuara.",
+    "words": [
+      {
+        "t": "ada",
+        "f": 126,
+        "e": 141
+      },
+      {
+        "t": "isu",
+        "f": 141,
+        "e": 149
+      },
+      {
+        "t": "lain",
+        "f": 149,
+        "e": 154
+      },
+      {
+        "t": "yang",
+        "f": 154,
+        "e": 160
+      },
+      {
+        "t": "bikin",
+        "f": 160,
+        "e": 169
+      },
+      {
+        "t": "masyarakat",
+        "f": 169,
+        "e": 188
+      },
+      {
+        "t": "ikut",
+        "f": 188,
+        "e": 196
+      },
+      {
+        "t": "bersuara.",
+        "f": 196,
+        "e": 210
+      }
+    ]
   },
   {
     "from": 228,
-    "to": 271,
-    "text": "Pada Kamis malam,"
+    "to": 265,
+    "text": "Pada Kamis malam,",
+    "words": [
+      {
+        "t": "Pada",
+        "f": 228,
+        "e": 234
+      },
+      {
+        "t": "Kamis",
+        "f": 234,
+        "e": 242
+      },
+      {
+        "t": "malam,",
+        "f": 242,
+        "e": 255
+      }
+    ]
   },
   {
-    "from": 271,
-    "to": 314,
-    "text": "19 November 2026,"
+    "from": 265,
+    "to": 334,
+    "text": "19 November 2026,",
+    "words": [
+      {
+        "t": "19 November 2026",
+        "f": 267,
+        "e": 327,
+        "k": 1
+      },
+      {
+        "t": ",",
+        "f": 327,
+        "e": 329
+      }
+    ]
   },
   {
-    "from": 314,
+    "from": 334,
     "to": 453,
-    "text": "kebakaran melanda Kampung Cipaler, Desa Kanekes, Baduy."
+    "text": "kebakaran melanda Kampung Cipaler, Desa Kanekes, Baduy.",
+    "words": [
+      {
+        "t": "kebakaran",
+        "f": 336,
+        "e": 355
+      },
+      {
+        "t": "melanda",
+        "f": 355,
+        "e": 372
+      },
+      {
+        "t": "Kampung",
+        "f": 372,
+        "e": 384
+      },
+      {
+        "t": "Cipaler,",
+        "f": 384,
+        "e": 399
+      },
+      {
+        "t": "Desa",
+        "f": 399,
+        "e": 417
+      },
+      {
+        "t": "Kanekes,",
+        "f": 417,
+        "e": 434
+      },
+      {
+        "t": "Baduy.",
+        "f": 434,
+        "e": 450
+      }
+    ]
   },
   {
     "from": 467,
-    "to": 511,
-    "text": "19 rumah hangus."
+    "to": 513,
+    "text": "19 rumah hangus.",
+    "words": [
+      {
+        "t": "19",
+        "f": 467,
+        "e": 476,
+        "k": 1
+      },
+      {
+        "t": "rumah",
+        "f": 476,
+        "e": 490
+      },
+      {
+        "t": "hangus.",
+        "f": 490,
+        "e": 511
+      }
+    ]
   },
   {
-    "from": 511,
-    "to": 573,
-    "text": "34 keluarga terdampak."
+    "from": 513,
+    "to": 575,
+    "text": "34 keluarga terdampak.",
+    "words": [
+      {
+        "t": "34",
+        "f": 515,
+        "e": 530,
+        "k": 1
+      },
+      {
+        "t": "keluarga",
+        "f": 530,
+        "e": 551
+      },
+      {
+        "t": "terdampak.",
+        "f": 551,
+        "e": 570
+      }
+    ]
   },
   {
-    "from": 573,
+    "from": 575,
     "to": 676,
-    "text": "Dan untungnya, tidak ada korban jiwa."
+    "text": "Dan untungnya, tidak ada korban jiwa.",
+    "words": [
+      {
+        "t": "Dan",
+        "f": 577,
+        "e": 587
+      },
+      {
+        "t": "untungnya,",
+        "f": 587,
+        "e": 614
+      },
+      {
+        "t": "tidak",
+        "f": 614,
+        "e": 623
+      },
+      {
+        "t": "ada",
+        "f": 623,
+        "e": 636
+      },
+      {
+        "t": "korban",
+        "f": 636,
+        "e": 660
+      },
+      {
+        "t": "jiwa.",
+        "f": 660,
+        "e": 673
+      }
+    ]
   },
   {
     "from": 690,
-    "to": 748,
-    "text": "Beberapa hari sebelumnya,"
+    "to": 730,
+    "text": "Beberapa hari sebelumnya,",
+    "words": [
+      {
+        "t": "Beberapa",
+        "f": 690,
+        "e": 704
+      },
+      {
+        "t": "hari",
+        "f": 704,
+        "e": 710
+      },
+      {
+        "t": "sebelumnya,",
+        "f": 710,
+        "e": 725
+      }
+    ]
   },
   {
-    "from": 748,
-    "to": 802,
-    "text": "tepat 12 November 2026,"
+    "from": 730,
+    "to": 808,
+    "text": "tepat 12 November 2026,",
+    "words": [
+      {
+        "t": "tepat",
+        "f": 732,
+        "e": 744
+      },
+      {
+        "t": "12 November 2026",
+        "f": 744,
+        "e": 800,
+        "k": 1
+      },
+      {
+        "t": ",",
+        "f": 800,
+        "e": 801
+      }
+    ]
   },
   {
-    "from": 802,
-    "to": 907,
-    "text": "muncul wacana memindahkan sebagian Badak Jawa"
+    "from": 808,
+    "to": 894,
+    "text": "muncul wacana memindahkan sebagian Badak Jawa",
+    "words": [
+      {
+        "t": "muncul",
+        "f": 810,
+        "e": 822
+      },
+      {
+        "t": "wacana",
+        "f": 822,
+        "e": 835
+      },
+      {
+        "t": "memindahkan",
+        "f": 835,
+        "e": 852
+      },
+      {
+        "t": "sebagian",
+        "f": 852,
+        "e": 869
+      },
+      {
+        "t": "Badak",
+        "f": 869,
+        "e": 881
+      },
+      {
+        "t": "Jawa",
+        "f": 881,
+        "e": 896
+      }
+    ]
   },
   {
-    "from": 907,
+    "from": 894,
     "to": 979,
-    "text": "dari Ujung Kulon ke Alas Purwo."
+    "text": "dari Ujung Kulon ke Alas Purwo.",
+    "words": [
+      {
+        "t": "dari",
+        "f": 896,
+        "e": 906
+      },
+      {
+        "t": "Ujung",
+        "f": 906,
+        "e": 920
+      },
+      {
+        "t": "Kulon",
+        "f": 920,
+        "e": 944
+      },
+      {
+        "t": "ke",
+        "f": 944,
+        "e": 956
+      },
+      {
+        "t": "Alas",
+        "f": 956,
+        "e": 969
+      },
+      {
+        "t": "Purwo.",
+        "f": 969,
+        "e": 978
+      }
+    ]
   },
   {
     "from": 993,
-    "to": 1053,
-    "text": "Wacana ini memicu penolakan."
+    "to": 1060,
+    "text": "Wacana ini memicu penolakan.",
+    "words": [
+      {
+        "t": "Wacana",
+        "f": 993,
+        "e": 1004
+      },
+      {
+        "t": "ini",
+        "f": 1004,
+        "e": 1011
+      },
+      {
+        "t": "memicu",
+        "f": 1011,
+        "e": 1025
+      },
+      {
+        "t": "penolakan.",
+        "f": 1025,
+        "e": 1040
+      }
+    ]
   },
   {
-    "from": 1053,
-    "to": 1090,
-    "text": "Pada 16 November,"
+    "from": 1060,
+    "to": 1112,
+    "text": "Pada 16 November,",
+    "words": [
+      {
+        "t": "Pada",
+        "f": 1062,
+        "e": 1075
+      },
+      {
+        "t": "16",
+        "f": 1075,
+        "e": 1085,
+        "k": 1
+      },
+      {
+        "t": "November,",
+        "f": 1085,
+        "e": 1102
+      }
+    ]
   },
   {
-    "from": 1090,
-    "to": 1153,
-    "text": "masyarakat adat Baduy meminta"
+    "from": 1112,
+    "to": 1167,
+    "text": "masyarakat adat Baduy meminta",
+    "words": [
+      {
+        "t": "masyarakat",
+        "f": 1114,
+        "e": 1132
+      },
+      {
+        "t": "adat",
+        "f": 1132,
+        "e": 1140
+      },
+      {
+        "t": "Baduy",
+        "f": 1140,
+        "e": 1151
+      },
+      {
+        "t": "meminta",
+        "f": 1151,
+        "e": 1169
+      }
+    ]
   },
   {
-    "from": 1153,
+    "from": 1167,
     "to": 1235,
-    "text": "badak tetap berada di habitat aslinya."
+    "text": "badak tetap berada di habitat aslinya.",
+    "words": [
+      {
+        "t": "badak",
+        "f": 1169,
+        "e": 1181
+      },
+      {
+        "t": "tetap",
+        "f": 1181,
+        "e": 1190
+      },
+      {
+        "t": "berada",
+        "f": 1190,
+        "e": 1201
+      },
+      {
+        "t": "di",
+        "f": 1201,
+        "e": 1206
+      },
+      {
+        "t": "habitat",
+        "f": 1206,
+        "e": 1216
+      },
+      {
+        "t": "aslinya.",
+        "f": 1216,
+        "e": 1234
+      }
+    ]
   },
   {
     "from": 1248,
-    "to": 1272,
-    "text": "Bagi mereka,"
+    "to": 1265,
+    "text": "Bagi mereka,",
+    "words": [
+      {
+        "t": "Bagi",
+        "f": 1248,
+        "e": 1258
+      },
+      {
+        "t": "mereka,",
+        "f": 1258,
+        "e": 1267
+      }
+    ]
   },
   {
-    "from": 1272,
-    "to": 1345,
-    "text": "menjaga alam bukan sekadar kebijakan."
+    "from": 1265,
+    "to": 1330,
+    "text": "menjaga alam bukan sekadar kebijakan.",
+    "words": [
+      {
+        "t": "menjaga",
+        "f": 1267,
+        "e": 1282
+      },
+      {
+        "t": "alam",
+        "f": 1282,
+        "e": 1291
+      },
+      {
+        "t": "bukan",
+        "f": 1291,
+        "e": 1297
+      },
+      {
+        "t": "sekadar",
+        "f": 1297,
+        "e": 1309
+      },
+      {
+        "t": "kebijakan.",
+        "f": 1309,
+        "e": 1324
+      }
+    ]
   },
   {
-    "from": 1345,
+    "from": 1330,
     "to": 1384,
-    "text": "Tapi amanat leluhur."
+    "text": "Tapi amanat leluhur.",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 1332,
+        "e": 1349
+      },
+      {
+        "t": "amanat",
+        "f": 1349,
+        "e": 1366
+      },
+      {
+        "t": "leluhur.",
+        "f": 1366,
+        "e": 1383
+      }
+    ]
   },
   {
     "from": 1397,
-    "to": 1429,
-    "text": "Dua peristiwa ini"
+    "to": 1430,
+    "text": "Dua peristiwa ini",
+    "words": [
+      {
+        "t": "Dua",
+        "f": 1397,
+        "e": 1411
+      },
+      {
+        "t": "peristiwa",
+        "f": 1411,
+        "e": 1426
+      },
+      {
+        "t": "ini",
+        "f": 1426,
+        "e": 1432
+      }
+    ]
   },
   {
-    "from": 1429,
-    "to": 1488,
-    "text": "bukan berarti saling berkaitan."
+    "from": 1430,
+    "to": 1494,
+    "text": "bukan berarti saling berkaitan.",
+    "words": [
+      {
+        "t": "bukan",
+        "f": 1432,
+        "e": 1441
+      },
+      {
+        "t": "berarti",
+        "f": 1441,
+        "e": 1457
+      },
+      {
+        "t": "saling",
+        "f": 1457,
+        "e": 1468
+      },
+      {
+        "t": "berkaitan.",
+        "f": 1468,
+        "e": 1487
+      }
+    ]
   },
   {
-    "from": 1488,
+    "from": 1494,
     "to": 1574,
-    "text": "Tapi keduanya mengingatkan kita pada satu hal:"
+    "text": "Tapi keduanya mengingatkan kita pada satu hal:",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 1496,
+        "e": 1508
+      },
+      {
+        "t": "keduanya",
+        "f": 1508,
+        "e": 1522
+      },
+      {
+        "t": "mengingatkan",
+        "f": 1522,
+        "e": 1541
+      },
+      {
+        "t": "kita",
+        "f": 1541,
+        "e": 1549
+      },
+      {
+        "t": "pada",
+        "f": 1549,
+        "e": 1557
+      },
+      {
+        "t": "satu",
+        "f": 1557,
+        "e": 1565
+      },
+      {
+        "t": "hal:",
+        "f": 1565,
+        "e": 1571
+      }
+    ]
   },
   {
     "from": 1587,
     "to": 1646,
-    "text": "ketika alam menghadapi ancaman,"
+    "text": "ketika alam menghadapi ancaman,",
+    "words": [
+      {
+        "t": "ketika",
+        "f": 1587,
+        "e": 1597
+      },
+      {
+        "t": "alam",
+        "f": 1597,
+        "e": 1605
+      },
+      {
+        "t": "menghadapi",
+        "f": 1605,
+        "e": 1619
+      },
+      {
+        "t": "ancaman,",
+        "f": 1619,
+        "e": 1636
+      }
+    ]
   },
   {
     "from": 1646,
-    "to": 1699,
-    "text": "manusia punya tanggung jawab"
+    "to": 1698,
+    "text": "manusia punya tanggung jawab",
+    "words": [
+      {
+        "t": "manusia",
+        "f": 1648,
+        "e": 1666
+      },
+      {
+        "t": "punya",
+        "f": 1666,
+        "e": 1673
+      },
+      {
+        "t": "tanggung",
+        "f": 1673,
+        "e": 1700
+      },
+      {
+        "t": "jawab",
+        "f": 1673,
+        "e": 1700
+      }
+    ]
   },
   {
-    "from": 1699,
+    "from": 1698,
     "to": 1737,
-    "text": "untuk melindunginya."
+    "text": "untuk melindunginya.",
+    "words": [
+      {
+        "t": "untuk",
+        "f": 1700,
+        "e": 1710
+      },
+      {
+        "t": "melindunginya.",
+        "f": 1710,
+        "e": 1733
+      }
+    ]
   },
   {
     "from": 1751,
-    "to": 1790,
-    "text": "Dan pertanyaannya..."
+    "to": 1783,
+    "text": "Dan pertanyaannya...",
+    "words": [
+      {
+        "t": "Dan",
+        "f": 1751,
+        "e": 1757
+      },
+      {
+        "t": "pertanyaannya...",
+        "f": 1757,
+        "e": 1785
+      }
+    ]
   },
   {
-    "from": 1790,
+    "from": 1783,
     "to": 1868,
-    "text": "sudahkah kita benar-benar melakukannya?"
+    "text": "sudahkah kita benar-benar melakukannya?",
+    "words": [
+      {
+        "t": "sudahkah",
+        "f": 1785,
+        "e": 1822
+      },
+      {
+        "t": "kita",
+        "f": 1822,
+        "e": 1829
+      },
+      {
+        "t": "benar-benar",
+        "f": 1829,
+        "e": 1846
+      },
+      {
+        "t": "melakukannya?",
+        "f": 1846,
+        "e": 1863
+      }
+    ]
   }
 ];

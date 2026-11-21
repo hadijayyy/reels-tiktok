@@ -4,97 +4,520 @@ export const SCENES = [{"from": 0, "len": 161}, {"from": 161, "len": 151}, {"fro
 export const CUES = [
   {
     "from": 10,
-    "to": 84,
-    "text": "Kamu bakal ngabisin sepertiga hidupmu"
+    "to": 61,
+    "text": "Kamu bakal ngabisin sepertiga hidupmu",
+    "words": [
+      {
+        "t": "Kamu",
+        "f": 10,
+        "e": 18
+      },
+      {
+        "t": "bakal",
+        "f": 18,
+        "e": 26
+      },
+      {
+        "t": "ngabisin",
+        "f": 26,
+        "e": 37
+      },
+      {
+        "t": "sepertiga",
+        "f": 37,
+        "e": 51
+      },
+      {
+        "t": "hidupmu",
+        "f": 51,
+        "e": 63
+      }
+    ]
   },
   {
-    "from": 84,
-    "to": 116,
-    "text": "cuma buat tidur."
+    "from": 61,
+    "to": 103,
+    "text": "cuma buat tidur.",
+    "words": [
+      {
+        "t": "cuma",
+        "f": 63,
+        "e": 73
+      },
+      {
+        "t": "buat",
+        "f": 73,
+        "e": 78
+      },
+      {
+        "t": "tidur.",
+        "f": 78,
+        "e": 93
+      }
+    ]
   },
   {
-    "from": 116,
+    "from": 103,
     "to": 154,
-    "text": "Rugi? Justru nggak."
+    "text": "Rugi? Justru nggak.",
+    "words": [
+      {
+        "t": "Rugi?",
+        "f": 105,
+        "e": 124
+      },
+      {
+        "t": "Justru",
+        "f": 135,
+        "e": 146
+      },
+      {
+        "t": "nggak.",
+        "f": 146,
+        "e": 151
+      }
+    ]
   },
   {
     "from": 167,
-    "to": 222,
-    "text": "Seharian otakmu kerja keras,"
+    "to": 210,
+    "text": "Seharian otakmu kerja keras,",
+    "words": [
+      {
+        "t": "Seharian",
+        "f": 167,
+        "e": 182
+      },
+      {
+        "t": "otakmu",
+        "f": 182,
+        "e": 193
+      },
+      {
+        "t": "kerja",
+        "f": 193,
+        "e": 202
+      },
+      {
+        "t": "keras,",
+        "f": 202,
+        "e": 212
+      }
+    ]
   },
   {
-    "from": 222,
-    "to": 274,
-    "text": "dan ninggalin banyak sampah"
+    "from": 210,
+    "to": 275,
+    "text": "dan ninggalin banyak sampah",
+    "words": [
+      {
+        "t": "dan",
+        "f": 212,
+        "e": 232
+      },
+      {
+        "t": "ninggalin",
+        "f": 232,
+        "e": 256
+      },
+      {
+        "t": "banyak",
+        "f": 256,
+        "e": 262
+      },
+      {
+        "t": "sampah",
+        "f": 262,
+        "e": 277
+      }
+    ]
   },
   {
-    "from": 274,
+    "from": 275,
     "to": 305,
-    "text": "berupa zat sisa."
+    "text": "berupa zat sisa.",
+    "words": [
+      {
+        "t": "berupa",
+        "f": 277,
+        "e": 286
+      },
+      {
+        "t": "zat",
+        "f": 286,
+        "e": 292
+      },
+      {
+        "t": "sisa.",
+        "f": 292,
+        "e": 301
+      }
+    ]
   },
   {
     "from": 318,
-    "to": 359,
-    "text": "Nah, pas kamu tidur,"
+    "to": 366,
+    "text": "Nah, pas kamu tidur,",
+    "words": [
+      {
+        "t": "Nah,",
+        "f": 318,
+        "e": 324
+      },
+      {
+        "t": "pas",
+        "f": 329,
+        "e": 334
+      },
+      {
+        "t": "kamu",
+        "f": 334,
+        "e": 340
+      },
+      {
+        "t": "tidur,",
+        "f": 340,
+        "e": 355
+      }
+    ]
   },
   {
-    "from": 359,
-    "to": 407,
-    "text": "cairan otak ngalir deras"
+    "from": 366,
+    "to": 415,
+    "text": "cairan otak ngalir deras",
+    "words": [
+      {
+        "t": "cairan",
+        "f": 368,
+        "e": 384
+      },
+      {
+        "t": "otak",
+        "f": 384,
+        "e": 394
+      },
+      {
+        "t": "ngalir",
+        "f": 394,
+        "e": 402
+      },
+      {
+        "t": "deras",
+        "f": 402,
+        "e": 417
+      }
+    ]
   },
   {
-    "from": 407,
+    "from": 415,
     "to": 475,
-    "text": "dan nyapu bersih semua sampah itu."
+    "text": "dan nyapu bersih semua sampah itu.",
+    "words": [
+      {
+        "t": "dan",
+        "f": 417,
+        "e": 430
+      },
+      {
+        "t": "nyapu",
+        "f": 430,
+        "e": 440
+      },
+      {
+        "t": "bersih",
+        "f": 440,
+        "e": 449
+      },
+      {
+        "t": "semua",
+        "f": 449,
+        "e": 455
+      },
+      {
+        "t": "sampah",
+        "f": 455,
+        "e": 465
+      },
+      {
+        "t": "itu.",
+        "f": 465,
+        "e": 471
+      }
+    ]
   },
   {
     "from": 489,
-    "to": 525,
-    "text": "Di saat yang sama,"
+    "to": 541,
+    "text": "Di saat yang sama,",
+    "words": [
+      {
+        "t": "Di",
+        "f": 489,
+        "e": 510
+      },
+      {
+        "t": "saat",
+        "f": 510,
+        "e": 516
+      },
+      {
+        "t": "yang",
+        "f": 516,
+        "e": 521
+      },
+      {
+        "t": "sama,",
+        "f": 521,
+        "e": 530
+      }
+    ]
   },
   {
-    "from": 525,
-    "to": 579,
-    "text": "ingatan hari ini dipindahin"
+    "from": 541,
+    "to": 592,
+    "text": "ingatan hari ini dipindahin",
+    "words": [
+      {
+        "t": "ingatan",
+        "f": 543,
+        "e": 558
+      },
+      {
+        "t": "hari",
+        "f": 558,
+        "e": 565
+      },
+      {
+        "t": "ini",
+        "f": 565,
+        "e": 574
+      },
+      {
+        "t": "dipindahin",
+        "f": 574,
+        "e": 594
+      }
+    ]
   },
   {
-    "from": 579,
+    "from": 592,
     "to": 640,
-    "text": "ke penyimpanan jangka panjang."
+    "text": "ke penyimpanan jangka panjang.",
+    "words": [
+      {
+        "t": "ke",
+        "f": 594,
+        "e": 598
+      },
+      {
+        "t": "penyimpanan",
+        "f": 598,
+        "e": 616
+      },
+      {
+        "t": "jangka",
+        "f": 616,
+        "e": 624
+      },
+      {
+        "t": "panjang.",
+        "f": 624,
+        "e": 636
+      }
+    ]
   },
   {
     "from": 653,
-    "to": 692,
-    "text": "Kalau kurang tidur?"
+    "to": 686,
+    "text": "Kalau kurang tidur?",
+    "words": [
+      {
+        "t": "Kalau",
+        "f": 653,
+        "e": 659
+      },
+      {
+        "t": "kurang",
+        "f": 659,
+        "e": 668
+      },
+      {
+        "t": "tidur?",
+        "f": 668,
+        "e": 680
+      }
+    ]
   },
   {
-    "from": 692,
-    "to": 716,
-    "text": "Fokus buyar,"
+    "from": 686,
+    "to": 729,
+    "text": "Fokus buyar,",
+    "words": [
+      {
+        "t": "Fokus",
+        "f": 688,
+        "e": 708
+      },
+      {
+        "t": "buyar,",
+        "f": 708,
+        "e": 720
+      }
+    ]
   },
   {
-    "from": 716,
-    "to": 760,
-    "text": "emosi gampang meledak,"
+    "from": 729,
+    "to": 774,
+    "text": "emosi gampang meledak,",
+    "words": [
+      {
+        "t": "emosi",
+        "f": 731,
+        "e": 740
+      },
+      {
+        "t": "gampang",
+        "f": 740,
+        "e": 751
+      },
+      {
+        "t": "meledak,",
+        "f": 751,
+        "e": 762
+      }
+    ]
   },
   {
-    "from": 760,
+    "from": 774,
     "to": 808,
-    "text": "dan badan gampang sakit."
+    "text": "dan badan gampang sakit.",
+    "words": [
+      {
+        "t": "dan",
+        "f": 776,
+        "e": 778
+      },
+      {
+        "t": "badan",
+        "f": 777,
+        "e": 787
+      },
+      {
+        "t": "gampang",
+        "f": 787,
+        "e": 797
+      },
+      {
+        "t": "sakit.",
+        "f": 797,
+        "e": 807
+      }
+    ]
   },
   {
     "from": 821,
-    "to": 877,
-    "text": "Jadi tidur itu bukan malas."
+    "to": 864,
+    "text": "Jadi tidur itu bukan malas.",
+    "words": [
+      {
+        "t": "Jadi",
+        "f": 821,
+        "e": 827
+      },
+      {
+        "t": "tidur",
+        "f": 827,
+        "e": 836
+      },
+      {
+        "t": "itu",
+        "f": 836,
+        "e": 840
+      },
+      {
+        "t": "bukan",
+        "f": 840,
+        "e": 846
+      },
+      {
+        "t": "malas.",
+        "f": 846,
+        "e": 863
+      }
+    ]
   },
   {
-    "from": 877,
-    "to": 938,
-    "text": "Itu servis rutin buat otakmu."
+    "from": 864,
+    "to": 936,
+    "text": "Itu servis rutin buat otakmu.",
+    "words": [
+      {
+        "t": "Itu",
+        "f": 866,
+        "e": 880
+      },
+      {
+        "t": "servis",
+        "f": 880,
+        "e": 889
+      },
+      {
+        "t": "rutin",
+        "f": 889,
+        "e": 902
+      },
+      {
+        "t": "buat",
+        "f": 902,
+        "e": 909
+      },
+      {
+        "t": "otakmu.",
+        "f": 909,
+        "e": 925
+      }
+    ]
   },
   {
-    "from": 938,
+    "from": 936,
     "to": 1019,
-    "text": "Malam ini, tidur minimal tujuh jam, ya!"
+    "text": "Malam ini, tidur minimal tujuh jam, ya!",
+    "words": [
+      {
+        "t": "Malam",
+        "f": 938,
+        "e": 952
+      },
+      {
+        "t": "ini,",
+        "f": 952,
+        "e": 958
+      },
+      {
+        "t": "tidur",
+        "f": 958,
+        "e": 978
+      },
+      {
+        "t": "minimal",
+        "f": 978,
+        "e": 987
+      },
+      {
+        "t": "tujuh",
+        "f": 987,
+        "e": 1002
+      },
+      {
+        "t": "jam,",
+        "f": 1002,
+        "e": 1007
+      },
+      {
+        "t": "ya!",
+        "f": 1007,
+        "e": 1015
+      }
+    ]
   }
 ];

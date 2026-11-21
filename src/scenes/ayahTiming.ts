@@ -4,182 +4,1029 @@ export const SCENES = [{"from": 0, "len": 135}, {"from": 135, "len": 121}, {"fro
 export const CUES = [
   {
     "from": 10,
-    "to": 32,
-    "text": "Bayangkan..."
+    "to": 31,
+    "text": "Bayangkan...",
+    "words": [
+      {
+        "t": "Bayangkan...",
+        "f": 10,
+        "e": 33
+      }
+    ]
   },
   {
-    "from": 32,
+    "from": 31,
     "to": 90,
-    "text": "seorang ayah pagi tadi berpamitan"
+    "text": "seorang ayah pagi tadi berpamitan",
+    "words": [
+      {
+        "t": "seorang",
+        "f": 33,
+        "e": 49
+      },
+      {
+        "t": "ayah",
+        "f": 49,
+        "e": 60
+      },
+      {
+        "t": "pagi",
+        "f": 60,
+        "e": 70
+      },
+      {
+        "t": "tadi",
+        "f": 70,
+        "e": 75
+      },
+      {
+        "t": "berpamitan",
+        "f": 75,
+        "e": 92
+      }
+    ]
   },
   {
     "from": 90,
     "to": 128,
-    "text": "untuk mencari nafkah."
+    "text": "untuk mencari nafkah.",
+    "words": [
+      {
+        "t": "untuk",
+        "f": 92,
+        "e": 98
+      },
+      {
+        "t": "mencari",
+        "f": 98,
+        "e": 110
+      },
+      {
+        "t": "nafkah.",
+        "f": 110,
+        "e": 123
+      }
+    ]
   },
   {
     "from": 141,
-    "to": 165,
-    "text": "Tapi malam ini,"
+    "to": 163,
+    "text": "Tapi malam ini,",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 141,
+        "e": 148
+      },
+      {
+        "t": "malam",
+        "f": 148,
+        "e": 159
+      },
+      {
+        "t": "ini,",
+        "f": 159,
+        "e": 165
+      }
+    ]
   },
   {
-    "from": 165,
-    "to": 211,
-    "text": "keluarganya tidak akan pernah"
+    "from": 163,
+    "to": 205,
+    "text": "keluarganya tidak akan pernah",
+    "words": [
+      {
+        "t": "keluarganya",
+        "f": 165,
+        "e": 185
+      },
+      {
+        "t": "tidak",
+        "f": 185,
+        "e": 189
+      },
+      {
+        "t": "akan",
+        "f": 189,
+        "e": 197
+      },
+      {
+        "t": "pernah",
+        "f": 197,
+        "e": 207
+      }
+    ]
   },
   {
-    "from": 211,
+    "from": 205,
     "to": 250,
-    "text": "melihat dia pulang lagi."
+    "text": "melihat dia pulang lagi.",
+    "words": [
+      {
+        "t": "melihat",
+        "f": 207,
+        "e": 222
+      },
+      {
+        "t": "dia",
+        "f": 222,
+        "e": 227
+      },
+      {
+        "t": "pulang",
+        "f": 227,
+        "e": 237
+      },
+      {
+        "t": "lagi.",
+        "f": 237,
+        "e": 246
+      }
+    ]
   },
   {
     "from": 263,
     "to": 314,
-    "text": "Usianya sudah tidak muda lagi."
+    "text": "Usianya sudah tidak muda lagi.",
+    "words": [
+      {
+        "t": "Usianya",
+        "f": 263,
+        "e": 277
+      },
+      {
+        "t": "sudah",
+        "f": 277,
+        "e": 282
+      },
+      {
+        "t": "tidak",
+        "f": 282,
+        "e": 289
+      },
+      {
+        "t": "muda",
+        "f": 289,
+        "e": 299
+      },
+      {
+        "t": "lagi.",
+        "f": 299,
+        "e": 309
+      }
+    ]
   },
   {
     "from": 314,
     "to": 358,
-    "text": "Kakinya tidak sekuat dulu."
+    "text": "Kakinya tidak sekuat dulu.",
+    "words": [
+      {
+        "t": "Kakinya",
+        "f": 316,
+        "e": 330
+      },
+      {
+        "t": "tidak",
+        "f": 330,
+        "e": 334
+      },
+      {
+        "t": "sekuat",
+        "f": 334,
+        "e": 346
+      },
+      {
+        "t": "dulu.",
+        "f": 346,
+        "e": 353
+      }
+    ]
   },
   {
     "from": 371,
-    "to": 400,
-    "text": "Tapi setiap pagi,"
+    "to": 404,
+    "text": "Tapi setiap pagi,",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 371,
+        "e": 386
+      },
+      {
+        "t": "setiap",
+        "f": 386,
+        "e": 397
+      },
+      {
+        "t": "pagi,",
+        "f": 397,
+        "e": 406
+      }
+    ]
   },
   {
-    "from": 400,
+    "from": 404,
     "to": 467,
-    "text": "dia tetap memaksakan diri untuk bekerja."
+    "text": "dia tetap memaksakan diri untuk bekerja.",
+    "words": [
+      {
+        "t": "dia",
+        "f": 406,
+        "e": 409
+      },
+      {
+        "t": "tetap",
+        "f": 409,
+        "e": 419
+      },
+      {
+        "t": "memaksakan",
+        "f": 419,
+        "e": 432
+      },
+      {
+        "t": "diri",
+        "f": 432,
+        "e": 443
+      },
+      {
+        "t": "untuk",
+        "f": 443,
+        "e": 447
+      },
+      {
+        "t": "bekerja.",
+        "f": 447,
+        "e": 463
+      }
+    ]
   },
   {
     "from": 481,
-    "to": 519,
-    "text": "Bukan untuk jadi kaya."
+    "to": 518,
+    "text": "Bukan untuk jadi kaya.",
+    "words": [
+      {
+        "t": "Bukan",
+        "f": 481,
+        "e": 490
+      },
+      {
+        "t": "untuk",
+        "f": 490,
+        "e": 496
+      },
+      {
+        "t": "jadi",
+        "f": 496,
+        "e": 503
+      },
+      {
+        "t": "kaya.",
+        "f": 503,
+        "e": 515
+      }
+    ]
   },
   {
-    "from": 519,
-    "to": 563,
-    "text": "Dia hanya ingin memastikan"
+    "from": 518,
+    "to": 567,
+    "text": "Dia hanya ingin memastikan",
+    "words": [
+      {
+        "t": "Dia",
+        "f": 520,
+        "e": 535
+      },
+      {
+        "t": "hanya",
+        "f": 535,
+        "e": 544
+      },
+      {
+        "t": "ingin",
+        "f": 544,
+        "e": 553
+      },
+      {
+        "t": "memastikan",
+        "f": 553,
+        "e": 569
+      }
+    ]
   },
   {
-    "from": 563,
+    "from": 567,
     "to": 629,
-    "text": "anak dan istrinya bisa makan hari ini."
+    "text": "anak dan istrinya bisa makan hari ini.",
+    "words": [
+      {
+        "t": "anak",
+        "f": 569,
+        "e": 578
+      },
+      {
+        "t": "dan",
+        "f": 578,
+        "e": 584
+      },
+      {
+        "t": "istrinya",
+        "f": 584,
+        "e": 598
+      },
+      {
+        "t": "bisa",
+        "f": 598,
+        "e": 602
+      },
+      {
+        "t": "makan",
+        "f": 602,
+        "e": 612
+      },
+      {
+        "t": "hari",
+        "f": 612,
+        "e": 619
+      },
+      {
+        "t": "ini.",
+        "f": 619,
+        "e": 626
+      }
+    ]
   },
   {
     "from": 642,
-    "to": 700,
-    "text": "Sampai suatu hari, di perjalanan,"
+    "to": 699,
+    "text": "Sampai suatu hari, di perjalanan,",
+    "words": [
+      {
+        "t": "Sampai",
+        "f": 642,
+        "e": 656
+      },
+      {
+        "t": "suatu",
+        "f": 656,
+        "e": 662
+      },
+      {
+        "t": "hari,",
+        "f": 662,
+        "e": 672
+      },
+      {
+        "t": "di",
+        "f": 672,
+        "e": 701
+      },
+      {
+        "t": "perjalanan,",
+        "f": 672,
+        "e": 701
+      }
+    ]
   },
   {
-    "from": 700,
+    "from": 699,
     "to": 761,
-    "text": "sebuah mobil tiba-tiba menabraknya."
+    "text": "sebuah mobil tiba-tiba menabraknya.",
+    "words": [
+      {
+        "t": "sebuah",
+        "f": 701,
+        "e": 715
+      },
+      {
+        "t": "mobil",
+        "f": 715,
+        "e": 723
+      },
+      {
+        "t": "tiba-tiba",
+        "f": 723,
+        "e": 740
+      },
+      {
+        "t": "menabraknya.",
+        "f": 740,
+        "e": 758
+      }
+    ]
   },
   {
     "from": 823,
-    "to": 861,
-    "text": "Dia meninggal di tempat."
+    "to": 866,
+    "text": "Dia meninggal di tempat.",
+    "words": [
+      {
+        "t": "Dia",
+        "f": 823,
+        "e": 829
+      },
+      {
+        "t": "meninggal",
+        "f": 829,
+        "e": 844
+      },
+      {
+        "t": "di",
+        "f": 844,
+        "e": 848
+      },
+      {
+        "t": "tempat.",
+        "f": 848,
+        "e": 861
+      }
+    ]
   },
   {
-    "from": 861,
-    "to": 920,
-    "text": "Perjalanan yang dia tempuh setiap hari"
+    "from": 866,
+    "to": 921,
+    "text": "Perjalanan yang dia tempuh setiap hari",
+    "words": [
+      {
+        "t": "Perjalanan",
+        "f": 868,
+        "e": 884
+      },
+      {
+        "t": "yang",
+        "f": 884,
+        "e": 888
+      },
+      {
+        "t": "dia",
+        "f": 888,
+        "e": 893
+      },
+      {
+        "t": "tempuh",
+        "f": 893,
+        "e": 903
+      },
+      {
+        "t": "setiap",
+        "f": 903,
+        "e": 914
+      },
+      {
+        "t": "hari",
+        "f": 914,
+        "e": 923
+      }
+    ]
   },
   {
-    "from": 920,
+    "from": 921,
     "to": 969,
-    "text": "menjadi perjalanan terakhirnya."
+    "text": "menjadi perjalanan terakhirnya.",
+    "words": [
+      {
+        "t": "menjadi",
+        "f": 923,
+        "e": 930
+      },
+      {
+        "t": "perjalanan",
+        "f": 930,
+        "e": 948
+      },
+      {
+        "t": "terakhirnya.",
+        "f": 948,
+        "e": 965
+      }
+    ]
   },
   {
     "from": 982,
-    "to": 1023,
-    "text": "Sementara itu, di rumah,"
+    "to": 1021,
+    "text": "Sementara itu, di rumah,",
+    "words": [
+      {
+        "t": "Sementara",
+        "f": 982,
+        "e": 997
+      },
+      {
+        "t": "itu,",
+        "f": 997,
+        "e": 1005
+      },
+      {
+        "t": "di",
+        "f": 1005,
+        "e": 1023
+      },
+      {
+        "t": "rumah,",
+        "f": 1005,
+        "e": 1023
+      }
+    ]
   },
   {
-    "from": 1023,
+    "from": 1021,
     "to": 1077,
-    "text": "istrinya menyiapkan makan malam."
+    "text": "istrinya menyiapkan makan malam.",
+    "words": [
+      {
+        "t": "istrinya",
+        "f": 1023,
+        "e": 1038
+      },
+      {
+        "t": "menyiapkan",
+        "f": 1038,
+        "e": 1054
+      },
+      {
+        "t": "makan",
+        "f": 1054,
+        "e": 1061
+      },
+      {
+        "t": "malam.",
+        "f": 1061,
+        "e": 1074
+      }
+    ]
   },
   {
     "from": 1091,
-    "to": 1141,
-    "text": "Anaknya menunggu di dekat pintu,"
+    "to": 1140,
+    "text": "Anaknya menunggu di dekat pintu,",
+    "words": [
+      {
+        "t": "Anaknya",
+        "f": 1091,
+        "e": 1106
+      },
+      {
+        "t": "menunggu",
+        "f": 1106,
+        "e": 1118
+      },
+      {
+        "t": "di",
+        "f": 1118,
+        "e": 1121
+      },
+      {
+        "t": "dekat",
+        "f": 1121,
+        "e": 1128
+      },
+      {
+        "t": "pintu,",
+        "f": 1128,
+        "e": 1142
+      }
+    ]
   },
   {
-    "from": 1141,
-    "to": 1163,
-    "text": "lalu bertanya:"
+    "from": 1140,
+    "to": 1161,
+    "text": "lalu bertanya:",
+    "words": [
+      {
+        "t": "lalu",
+        "f": 1142,
+        "e": 1151
+      },
+      {
+        "t": "bertanya:",
+        "f": 1151,
+        "e": 1163
+      }
+    ]
   },
   {
-    "from": 1163,
+    "from": 1161,
     "to": 1200,
-    "text": "\"Ayah kapan pulang, Bu?\""
+    "text": "\"Ayah kapan pulang, Bu?\"",
+    "words": [
+      {
+        "t": "\"Ayah",
+        "f": 1163,
+        "e": 1175
+      },
+      {
+        "t": "kapan",
+        "f": 1175,
+        "e": 1183
+      },
+      {
+        "t": "pulang,",
+        "f": 1183,
+        "e": 1193
+      },
+      {
+        "t": "Bu?\"",
+        "f": 1193,
+        "e": 1197
+      }
+    ]
   },
   {
     "from": 1262,
-    "to": 1313,
-    "text": "Malam itu, tidak ada suara motor"
+    "to": 1310,
+    "text": "Malam itu, tidak ada suara motor",
+    "words": [
+      {
+        "t": "Malam",
+        "f": 1262,
+        "e": 1271
+      },
+      {
+        "t": "itu,",
+        "f": 1271,
+        "e": 1278
+      },
+      {
+        "t": "tidak",
+        "f": 1278,
+        "e": 1287
+      },
+      {
+        "t": "ada",
+        "f": 1287,
+        "e": 1295
+      },
+      {
+        "t": "suara",
+        "f": 1295,
+        "e": 1304
+      },
+      {
+        "t": "motor",
+        "f": 1304,
+        "e": 1312
+      }
+    ]
   },
   {
-    "from": 1313,
+    "from": 1310,
     "to": 1352,
-    "text": "berhenti di depan rumah."
+    "text": "berhenti di depan rumah.",
+    "words": [
+      {
+        "t": "berhenti",
+        "f": 1312,
+        "e": 1327
+      },
+      {
+        "t": "di",
+        "f": 1327,
+        "e": 1332
+      },
+      {
+        "t": "depan",
+        "f": 1332,
+        "e": 1340
+      },
+      {
+        "t": "rumah.",
+        "f": 1340,
+        "e": 1346
+      }
+    ]
   },
   {
     "from": 1366,
-    "to": 1408,
-    "text": "Tidak ada ketukan pintu."
+    "to": 1409,
+    "text": "Tidak ada ketukan pintu.",
+    "words": [
+      {
+        "t": "Tidak",
+        "f": 1366,
+        "e": 1374
+      },
+      {
+        "t": "ada",
+        "f": 1374,
+        "e": 1377
+      },
+      {
+        "t": "ketukan",
+        "f": 1377,
+        "e": 1389
+      },
+      {
+        "t": "pintu.",
+        "f": 1389,
+        "e": 1403
+      }
+    ]
   },
   {
-    "from": 1408,
-    "to": 1452,
-    "text": "Tidak ada lagi suara ayah"
+    "from": 1409,
+    "to": 1456,
+    "text": "Tidak ada lagi suara ayah",
+    "words": [
+      {
+        "t": "Tidak",
+        "f": 1411,
+        "e": 1419
+      },
+      {
+        "t": "ada",
+        "f": 1419,
+        "e": 1423
+      },
+      {
+        "t": "lagi",
+        "f": 1423,
+        "e": 1433
+      },
+      {
+        "t": "suara",
+        "f": 1433,
+        "e": 1446
+      },
+      {
+        "t": "ayah",
+        "f": 1446,
+        "e": 1458
+      }
+    ]
   },
   {
-    "from": 1452,
+    "from": 1456,
     "to": 1500,
-    "text": "yang memanggil nama mereka."
+    "text": "yang memanggil nama mereka.",
+    "words": [
+      {
+        "t": "yang",
+        "f": 1458,
+        "e": 1464
+      },
+      {
+        "t": "memanggil",
+        "f": 1464,
+        "e": 1477
+      },
+      {
+        "t": "nama",
+        "f": 1477,
+        "e": 1483
+      },
+      {
+        "t": "mereka.",
+        "f": 1483,
+        "e": 1492
+      }
+    ]
   },
   {
     "from": 1513,
-    "to": 1587,
-    "text": "Kadang kita terlalu sibuk mengejar dunia,"
+    "to": 1583,
+    "text": "Kadang kita terlalu sibuk mengejar dunia,",
+    "words": [
+      {
+        "t": "Kadang",
+        "f": 1513,
+        "e": 1524
+      },
+      {
+        "t": "kita",
+        "f": 1524,
+        "e": 1530
+      },
+      {
+        "t": "terlalu",
+        "f": 1530,
+        "e": 1543
+      },
+      {
+        "t": "sibuk",
+        "f": 1543,
+        "e": 1552
+      },
+      {
+        "t": "mengejar",
+        "f": 1552,
+        "e": 1564
+      },
+      {
+        "t": "dunia,",
+        "f": 1564,
+        "e": 1579
+      }
+    ]
   },
   {
-    "from": 1587,
-    "to": 1646,
-    "text": "sampai lupa bahwa bagi seseorang,"
+    "from": 1583,
+    "to": 1643,
+    "text": "sampai lupa bahwa bagi seseorang,",
+    "words": [
+      {
+        "t": "sampai",
+        "f": 1585,
+        "e": 1597
+      },
+      {
+        "t": "lupa",
+        "f": 1597,
+        "e": 1610
+      },
+      {
+        "t": "bahwa",
+        "f": 1610,
+        "e": 1621
+      },
+      {
+        "t": "bagi",
+        "f": 1621,
+        "e": 1630
+      },
+      {
+        "t": "seseorang,",
+        "f": 1630,
+        "e": 1645
+      }
+    ]
   },
   {
-    "from": 1646,
+    "from": 1643,
     "to": 1698,
-    "text": "kita adalah seluruh dunianya."
+    "text": "kita adalah seluruh dunianya.",
+    "words": [
+      {
+        "t": "kita",
+        "f": 1645,
+        "e": 1656
+      },
+      {
+        "t": "adalah",
+        "f": 1656,
+        "e": 1666
+      },
+      {
+        "t": "seluruh",
+        "f": 1666,
+        "e": 1680
+      },
+      {
+        "t": "dunianya.",
+        "f": 1680,
+        "e": 1690
+      }
+    ]
   },
   {
     "from": 1711,
-    "to": 1766,
-    "text": "Jadi, kalau ayahmu masih ada,"
+    "to": 1765,
+    "text": "Jadi, kalau ayahmu masih ada,",
+    "words": [
+      {
+        "t": "Jadi,",
+        "f": 1711,
+        "e": 1722
+      },
+      {
+        "t": "kalau",
+        "f": 1722,
+        "e": 1738
+      },
+      {
+        "t": "ayahmu",
+        "f": 1738,
+        "e": 1752
+      },
+      {
+        "t": "masih",
+        "f": 1752,
+        "e": 1758
+      },
+      {
+        "t": "ada,",
+        "f": 1758,
+        "e": 1767
+      }
+    ]
   },
   {
-    "from": 1766,
-    "to": 1788,
-    "text": "telepon dia."
+    "from": 1765,
+    "to": 1796,
+    "text": "telepon dia.",
+    "words": [
+      {
+        "t": "telepon",
+        "f": 1767,
+        "e": 1777
+      },
+      {
+        "t": "dia.",
+        "f": 1777,
+        "e": 1786
+      }
+    ]
   },
   {
-    "from": 1788,
+    "from": 1796,
     "to": 1860,
-    "text": "Kalau masih bisa memeluknya, peluklah."
+    "text": "Kalau masih bisa memeluknya, peluklah.",
+    "words": [
+      {
+        "t": "Kalau",
+        "f": 1798,
+        "e": 1806
+      },
+      {
+        "t": "masih",
+        "f": 1806,
+        "e": 1814
+      },
+      {
+        "t": "bisa",
+        "f": 1814,
+        "e": 1822
+      },
+      {
+        "t": "memeluknya,",
+        "f": 1822,
+        "e": 1840
+      },
+      {
+        "t": "peluklah.",
+        "f": 1840,
+        "e": 1857
+      }
+    ]
   },
   {
     "from": 1873,
-    "to": 1928,
-    "text": "Karena tidak semua yang berangkat pagi"
+    "to": 1929,
+    "text": "Karena tidak semua yang berangkat pagi",
+    "words": [
+      {
+        "t": "Karena",
+        "f": 1873,
+        "e": 1881
+      },
+      {
+        "t": "tidak",
+        "f": 1881,
+        "e": 1890
+      },
+      {
+        "t": "semua",
+        "f": 1890,
+        "e": 1902
+      },
+      {
+        "t": "yang",
+        "f": 1902,
+        "e": 1909
+      },
+      {
+        "t": "berangkat",
+        "f": 1909,
+        "e": 1920
+      },
+      {
+        "t": "pagi",
+        "f": 1920,
+        "e": 1931
+      }
+    ]
   },
   {
-    "from": 1928,
+    "from": 1929,
     "to": 1980,
-    "text": "punya kesempatan untuk pulang malam."
+    "text": "punya kesempatan untuk pulang malam.",
+    "words": [
+      {
+        "t": "punya",
+        "f": 1931,
+        "e": 1937
+      },
+      {
+        "t": "kesempatan",
+        "f": 1937,
+        "e": 1953
+      },
+      {
+        "t": "untuk",
+        "f": 1953,
+        "e": 1958
+      },
+      {
+        "t": "pulang",
+        "f": 1958,
+        "e": 1967
+      },
+      {
+        "t": "malam.",
+        "f": 1967,
+        "e": 1977
+      }
+    ]
   }
 ];

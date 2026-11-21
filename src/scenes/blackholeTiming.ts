@@ -5,236 +5,1210 @@ export const CUES = [
   {
     "from": 10,
     "to": 70,
-    "text": "Bayangkan ada satu tempat di alam semesta,"
+    "text": "Bayangkan ada satu tempat di alam semesta,",
+    "words": [
+      {
+        "t": "Bayangkan",
+        "f": 10,
+        "e": 23
+      },
+      {
+        "t": "ada",
+        "f": 23,
+        "e": 28
+      },
+      {
+        "t": "satu",
+        "f": 28,
+        "e": 35
+      },
+      {
+        "t": "tempat",
+        "f": 35,
+        "e": 46
+      },
+      {
+        "t": "di",
+        "f": 46,
+        "e": 50
+      },
+      {
+        "t": "alam",
+        "f": 50,
+        "e": 56
+      },
+      {
+        "t": "semesta,",
+        "f": 56,
+        "e": 66
+      }
+    ]
   },
   {
     "from": 70,
-    "to": 96,
-    "text": "di mana cahaya pun"
+    "to": 94,
+    "text": "di mana cahaya pun",
+    "words": [
+      {
+        "t": "di",
+        "f": 72,
+        "e": 82
+      },
+      {
+        "t": "mana",
+        "f": 72,
+        "e": 82
+      },
+      {
+        "t": "cahaya",
+        "f": 82,
+        "e": 92
+      },
+      {
+        "t": "pun",
+        "f": 92,
+        "e": 96
+      }
+    ]
   },
   {
-    "from": 96,
+    "from": 94,
     "to": 120,
-    "text": "tidak bisa kabur."
+    "text": "tidak bisa kabur.",
+    "words": [
+      {
+        "t": "tidak",
+        "f": 96,
+        "e": 100
+      },
+      {
+        "t": "bisa",
+        "f": 100,
+        "e": 107
+      },
+      {
+        "t": "kabur.",
+        "f": 107,
+        "e": 118
+      }
+    ]
   },
   {
     "from": 133,
-    "to": 168,
-    "text": "Sekali melewati batasnya,"
+    "to": 166,
+    "text": "Sekali melewati batasnya,",
+    "words": [
+      {
+        "t": "Sekali",
+        "f": 133,
+        "e": 143
+      },
+      {
+        "t": "melewati",
+        "f": 143,
+        "e": 153
+      },
+      {
+        "t": "batasnya,",
+        "f": 153,
+        "e": 168
+      }
+    ]
   },
   {
-    "from": 168,
-    "to": 205,
-    "text": "tidak ada yang bisa keluar."
+    "from": 166,
+    "to": 202,
+    "text": "tidak ada yang bisa keluar.",
+    "words": [
+      {
+        "t": "tidak",
+        "f": 168,
+        "e": 174
+      },
+      {
+        "t": "ada",
+        "f": 174,
+        "e": 180
+      },
+      {
+        "t": "yang",
+        "f": 180,
+        "e": 182
+      },
+      {
+        "t": "bisa",
+        "f": 182,
+        "e": 187
+      },
+      {
+        "t": "keluar.",
+        "f": 187,
+        "e": 197
+      }
+    ]
   },
   {
-    "from": 205,
+    "from": 202,
     "to": 233,
-    "text": "Namanya: Black Hole."
+    "text": "Namanya: Black Hole.",
+    "words": [
+      {
+        "t": "Namanya:",
+        "f": 204,
+        "e": 217
+      },
+      {
+        "t": "Black Hole",
+        "f": 217,
+        "e": 229
+      },
+      {
+        "t": ".",
+        "f": 229,
+        "e": 230
+      }
+    ]
   },
   {
     "from": 262,
-    "to": 332,
-    "text": "Semuanya bermula dari sebuah bintang raksasa."
+    "to": 335,
+    "text": "Semuanya bermula dari sebuah bintang raksasa.",
+    "words": [
+      {
+        "t": "Semuanya",
+        "f": 262,
+        "e": 273
+      },
+      {
+        "t": "bermula",
+        "f": 273,
+        "e": 284
+      },
+      {
+        "t": "dari",
+        "f": 284,
+        "e": 290
+      },
+      {
+        "t": "sebuah",
+        "f": 290,
+        "e": 300
+      },
+      {
+        "t": "bintang",
+        "f": 300,
+        "e": 309
+      },
+      {
+        "t": "raksasa.",
+        "f": 309,
+        "e": 323
+      }
+    ]
   },
   {
-    "from": 332,
-    "to": 366,
-    "text": "Selama miliaran tahun,"
+    "from": 335,
+    "to": 373,
+    "text": "Selama miliaran tahun,",
+    "words": [
+      {
+        "t": "Selama",
+        "f": 337,
+        "e": 346
+      },
+      {
+        "t": "miliaran",
+        "f": 346,
+        "e": 359
+      },
+      {
+        "t": "tahun,",
+        "f": 359,
+        "e": 366
+      }
+    ]
   },
   {
-    "from": 366,
-    "to": 403,
-    "text": "reaksi nuklir di intinya"
+    "from": 373,
+    "to": 408,
+    "text": "reaksi nuklir di intinya",
+    "words": [
+      {
+        "t": "reaksi",
+        "f": 375,
+        "e": 384
+      },
+      {
+        "t": "nuklir",
+        "f": 384,
+        "e": 396
+      },
+      {
+        "t": "di",
+        "f": 396,
+        "e": 410
+      },
+      {
+        "t": "intinya",
+        "f": 396,
+        "e": 410
+      }
+    ]
   },
   {
-    "from": 403,
+    "from": 408,
     "to": 461,
-    "text": "melawan tarikan gravitasinya sendiri."
+    "text": "melawan tarikan gravitasinya sendiri.",
+    "words": [
+      {
+        "t": "melawan",
+        "f": 410,
+        "e": 420
+      },
+      {
+        "t": "tarikan",
+        "f": 420,
+        "e": 429
+      },
+      {
+        "t": "gravitasinya",
+        "f": 429,
+        "e": 447
+      },
+      {
+        "t": "sendiri.",
+        "f": 447,
+        "e": 454
+      }
+    ]
   },
   {
     "from": 474,
-    "to": 523,
-    "text": "Tapi saat bahan bakarnya habis,"
+    "to": 514,
+    "text": "Tapi saat bahan bakarnya habis,",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 474,
+        "e": 481
+      },
+      {
+        "t": "saat",
+        "f": 481,
+        "e": 486
+      },
+      {
+        "t": "bahan",
+        "f": 486,
+        "e": 495
+      },
+      {
+        "t": "bakarnya",
+        "f": 495,
+        "e": 504
+      },
+      {
+        "t": "habis,",
+        "f": 504,
+        "e": 516
+      }
+    ]
   },
   {
-    "from": 523,
-    "to": 560,
-    "text": "keseimbangan itu runtuh."
+    "from": 514,
+    "to": 562,
+    "text": "keseimbangan itu runtuh.",
+    "words": [
+      {
+        "t": "keseimbangan",
+        "f": 516,
+        "e": 535
+      },
+      {
+        "t": "itu",
+        "f": 535,
+        "e": 540
+      },
+      {
+        "t": "runtuh.",
+        "f": 540,
+        "e": 553
+      }
+    ]
   },
   {
-    "from": 560,
-    "to": 582,
-    "text": "Intinya kolaps"
+    "from": 562,
+    "to": 585,
+    "text": "Intinya kolaps",
+    "words": [
+      {
+        "t": "Intinya",
+        "f": 564,
+        "e": 577
+      },
+      {
+        "t": "kolaps",
+        "f": 577,
+        "e": 587
+      }
+    ]
   },
   {
-    "from": 582,
+    "from": 585,
     "to": 622,
-    "text": "oleh gravitasinya sendiri."
+    "text": "oleh gravitasinya sendiri.",
+    "words": [
+      {
+        "t": "oleh",
+        "f": 587,
+        "e": 592
+      },
+      {
+        "t": "gravitasinya",
+        "f": 592,
+        "e": 610
+      },
+      {
+        "t": "sendiri.",
+        "f": 610,
+        "e": 616
+      }
+    ]
   },
   {
     "from": 636,
-    "to": 674,
-    "text": "Kalau massanya cukup besar,"
+    "to": 675,
+    "text": "Kalau massanya cukup besar,",
+    "words": [
+      {
+        "t": "Kalau",
+        "f": 636,
+        "e": 641
+      },
+      {
+        "t": "massanya",
+        "f": 641,
+        "e": 652
+      },
+      {
+        "t": "cukup",
+        "f": 652,
+        "e": 659
+      },
+      {
+        "t": "besar,",
+        "f": 659,
+        "e": 667
+      }
+    ]
   },
   {
-    "from": 674,
-    "to": 700,
-    "text": "dari keruntuhan itu"
+    "from": 675,
+    "to": 701,
+    "text": "dari keruntuhan itu",
+    "words": [
+      {
+        "t": "dari",
+        "f": 677,
+        "e": 683
+      },
+      {
+        "t": "keruntuhan",
+        "f": 683,
+        "e": 696
+      },
+      {
+        "t": "itu",
+        "f": 696,
+        "e": 703
+      }
+    ]
   },
   {
-    "from": 700,
+    "from": 701,
     "to": 738,
-    "text": "lahirlah sebuah Black Hole."
+    "text": "lahirlah sebuah Black Hole.",
+    "words": [
+      {
+        "t": "lahirlah",
+        "f": 703,
+        "e": 715
+      },
+      {
+        "t": "sebuah",
+        "f": 715,
+        "e": 724
+      },
+      {
+        "t": "Black Hole",
+        "f": 724,
+        "e": 734
+      },
+      {
+        "t": ".",
+        "f": 734,
+        "e": 736
+      }
+    ]
   },
   {
     "from": 767,
-    "to": 818,
-    "text": "Tapi Black Hole bukan lubang biasa."
+    "to": 821,
+    "text": "Tapi Black Hole bukan lubang biasa.",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 767,
+        "e": 775
+      },
+      {
+        "t": "Black Hole",
+        "f": 775,
+        "e": 788
+      },
+      {
+        "t": "bukan",
+        "f": 788,
+        "e": 795
+      },
+      {
+        "t": "lubang",
+        "f": 795,
+        "e": 803
+      },
+      {
+        "t": "biasa.",
+        "f": 803,
+        "e": 814
+      }
+    ]
   },
   {
-    "from": 818,
-    "to": 855,
-    "text": "Ia wilayah ruang dan waktu"
+    "from": 821,
+    "to": 853,
+    "text": "Ia wilayah ruang dan waktu",
+    "words": [
+      {
+        "t": "Ia",
+        "f": 823,
+        "e": 827
+      },
+      {
+        "t": "wilayah",
+        "f": 827,
+        "e": 838
+      },
+      {
+        "t": "ruang",
+        "f": 838,
+        "e": 844
+      },
+      {
+        "t": "dan",
+        "f": 844,
+        "e": 848
+      },
+      {
+        "t": "waktu",
+        "f": 848,
+        "e": 855
+      }
+    ]
   },
   {
-    "from": 855,
+    "from": 853,
     "to": 909,
-    "text": "dengan gravitasi yang sangat ekstrem."
+    "text": "dengan gravitasi yang sangat ekstrem.",
+    "words": [
+      {
+        "t": "dengan",
+        "f": 855,
+        "e": 865
+      },
+      {
+        "t": "gravitasi",
+        "f": 865,
+        "e": 883
+      },
+      {
+        "t": "yang",
+        "f": 883,
+        "e": 886
+      },
+      {
+        "t": "sangat",
+        "f": 886,
+        "e": 892
+      },
+      {
+        "t": "ekstrem.",
+        "f": 892,
+        "e": 905
+      }
+    ]
   },
   {
     "from": 922,
-    "to": 968,
-    "text": "Batas tanpa jalan kembali itu"
+    "to": 961,
+    "text": "Batas tanpa jalan kembali itu",
+    "words": [
+      {
+        "t": "Batas",
+        "f": 922,
+        "e": 933
+      },
+      {
+        "t": "tanpa",
+        "f": 933,
+        "e": 941
+      },
+      {
+        "t": "jalan",
+        "f": 941,
+        "e": 948
+      },
+      {
+        "t": "kembali",
+        "f": 948,
+        "e": 958
+      },
+      {
+        "t": "itu",
+        "f": 958,
+        "e": 963
+      }
+    ]
   },
   {
-    "from": 968,
-    "to": 1002,
-    "text": "disebut Event Horizon."
+    "from": 961,
+    "to": 1003,
+    "text": "disebut Event Horizon.",
+    "words": [
+      {
+        "t": "disebut",
+        "f": 963,
+        "e": 973
+      },
+      {
+        "t": "Event Horizon",
+        "f": 973,
+        "e": 993
+      },
+      {
+        "t": ".",
+        "f": 993,
+        "e": 994
+      }
+    ]
   },
   {
-    "from": 1002,
-    "to": 1028,
-    "text": "Lewat dari sana,"
+    "from": 1003,
+    "to": 1025,
+    "text": "Lewat dari sana,",
+    "words": [
+      {
+        "t": "Lewat",
+        "f": 1005,
+        "e": 1014
+      },
+      {
+        "t": "dari",
+        "f": 1014,
+        "e": 1019
+      },
+      {
+        "t": "sana,",
+        "f": 1019,
+        "e": 1027
+      }
+    ]
   },
   {
-    "from": 1028,
+    "from": 1025,
     "to": 1059,
-    "text": "cahaya pun terjebak."
+    "text": "cahaya pun terjebak.",
+    "words": [
+      {
+        "t": "cahaya",
+        "f": 1027,
+        "e": 1046
+      },
+      {
+        "t": "pun",
+        "f": 1027,
+        "e": 1046
+      },
+      {
+        "t": "terjebak.",
+        "f": 1046,
+        "e": 1058
+      }
+    ]
   },
   {
     "from": 1072,
-    "to": 1098,
-    "text": "Di sekelilingnya,"
+    "to": 1092,
+    "text": "Di sekelilingnya,",
+    "words": [
+      {
+        "t": "Di",
+        "f": 1072,
+        "e": 1077
+      },
+      {
+        "t": "sekelilingnya,",
+        "f": 1077,
+        "e": 1094
+      }
+    ]
   },
   {
-    "from": 1098,
-    "to": 1151,
-    "text": "gas dan debu berputar sangat cepat,"
+    "from": 1092,
+    "to": 1150,
+    "text": "gas dan debu berputar sangat cepat,",
+    "words": [
+      {
+        "t": "gas",
+        "f": 1094,
+        "e": 1103
+      },
+      {
+        "t": "dan",
+        "f": 1103,
+        "e": 1108
+      },
+      {
+        "t": "debu",
+        "f": 1108,
+        "e": 1117
+      },
+      {
+        "t": "berputar",
+        "f": 1117,
+        "e": 1130
+      },
+      {
+        "t": "sangat",
+        "f": 1130,
+        "e": 1135
+      },
+      {
+        "t": "cepat,",
+        "f": 1135,
+        "e": 1152
+      }
+    ]
   },
   {
-    "from": 1151,
-    "to": 1188,
-    "text": "membentuk piringan panas:"
+    "from": 1150,
+    "to": 1186,
+    "text": "membentuk piringan panas:",
+    "words": [
+      {
+        "t": "membentuk",
+        "f": 1152,
+        "e": 1164
+      },
+      {
+        "t": "piringan",
+        "f": 1164,
+        "e": 1173
+      },
+      {
+        "t": "panas:",
+        "f": 1173,
+        "e": 1185
+      }
+    ]
   },
   {
-    "from": 1188,
+    "from": 1186,
     "to": 1211,
-    "text": "Accretion Disk."
+    "text": "Accretion Disk.",
+    "words": [
+      {
+        "t": "Accretion Disk",
+        "f": 1188,
+        "e": 1208
+      },
+      {
+        "t": ".",
+        "f": 1208,
+        "e": 1210
+      }
+    ]
   },
   {
     "from": 1224,
-    "to": 1284,
-    "text": "Gravitasinya juga membelokkan cahaya"
+    "to": 1272,
+    "text": "Gravitasinya juga membelokkan cahaya",
+    "words": [
+      {
+        "t": "Gravitasinya",
+        "f": 1224,
+        "e": 1243
+      },
+      {
+        "t": "juga",
+        "f": 1243,
+        "e": 1249
+      },
+      {
+        "t": "membelokkan",
+        "f": 1249,
+        "e": 1264
+      },
+      {
+        "t": "cahaya",
+        "f": 1264,
+        "e": 1274
+      }
+    ]
   },
   {
-    "from": 1284,
-    "to": 1331,
-    "text": "dari bintang di belakangnya."
+    "from": 1272,
+    "to": 1317,
+    "text": "dari bintang di belakangnya.",
+    "words": [
+      {
+        "t": "dari",
+        "f": 1274,
+        "e": 1280
+      },
+      {
+        "t": "bintang",
+        "f": 1280,
+        "e": 1289
+      },
+      {
+        "t": "di",
+        "f": 1289,
+        "e": 1293
+      },
+      {
+        "t": "belakangnya.",
+        "f": 1293,
+        "e": 1307
+      }
+    ]
   },
   {
-    "from": 1331,
+    "from": 1317,
     "to": 1387,
-    "text": "Ini disebut Gravitational Lensing."
+    "text": "Ini disebut Gravitational Lensing.",
+    "words": [
+      {
+        "t": "Ini",
+        "f": 1319,
+        "e": 1327
+      },
+      {
+        "t": "disebut",
+        "f": 1327,
+        "e": 1338
+      },
+      {
+        "t": "Gravitational Lensing",
+        "f": 1338,
+        "e": 1383
+      },
+      {
+        "t": ".",
+        "f": 1383,
+        "e": 1385
+      }
+    ]
   },
   {
     "from": 1401,
-    "to": 1445,
-    "text": "Dan kalau kamu terlalu dekat,"
+    "to": 1440,
+    "text": "Dan kalau kamu terlalu dekat,",
+    "words": [
+      {
+        "t": "Dan",
+        "f": 1401,
+        "e": 1406
+      },
+      {
+        "t": "kalau",
+        "f": 1406,
+        "e": 1413
+      },
+      {
+        "t": "kamu",
+        "f": 1413,
+        "e": 1420
+      },
+      {
+        "t": "terlalu",
+        "f": 1420,
+        "e": 1430
+      },
+      {
+        "t": "dekat,",
+        "f": 1430,
+        "e": 1439
+      }
+    ]
   },
   {
-    "from": 1445,
-    "to": 1490,
-    "text": "kakimu ditarik jauh lebih kuat"
+    "from": 1440,
+    "to": 1489,
+    "text": "kakimu ditarik jauh lebih kuat",
+    "words": [
+      {
+        "t": "kakimu",
+        "f": 1442,
+        "e": 1460
+      },
+      {
+        "t": "ditarik",
+        "f": 1460,
+        "e": 1469
+      },
+      {
+        "t": "jauh",
+        "f": 1469,
+        "e": 1476
+      },
+      {
+        "t": "lebih",
+        "f": 1476,
+        "e": 1481
+      },
+      {
+        "t": "kuat",
+        "f": 1481,
+        "e": 1491
+      }
+    ]
   },
   {
-    "from": 1490,
+    "from": 1489,
     "to": 1517,
-    "text": "daripada kepalamu."
+    "text": "daripada kepalamu.",
+    "words": [
+      {
+        "t": "daripada",
+        "f": 1491,
+        "e": 1501
+      },
+      {
+        "t": "kepalamu.",
+        "f": 1501,
+        "e": 1511
+      }
+    ]
   },
   {
     "from": 1531,
-    "to": 1586,
-    "text": "Tubuhmu memanjang seperti spageti."
+    "to": 1580,
+    "text": "Tubuhmu memanjang seperti spageti.",
+    "words": [
+      {
+        "t": "Tubuhmu",
+        "f": 1531,
+        "e": 1541
+      },
+      {
+        "t": "memanjang",
+        "f": 1541,
+        "e": 1552
+      },
+      {
+        "t": "seperti",
+        "f": 1552,
+        "e": 1559
+      },
+      {
+        "t": "spageti.",
+        "f": 1559,
+        "e": 1574
+      }
+    ]
   },
   {
-    "from": 1586,
-    "to": 1616,
-    "text": "Ilmuwan menyebutnya"
+    "from": 1580,
+    "to": 1614,
+    "text": "Ilmuwan menyebutnya",
+    "words": [
+      {
+        "t": "Ilmuwan",
+        "f": 1582,
+        "e": 1604
+      },
+      {
+        "t": "menyebutnya",
+        "f": 1604,
+        "e": 1616
+      }
+    ]
   },
   {
-    "from": 1616,
+    "from": 1614,
     "to": 1646,
-    "text": "Spaghettification."
+    "text": "Spaghettification.",
+    "words": [
+      {
+        "t": "Spaghettification",
+        "f": 1616,
+        "e": 1643
+      },
+      {
+        "t": ".",
+        "f": 1643,
+        "e": 1644
+      }
+    ]
   },
   {
     "from": 1674,
-    "to": 1723,
-    "text": "Dan inilah bagian paling misteriusnya:"
+    "to": 1722,
+    "text": "Dan inilah bagian paling misteriusnya:",
+    "words": [
+      {
+        "t": "Dan",
+        "f": 1674,
+        "e": 1679
+      },
+      {
+        "t": "inilah",
+        "f": 1679,
+        "e": 1687
+      },
+      {
+        "t": "bagian",
+        "f": 1687,
+        "e": 1697
+      },
+      {
+        "t": "paling",
+        "f": 1697,
+        "e": 1701
+      },
+      {
+        "t": "misteriusnya:",
+        "f": 1701,
+        "e": 1720
+      }
+    ]
   },
   {
-    "from": 1723,
+    "from": 1722,
     "to": 1755,
-    "text": "apa yang ada di pusatnya?"
+    "text": "apa yang ada di pusatnya?",
+    "words": [
+      {
+        "t": "apa",
+        "f": 1724,
+        "e": 1730
+      },
+      {
+        "t": "yang",
+        "f": 1730,
+        "e": 1734
+      },
+      {
+        "t": "ada",
+        "f": 1734,
+        "e": 1738
+      },
+      {
+        "t": "di",
+        "f": 1738,
+        "e": 1741
+      },
+      {
+        "t": "pusatnya?",
+        "f": 1741,
+        "e": 1752
+      }
+    ]
   },
   {
     "from": 1804,
-    "to": 1833,
-    "text": "Fisika memprediksi"
+    "to": 1830,
+    "text": "Fisika memprediksi",
+    "words": [
+      {
+        "t": "Fisika",
+        "f": 1804,
+        "e": 1815
+      },
+      {
+        "t": "memprediksi",
+        "f": 1815,
+        "e": 1832
+      }
+    ]
   },
   {
-    "from": 1833,
-    "to": 1864,
-    "text": "sebuah Singularitas,"
+    "from": 1830,
+    "to": 1869,
+    "text": "sebuah Singularitas,",
+    "words": [
+      {
+        "t": "sebuah",
+        "f": 1832,
+        "e": 1845
+      },
+      {
+        "t": "Singularitas,",
+        "f": 1845,
+        "e": 1863
+      }
+    ]
   },
   {
-    "from": 1864,
-    "to": 1896,
-    "text": "tapi belum ada teori"
+    "from": 1869,
+    "to": 1902,
+    "text": "tapi belum ada teori",
+    "words": [
+      {
+        "t": "tapi",
+        "f": 1871,
+        "e": 1882
+      },
+      {
+        "t": "belum",
+        "f": 1882,
+        "e": 1888
+      },
+      {
+        "t": "ada",
+        "f": 1888,
+        "e": 1894
+      },
+      {
+        "t": "teori",
+        "f": 1894,
+        "e": 1904
+      }
+    ]
   },
   {
-    "from": 1896,
+    "from": 1902,
     "to": 1940,
-    "text": "yang sanggup menjelaskannya."
+    "text": "yang sanggup menjelaskannya.",
+    "words": [
+      {
+        "t": "yang",
+        "f": 1904,
+        "e": 1909
+      },
+      {
+        "t": "sanggup",
+        "f": 1909,
+        "e": 1919
+      },
+      {
+        "t": "menjelaskannya.",
+        "f": 1919,
+        "e": 1936
+      }
+    ]
   },
   {
     "from": 1953,
-    "to": 2001,
-    "text": "Sebuah tempat yang begitu kuat,"
+    "to": 1994,
+    "text": "Sebuah tempat yang begitu kuat,",
+    "words": [
+      {
+        "t": "Sebuah",
+        "f": 1953,
+        "e": 1963
+      },
+      {
+        "t": "tempat",
+        "f": 1963,
+        "e": 1972
+      },
+      {
+        "t": "yang",
+        "f": 1972,
+        "e": 1975
+      },
+      {
+        "t": "begitu",
+        "f": 1975,
+        "e": 1981
+      },
+      {
+        "t": "kuat,",
+        "f": 1981,
+        "e": 1992
+      }
+    ]
   },
   {
-    "from": 2001,
-    "to": 2044,
-    "text": "cahaya pun tak bisa kembali."
+    "from": 1994,
+    "to": 2043,
+    "text": "cahaya pun tak bisa kembali.",
+    "words": [
+      {
+        "t": "cahaya",
+        "f": 1996,
+        "e": 2007
+      },
+      {
+        "t": "pun",
+        "f": 2007,
+        "e": 2011
+      },
+      {
+        "t": "tak",
+        "f": 2011,
+        "e": 2015
+      },
+      {
+        "t": "bisa",
+        "f": 2015,
+        "e": 2022
+      },
+      {
+        "t": "kembali.",
+        "f": 2022,
+        "e": 2035
+      }
+    ]
   },
   {
-    "from": 2044,
-    "to": 2066,
-    "text": "Dan rahasianya"
+    "from": 2043,
+    "to": 2068,
+    "text": "Dan rahasianya",
+    "words": [
+      {
+        "t": "Dan",
+        "f": 2045,
+        "e": 2053
+      },
+      {
+        "t": "rahasianya",
+        "f": 2053,
+        "e": 2070
+      }
+    ]
   },
   {
-    "from": 2066,
+    "from": 2068,
     "to": 2103,
-    "text": "masih belum terpecahkan."
+    "text": "masih belum terpecahkan.",
+    "words": [
+      {
+        "t": "masih",
+        "f": 2070,
+        "e": 2075
+      },
+      {
+        "t": "belum",
+        "f": 2075,
+        "e": 2082
+      },
+      {
+        "t": "terpecahkan.",
+        "f": 2082,
+        "e": 2099
+      }
+    ]
   }
 ];

@@ -4,222 +4,1241 @@ export const SCENES = [{"from": 0, "len": 197}, {"from": 197, "len": 137}, {"fro
 export const CUES = [
   {
     "from": 10,
-    "to": 73,
-    "text": "Tahun 1900, tiga penjaga mercusuar"
+    "to": 76,
+    "text": "Tahun 1900, tiga penjaga mercusuar",
+    "words": [
+      {
+        "t": "Tahun",
+        "f": 10,
+        "e": 17
+      },
+      {
+        "t": "1900",
+        "f": 17,
+        "e": 33,
+        "k": 1
+      },
+      {
+        "t": ",",
+        "f": 33,
+        "e": 34
+      },
+      {
+        "t": "tiga",
+        "f": 40,
+        "e": 48
+      },
+      {
+        "t": "penjaga",
+        "f": 48,
+        "e": 60
+      },
+      {
+        "t": "mercusuar",
+        "f": 60,
+        "e": 78
+      }
+    ]
   },
   {
-    "from": 73,
-    "to": 131,
-    "text": "lenyap dari sebuah pulau kecil."
+    "from": 76,
+    "to": 134,
+    "text": "lenyap dari sebuah pulau kecil.",
+    "words": [
+      {
+        "t": "lenyap",
+        "f": 78,
+        "e": 90
+      },
+      {
+        "t": "dari",
+        "f": 90,
+        "e": 98
+      },
+      {
+        "t": "sebuah",
+        "f": 98,
+        "e": 109
+      },
+      {
+        "t": "pulau",
+        "f": 109,
+        "e": 116
+      },
+      {
+        "t": "kecil.",
+        "f": 116,
+        "e": 128
+      }
+    ]
   },
   {
-    "from": 131,
+    "from": 134,
     "to": 190,
-    "text": "Jasadnya nggak pernah ditemukan."
+    "text": "Jasadnya nggak pernah ditemukan.",
+    "words": [
+      {
+        "t": "Jasadnya",
+        "f": 136,
+        "e": 151
+      },
+      {
+        "t": "nggak",
+        "f": 151,
+        "e": 155
+      },
+      {
+        "t": "pernah",
+        "f": 155,
+        "e": 165
+      },
+      {
+        "t": "ditemukan.",
+        "f": 165,
+        "e": 184
+      }
+    ]
   },
   {
     "from": 204,
-    "to": 233,
-    "text": "Namanya Eilean Mor,"
+    "to": 228,
+    "text": "Namanya Eilean Mor,",
+    "words": [
+      {
+        "t": "Namanya",
+        "f": 204,
+        "e": 215
+      },
+      {
+        "t": "Eilean Mor",
+        "f": 215,
+        "e": 230
+      },
+      {
+        "t": ",",
+        "f": 230,
+        "e": 232
+      }
+    ]
   },
   {
-    "from": 233,
-    "to": 290,
-    "text": "pulau karang tiga puluh dua kilometer"
+    "from": 228,
+    "to": 280,
+    "text": "pulau karang tiga puluh dua kilometer",
+    "words": [
+      {
+        "t": "pulau",
+        "f": 230,
+        "e": 241
+      },
+      {
+        "t": "karang",
+        "f": 241,
+        "e": 251
+      },
+      {
+        "t": "tiga",
+        "f": 251,
+        "e": 255
+      },
+      {
+        "t": "puluh",
+        "f": 255,
+        "e": 259
+      },
+      {
+        "t": "dua",
+        "f": 259,
+        "e": 264
+      },
+      {
+        "t": "kilometer",
+        "f": 264,
+        "e": 282
+      }
+    ]
   },
   {
-    "from": 290,
+    "from": 280,
     "to": 327,
-    "text": "dari daratan Skotlandia."
+    "text": "dari daratan Skotlandia.",
+    "words": [
+      {
+        "t": "dari",
+        "f": 282,
+        "e": 294
+      },
+      {
+        "t": "daratan",
+        "f": 294,
+        "e": 306
+      },
+      {
+        "t": "Skotlandia.",
+        "f": 306,
+        "e": 326
+      }
+    ]
   },
   {
     "from": 340,
-    "to": 372,
-    "text": "Penjaganya tiga orang:"
+    "to": 367,
+    "text": "Penjaganya tiga orang:",
+    "words": [
+      {
+        "t": "Penjaganya",
+        "f": 340,
+        "e": 354
+      },
+      {
+        "t": "tiga",
+        "f": 354,
+        "e": 361
+      },
+      {
+        "t": "orang:",
+        "f": 361,
+        "e": 369
+      }
+    ]
   },
   {
-    "from": 372,
-    "to": 414,
-    "text": "James Ducat, Thomas Marshall,"
+    "from": 367,
+    "to": 410,
+    "text": "James Ducat, Thomas Marshall,",
+    "words": [
+      {
+        "t": "James",
+        "f": 369,
+        "e": 376
+      },
+      {
+        "t": "Ducat",
+        "f": 376,
+        "e": 388
+      },
+      {
+        "t": ",",
+        "f": 388,
+        "e": 390
+      },
+      {
+        "t": "Thomas",
+        "f": 391,
+        "e": 396
+      },
+      {
+        "t": "Marshall,",
+        "f": 396,
+        "e": 409
+      }
+    ]
   },
   {
-    "from": 414,
+    "from": 410,
     "to": 443,
-    "text": "dan Donald McArthur."
+    "text": "dan Donald McArthur.",
+    "words": [
+      {
+        "t": "dan",
+        "f": 412,
+        "e": 417
+      },
+      {
+        "t": "Donald",
+        "f": 417,
+        "e": 424
+      },
+      {
+        "t": "McArthur",
+        "f": 424,
+        "e": 438
+      },
+      {
+        "t": ".",
+        "f": 438,
+        "e": 439
+      }
+    ]
   },
   {
     "from": 457,
-    "to": 514,
-    "text": "Lima belas Desember, jam sembilan pagi,"
+    "to": 509,
+    "text": "Lima belas Desember, jam sembilan pagi,",
+    "words": [
+      {
+        "t": "Lima",
+        "f": 457,
+        "e": 460
+      },
+      {
+        "t": "belas",
+        "f": 460,
+        "e": 464
+      },
+      {
+        "t": "Desember,",
+        "f": 464,
+        "e": 486
+      },
+      {
+        "t": "jam",
+        "f": 486,
+        "e": 490
+      },
+      {
+        "t": "sembilan",
+        "f": 490,
+        "e": 500
+      },
+      {
+        "t": "pagi,",
+        "f": 500,
+        "e": 511
+      }
+    ]
   },
   {
-    "from": 514,
-    "to": 560,
-    "text": "mereka menulis catatan terakhir."
+    "from": 509,
+    "to": 557,
+    "text": "mereka menulis catatan terakhir.",
+    "words": [
+      {
+        "t": "mereka",
+        "f": 511,
+        "e": 516
+      },
+      {
+        "t": "menulis",
+        "f": 516,
+        "e": 527
+      },
+      {
+        "t": "catatan",
+        "f": 527,
+        "e": 539
+      },
+      {
+        "t": "terakhir.",
+        "f": 539,
+        "e": 555
+      }
+    ]
   },
   {
-    "from": 560,
+    "from": 557,
     "to": 607,
-    "text": "Malamnya, lampu mercusuar padam."
+    "text": "Malamnya, lampu mercusuar padam.",
+    "words": [
+      {
+        "t": "Malamnya,",
+        "f": 559,
+        "e": 572
+      },
+      {
+        "t": "lampu",
+        "f": 572,
+        "e": 582
+      },
+      {
+        "t": "mercusuar",
+        "f": 582,
+        "e": 595
+      },
+      {
+        "t": "padam.",
+        "f": 595,
+        "e": 606
+      }
+    ]
   },
   {
     "from": 620,
-    "to": 671,
-    "text": "Sebuah kapal melihatnya dari jauh."
+    "to": 672,
+    "text": "Sebuah kapal melihatnya dari jauh.",
+    "words": [
+      {
+        "t": "Sebuah",
+        "f": 620,
+        "e": 631
+      },
+      {
+        "t": "kapal",
+        "f": 631,
+        "e": 641
+      },
+      {
+        "t": "melihatnya",
+        "f": 641,
+        "e": 655
+      },
+      {
+        "t": "dari",
+        "f": 655,
+        "e": 660
+      },
+      {
+        "t": "jauh.",
+        "f": 660,
+        "e": 674
+      }
+    ]
   },
   {
-    "from": 671,
-    "to": 718,
-    "text": "Tapi kapal suplai tertahan badai"
+    "from": 672,
+    "to": 717,
+    "text": "Tapi kapal suplai tertahan badai",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 674,
+        "e": 680
+      },
+      {
+        "t": "kapal",
+        "f": 680,
+        "e": 690
+      },
+      {
+        "t": "suplai",
+        "f": 690,
+        "e": 700
+      },
+      {
+        "t": "tertahan",
+        "f": 700,
+        "e": 711
+      },
+      {
+        "t": "badai",
+        "f": 711,
+        "e": 719
+      }
+    ]
   },
   {
-    "from": 718,
+    "from": 717,
     "to": 738,
-    "text": "sebelas hari."
+    "text": "sebelas hari.",
+    "words": [
+      {
+        "t": "sebelas",
+        "f": 719,
+        "e": 727
+      },
+      {
+        "t": "hari.",
+        "f": 727,
+        "e": 735
+      }
+    ]
   },
   {
     "from": 751,
-    "to": 804,
-    "text": "Peluit dibunyikan. Suar ditembakkan."
+    "to": 809,
+    "text": "Peluit dibunyikan. Suar ditembakkan.",
+    "words": [
+      {
+        "t": "Peluit",
+        "f": 751,
+        "e": 759
+      },
+      {
+        "t": "dibunyikan.",
+        "f": 759,
+        "e": 773
+      },
+      {
+        "t": "Suar",
+        "f": 779,
+        "e": 787
+      },
+      {
+        "t": "ditembakkan.",
+        "f": 787,
+        "e": 807
+      }
+    ]
   },
   {
-    "from": 804,
-    "to": 847,
-    "text": "Tapi nggak ada yang menyambut."
+    "from": 809,
+    "to": 841,
+    "text": "Tapi nggak ada yang menyambut.",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 811,
+        "e": 818
+      },
+      {
+        "t": "nggak",
+        "f": 818,
+        "e": 823
+      },
+      {
+        "t": "ada",
+        "f": 823,
+        "e": 827
+      },
+      {
+        "t": "yang",
+        "f": 827,
+        "e": 831
+      },
+      {
+        "t": "menyambut.",
+        "f": 831,
+        "e": 843
+      }
+    ]
   },
   {
-    "from": 847,
+    "from": 841,
     "to": 870,
-    "text": "Pulau itu sunyi."
+    "text": "Pulau itu sunyi.",
+    "words": [
+      {
+        "t": "Pulau",
+        "f": 843,
+        "e": 852
+      },
+      {
+        "t": "itu",
+        "f": 852,
+        "e": 857
+      },
+      {
+        "t": "sunyi.",
+        "f": 857,
+        "e": 869
+      }
+    ]
   },
   {
     "from": 884,
-    "to": 932,
-    "text": "Penjaga pengganti, Joseph Moore,"
+    "to": 925,
+    "text": "Penjaga pengganti, Joseph Moore,",
+    "words": [
+      {
+        "t": "Penjaga",
+        "f": 884,
+        "e": 893
+      },
+      {
+        "t": "pengganti,",
+        "f": 893,
+        "e": 908
+      },
+      {
+        "t": "Joseph",
+        "f": 908,
+        "e": 917
+      },
+      {
+        "t": "Moore,",
+        "f": 917,
+        "e": 927
+      }
+    ]
   },
   {
-    "from": 932,
-    "to": 974,
-    "text": "naik sendirian ke mercusuar."
+    "from": 925,
+    "to": 972,
+    "text": "naik sendirian ke mercusuar.",
+    "words": [
+      {
+        "t": "naik",
+        "f": 927,
+        "e": 938
+      },
+      {
+        "t": "sendirian",
+        "f": 938,
+        "e": 951
+      },
+      {
+        "t": "ke",
+        "f": 951,
+        "e": 971
+      },
+      {
+        "t": "mercusuar.",
+        "f": 951,
+        "e": 971
+      }
+    ]
   },
   {
-    "from": 974,
+    "from": 972,
     "to": 1019,
-    "text": "Gerbang dan pintunya tertutup."
+    "text": "Gerbang dan pintunya tertutup.",
+    "words": [
+      {
+        "t": "Gerbang",
+        "f": 974,
+        "e": 985
+      },
+      {
+        "t": "dan",
+        "f": 988,
+        "e": 990
+      },
+      {
+        "t": "pintunya",
+        "f": 990,
+        "e": 1004
+      },
+      {
+        "t": "tertutup.",
+        "f": 1004,
+        "e": 1018
+      }
+    ]
   },
   {
     "from": 1032,
-    "to": 1082,
-    "text": "Di dalam, ranjang belum dirapikan,"
+    "to": 1081,
+    "text": "Di dalam, ranjang belum dirapikan,",
+    "words": [
+      {
+        "t": "Di",
+        "f": 1032,
+        "e": 1036
+      },
+      {
+        "t": "dalam,",
+        "f": 1036,
+        "e": 1042
+      },
+      {
+        "t": "ranjang",
+        "f": 1042,
+        "e": 1055
+      },
+      {
+        "t": "belum",
+        "f": 1055,
+        "e": 1060
+      },
+      {
+        "t": "dirapikan,",
+        "f": 1060,
+        "e": 1077
+      }
+    ]
   },
   {
-    "from": 1082,
-    "to": 1113,
-    "text": "jam dinding berhenti,"
+    "from": 1081,
+    "to": 1106,
+    "text": "jam dinding berhenti,",
+    "words": [
+      {
+        "t": "jam",
+        "f": 1083,
+        "e": 1087
+      },
+      {
+        "t": "dinding",
+        "f": 1087,
+        "e": 1096
+      },
+      {
+        "t": "berhenti,",
+        "f": 1096,
+        "e": 1108
+      }
+    ]
   },
   {
-    "from": 1113,
+    "from": 1106,
     "to": 1165,
-    "text": "tapi lampunya bersih, siap menyala."
+    "text": "tapi lampunya bersih, siap menyala.",
+    "words": [
+      {
+        "t": "tapi",
+        "f": 1108,
+        "e": 1118
+      },
+      {
+        "t": "lampunya",
+        "f": 1118,
+        "e": 1131
+      },
+      {
+        "t": "bersih,",
+        "f": 1131,
+        "e": 1144
+      },
+      {
+        "t": "siap",
+        "f": 1144,
+        "e": 1153
+      },
+      {
+        "t": "menyala.",
+        "f": 1153,
+        "e": 1163
+      }
+    ]
   },
   {
     "from": 1178,
-    "to": 1212,
-    "text": "Lalu satu hal janggal:"
+    "to": 1210,
+    "text": "Lalu satu hal janggal:",
+    "words": [
+      {
+        "t": "Lalu",
+        "f": 1178,
+        "e": 1185
+      },
+      {
+        "t": "satu",
+        "f": 1185,
+        "e": 1192
+      },
+      {
+        "t": "hal",
+        "f": 1192,
+        "e": 1197
+      },
+      {
+        "t": "janggal:",
+        "f": 1197,
+        "e": 1209
+      }
+    ]
   },
   {
-    "from": 1212,
-    "to": 1261,
-    "text": "satu jas hujan masih tergantung."
+    "from": 1210,
+    "to": 1260,
+    "text": "satu jas hujan masih tergantung.",
+    "words": [
+      {
+        "t": "satu",
+        "f": 1212,
+        "e": 1217
+      },
+      {
+        "t": "jas",
+        "f": 1217,
+        "e": 1232
+      },
+      {
+        "t": "hujan",
+        "f": 1217,
+        "e": 1232
+      },
+      {
+        "t": "masih",
+        "f": 1232,
+        "e": 1237
+      },
+      {
+        "t": "tergantung.",
+        "f": 1237,
+        "e": 1258
+      }
+    ]
   },
   {
-    "from": 1261,
-    "to": 1303,
-    "text": "Seseorang keluar tanpa jas,"
+    "from": 1260,
+    "to": 1302,
+    "text": "Seseorang keluar tanpa jas,",
+    "words": [
+      {
+        "t": "Seseorang",
+        "f": 1262,
+        "e": 1275
+      },
+      {
+        "t": "keluar",
+        "f": 1275,
+        "e": 1283
+      },
+      {
+        "t": "tanpa",
+        "f": 1283,
+        "e": 1296
+      },
+      {
+        "t": "jas,",
+        "f": 1296,
+        "e": 1304
+      }
+    ]
   },
   {
-    "from": 1303,
+    "from": 1302,
     "to": 1327,
-    "text": "di tengah hujan."
+    "text": "di tengah hujan.",
+    "words": [
+      {
+        "t": "di",
+        "f": 1304,
+        "e": 1309
+      },
+      {
+        "t": "tengah",
+        "f": 1309,
+        "e": 1317
+      },
+      {
+        "t": "hujan.",
+        "f": 1317,
+        "e": 1325
+      }
+    ]
   },
   {
     "from": 1341,
-    "to": 1397,
-    "text": "Di dermaga barat, pagar besi bengkok,"
+    "to": 1398,
+    "text": "Di dermaga barat, pagar besi bengkok,",
+    "words": [
+      {
+        "t": "Di",
+        "f": 1341,
+        "e": 1354
+      },
+      {
+        "t": "dermaga",
+        "f": 1341,
+        "e": 1354
+      },
+      {
+        "t": "barat,",
+        "f": 1354,
+        "e": 1366
+      },
+      {
+        "t": "pagar",
+        "f": 1367,
+        "e": 1376
+      },
+      {
+        "t": "besi",
+        "f": 1376,
+        "e": 1385
+      },
+      {
+        "t": "bengkok,",
+        "f": 1385,
+        "e": 1396
+      }
+    ]
   },
   {
-    "from": 1397,
-    "to": 1435,
-    "text": "dan batu seberat satu ton"
+    "from": 1398,
+    "to": 1431,
+    "text": "dan batu seberat satu ton",
+    "words": [
+      {
+        "t": "dan",
+        "f": 1400,
+        "e": 1402
+      },
+      {
+        "t": "batu",
+        "f": 1402,
+        "e": 1412
+      },
+      {
+        "t": "seberat",
+        "f": 1412,
+        "e": 1421
+      },
+      {
+        "t": "satu",
+        "f": 1421,
+        "e": 1427
+      },
+      {
+        "t": "ton",
+        "f": 1427,
+        "e": 1433
+      }
+    ]
   },
   {
-    "from": 1435,
+    "from": 1431,
     "to": 1472,
-    "text": "bergeser dari tempatnya."
+    "text": "bergeser dari tempatnya.",
+    "words": [
+      {
+        "t": "bergeser",
+        "f": 1433,
+        "e": 1450
+      },
+      {
+        "t": "dari",
+        "f": 1450,
+        "e": 1455
+      },
+      {
+        "t": "tempatnya.",
+        "f": 1455,
+        "e": 1471
+      }
+    ]
   },
   {
     "from": 1485,
-    "to": 1509,
-    "text": "Kesimpulan resmi:"
+    "to": 1507,
+    "text": "Kesimpulan resmi:",
+    "words": [
+      {
+        "t": "Kesimpulan",
+        "f": 1485,
+        "e": 1500
+      },
+      {
+        "t": "resmi:",
+        "f": 1500,
+        "e": 1509
+      }
+    ]
   },
   {
-    "from": 1509,
-    "to": 1550,
-    "text": "ombak raksasa naik tiba-tiba,"
+    "from": 1507,
+    "to": 1553,
+    "text": "ombak raksasa naik tiba-tiba,",
+    "words": [
+      {
+        "t": "ombak",
+        "f": 1509,
+        "e": 1520
+      },
+      {
+        "t": "raksasa",
+        "f": 1520,
+        "e": 1533
+      },
+      {
+        "t": "naik",
+        "f": 1533,
+        "e": 1541
+      },
+      {
+        "t": "tiba-tiba,",
+        "f": 1541,
+        "e": 1555
+      }
+    ]
   },
   {
-    "from": 1550,
+    "from": 1553,
     "to": 1590,
-    "text": "dan menyeret mereka ke laut."
+    "text": "dan menyeret mereka ke laut.",
+    "words": [
+      {
+        "t": "dan",
+        "f": 1555,
+        "e": 1560
+      },
+      {
+        "t": "menyeret",
+        "f": 1560,
+        "e": 1570
+      },
+      {
+        "t": "mereka",
+        "f": 1570,
+        "e": 1578
+      },
+      {
+        "t": "ke",
+        "f": 1578,
+        "e": 1583
+      },
+      {
+        "t": "laut.",
+        "f": 1583,
+        "e": 1587
+      }
+    ]
   },
   {
     "from": 1603,
-    "to": 1661,
-    "text": "Tapi cerita yang beredar lebih seram:"
+    "to": 1647,
+    "text": "Tapi cerita yang beredar lebih seram:",
+    "words": [
+      {
+        "t": "Tapi",
+        "f": 1603,
+        "e": 1610
+      },
+      {
+        "t": "cerita",
+        "f": 1610,
+        "e": 1620
+      },
+      {
+        "t": "yang",
+        "f": 1620,
+        "e": 1623
+      },
+      {
+        "t": "beredar",
+        "f": 1623,
+        "e": 1634
+      },
+      {
+        "t": "lebih",
+        "f": 1634,
+        "e": 1639
+      },
+      {
+        "t": "seram:",
+        "f": 1639,
+        "e": 1649
+      }
+    ]
   },
   {
-    "from": 1661,
-    "to": 1706,
-    "text": "kursi terbalik, makanan utuh,"
+    "from": 1647,
+    "to": 1698,
+    "text": "kursi terbalik, makanan utuh,",
+    "words": [
+      {
+        "t": "kursi",
+        "f": 1649,
+        "e": 1662
+      },
+      {
+        "t": "terbalik,",
+        "f": 1662,
+        "e": 1675
+      },
+      {
+        "t": "makanan",
+        "f": 1678,
+        "e": 1689
+      },
+      {
+        "t": "utuh,",
+        "f": 1689,
+        "e": 1700
+      }
+    ]
   },
   {
-    "from": 1706,
+    "from": 1698,
     "to": 1745,
-    "text": "catatan harian penuh doa."
+    "text": "catatan harian penuh doa.",
+    "words": [
+      {
+        "t": "catatan",
+        "f": 1700,
+        "e": 1713
+      },
+      {
+        "t": "harian",
+        "f": 1713,
+        "e": 1725
+      },
+      {
+        "t": "penuh",
+        "f": 1725,
+        "e": 1734
+      },
+      {
+        "t": "doa.",
+        "f": 1734,
+        "e": 1744
+      }
+    ]
   },
   {
     "from": 1758,
-    "to": 1784,
-    "text": "Semua itu karangan"
+    "to": 1780,
+    "text": "Semua itu karangan",
+    "words": [
+      {
+        "t": "Semua",
+        "f": 1758,
+        "e": 1767
+      },
+      {
+        "t": "itu",
+        "f": 1767,
+        "e": 1772
+      },
+      {
+        "t": "karangan",
+        "f": 1772,
+        "e": 1782
+      }
+    ]
   },
   {
-    "from": 1784,
-    "to": 1818,
-    "text": "yang muncul belakangan."
+    "from": 1780,
+    "to": 1808,
+    "text": "yang muncul belakangan.",
+    "words": [
+      {
+        "t": "yang",
+        "f": 1782,
+        "e": 1787
+      },
+      {
+        "t": "muncul",
+        "f": 1787,
+        "e": 1795
+      },
+      {
+        "t": "belakangan.",
+        "f": 1795,
+        "e": 1810
+      }
+    ]
   },
   {
-    "from": 1818,
-    "to": 1834,
-    "text": "Yang nyata:"
+    "from": 1808,
+    "to": 1823,
+    "text": "Yang nyata:",
+    "words": [
+      {
+        "t": "Yang",
+        "f": 1810,
+        "e": 1814
+      },
+      {
+        "t": "nyata:",
+        "f": 1814,
+        "e": 1825
+      }
+    ]
   },
   {
-    "from": 1834,
+    "from": 1823,
     "to": 1884,
-    "text": "kenapa satu orang keluar tanpa jas?"
+    "text": "kenapa satu orang keluar tanpa jas?",
+    "words": [
+      {
+        "t": "kenapa",
+        "f": 1825,
+        "e": 1837
+      },
+      {
+        "t": "satu",
+        "f": 1837,
+        "e": 1844
+      },
+      {
+        "t": "orang",
+        "f": 1844,
+        "e": 1851
+      },
+      {
+        "t": "keluar",
+        "f": 1851,
+        "e": 1859
+      },
+      {
+        "t": "tanpa",
+        "f": 1859,
+        "e": 1871
+      },
+      {
+        "t": "jas?",
+        "f": 1871,
+        "e": 1880
+      }
+    ]
   },
   {
     "from": 1898,
-    "to": 1928,
-    "text": "Apa yang mereka lihat"
+    "to": 1926,
+    "text": "Apa yang mereka lihat",
+    "words": [
+      {
+        "t": "Apa",
+        "f": 1898,
+        "e": 1905
+      },
+      {
+        "t": "yang",
+        "f": 1905,
+        "e": 1910
+      },
+      {
+        "t": "mereka",
+        "f": 1910,
+        "e": 1918
+      },
+      {
+        "t": "lihat",
+        "f": 1918,
+        "e": 1928
+      }
+    ]
   },
   {
-    "from": 1928,
-    "to": 1960,
-    "text": "di tepi laut sore itu?"
+    "from": 1926,
+    "to": 1959,
+    "text": "di tepi laut sore itu?",
+    "words": [
+      {
+        "t": "di",
+        "f": 1928,
+        "e": 1933
+      },
+      {
+        "t": "tepi",
+        "f": 1933,
+        "e": 1940
+      },
+      {
+        "t": "laut",
+        "f": 1940,
+        "e": 1945
+      },
+      {
+        "t": "sore",
+        "f": 1945,
+        "e": 1953
+      },
+      {
+        "t": "itu?",
+        "f": 1953,
+        "e": 1961
+      }
+    ]
   },
   {
-    "from": 1960,
+    "from": 1959,
     "to": 2012,
-    "text": "Sampai sekarang, nggak ada yang tahu."
+    "text": "Sampai sekarang, nggak ada yang tahu.",
+    "words": [
+      {
+        "t": "Sampai",
+        "f": 1961,
+        "e": 1977
+      },
+      {
+        "t": "sekarang,",
+        "f": 1977,
+        "e": 1990
+      },
+      {
+        "t": "nggak",
+        "f": 1990,
+        "e": 1996
+      },
+      {
+        "t": "ada",
+        "f": 1996,
+        "e": 2001
+      },
+      {
+        "t": "yang",
+        "f": 2001,
+        "e": 2004
+      },
+      {
+        "t": "tahu.",
+        "f": 2004,
+        "e": 2010
+      }
+    ]
   }
 ];
