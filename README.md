@@ -148,6 +148,16 @@ hujan, tagihan sekolah yang "LUNAS", pesan dari penolong, guru tua yang mengajar
 kosong dan kacamata, daftar anak yang masih butuh bantuan, satu nama dilingkari, buku untuk seorang anak, dan
 satu orang yang menyalakan seribu. Properti baru: `src/environment/TransferProps.tsx`.
 
+## Video: "Dia Menghina Tukang Parkir" (102 detik, cerita inspiratif)
+
+Hasil jadi: [`out/parkir.mp4`](out/parkir.mp4).
+Caption, hashtag, teks cover: [`scripts/narasi/parkir-copy.md`](scripts/narasi/parkir-copy.md).
+
+Naskah dan arahan visual dari user, 17 adegan: anak orang kaya melempar uang ke tukang parkir, "GAJI KECIL = GAGAL?",
+tip yang dikembalikan, "uang bukan ukuran harga diri", grafik bangkrut, rumah disita dan mobil dijual, mencari kerja,
+pintu wawancara terbuka, direktur yang sekilas berubah jadi tukang parkir (kacamata bundar yang sama), wajah memerah,
+"Duduk. Kita mulai dari pengalamanmu.", jabat tangan, dan bekerja di kantor.
+
 ## Cara render ulang
 
 ```bash
@@ -167,6 +177,7 @@ npm run render -- DuaCaraUang out/uang.mp4
 npm run render -- DendamFilm out/dendam.mp4
 npm run render -- AyahSepatu out/ayahsepatu.mp4
 npm run render -- TransferRahasia out/transfer.mp4
+npm run render -- TukangParkir out/parkir.mp4
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di

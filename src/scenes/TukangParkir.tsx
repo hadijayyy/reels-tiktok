@@ -154,7 +154,7 @@ const Hook: React.FC<{len: number}> = ({len}) => {
       {frame < today - 4 ? (
         <Shot len={len} wall="#141822" handheld={0.5} back={<StreetBack />}>
           <StreetLamp x={-470} y={FLOOR} />
-          <Car x={-330} y={FLOOR} s={0.75} lights={0.6} />
+          <Car x={-330} y={FLOOR} s={0.75} lights={0} />
           <Stickman x={-90} y={FLOOR} scale={AS} pose={point(idle(t), prog(frame, 8, 18), 80)} look={RICH} expr="smug" />
           {[0, 1, 2, 3].map((i) => {
             const k = prog(frame, 12 + i * 4, 40 + i * 4, eOut);
@@ -304,6 +304,9 @@ const Bankrupt: React.FC<{len: number}> = ({len}) => {
       <Plate x={0} y={-560} text="5 TAHUN KEMUDIAN" k={pop(frame, 4)} size={42} border={C.bone} />
       <line x1={-330} y1={-160} x2={330} y2={-160} stroke={C.bone} strokeWidth={4} opacity={0.6} />
       <path d={`M ${pts.join(" L ")}`} fill="none" stroke={k > 0.3 ? C.red : "#5E9347"} strokeWidth={10} strokeLinecap="round" strokeLinejoin="round" />
+      <g opacity={prog(frame, crash + 10, crash + 16)}>
+        <rect x={-30} y={-385} width={360} height={110} rx={14} fill="#2A2226" transform="rotate(-10 150 -330)" />
+      </g>
       <Stamp x={150} y={-330} text="BANGKRUT" k={prog(frame, crash + 10, crash + 20, eOut)} rot={-10} size={56} />
       <Stickman x={-60} y={FLOOR} scale={AS} pose={mix(idle(t), {...idle(t), shL: -150, elL: 30, shR: 150, elR: 30, lean: -6}, prog(frame, crash, crash + 12))} look={BROKE} expr="surprised" />
     </Shot>
@@ -362,7 +365,7 @@ const Door: React.FC<{len: number}> = ({len}) => {
         <rect x={0} y={-460} width={460} height={880} fill="#6A4A30" stroke={C.ink} strokeWidth={4} />
         <circle cx={40} cy={0} r={10} fill={C.yellow} />
       </g>
-      <Plate x={-260} y={-520} text="WAWANCARA" k={pop(frame, 6)} size={40} border={C.cyan} />
+      <Plate x={-180} y={-520} text="WAWANCARA" k={pop(frame, 6)} size={40} border={C.cyan} />
       <Stickman x={-300} y={FLOOR} scale={AS} pose={{...idle(t), shR: 50, elR: 60}} look={{...BROKE, handR: handFolder}} expr={frame > see ? "surprised" : "neutral"} />
     </Shot>
   );
@@ -466,9 +469,9 @@ const Office: React.FC<{len: number}> = ({len}) => {
         <Desk x={40} w={380} top={150} />
         <Monitor x={60} y={FLOOR - 150 - 38} w={200} h={130} screen={<g>{[0, 1, 2, 3].map((i) => <rect key={i} x={14} y={16 + i * 24} width={50 + ((i * 47 + Math.floor(t * 4) * 29) % 110)} height={10} rx={3} fill={i % 2 ? C.yellow : C.cyan} />)}</g>} />
         <Stickman x={-260} y={FLOOR} scale={AS} pose={point(idle(t), 1, 100)} look={STAFF} expr="happy" />
-        <Stickman x={260} y={FLOOR} scale={AS} facing={-1} pose={idle(t, 4)} look={{...CASUAL, top: "#6B8E3E", sleeve: "#6B8E3E"}} expr="happy" />
+        <Stickman x={230} y={FLOOR} scale={AS} facing={-1} pose={idle(t, 4)} look={{...CASUAL, top: "#6B8E3E", sleeve: "#6B8E3E"}} expr="happy" />
         <g opacity={0.8}>
-          <Stickman x={470} y={FLOOR} scale={1.1} facing={-1} pose={{...idle(t, 6), headTilt: Math.sin(t * 2) * 6}} look={DIREKTUR} expr="happy" />
+          <Stickman x={400} y={FLOOR} scale={1.1} facing={-1} pose={{...idle(t, 6), headTilt: Math.sin(t * 2) * 6}} look={DIREKTUR} expr="happy" />
         </g>
       </Shot>
       <AbsoluteFill style={{background: "#000", opacity: fade}} />
