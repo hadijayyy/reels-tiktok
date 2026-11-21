@@ -158,6 +158,22 @@ tip yang dikembalikan, "uang bukan ukuran harga diri", grafik bangkrut, rumah di
 pintu wawancara terbuka, direktur yang sekilas berubah jadi tukang parkir (kacamata bundar yang sama), wajah memerah,
 "Duduk. Kita mulai dari pengalamanmu.", jabat tangan, dan bekerja di kantor.
 
+## Video: "Jeda 30 Detik" (38 detik, topik viral 21 November 2026, keamanan transaksi)
+
+Hasil jadi: [`out/jeda-30-detik.mp4`](out/jeda-30-detik.mp4).
+Caption, hashtag, teks cover, skor naskah, dan sumber: [`scripts/narasi/jeda-copy.md`](scripts/narasi/jeda-copy.md).
+
+| Adegan | Isi |
+|---|---|
+| 1. Hook | Lagi ditelepon sambil buka aplikasi bank? Aplikasi menahan kamu 30 detik. |
+| 2. Modus | Penelepon mengaku dari bank, menyuruh buka m-banking, lalu minta layar dibagikan. |
+| 3. Kenapa | Social engineering: yang diserang bukan sistem bank, tapi kondisi psikologis kamu. |
+| 4. Fitur | Buka aplikasi sambil terima telepon: muncul jeda 30 detik; tutup aplikasi atau tunggu. |
+| 5. Batas | Cuma pengingat, tidak bisa mendeteksi telepon penipu; penjaganya tetap kamu. |
+| 6. Aturan | Jangan beri OTP atau PIN, tutup telepon, ragu hubungi Halo BCA. |
+
+Topik viral cepat basi: sebaiknya diposting dalam beberapa hari. Properti baru: `src/environment/CallProps.tsx`.
+
 ## Alat bantu produksi
 
 - `scripts/make_narration.py`: narasi per baris (VoiceStudio/OmniVoice) + penyelarasan per kata dengan
