@@ -1,0 +1,7 @@
+# Satu baris = satu adegan. Tanda | memisahkan frasa caption.
+Dua orang mendapatkan {Rp1 juta=satu juta rupiah}.|Sebulan kemudian,|satu orang tidak punya apa-apa.|Yang lain memiliki aset baru. [jeda=1.0]
+Orang pertama langsung|menghabiskan uangnya|untuk membuat hidup terasa|lebih menyenangkan hari ini.
+Orang kedua menggunakan sebagian uangnya|untuk membeli sesuatu|yang bisa meningkatkan kemampuan|atau penghasilannya.
+Yang pertama mendapatkan|kesenangan instan.|Tapi kesenangan itu hilang,|dan uangnya juga hilang. [jeda=1.0]
+Yang kedua mungkin|tidak terlihat keren hari ini.|Tapi investasinya perlahan|menghasilkan peluang baru. [jeda=1.0]
+Perbedaan terbesar bukan|berapa uang yang mereka dapatkan.|Tapi apa yang mereka lakukan|dengan uang yang mereka dapatkan.
