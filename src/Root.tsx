@@ -17,6 +17,7 @@ import {TRANSFER_FRAMES, TransferRahasia} from "./scenes/TransferRahasia";
 import {PARKIR_FRAMES, TukangParkir} from "./scenes/TukangParkir";
 import {JEDA_FRAMES, JedaTigaPuluh} from "./scenes/JedaTigaPuluh";
 import {JOBS_FRAMES, SteveJobsApple} from "./scenes/SteveJobsApple";
+import {ROKET_FRAMES, RoketGagal} from "./scenes/RoketGagal";
 import {FPS, H, W} from "./styles/palette";
 
 // Render with: npx remotion render src/index.ts <Id> out/<name>.mp4
@@ -174,6 +175,15 @@ export const Root: React.FC = () => (
       width={W}
       height={H}
       defaultProps={{narration: "audio/jobs.mp3"}}
+    />
+    <Composition
+      id="RoketGagal"
+      component={RoketGagal}
+      durationInFrames={ROKET_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+      defaultProps={{narration: "audio/roket.mp3"}}
     />
   </>
 );

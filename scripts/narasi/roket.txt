@@ -1,0 +1,13 @@
+# Satu baris = satu adegan. POV: roket Falcon 1 bercerita. Tanda | memisahkan frasa caption.
+Aku roket yang *tiga kali* gagal.|Tapi orang yang membuatku|nggak mau menyerah.
+Namaku {Falcon 1=Felken Wan}.|Aku dibuat {SpaceX=Spes Eks},|perusahaan roket milik {Elon Musk=Ilon Mask}.
+Maret {2006=dua ribu enam}, peluncuran pertamaku.|Baru setengah menit terbang,|api menyala, dan aku jatuh.
+Penyebabnya cuma satu mur kecil berkarat,|yang bikin bahan bakarku bocor.
+Maret {2007=dua ribu tujuh}, aku mencoba lagi.|Kali ini aku sampai ke luar angkasa,|tapi berputar tak terkendali.
+Agustus {2008=dua ribu delapan}, kesempatan ketiga.|Setelah berpisah, bagian bawahku|menabrak bagian atasku sendiri.[jeda=1.2]
+*Tiga kali* gagal.|Tahun itu, perusahaannya|nyaris kehabisan uang.
+Tapi timnya mencari kesalahan,|memperbaikinya,|dan menyiapkanku sekali lagi.
+Dua puluh delapan September {2008=dua ribu delapan}.|Peluncuran keempat.|Semua menahan napas.[jeda=1.0]
+Dan kali ini, aku sampai di *orbit*.|Roket swasta berbahan bakar cair|pertama yang berhasil.
+Tiga bulan kemudian,|{NASA=nasa} memberi kontrak|sekitar *satu koma enam miliar* dolar.
+Aku cuma roket kecil.|Tapi gagal tiga kali bukan alasan berhenti.|Kamu udah gagal berapa kali?
