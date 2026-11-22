@@ -37,14 +37,14 @@ export const Exhaust: React.FC<{t: number; k?: number; s?: number}> = ({t, k = 1
  */
 export const Rocket: React.FC<{
   x: number; y: number; s?: number; rot?: number; t?: number; face?: RocketFace; flame?: number;
-  sep?: number; sepRot?: number; upperFlame?: number; burnt?: number;
-}> = ({x, y, s = 1, rot = 0, t = 0, face = "calm", flame = 0, sep = 0, sepRot = 0, upperFlame = 0, burnt = 0}) => {
+  sep?: number; sepRot?: number; upperFlame?: number; burnt?: number; upperOnly?: boolean;
+}> = ({x, y, s = 1, rot = 0, t = 0, face = "calm", flame = 0, sep = 0, sepRot = 0, upperFlame = 0, burnt = 0, upperOnly = false}) => {
   const body = burnt > 0 ? "#B9B4A6" : "#EDEBE4";
   const blink = Math.sin(t * 1.7) > 0.985 ? 1 : 0;
   return (
     <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`}>
       {/* first stage (drops away when sep > 0) */}
-      <g transform={`translate(0 ${sep}) rotate(${sepRot} 0 -150)`}>
+      <g transform={`translate(0 ${sep}) rotate(${sepRot} 0 -150)`} opacity={upperOnly ? 0 : 1}>
         <g transform="translate(0 0)">
           <Exhaust t={t} k={flame} />
         </g>

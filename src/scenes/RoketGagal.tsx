@@ -57,7 +57,7 @@ const Hook: React.FC<{len: number}> = ({len}) => {
       <Glow x={60} y={-150} r={460} color={C.yellow} opacity={0.08 + 0.12 * up} />
       <Rocket x={60} y={FLOOR} s={1.15} t={t} face={up > 0.5 ? "calm" : "sad"} />
       {[0, 1, 2].map((i) => (
-        <Cross key={i} x={-270 + i * 165} y={-470} r={46} k={pop(frame, -10 + i * 8)} />
+        <Cross key={i} x={-270 + i * 165} y={-430} r={42} k={pop(frame, -10 + i * 8)} />
       ))}
       <Actor x={-330} y={FLOOR} scale={1.25} pose={up > 0.5 ? point(idle(t, 2), up, 150) : idle(t, 2)} look={FOUNDER} expr={up > 0.5 ? "determined" : "neutral"} opacity={prog(frame, c1 - 4, c1 + 6)} />
       <Plate x={0} y={-590} text="AKU GAGAL 3 KALI" k={pop(frame, -10)} size={52} border={C.red} />
@@ -114,8 +114,8 @@ const Flight1: React.FC<{len: number}> = ({len}) => {
       <Actor x={-380} y={FLOOR} scale={1.1} pose={{...idle(t, 3), lookY: -0.8}} look={ENG1} expr={frame >= c2 ? "surprised" : "focused"} />
       <Actor x={380} y={FLOOR} scale={1.1} facing={-1} pose={{...idle(t, 5), lookY: -0.8}} look={FOUNDER} expr={frame >= c2 ? "worried" : "focused"} />
       <Plate x={0} y={-590} text="MARET 2006" k={pop(frame, -10)} size={56} />
-      <Plate x={-250} y={-450} text="30 DETIK" k={pop(frame, c1)} size={40} border={C.yellow} />
-      <Plate x={0} y={-450} text="GAGAL #1" k={pop(frame, c2 + 10)} size={48} border={C.red} color={C.red} />
+      <Plate x={-200} y={-430} text="30 DETIK" k={pop(frame, c1) * (1 - prog(frame, c2 + 4, c2 + 8))} size={40} border={C.yellow} />
+      <Plate x={0} y={-420} text="GAGAL #1" k={pop(frame, c2 + 10)} size={48} border={C.red} color={C.red} />
     </Shot>
   );
 };
@@ -156,7 +156,9 @@ const Flight2: React.FC<{len: number}> = ({len}) => {
     <Shot len={len} wall="#22262E" z1={1.07}>
       <Screen x={0} y={-330} w={620} h={380} t={t}>
         <Planet x={0} y={lerp(420, 620, climb)} r={300} />
-        <Rocket x={0} y={lerp(160, 90, climb)} s={0.42} rot={rot} t={t} face={frame >= c2 ? "scared" : "happy"} flame={0} upperFlame={frame < c2 ? 1 : 0.4} sep={200} />
+        <g transform={`rotate(${rot} 0 ${lerp(170, 130, climb) - 185})`}>
+          <Rocket x={0} y={lerp(170, 130, climb)} s={0.42} t={t} face={frame >= c2 ? "scared" : "happy"} flame={0} upperFlame={frame < c2 ? 1 : 0.4} upperOnly />
+        </g>
       </Screen>
       <Desk x={0} w={520} top={140} />
       <Actor x={-330} y={FLOOR} scale={1.15} pose={{...idle(t, 1), lookY: -0.6}} look={ENG2} expr={frame >= c2 ? "worried" : "happy"} />
@@ -183,8 +185,8 @@ const Flight3: React.FC<{len: number}> = ({len}) => {
   return (
     <Shot len={len} wall="#0E1420" z1={1.06} back={<Starfield t={t} size={1400} count={120} nebula={0.4} />} floor={false}>
       <Planet x={0} y={760} r={560} />
-      <Rocket x={40} y={-60} s={0.95} rot={after * 40} t={t} face={frame >= hit ? "scared" : frame >= c2 ? "worried" : "calm"} flame={frame < c1 ? 1 : 0} upperFlame={frame >= c1 + 4 && frame < hit ? 1 : 0} sep={sep} sepRot={after * 50} />
-      <Burst x={40} y={-390} k={prog(frame, hit, hit + 18)} r={260} />
+      <Rocket x={40} y={60} s={0.85} rot={after * 40} t={t} face={frame >= hit ? "scared" : frame >= c2 ? "worried" : "calm"} flame={frame < c1 ? 1 : 0} upperFlame={frame >= c1 + 4 && frame < hit ? 1 : 0} sep={sep} sepRot={after * 50} />
+      {frame >= hit ? <Burst x={40} y={-235} k={prog(frame, hit, hit + 18)} r={260} /> : null}
       <Flash frame={frame} at={[hit]} strength={0.55} />
       {/* the founder watches from a small inset */}
       <g transform="translate(-330 -120)">
@@ -235,7 +237,7 @@ const Fix: React.FC<{len: number}> = ({len}) => {
   const items = ["CARI SALAH", "PERBAIKI", "SIAPKAN"];
   return (
     <Shot len={len} wall="#24303A" z1={1.07}>
-      <Board x={-250} y={-60} w={300} h={300}>
+      <Board x={-200} y={-60} w={300} h={300}>
         {items.map((s, i) => (
           <g key={i} opacity={prog(frame, [c0, c1, c2][i], [c0, c1, c2][i] + 8)}>
             <Label x={40} y={70 + i * 90} text={s} size={30} color={C.ink} anchor="start" />
@@ -243,7 +245,7 @@ const Fix: React.FC<{len: number}> = ({len}) => {
           </g>
         ))}
       </Board>
-      <Actor x={-430} y={FLOOR} scale={1.0} pose={point(idle(t, 1), 1, 120)} look={FOUNDER} expr="determined" />
+      <Actor x={-385} y={FLOOR} scale={1.0} pose={point(idle(t, 1), 1, 120)} look={FOUNDER} expr="determined" />
       <Rocket x={250} y={FLOOR} s={0.95} t={t} face={frame >= c2 ? "happy" : "calm"} />
       <Actor x={80} y={FLOOR} scale={1.1} pose={{...idle(t, 3), shR: 100 + Math.sin(t * 12) * 12, elR: 30}} look={ENG2} expr="focused" />
       <Sparks x={210} y={-30} k={((frame - c1) % 24) / 24} r={60} />
@@ -262,13 +264,13 @@ const Flight4: React.FC<{len: number}> = ({len}) => {
   const left = Math.max(1, 3 - Math.floor((frame - c2) / ((len - c2) / 3)));
   return (
     <AbsoluteFill>
-      <Shot len={len} z1={1.1} back={<SkyFill top="#0B1020" bottom="#243247" />}>
+      <Shot len={len} z1={1.06} back={<SkyFill top="#0B1020" bottom="#243247" />}>
         <LaunchPad x={-20} y={FLOOR} />
         <Rocket x={60} y={FLOOR} s={1.05} t={t} face="worried" />
-        <Actor x={-380} y={FLOOR} scale={1.1} pose={{...idle(t, 3), shL: 150, elL: 120, shR: 150, elR: 120, lookY: -0.6}} look={FOUNDER} expr="worried" />
-        <Actor x={360} y={FLOOR} scale={1.05} facing={-1} pose={{...idle(t, 6), lookY: -0.6}} look={ENG1} expr="worried" />
+        <Actor x={-330} y={FLOOR} scale={1.1} pose={{...idle(t, 3), shL: 150, elL: 120, shR: 150, elR: 120, lookY: -0.6}} look={FOUNDER} expr="worried" />
+        <Actor x={330} y={FLOOR} scale={1.05} facing={-1} pose={{...idle(t, 6), lookY: -0.6}} look={ENG1} expr="worried" />
         <Plate x={0} y={-590} text="28 SEPTEMBER 2008" k={pop(frame, -10)} size={46} />
-        <Plate x={0} y={-470} text="PELUNCURAN KE-4" k={pop(frame, c1)} size={42} border={C.yellow} />
+        <Plate x={0} y={-430} text="PELUNCURAN KE-4" k={pop(frame, c1)} size={42} border={C.yellow} />
         {frame >= c2 ? <Plate x={-250} y={-250} text={String(left)} k={pop(frame, c2)} size={90} border={C.yellow} color={C.yellow} w={150} /> : null}
       </Shot>
       <Vignette frame={frame} strength={0.6} />
@@ -292,13 +294,13 @@ const Orbit: React.FC<{len: number}> = ({len}) => {
     <Shot len={len} wall="#0E1420" z1={1.06} back={<Starfield t={t} size={1400} count={120} nebula={0.6} />}>
       <ellipse cx={0} cy={-330} rx={rx} ry={ry} fill="none" stroke={C.yellow} strokeWidth={4} strokeDasharray="14 12" opacity={0.6} />
       <Planet x={0} y={-330} r={170} />
-      <Rocket x={px} y={py + 120} s={0.42} rot={Math.cos(a) * 30 + 90} t={t} face="happy" sep={200} upperFlame={0.5} />
+      <Rocket x={px} y={py + 60} s={0.42} rot={Math.cos(a) * 30 + 90} t={t} face="happy" upperOnly upperFlame={0.5} />
       <Flash frame={frame} at={[c0 + 2]} strength={0.35} />
       {[-300, -110, 110, 300].map((x, i) => (
         <Actor key={i} x={x} y={FLOOR} scale={1.0} facing={x > 0 ? -1 : 1} pose={cheer(t, i)} look={i === 1 ? FOUNDER : [ENG1, ENG2, ENG1, ENG2][i]} expr="happy" />
       ))}
       <Plate x={0} y={-590} text="ORBIT!" k={pop(frame, c0 + 6)} size={62} border={GOOD} />
-      <Plate x={0} y={-60} text="ROKET SWASTA PERTAMA" k={pop(frame, c1 + 2)} size={38} border={C.cyan} />
+      <Plate x={0} y={10} text="ROKET SWASTA PERTAMA" k={pop(frame, c1 + 2)} size={34} border={C.cyan} />
     </Shot>
   );
 };
@@ -316,7 +318,7 @@ const Contract: React.FC<{len: number}> = ({len}) => {
   return (
     <Shot len={len} wall="#24303A" z1={1.07}>
       <Institution x={260} y={-40} s={0.55} name="NASA" />
-      <Calendar x={-300} y={-420} text="DES" sub="2008" s={0.6 * pop(frame, c0 - 6)} />
+      <Calendar x={-360} y={-360} text="DES" sub="2008" s={0.6 * pop(frame, c0 - 6)} />
       <Actor x={-130} y={FLOOR} scale={1.25} pose={mix(idle(t, 1), reach, shake)} look={FOUNDER} expr="happy" />
       <Actor x={120} y={FLOOR} scale={1.25} facing={-1} pose={mix(idle(t, 4), reach, shake)} look={{...ENGINEER("#E9E7DF"), coat: "#2B3140", sleeve: "#2B3140", tie: C.cyan}} expr="happy" />
       <Gate k={pop(frame, c2 - 4)}>

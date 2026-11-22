@@ -197,6 +197,30 @@ Caption, hashtag, teks cover, skor naskah, tabel fakta, dan sumber: [`scripts/na
 
 Properti baru: `src/environment/JobsProps.tsx` (tanpa logo; perangkat berupa bentuk generik).
 
+## Video: "Aku Roket yang Tiga Kali Gagal" (73 detik, cerita POV roket Falcon 1)
+
+Hasil jadi: [`out/roket.mp4`](out/roket.mp4).
+Caption, hashtag, teks cover, skor naskah, tabel fakta, dan sumber: [`scripts/narasi/roket-copy.md`](scripts/narasi/roket-copy.md).
+
+Kisah awal SpaceX milik Elon Musk, diceritakan oleh roket Falcon 1 sendiri (orang pertama, roket bermuka):
+
+| Adegan | Isi |
+|---|---|
+| 1. Hook | "Aku roket yang tiga kali gagal"; tiga tanda X; pembuatnya tidak menyerah. |
+| 2. Nama | Falcon 1, perusahaan SpaceX, Elon Musk. |
+| 3. 2006 | Meluncur dari pulau, setengah menit terbang, api menyala, jatuh (GAGAL #1). |
+| 4. Penyebab | Mur kecil berkarat, bahan bakar bocor. |
+| 5. 2007 | Ruang kendali: sampai luar angkasa, lalu berputar tak terkendali (GAGAL #2). |
+| 6. 2008 | Setelah berpisah, tingkat bawah menabrak tingkat atas (GAGAL #3). |
+| 7. Krisis | Tiga kali gagal, perusahaan nyaris kehabisan uang. |
+| 8. Perbaikan | Cari salah, perbaiki, siapkan lagi. |
+| 9. Peluncuran ke-4 | 28 September 2008, hitung mundur, semua menahan napas. |
+| 10. Orbit | Mengitari planet; roket swasta berbahan bakar cair pertama yang berhasil. |
+| 11. Kontrak | Tiga bulan kemudian, kontrak NASA sekitar US$ 1,6 miliar. |
+| 12. Penutup | "Gagal tiga kali bukan alasan berhenti"; X berubah jadi centang; pertanyaan ke penonton. |
+
+Properti baru: `src/environment/RocketProps.tsx` (roket bermuka tanpa logo, mur berkarat, layar ruang kendali, planet).
+
 ## Alat bantu produksi
 
 - `scripts/make_narration.py`: narasi per baris (VoiceStudio/OmniVoice) + penyelarasan per kata dengan
@@ -227,6 +251,7 @@ npm run render -- PesanIbu out/pesan-terakhir-dari-ibu.mp4
 npm run render -- BlackHole out/black-hole.mp4
 npm run render -- GajiSama out/gaji-sama.mp4
 npm run render -- SteveJobsApple out/jobs.mp4
+npm run render -- RoketGagal out/roket.mp4
 npm run render -- PintarSaja out/pintar.mp4
 npm run render -- BaduyBadak out/baduy.mp4
 npm run render -- AsalQris out/qris.mp4
