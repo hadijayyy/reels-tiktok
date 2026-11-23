@@ -18,6 +18,7 @@ import {PARKIR_FRAMES, TukangParkir} from "./scenes/TukangParkir";
 import {JEDA_FRAMES, JedaTigaPuluh} from "./scenes/JedaTigaPuluh";
 import {JOBS_FRAMES, SteveJobsApple} from "./scenes/SteveJobsApple";
 import {ROKET_FRAMES, RoketGagal} from "./scenes/RoketGagal";
+import {BITCOIN_FRAMES, BitcoinNol} from "./scenes/BitcoinNol";
 import {FPS, H, W} from "./styles/palette";
 
 // Render with: npx remotion render src/index.ts <Id> out/<name>.mp4
@@ -184,6 +185,15 @@ export const Root: React.FC = () => (
       width={W}
       height={H}
       defaultProps={{narration: "audio/roket.mp3"}}
+    />
+    <Composition
+      id="BitcoinNol"
+      component={BitcoinNol}
+      durationInFrames={BITCOIN_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+      defaultProps={{narration: "audio/bitcoin.mp3"}}
     />
   </>
 );
