@@ -221,6 +221,25 @@ Kisah awal SpaceX milik Elon Musk, diceritakan oleh roket Falcon 1 sendiri (oran
 
 Properti baru: `src/environment/RocketProps.tsx` (roket bermuka tanpa logo, mur berkarat, layar ruang kendali, planet).
 
+## Video: "What If: Bitcoin Turun ke Nol" (49 detik, penjelasan "what if")
+
+Hasil jadi: [`out/bitcoin.mp4`](out/bitcoin.mp4).
+Caption, hashtag, teks cover, skor naskah, tabel fakta, dan sumber: [`scripts/narasi/bitcoin-copy.md`](scripts/narasi/bitcoin-copy.md).
+Skenario hipotesis, bukan prediksi atau saran investasi (label "BUKAN SARAN INVESTASI" tampil di video).
+
+| Adegan | Isi |
+|---|---|
+| 1. Hook | "What if?": koin Bitcoin berputar, harga jadi Rp0, koin retak dan kelabu. |
+| 2. Indonesia | Sekitar 23 juta akun kripto; saldo di HP turun ke Rp0. |
+| 3. Perusahaan | Satu perusahaan Amerika menyimpan 850 ribu+ koin; semua jadi nol. |
+| 4. Penambang | Listrik mahal, hadiah tak bernilai, mesin dimatikan satu per satu. |
+| 5. Panik | Kerumunan panik jual, grafik anjlok, koin lain kemungkinan ikut jatuh. |
+| 6. Twist | Ekonomi dunia aman: nilai semua Bitcoin cuma sekitar 5% emas dunia. |
+| 7. Paling sakit | Orang yang menaruh semua uangnya di satu tempat. |
+| 8. Penutup | Toples kebutuhan / darurat / investasi (uang dingin); "Kamu pegang Bitcoin?" |
+
+Properti baru: `src/environment/BitcoinProps.tsx` (koin "B" generik tanpa logo, mesin tambang, grafik anjlok, emas batangan, toples).
+
 ## Alat bantu produksi
 
 - `scripts/make_narration.py`: narasi per baris (VoiceStudio/OmniVoice) + penyelarasan per kata dengan
@@ -252,6 +271,7 @@ npm run render -- BlackHole out/black-hole.mp4
 npm run render -- GajiSama out/gaji-sama.mp4
 npm run render -- SteveJobsApple out/jobs.mp4
 npm run render -- RoketGagal out/roket.mp4
+npm run render -- BitcoinNol out/bitcoin.mp4
 npm run render -- PintarSaja out/pintar.mp4
 npm run render -- BaduyBadak out/baduy.mp4
 npm run render -- AsalQris out/qris.mp4

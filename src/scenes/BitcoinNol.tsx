@@ -6,6 +6,8 @@ import {BigPhone, handPhone} from "../environment/MoneyProps";
 import {PersonIcon} from "../environment/QrisProps";
 import {Building, Bolt} from "../environment/JobsProps";
 import {BtcCoin, CrashChart, GoldBars, Jar, MiningRig} from "../environment/BitcoinProps";
+import {Planet} from "../environment/RocketProps";
+import {Tick} from "../environment/MoneyProps";
 import {CASUAL, JACKET_BLUE} from "../rig/looks";
 import {eInOut, lerp, prog} from "../motion/ease";
 import {cheer, idle, mix, point} from "../rig/poses";
@@ -77,7 +79,7 @@ const Accounts: React.FC<{len: number}> = ({len}) => {
         const col = i % 8;
         const row = Math.floor(i / 8);
         return (
-          <g key={i} opacity={prog(frame, c1 - 10 + i * 1.2, c1 - 4 + i * 1.2)}>
+          <g key={i} opacity={prog(frame, i * 1.5, 6 + i * 1.5)}>
             <PersonIcon x={-350 + col * 100} y={-500 + row * 105} s={0.8} color={drop > 0.5 ? "#8C8F95" : C.bone} />
           </g>
         );
@@ -86,7 +88,7 @@ const Accounts: React.FC<{len: number}> = ({len}) => {
       <Gate k={prog(frame, c2 - 6, c2)}>
         <BigPhone x={250} y={40} w={190} h={240}>
           <Label x={95} y={70} text="SALDO" size={26} color="#A9B4C0" />
-          <Label x={95} y={140} text={`Rp${bal} jt`} size={40} color={drop > 0.9 ? C.red : C.bone} />
+          <Label x={95} y={140} text={bal > 0 ? `Rp${bal} jt` : "Rp0"} size={40} color={drop > 0.9 ? C.red : C.bone} />
         </BigPhone>
       </Gate>
       <Actor x={-250} y={FLOOR} scale={1.25} pose={drop > 0.5 ? slumped(t) : idle(t, 2)} look={INVESTOR} expr={drop > 0.5 ? "sad" : "neutral"} />
@@ -104,7 +106,7 @@ const Company: React.FC<{len: number}> = ({len}) => {
   const grey = prog(frame, c2, c2 + 18);
   return (
     <Shot len={len} wall="#24282F" z1={1.07}>
-      <Building x={-320} y={FLOOR} w={230} h={480} name="PERUSAHAAN AS" color="#3B4452" lit={0.5} />
+      <Building x={-260} y={FLOOR} w={210} h={480} name="PERUSAHAAN" color="#3B4452" lit={0.5} />
       {Array.from({length: 15}).map((_, i) => {
         const row = i < 5 ? 0 : i < 9 ? 1 : i < 12 ? 2 : i < 14 ? 3 : 4;
         const idx = [0, 5, 9, 12, 14][row];
@@ -117,7 +119,7 @@ const Company: React.FC<{len: number}> = ({len}) => {
           </g>
         );
       })}
-      <Actor x={-90} y={FLOOR} scale={1.2} facing={1} pose={grey > 0.5 ? slumped(t) : point(idle(t), prog(frame, c1, c1 + 12), 60)} look={JACKET_BLUE} expr={grey > 0.5 ? "sad" : "smug"} />
+      <Actor x={-50} y={FLOOR} scale={1.2} facing={1} pose={grey > 0.5 ? slumped(t) : point(idle(t), prog(frame, c1, c1 + 12), 60)} look={JACKET_BLUE} expr={grey > 0.5 ? "sad" : "smug"} />
       <Plate x={160} y={-330} text="850 RIBU+" k={pop(frame, c1 + 10)} size={56} border={C.yellow} />
       <Plate x={160} y={-200} text="SEMUA = NOL" k={pop(frame, c2 + 6)} size={44} border={C.red} color={C.red} />
     </Shot>
@@ -142,9 +144,9 @@ const Miners: React.FC<{len: number}> = ({len}) => {
       </g>
       <Actor x={-380} y={FLOOR} scale={1.2} pose={frame >= c2 ? point(idle(t), 1, 60) : idle(t, 3)} look={{...CASUAL, top: "#5E7AA8", sleeve: "#5E7AA8"}} expr={frame >= c1 ? "worried" : "focused"} />
       <Plate x={0} y={-590} text="PENAMBANG" k={pop(frame, -10)} size={54} />
-      <Plate x={-40} y={-460} text="LISTRIK MAHAL" k={pop(frame, cueAt(0) + 6)} size={40} border={C.orange} />
-      <Plate x={60} y={-300} text="HADIAH = Rp0" k={pop(frame, c1 + 4)} size={42} border={C.red} color={C.red} />
-      <Plate x={60} y={-300} text="MESIN DIMATIKAN" k={pop(frame, c2 + 2)} size={40} border={C.red} />
+      <Plate x={-40} y={-400} text="LISTRIK MAHAL" k={pop(frame, cueAt(0) + 6)} size={40} border={C.orange} />
+      <Plate x={60} y={-260} text="HADIAH = Rp0" k={pop(frame, c1 + 4) * (1 - prog(frame, c2 - 2, c2 + 2))} size={42} border={C.red} color={C.red} />
+      <Plate x={60} y={-260} text="MESIN DIMATIKAN" k={pop(frame, c2 + 2)} size={40} border={C.red} />
     </Shot>
   );
 };
@@ -188,21 +190,28 @@ const Twist: React.FC<{len: number}> = ({len}) => {
   const {cueAt} = useScene();
   const t = frame / FPS;
   const c0 = cueAt(0);
+  const c1 = cueAt(1);
   const c2 = cueAt(2);
   return (
     <Shot len={len} wall="#22303A" z1={1.07}>
       <Flash frame={frame} at={[c0 + 2]} strength={0.4} />
-      <g transform={`translate(-150 ${FLOOR}) scale(${pop(frame, c2 - 4)})`}>
+      <g opacity={1 - prog(frame, c1 - 6, c1)}>
+        <Planet x={120} y={-200} r={150} />
+        <Tick x={240} y={-320} r={36} k={pop(frame, c0 + 14)} />
+      </g>
+      <g transform={`translate(-150 ${FLOOR}) scale(${pop(frame, c1)})`}>
         <GoldBars x={0} y={0} rows={5} s={0.95} />
       </g>
-      <g transform={`translate(270 ${FLOOR - 40}) scale(${pop(frame, c2 + 6)})`}>
+      <g transform={`translate(270 ${FLOOR - 40}) scale(${pop(frame, c1 + 10)})`}>
         <BtcCoin x={0} y={0} r={36} grey={0.6} />
       </g>
-      <Label x={-150} y={FLOOR + 40} text="EMAS DUNIA" size={30} color={C.yellow} />
+      <Gate k={prog(frame, c1, c1 + 8)}>
+        <Label x={-150} y={FLOOR + 40} text="EMAS DUNIA" size={30} color={C.yellow} />
+      </Gate>
       <Actor x={-420} y={FLOOR} scale={1.0} pose={point(idle(t, 2), 1, 50)} look={INVESTOR} expr="calm" />
-      <Plate x={0} y={-590} text="TAPI..." k={pop(frame, c0)} size={60} border={C.cyan} />
-      <Plate x={0} y={-470} text="EKONOMI DUNIA AMAN" k={pop(frame, cueAt(1))} size={44} border={GOOD} />
-      <Plate x={150} y={-280} text="± 5% NILAI EMAS" k={pop(frame, c2 + 12)} size={42} border={C.yellow} color={C.yellow} />
+      <Plate x={0} y={-590} text="TAPI..." k={pop(frame, -10)} size={60} border={C.cyan} />
+      <Plate x={0} y={-410} text="EKONOMI DUNIA AMAN" k={pop(frame, c0 + 10)} size={44} border={GOOD} />
+      <Plate x={150} y={-250} text="± 5% NILAI EMAS" k={pop(frame, c2 + 12)} size={42} border={C.yellow} color={C.yellow} />
     </Shot>
   );
 };
@@ -220,7 +229,7 @@ const OneBasket: React.FC<{len: number}> = ({len}) => {
       {[0, 1, 2, 3, 4, 5].map((i) => {
         const k = clampP(pile * 6 - i);
         return k > 0 ? (
-          <g key={i} transform={`translate(${lerp(-200 + i * 40, 150, k)} ${lerp(-450, FLOOR - 60 - (i % 3) * 50, k)})`}>
+          <g key={i} transform={`translate(${lerp(-200 + i * 40, 150, k)} ${lerp(-450, FLOOR - 150 - (i % 3) * 50, k)})`}>
             {i % 2 ? <BtcCoin x={0} y={0} r={42} grey={sad} /> : <g transform="scale(1.1)"><rect x={-50} y={-24} width={100} height={48} rx={6} fill="#6FA86A" stroke={C.ink} strokeWidth={4} /><Label x={0} y={10} text="Rp" size={26} color={C.ink} /></g>}
           </g>
         ) : null;
