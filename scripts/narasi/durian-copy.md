@@ -6,6 +6,13 @@ TikTok/Reels), latar diganti pulau fiksi (bukan Kalimantan / bukan suku nyata). 
 klaim fakta yang perlu dicek. Gaya `kartun`, formula A (alur absurd: hook, aturan, eskalasi, twist).
 Pemenggalan tidak diperlihatkan: potong ke gelap/siluet + efek, tanpa darah.
 
+**Narasi:** Edge TTS, suara `id-ID-ArdiNeural`, tempo +5 % (OmniVoice sekarang meminta persetujuan lisensi
+Boson Higgs Audio 2 untuk tokenizer-nya; user memilih Edge TTS). WAV per baris dibuat lalu dirapikan dengan
+ffmpeg ke `public/audio/durian-lines/`, kemudian `make_narration.py` menghitung timing dan caption seperti biasa
+(skrip tidak memuat OmniVoice karena semua baris sudah ada). Untuk membuat ulang satu baris:
+`edge-tts --voice id-ID-ArdiNeural --rate=+5% --text "..." --write-media x.mp3` (di kontainer cloud arahkan
+`certifi` ke `/root/.ccr/ca-bundle.crt`), ubah ke WAV mono 24 kHz, lalu jalankan `make_narration.py durian` lagi.
+
 ## Arahan visual (penonton harus melihat ___ tepat pada kata ___)
 
 | # | Adegan | Penonton harus melihat |

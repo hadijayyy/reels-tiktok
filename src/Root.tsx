@@ -20,6 +20,8 @@ import {JOBS_FRAMES, SteveJobsApple} from "./scenes/SteveJobsApple";
 import {ROKET_FRAMES, RoketGagal} from "./scenes/RoketGagal";
 import {BITCOIN_FRAMES, BitcoinNol} from "./scenes/BitcoinNol";
 import {DEMO_FRAMES, KartunDemo} from "./scenes/KartunDemo";
+import {TigaPilotDurian} from "./scenes/Durian";
+import {FRAMES as DURIAN_FRAMES} from "./scenes/durianTiming";
 import {JAKARTA_FRAMES, JakartaTenggelam} from "./scenes/JakartaTenggelam";
 import {FPS, H, W} from "./styles/palette";
 
@@ -205,6 +207,15 @@ export const Root: React.FC = () => (
       width={W}
       height={H}
       defaultProps={{narration: "audio/jakarta.mp3"}}
+    />
+    <Composition
+      id="TigaPilotDurian"
+      component={TigaPilotDurian}
+      durationInFrames={DURIAN_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+      defaultProps={{narration: "audio/durian.mp3"}}
     />
     <Composition id="KartunDemo" component={KartunDemo} durationInFrames={DEMO_FRAMES} fps={FPS} width={W} height={H} />
   </>

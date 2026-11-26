@@ -255,6 +255,22 @@ Hasil jadi: [`out/jakarta.mp4`](out/jakarta.mp4). Naskah, caption, hashtag, teks
 | 10-12. Harapan | Tokyo 1968 (24 cm/tahun) membatasi pompa dan berhenti turun; Muara Baru melambat setengah |
 | 13. Penutup | 2050 bukan takdir, tergantung air yang kita sedot hari ini |
 
+## Video: "Tiga Pilot dan Buah Durian" (70 detik, kartun 3D, lelucon)
+
+Hasil jadi: [`out/durian.mp4`](out/durian.mp4). Naskah, arahan visual, caption, hashtag dan teks cover:
+[`scripts/narasi/durian-copy.md`](scripts/narasi/durian-copy.md). Lelucon dari user, latar pulau fiksi,
+hukuman "telan bulat-bulat"; pemenggalan tidak diperlihatkan (layar langsung gelap). Narasi: Edge TTS
+`id-ID-ArdiNeural` (bukan OmniVoice), lihat catatan di file copy.
+
+| Adegan | Isi |
+|---|---|
+| 1. Hook | Pesawat berasap jatuh ke pulau; tiga pilot dikepung prajurit bertombak |
+| 2. Syarat | Kepala suku: cari 10 buah yang sama dalam tiga jam |
+| 3-5. Apel | Pilot pertama bawa apel; aturan telan bulat-bulat; apel kedua gagal, layar gelap |
+| 6-7. Lengkeng | Pilot kedua sombong; hitungan 1 sampai 9 lancar, buah ke-10 dia menoleh, tertawa, layar gelap |
+| 8-10. Surga | "Kok kamu mati?" Kilas balik: pilot ketiga datang membawa durian |
+| 11-12. Penutup | Pilot kedua paling sial dalam sejarah; pilot ketiga gemetar memeluk durian |
+
 ## Kit kartun 3D: reel uji "KartunDemo" (12 detik, tanpa narasi)
 
 Hasil jadi: [`out/kartun-demo.mp4`](out/kartun-demo.mp4). Tiga adegan untuk menguji kit `src/cartoon/`
@@ -356,5 +372,5 @@ Untuk video cerita bergaya kartun 3D, diorama kertas, atau stickman dengan formu
 - Formula cerita dan aturan gaya kartun 3D diadaptasi dari
   [claude-shorts-skills](https://github.com/fahniazz/claude-shorts-skills) (`cartoon-3d-short`, lisensi MIT);
   kode kit `src/cartoon/` ditulis ulang untuk repo ini.
-- Suara narasi: model OmniVoice (k2-fsa) lewat VoiceStudio.
+- Suara narasi: model OmniVoice (k2-fsa) lewat VoiceStudio; video durian memakai Edge TTS (`id-ID-ArdiNeural`).
 - Font Inter, SIL Open Font License (`public/fonts/LICENSE-Inter.txt`).
