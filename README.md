@@ -240,6 +240,21 @@ Skenario hipotesis, bukan prediksi atau saran investasi (label "BUKAN SARAN INVE
 
 Properti baru: `src/environment/BitcoinProps.tsx` (koin "B" generik tanpa logo, mesin tambang, grafik anjlok, emas batangan, toples).
 
+## Video: "Bagaimana Kalau Jakarta Tenggelam di Tahun 2050?" (59 detik, kartun 3D, sains lingkungan)
+
+Hasil jadi: [`out/jakarta.mp4`](out/jakarta.mp4). Naskah, caption, hashtag, teks cover dan tabel sumber:
+[`scripts/narasi/jakarta-copy.md`](scripts/narasi/jakarta-copy.md). Video pertama dari skill `kartun-cerita`
+(formula "fakta absurd", gaya `kartun` 3D).
+
+| Adegan | Isi |
+|---|---|
+| 1. Hook | 2050 Jakarta Utara bisa tenggelam, tapi bukan karena laut naik (gang kampung tergenang) |
+| 2-4. Bukti | Daratan yang turun, Pluit turun 4 m (dua orang bertumpuk di samping tiang ukur), masjid di tengah laut |
+| 5-8. Penyebab | Air tanah di potongan tanah, air pipa baru dua pertiga kota, analogi kotak susu yang kempot, lapisan tanah memadat |
+| 9. Tembok laut | Tembok menahan air, bukan tanah yang turun |
+| 10-12. Harapan | Tokyo 1968 (24 cm/tahun) membatasi pompa dan berhenti turun; Muara Baru melambat setengah |
+| 13. Penutup | 2050 bukan takdir, tergantung air yang kita sedot hari ini |
+
 ## Kit kartun 3D: reel uji "KartunDemo" (12 detik, tanpa narasi)
 
 Hasil jadi: [`out/kartun-demo.mp4`](out/kartun-demo.mp4). Tiga adegan untuk menguji kit `src/cartoon/`
@@ -292,6 +307,7 @@ npm run render -- AyahSepatu out/ayahsepatu.mp4
 npm run render -- TransferRahasia out/transfer.mp4
 npm run render -- TukangParkir out/parkir.mp4
 npm run render -- KartunDemo out/kartun-demo.mp4 --gl=swangle
+npm run render -- JakartaTenggelam out/jakarta.mp4 --gl=swangle
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di
