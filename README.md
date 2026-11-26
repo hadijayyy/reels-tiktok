@@ -390,4 +390,7 @@ Untuk video cerita bergaya kartun 3D, diorama kertas, atau stickman dengan formu
   [claude-shorts-skills](https://github.com/fahniazz/claude-shorts-skills) (`cartoon-3d-short`, lisensi MIT);
   kode kit `src/cartoon/` ditulis ulang untuk repo ini.
 - Suara narasi: model OmniVoice (k2-fsa) lewat VoiceStudio; video durian dan penumpang memakai Edge TTS (`id-ID-ArdiNeural`, `id-ID-GadisNeural`).
+  Bobot OmniVoice berlisensi non-komersial (CC-BY-NC); tokenizer audionya memakai Boson Higgs Audio 2 Community License:
+  Built with Higgs Materials licensed from Boson AI USA, Inc., Copyright Boson AI USA, Inc., All Rights Reserved and
+  Meta Llama 3 licensed under the Meta Llama 3 Community License, Copyright Meta Platforms, Inc., All Right Reserved.
 - Font Inter, SIL Open Font License (`public/fonts/LICENSE-Inter.txt`).

@@ -120,9 +120,11 @@ uv pip install "transformers>=5.10.0" accelerate pydub numpy soundfile "setuptoo
 ```
 
 **Jangan pakai Edge TTS (`id-ID-ArdiNeural`, `id-ID-GadisNeural`) sebagai cadangan.** User menilai
-suaranya kaku dan seperti robot (video `durian` dan `penumpang`). Kalau OmniVoice tidak bisa dipakai
-(misalnya lisensi tokenizer Higgs Audio 2 belum disetujui di Hugging Face), berhenti dan tanya user
-mesin suara mana yang dipakai. Jangan diam-diam pindah ke TTS lain.
+suaranya kaku dan seperti robot (video `durian` dan `penumpang`). Kalau OmniVoice tetap tidak bisa dipakai
+(error apa pun), berhenti dan tanya user mesin suara mana yang dipakai. Jangan diam-diam pindah ke TTS lain.
+Error `OmniVoiceModelAssetError ... eustlb/higgs-audio-v2-tokenizer` berarti folder `audio_tokenizer/` belum
+terunduh. `make_narration.py` sekarang mengunduh snapshot lengkap pada revisi yang dikunci VoiceStudio
+(`c5fdb5c`), yang sudah membawa tokenizer itu.
 
 Lalu, dari akar repo:
 

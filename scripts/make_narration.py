@@ -54,6 +54,9 @@ def trim(wav: np.ndarray, sr: int, thresh: float = 0.01) -> np.ndarray:
     return wav[max(0, loud[0] - pad) : loud[-1] + pad]
 
 
+OMNIVOICE_REV = "c5fdb5ccb189668d56333f77ba2629f4cd7535f4"  # VoiceStudio tests/test_omnivoice_revision_pin.py
+
+
 def main() -> None:
     import argparse
 
@@ -91,7 +94,12 @@ def main() -> None:
                 import torch
                 from omnivoice.models.omnivoice import OmniVoice
 
-                model = OmniVoice.from_pretrained("k2-fsa/OmniVoice", device_map="cpu", dtype=torch.float32)
+                # Pinned to VoiceStudio's reviewed revision, which bundles audio_tokenizer/. Load it with the
+                # whole snapshot (snapshot_download) or OmniVoice falls back to a separate, licence-gated repo.
+                from huggingface_hub import snapshot_download
+
+                snapshot_download("k2-fsa/OmniVoice", revision=OMNIVOICE_REV)
+                model = OmniVoice.from_pretrained("k2-fsa/OmniVoice", revision=OMNIVOICE_REV, device_map="cpu", dtype=torch.float32)
             seed = args.seed + takes[i]
             if i == 0:
                 audio = model.generate(text=text, language=language, instruct=voice, speed=speed, seed=seed)[0]
