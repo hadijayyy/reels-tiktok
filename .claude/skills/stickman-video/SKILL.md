@@ -119,6 +119,11 @@ uv pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
 uv pip install "transformers>=5.10.0" accelerate pydub numpy soundfile "setuptools>=75,<80" faster-whisper
 ```
 
+**Jangan pakai Edge TTS (`id-ID-ArdiNeural`, `id-ID-GadisNeural`) sebagai cadangan.** User menilai
+suaranya kaku dan seperti robot (video `durian` dan `penumpang`). Kalau OmniVoice tidak bisa dipakai
+(misalnya lisensi tokenizer Higgs Audio 2 belum disetujui di Hugging Face), berhenti dan tanya user
+mesin suara mana yang dipakai. Jangan diam-diam pindah ke TTS lain.
+
 Lalu, dari akar repo:
 
 ```bash
