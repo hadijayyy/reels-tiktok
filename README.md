@@ -240,6 +240,13 @@ Skenario hipotesis, bukan prediksi atau saran investasi (label "BUKAN SARAN INVE
 
 Properti baru: `src/environment/BitcoinProps.tsx` (koin "B" generik tanpa logo, mesin tambang, grafik anjlok, emas batangan, toples).
 
+## Kit kartun 3D: reel uji "KartunDemo" (12 detik, tanpa narasi)
+
+Hasil jadi: [`out/kartun-demo.mp4`](out/kartun-demo.mp4). Tiga adegan untuk menguji kit `src/cartoon/`
+(karakter kartun 2D sebagai kartu di dunia 3D three.js): ruang kerja berlilin (gaya `kartun`), jalan desa
+malam dengan api unggun dan ledakan (gaya `kartun`), dan desa siang bergaya maket kertas (gaya `diorama`).
+Video cerita dengan kit ini dibuat lewat skill `.claude/skills/kartun-cerita/SKILL.md`.
+
 ## Alat bantu produksi
 
 - `scripts/make_narration.py`: narasi per baris (VoiceStudio/OmniVoice) + penyelarasan per kata dengan
@@ -254,6 +261,10 @@ Properti baru: `src/environment/BitcoinProps.tsx` (koin "B" generik tanpa logo, 
 - `scripts/finish.sh <slug> <Id>`: musik, mix, render, ffprobe, dan pacing dalam satu perintah.
 - `scripts/check_pacing.py out/<slug>.mp4`: memeriksa frame pertama dan bagian lebih dari 4 detik tanpa
   perubahan visual.
+- `src/cartoon/`: kit 3D (gaya `kartun` dan `diorama`): `Stage` (kamera berkey, cahaya, grade), `Toon` (tokoh
+  kartun dengan 12 ekspresi dan ±20 pose), `Fx`, `Label3D`, dan properti set (`Room`, `House`, `Lamp`, ...).
+  Render 3D butuh WebGL: tambahkan `--gl=swangle` (tanpa GPU) atau `--gl=angle` (dengan GPU), atau `GL=...`
+  untuk `finish.sh` dan `check_layout.mjs`.
 - `src/story/StoryKit.tsx`: `Film`, `Shot` (punch-in per frasa), `Plate`/`Bubble`/`Actor` dengan cek area
   aman (`--props='{"check":true}'`), pose dan potongan cerita yang dipakai ulang.
 
@@ -280,6 +291,7 @@ npm run render -- DendamFilm out/dendam.mp4
 npm run render -- AyahSepatu out/ayahsepatu.mp4
 npm run render -- TransferRahasia out/transfer.mp4
 npm run render -- TukangParkir out/parkir.mp4
+npm run render -- KartunDemo out/kartun-demo.mp4 --gl=swangle
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di
@@ -312,9 +324,16 @@ Untuk video dari topik yang sedang viral, pakai skill `.claude/skills/viral-vide
 "bikin video reels topik yang lagi viral". Skill ini meriset tren, menyaring topik yang aman, lalu
 menanyakan pilihan topik sebelum membuat naskah dan video.
 
+Untuk video cerita bergaya kartun 3D, diorama kertas, atau stickman dengan formula cerita "How you invented X",
+"pilihan aneh yang ternyata benar", atau "fakta absurd sejarah", pakai skill
+`.claude/skills/kartun-cerita/SKILL.md`: minta misalnya "bikin video kartun 3D how you invented sumur".
+
 ## Kredit
 
 - Rig stickman, kamera, caption, dan perabot: [stickman-story](https://github.com/ahmadaryanto/stickman-story)
   oleh Ahmad Jeffry Aryanto, lisensi MIT (lihat `LICENSE`).
+- Formula cerita dan aturan gaya kartun 3D diadaptasi dari
+  [claude-shorts-skills](https://github.com/fahniazz/claude-shorts-skills) (`cartoon-3d-short`, lisensi MIT);
+  kode kit `src/cartoon/` ditulis ulang untuk repo ini.
 - Suara narasi: model OmniVoice (k2-fsa) lewat VoiceStudio.
 - Font Inter, SIL Open Font License (`public/fonts/LICENSE-Inter.txt`).

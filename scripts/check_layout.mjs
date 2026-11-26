@@ -3,7 +3,7 @@
 // each of which bundled the project again (~25 s apiece) and could hang without a message.
 //
 //   node scripts/check_layout.mjs <CompositionId> <slug> [--per 2|3] [--frames 120,900] [--scene 4,5]
-//                                 [--scale 0.35] [--out out/check] [--jobs 3]
+//                                 [--scale 0.35] [--out out/check] [--jobs 3] [--gl swangle|angle]
 //
 // Frames come from src/scenes/<slug>Timing.ts: per scene, 20 frames after its first caption cue and 14 before
 // its end (--per 3 adds a frame 16 after its second cue). --scene limits the check to some scenes (0-based;
@@ -32,6 +32,9 @@ const per = Number(opt("per", "2"));
 const scale = Number(opt("scale", "0.35"));
 const jobs = Number(opt("jobs", "3"));
 const out = opt("out", "out/check");
+// 3D films (src/cartoon) need WebGL: swangle in the cloud (no GPU), angle on a PC with a GPU. Also read from $GL.
+const gl = opt("gl", process.env.GL ?? null);
+const chromiumOptions = gl ? {gl} : {};
 
 const timing = readFileSync(`src/scenes/${slug}Timing.ts`, "utf8");
 const scenes = JSON.parse(timing.match(/SCENES = (\[.*?\]);/s)[1]);
@@ -62,13 +65,14 @@ console.log(`bundling once, ${plan.length} stills (scale ${scale}) ...`);
 const t0 = Date.now();
 const serveUrl = await bundle({entryPoint: path.resolve("src/index.ts")});
 const inputProps = {narration: null, check: true};
-const browser = await openBrowser("chrome", {});
+const browser = await openBrowser("chrome", {chromiumOptions});
 const comp = await selectComposition({serveUrl, id, inputProps, puppeteerInstance: browser});
 
 const warnings = new Map();
 const renderOne = async ({frame}, attempt = 1) => {
   try {
     await renderStill({
+      chromiumOptions,
       composition: comp,
       serveUrl,
       frame,

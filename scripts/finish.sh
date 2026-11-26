@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Everything after the layout check, in one command: music -> mix -> render -> verify -> pacing.
 #   scripts/finish.sh <slug> <CompositionId> [mood=calm|horror|piano|space] [peak/hit] [music volume=0.22]
+# 3D films (src/cartoon kit) need WebGL: GL=swangle (cloud, no GPU) or GL=angle (PC with a GPU).
 # Needs src/scenes/<slug>Timing.ts and public/audio/<slug>-narasi.wav (from make_narration.py).
 # Uses the TTS virtualenv (../tts-venv) for make_music.py, which needs soundfile; override with TTS_VENV.
 # Writes public/audio/<slug>.mp3 and out/<slug>.mp4, then runs ffprobe and check_pacing.py on the result.
@@ -23,7 +24,7 @@ echo "== mix"
 scripts/mix_audio.sh "$slug" "$seconds" "$vol"
 
 echo "== render"
-npx remotion render src/index.ts "$id" "out/$slug.mp4" --crf=20 2>&1 | grep -v "^Memory\|docker\|Detected differing\|lower amount" | tr '\r' '\n' | tail -3
+npx remotion render src/index.ts "$id" "out/$slug.mp4" --crf=20 ${GL:+--gl=$GL} 2>&1 | grep -v "^Memory\|docker\|Detected differing\|lower amount" | tr '\r' '\n' | tail -3
 
 echo "== verify"
 ffprobe -v error -show_entries stream=codec_type,width,height,r_frame_rate:format=duration -of default=nw=1 "out/$slug.mp4"
