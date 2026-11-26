@@ -33,6 +33,12 @@ export const ContactShadow: React.FC<{x: number; z: number; w: number; d?: numbe
   </mesh>
 );
 
+/** " [f=123]" in probe mode, so check_layout can tell which frame a warning belongs to. */
+export const probeTag = (probe: number | null) => (probe === null ? "" : ` [f=${probe}]`);
+
+/** Shorts/Reels safe area for faces and on-screen text (px on the 1080 x 1920 frame). */
+export const SAFE3D = {x0: 43, x1: 907, y0: 154, y1: 1300};
+
 /** Yaw (around y) that turns a card at (x, z) to face the camera. */
 const faceCam = (x: number, z: number, cam: V3) => Math.atan2(cam[0] - x, cam[2] - z);
 
@@ -92,9 +98,10 @@ export const Toon: React.FC<ToonProps> = ({who, x, z, y = 0, h = 2.0, pose, expr
     // Shorts/Reels UI: left 4 %, right 16 %, top 8 %; and the face stays above the caption band
     if (inFront && Math.max(...xs) > 0 && Math.min(...xs) < 1080 && Math.max(...ys) > 0 && Math.min(...ys) < 1920 && (Math.min(...xs) < 43 || Math.max(...xs) > 907 || Math.min(...ys) < 154 || Math.max(...ys) > 1300)) {
       warn = true;
-      console.warn(`LUAR AREA: karakter ${who.name ?? ""} (wajah di x ${Math.round(Math.min(...xs))}..${Math.round(Math.max(...xs))}, y ${Math.round(Math.min(...ys))}..${Math.round(Math.max(...ys))})`);
+      console.warn(`LUAR AREA${probeTag(st.probe)}: karakter ${who.name ?? ""} (wajah di x ${Math.round(Math.min(...xs))}..${Math.round(Math.max(...xs))}, y ${Math.round(Math.min(...ys))}..${Math.round(Math.max(...ys))})`);
     }
   }
+  if (st.probe !== null) return null;
   renderCard(card, scratch, who, p, expr, facing, item, st.spec.rim, st.spec.edge, warn);
   tex.needsUpdate = true;
   mat.opacity = opacity;
@@ -281,7 +288,7 @@ export const Fx: React.FC<{kind: FxKind; at: V3; size?: number; k?: number; colo
     const mat = new THREE.MeshBasicMaterial({map: tex, transparent: true, depthWrite: false, side: THREE.DoubleSide, toneMapped: false});
     return {cv, tex, mat};
   }, []);
-  if (k <= 0) return null;
+  if (k <= 0 || st.probe !== null) return null;
   drawFx(cv.getContext("2d")!, kind, kind === "flame" ? k : Math.min(1, k), color ?? FX_DEFAULT[kind], 256);
   tex.needsUpdate = true;
   mat.blending = kind === "glow" ? THREE.AdditiveBlending : THREE.NormalBlending;
@@ -294,6 +301,33 @@ export const Fx: React.FC<{kind: FxKind; at: V3; size?: number; k?: number; colo
       <planeGeometry args={[size, size]} />
     </mesh>
   );
+};
+
+let measureCtx: CanvasRenderingContext2D | null = null;
+
+/** Check mode: warns when a label that is fully shown is off screen, cut, or under the Reels UI. */
+const checkLabel = (st: ReturnType<typeof useStage>, text: string, at: V3, size: number, yaw: number, bg: boolean) => {
+  measureCtx ??= document.createElement("canvas").getContext("2d");
+  let frac = 0.9;
+  if (measureCtx) {
+    measureCtx.font = "800 150px Inter, sans-serif";
+    const tw = measureCtx.measureText(text).width;
+    const fit = Math.min(150, (150 * (1024 - (bg ? 170 : 60))) / Math.max(1, tw));
+    frac = Math.min(1004, (tw * fit) / 150 + (bg ? 90 : 30)) / 1024;
+  }
+  const hw = size * 2 * frac;
+  const hh = size * 0.4;
+  const r: V3 = [Math.cos(yaw), 0, -Math.sin(yaw)];
+  const corners = [[-1, -1], [1, -1], [-1, 1], [1, 1]].map(([a, b]) => st.project([at[0] + r[0] * hw * a, at[1] + hh * b, at[2] + r[2] * hw * a]));
+  const camDir = new THREE.Vector3(...st.cam.at).sub(new THREE.Vector3(...st.cam.pos));
+  const inFront = camDir.dot(new THREE.Vector3(...at).sub(new THREE.Vector3(...st.cam.pos))) > 0;
+  const xs = corners.map((q) => q[0]);
+  const ys = corners.map((q) => q[1]);
+  const box = `x ${Math.round(Math.min(...xs))}..${Math.round(Math.max(...xs))}, y ${Math.round(Math.min(...ys))}..${Math.round(Math.max(...ys))}`;
+  const offScreen = !inFront || Math.max(...xs) < 0 || Math.min(...xs) > 1080 || Math.max(...ys) < 0 || Math.min(...ys) > 1920;
+  if (offScreen) console.warn(`LABEL TIDAK TERLIHAT${probeTag(st.probe)}: "${text}" sudah muncul tapi di luar layar (${box})`);
+  else if (Math.min(...xs) < SAFE3D.x0 || Math.max(...xs) > SAFE3D.x1 || Math.min(...ys) < SAFE3D.y0 || Math.max(...ys) > SAFE3D.y1)
+    console.warn(`LUAR AREA${probeTag(st.probe)}: label "${text}" terpotong atau di bawah UI Reels (${box})`);
 };
 
 export const fontReady = () => {
@@ -336,6 +370,8 @@ export const Label3D: React.FC<{text: string; at: V3; size?: number; color?: str
   }, false);
   if (k <= 0) return null;
   const yaw = faceCam(at[0], at[2], st.cam.pos);
+  if (st.check && k >= 0.9) checkLabel(st, text, at, size, yaw, Boolean(bg));
+  if (st.probe !== null) return null;
   const s = size * (k < 1 ? 1 + Math.sin(k * Math.PI) * 0.15 * (1 - k) - Math.pow(1 - k, 3) : 1);
   return (
     <mesh position={at} rotation={[0, yaw, 0]} renderOrder={6}>

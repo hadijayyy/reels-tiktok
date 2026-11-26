@@ -271,9 +271,13 @@ Video cerita dengan kit ini dibuat lewat skill `.claude/skills/kartun-cerita/SKI
   anggaran kata sebelum narasi dibuat.
 - `scripts/lint_script.py <slug>`: memeriksa naskah sebelum suara dibuat (angka mentah, singkatan, nama asing
   yang perlu cara baca, frasa terlalu panjang) dan memperkirakan durasi.
-- `node scripts/check_layout.mjs <Id> <slug>`: cek tata letak, bundling sekali, dua still per adegan, lembar
+- `node scripts/check_layout.mjs <Id> <slug>`: cek tata letak, bundling sekali, dua still per adegan (tiga untuk 3D), lembar
   kontak, dan daftar `LUAR AREA`; `--scene 3,5` mengulang hanya adegan yang diubah.
-- `scripts/finish.sh <slug> <Id>`: musik, mix, render, ffprobe, dan pacing dalam satu perintah.
+- `scripts/finish.sh <slug> <Id>`: musik, mix (-14 LUFS), render per bagian, ffprobe, dan pacing dalam satu perintah.
+- `node scripts/render_parts.mjs <Id> <slug> [--scene 3,5] [--draft]`: render per adegan + transisi, disambung tanpa
+  encode ulang; `--scene` merender ulang hanya adegan yang diubah, `--draft` membuat preview setengah resolusi.
+- Film 3D: `node scripts/check_layout.mjs <Id> <slug> --probe-only` memeriksa setiap frame ke-3 dalam hitungan detik
+  (tokoh terpotong, label yang tidak terlihat); tanpa `--probe-only` ditambah still yang juga menangkap kamera di dalam benda.
 - `scripts/check_pacing.py out/<slug>.mp4`: memeriksa frame pertama dan bagian lebih dari 4 detik tanpa
   perubahan visual.
 - `src/cartoon/`: kit 3D (gaya `kartun` dan `diorama`): `Stage` (kamera berkey, cahaya, grade), `Toon` (tokoh
@@ -307,7 +311,7 @@ npm run render -- AyahSepatu out/ayahsepatu.mp4
 npm run render -- TransferRahasia out/transfer.mp4
 npm run render -- TukangParkir out/parkir.mp4
 npm run render -- KartunDemo out/kartun-demo.mp4 --gl=swangle
-npm run render -- JakartaTenggelam out/jakarta.mp4 --gl=swangle
+node scripts/render_parts.mjs JakartaTenggelam jakarta --gl swangle
 ```
 
 Adegan ada di `src/scenes/KenapaKitaButuhTidur.tsx`. Panjang adegan dan waktu caption ada di

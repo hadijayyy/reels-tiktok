@@ -60,6 +60,19 @@ const Word: React.FC<{w: CaptionWord; now: number}> = ({w, now}) => {
   );
 };
 
+/**
+ * Joins punctuation-only tokens (",", ".", "?") onto the word before them. The aligner emits them as words
+ * when a {display=spoken} replacement is followed by punctuation ("2050", ","), which showed as "2050 ,".
+ */
+export const joinPunctuation = (words: CaptionWord[]): CaptionWord[] =>
+  words.reduce<CaptionWord[]>((out, w) => {
+    if (out.length && /^[.,!?;:…)\]"'»]+$/.test(w.t)) {
+      const prev = out[out.length - 1];
+      out[out.length - 1] = {...prev, t: prev.t + w.t, e: Math.max(prev.e, w.e)};
+    } else out.push(w);
+    return out;
+  }, []);
+
 const CueView: React.FC<{cue: CaptionCue; top: number; dur: number}> = ({cue, top, dur}) => {
   const f = useCurrentFrame();
   const kIn = interpolate(f, [0, RISE], [0, 1], {extrapolateRight: "clamp"});
@@ -91,7 +104,7 @@ const CueView: React.FC<{cue: CaptionCue; top: number; dur: number}> = ({cue, to
           textShadow: SHADOW,
         }}
       >
-        {cue.words ? cue.words.map((w, i) => <Word key={i} w={w} now={now} />) : cue.text}
+        {cue.words ? joinPunctuation(cue.words).map((w, i) => <Word key={i} w={w} now={now} />) : cue.text}
       </div>
     </div>
   );

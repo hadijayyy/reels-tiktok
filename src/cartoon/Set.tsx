@@ -22,6 +22,7 @@ type SolidProps = {geo: THREE.BufferGeometry; surf: Surf; pos: V3; rot?: V3; hul
 /** A mesh in the current look, with an inverted-hull ink outline in the kartun look. */
 const Solid: React.FC<SolidProps> = ({geo, surf, pos, rot = [0, 0, 0], hull = [1.04, 1.04, 1.04], cast = true, receive = true, ink = true}) => {
   const st = useStage();
+  if (st.probe !== null) return null; // probe mode draws nothing
   const m = surfMat(st.look, surf);
   const showInk = ink && st.spec.ink > 0 && !surf.glow;
   return (

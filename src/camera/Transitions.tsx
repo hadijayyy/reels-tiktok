@@ -24,8 +24,15 @@ export const HALF = 8;
 
 const LeadIn = React.createContext(0);
 
+/** Set by the layout probe (StoryKit Film in probe mode) to evaluate a scene at any frame without rendering it. */
+export const FrameOverride = React.createContext<number | null>(null);
+
 /** The scene-local frame: 0 at the scene's start (see the note above). */
-export const useSceneFrame = () => Math.max(0, useCurrentFrame() - React.useContext(LeadIn));
+export const useSceneFrame = () => {
+  const forced = React.useContext(FrameOverride);
+  const f = Math.max(0, useCurrentFrame() - React.useContext(LeadIn));
+  return forced ?? f;
+};
 
 /** How a scene looks at progress p of a transition: p goes 0 -> 1 across the cut, `out` = leaving. */
 const look = (kind: TransitionKind, p: number, out: boolean): React.CSSProperties => {

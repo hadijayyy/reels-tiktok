@@ -43,12 +43,28 @@ Sebutkan pilihan itu di laporan akhir. Bahasa Indonesia santai, tanpa logo/merek
 3. **Narasi di latar belakang** (bagian 3 di `stickman-video`): `PYTHONPATH=../VoiceStudio python scripts/make_narration.py <slug>`.
    Formula B/C butuh tempo cepat: coba `--voice "male, young adult" --speed 0.9` dulu satu baris.
 4. **Sambil menunggu: tulis adegan** (bagian 2 di bawah) dan `npm run typecheck`. Jangan render still sebelum timing asli ada.
-5. **Cek tata letak sekali:** `GL=swangle node scripts/check_layout.mjs <Id> <slug>` (di PC dengan GPU: `GL=angle`).
-   Karakter yang wajahnya masuk zona UI Reels diwarnai **merah** dan dicetak `LUAR AREA`. Perbaiki semua.
-6. **`GL=swangle scripts/finish.sh <slug> <Id> [calm|horror|piano|space]`**: musik, mix, render, ffprobe, pacing.
-   Render 3D di cloud tanpa GPU ±1 detik/frame (video 60 detik ±30 menit): jalankan di latar belakang.
-   Di PC dengan GPU pakai `GL=angle` (jauh lebih cepat).
-7. Lihat 4-6 frame dari MP4, satu commit (MP4, MP3, naskah, copy, adegan, timing, README), push, kirim ke user.
+5. **Probe dulu, berulang sampai bersih** (detik, tanpa WebGL):
+   `GL=swangle node scripts/check_layout.mjs <Id> <slug> --probe-only` (di PC dengan GPU: `GL=angle`).
+   Probe menilai setiap frame ke-3 tiap adegan (dan tepat setelah tiap frasa caption) lalu mencetak rentang frame:
+   `LUAR AREA` (wajah terpotong tepi layar, di bawah tombol Reels, atau tertutup caption; juga label terpotong) dan
+   `LABEL TIDAK TERLIHAT` (label sudah muncul tapi kamera tidak melihatnya). Perbaiki semua, ulangi probe.
+   Tokoh yang memang ditinggal kamera sepenuhnya tidak dihitung; pan yang menyapu tokoh keluar layar dihitung:
+   ganti pan seperti itu dengan potong keras (key `ease: "cut"`).
+6. **Cek still sekali:** `GL=swangle node scripts/check_layout.mjs <Id> <slug>` (probe + 3 still per adegan +
+   satu still di tengah tiap masalah probe). Still juga menangkap `KAMERA DI DALAM BENDA`. Lihat sheet-nya
+   (Read): yang tidak bisa dicek mesin adalah keterbacaan (benda kunci cukup besar? punchline terlihat?).
+7. **Preview draft (opsional, disarankan untuk video baru):**
+   `GL=swangle node scripts/render_parts.mjs <Id> <slug> --draft` → `out/<slug>-draft.mp4` setengah resolusi,
+   ±3x lebih cepat. Ambil satu frame per detik (`ffmpeg -i out/<slug>-draft.mp4 -vf "fps=1,scale=216:-1,tile=10x6"`)
+   dan periksa: aksi tepat di kata kunci, transisi, efek yang terpotong.
+8. **Final: `GL=swangle scripts/finish.sh <slug> <Id> [calm|horror|piano|space]`**: musik, mix -14 LUFS, render
+   per bagian, ffprobe (jumlah frame harus pas), pacing. Render 3D di cloud tanpa GPU ±1 detik/frame (video
+   60 detik ±30 menit): jalankan di latar belakang. Di PC dengan GPU pakai `GL=angle` (jauh lebih cepat).
+9. **Revisi setelah render:** perbaiki adegan, probe lagi, lalu render ulang HANYA adegan itu:
+   `GL=swangle node scripts/render_parts.mjs <Id> <slug> --scene 3,5` (adegan + transisi di kedua sisinya,
+   bagian lain dipakai ulang, beberapa menit). Audio berubah? `scripts/mix_audio.sh <slug> <detik>` lalu
+   `render_parts.mjs ... --scene` dengan adegan yang berubah (atau `--missing` kalau tidak ada) untuk menempel ulang audio.
+10. Lihat satu frame per detik dari MP4 final, satu commit (MP4, MP3, naskah, copy, adegan, timing, README), push, kirim.
 
 Gaya `stickman`: langkah 1-2 sama (formula dari file ini), langkah 3-7 persis seperti skill `stickman-video`.
 

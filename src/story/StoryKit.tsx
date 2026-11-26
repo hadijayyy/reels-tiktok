@@ -1,8 +1,9 @@
 import React from "react";
-import {AbsoluteFill, getInputProps} from "remotion";
+import {AbsoluteFill, getInputProps, useCurrentFrame} from "remotion";
 import {Narration} from "../audio/Narration";
 import {Camera2D, Layer, useCam} from "../camera/Camera2D";
-import {ScenesWithTransitions, TransitionKind, useSceneFrame} from "../camera/Transitions";
+import {FrameOverride, ScenesWithTransitions, TransitionKind, useSceneFrame} from "../camera/Transitions";
+import {ProbeCtx, probeStep, probing} from "./probe";
 import {CaptionCue, CaptionTrack} from "../captions/CaptionTrack";
 import {Floor, FLOOR, Label, Wall} from "../environment/Furniture";
 import {SideChair} from "../environment/FamilyProps";
@@ -64,15 +65,42 @@ export const useScene = () => {
   return {...s, cueAt: (j: number) => s.cueFrames[Math.min(j, s.cueFrames.length - 1)] ?? 0};
 };
 
+const cueFramesOf = (s: SceneSpan, cues: CaptionCue[]) => cues.filter((c) => c.from >= s.from - 2 && c.from < s.from + s.len).map((c) => c.from - s.from);
+
+/** Probe mode (see story/probe.ts): Remotion frame N evaluates scene N at many frames, drawing nothing. */
+const ProbeFilm: React.FC<{scenes: SceneSpan[]; cues: CaptionCue[]; render: (i: number) => React.ReactNode}> = ({scenes, cues, render}) => {
+  const i = useCurrentFrame();
+  const s = scenes[i];
+  if (!s) return null;
+  const cueFrames = cueFramesOf(s, cues);
+  const step = probeStep();
+  const frames = new Set<number>();
+  for (let f = 0; f < s.len; f += step) frames.add(f);
+  frames.add(s.len - 1);
+  for (const c of cueFrames) for (const d of [0, 12, 24]) if (c + d >= 0 && c + d < s.len) frames.add(c + d);
+  return (
+    <div style={{display: "none"}}>
+      {[...frames].sort((a, b) => a - b).map((f) => (
+        <FrameOverride.Provider key={f} value={f}>
+          <ProbeCtx.Provider value={{scene: i, frame: s.from + f}}>
+            <SceneCtx.Provider value={{index: i, len: s.len, cueFrames}}>{render(i)}</SceneCtx.Provider>
+          </ProbeCtx.Provider>
+        </FrameOverride.Provider>
+      ))}
+    </div>
+  );
+};
+
 /** Scenes with transitions, word-synced captions and the narration. Cues are assigned to scenes by time. */
-export const Film: React.FC<{scenes: SceneSpan[]; cues: CaptionCue[]; kinds: TransitionKind[]; narration?: string; render: (i: number) => React.ReactNode}> = ({scenes, cues, kinds, narration, render}) => (
+export const Film: React.FC<{scenes: SceneSpan[]; cues: CaptionCue[]; kinds: TransitionKind[]; narration?: string; render: (i: number) => React.ReactNode}> = ({scenes, cues, kinds, narration, render}) =>
+  probing() ? <ProbeFilm scenes={scenes} cues={cues} render={render} /> : (
   <AbsoluteFill>
     <ScenesWithTransitions
       scenes={scenes}
       kinds={kinds}
       render={(i) => {
         const s = scenes[i];
-        const cueFrames = cues.filter((c) => c.from >= s.from - 2 && c.from < s.from + s.len).map((c) => c.from - s.from);
+        const cueFrames = cueFramesOf(s, cues);
         return <SceneCtx.Provider value={{index: i, len: s.len, cueFrames}}>{render(i)}</SceneCtx.Provider>;
       }}
     />

@@ -106,11 +106,26 @@ adalah kesalahan paling sering di referensi.
 
 ## Jebakan
 
-- **Bingkai sempit**: tokoh di x ±1 m dari jarak 5 m sudah keluar layar. Selalu cek dengan `check_layout`.
+- **Bingkai sempit**: tokoh di x ±1 m dari jarak 5 m sudah keluar layar. Selalu jalankan probe (`check_layout --probe-only`).
+- **Label muncul saat kamera sedang bergerak** ke tempat lain = label tidak pernah terlihat (bug video Jakarta: "2/3").
+  Tahan kamera di label minimal ±20 frame setelah muncul; sembunyikan label (`k = 0`) setelah kamera potong ke shot lain.
+- **Orbit/pan menyapu tokoh keluar layar** di tengah adegan: kecilkan sudut orbit atau pakai potong keras.
+- **Punchline benda (kempot, pecah, tumbuh)**: kamera jangan terlalu dekat; seluruh benda harus terlihat sebelum
+  dan sesudah berubah, efek (`bang`, `lines`) di dalam bingkai. Ubah bentuk minimal 40 % supaya terbaca di HP.
+- **Lampu harus menempel pada sesuatu** (tiang, braket di dinding, meja); bola cahaya melayang terlihat seperti bug.
+- **Bayangan tembok/gedung** saat `senja` (matahari rendah) bisa menggelapkan seluruh tanah: putar `sun` ke belakang kamera.
 - **Teks kanvas sebelum font termuat**: `Board`, `Sign`, `Label3D` menunggu font Inter otomatis; teks buatan sendiri
   di kanvas juga harus memakai `fontReady()` di kunci cache.
 - **Render butuh WebGL**: `--gl=swangle` (cloud) atau `--gl=angle` (PC dengan GPU). Tanpa itu still bisa kosong/macet.
 - **Cahaya malam**: `light="malam"` tanpa `Lamp` membuat tokoh kebiruan dan gelap; tambahkan api/lampu.
 - **Kamera di dalam benda**: jangan taruh `pos` di dalam `Room` dinding/belakang properti; cek still di frame awal dan akhir key.
 - **Shadow terpotong**: area bayangan tajam ±`shadowSize` m di sekitar target kamera; besarkan untuk wide shot luas.
-- **Kecepatan render**: ±1 detik/frame di cloud. Cek tata letak dengan still dulu; render penuh sekali di akhir.
+- **Kecepatan render**: ±1 detik/frame di cloud. Probe (detik) → still → draft setengah ukuran → final per bagian;
+  revisi kecil = `render_parts.mjs --scene N`, bukan render ulang semuanya.
+
+## Mode probe (untuk komponen baru)
+
+`Stage` dalam mode probe tidak menggambar apa pun (`useStage().probe` = nomor frame global). Komponen baru yang
+punya pemeriksaan sendiri mengikuti pola `Toon`/`Label3D`: jalankan cek kalau `st.check`, beri pesan
+`console.warn("LUAR AREA" + probeTag(st.probe) + ": ...")`, lalu `if (st.probe !== null) return null;` sebelum menggambar
+(kanvas, tekstur, mesh). Komponen set biasa cukup memakai `Box/Cyl/Ball/Pole` (sudah melewati probe).

@@ -10,9 +10,15 @@
 // use it after fixing a few scenes), --frames renders exactly those frames. Check mode is on, so anything
 // outside the safe area is outlined in red ("LUAR AREA") and also listed here from the browser log.
 // Output: <out>/f<frame>.png, <out>/sheet_<n>.png (three scenes per sheet, one row each). Read the sheets.
+//
+// 3D films (scenes that import src/cartoon) first run a PROBE (story/probe.ts): every 3rd frame of every scene
+// (--step) plus right after each caption cue is evaluated without drawing, in seconds. It lists characters cut
+// by the frame edge or under the Reels UI, and labels that are shown but off screen, as frame ranges. The
+// middle frame of each problem is added to the stills, and the stills (with WebGL) also flag a camera placed
+// inside a solid. --no-probe skips it, --probe forces it for 2D films, --probe-only skips the stills.
 
 import {execFileSync} from "node:child_process";
-import {mkdirSync, readFileSync, rmSync} from "node:fs";
+import {existsSync, mkdirSync, readFileSync, rmSync} from "node:fs";
 import path from "node:path";
 import {bundle} from "@remotion/bundler";
 import {openBrowser, renderStill, selectComposition} from "@remotion/renderer";
@@ -28,7 +34,12 @@ if (!id || !slug) {
   console.error("usage: node scripts/check_layout.mjs <CompositionId> <slug> [--per 2|3] [--frames a,b] [--scene 0,1] [--scale 0.35] [--out out/check] [--jobs 3]");
   process.exit(1);
 }
-const per = Number(opt("per", "2"));
+const sceneFile = `src/scenes/${id}.tsx`;
+const is3d = existsSync(sceneFile) && readFileSync(sceneFile, "utf8").includes("../cartoon");
+const doProbe = args.includes("--probe") || (is3d && !args.includes("--no-probe"));
+const probeOnly = args.includes("--probe-only");
+const step = Number(opt("step", "3"));
+const per = Number(opt("per", is3d ? "3" : "2"));
 const scale = Number(opt("scale", "0.35"));
 const jobs = Number(opt("jobs", "3"));
 const out = opt("out", "out/check");
@@ -61,11 +72,71 @@ if (opt("frames")) {
 rmSync(out, {recursive: true, force: true});
 mkdirSync(out, {recursive: true});
 
-console.log(`bundling once, ${plan.length} stills (scale ${scale}) ...`);
+console.log(doProbe ? "bundling once, probe + stills ..." : `bundling once, ${plan.length} stills (scale ${scale}) ...`);
 const t0 = Date.now();
 const serveUrl = await bundle({entryPoint: path.resolve("src/index.ts")});
 const inputProps = {narration: null, check: true};
 const browser = await openBrowser("chrome", {chromiumOptions});
+const sceneOf = (f) => scenes.findIndex((s) => f >= s.from && f < s.from + s.len);
+
+const PROBLEM = /(LUAR AREA|LABEL TIDAK TERLIHAT|KAMERA DI DALAM BENDA)(?: \[f=(\d+)\])?:?\s*(.*)$/;
+let probeProblems = 0;
+if (doProbe) {
+  const tp = Date.now();
+  const probeProps = {narration: null, check: true, probe: true, step};
+  const pcomp = await selectComposition({serveUrl, id, inputProps: probeProps, puppeteerInstance: browser});
+  const found = []; // {frame, kind, text}
+  for (let i = 0; i < scenes.length; i++) {
+    if (only && !only.includes(i)) continue;
+    await renderStill({
+      chromiumOptions, composition: pcomp, serveUrl, frame: i, scale: 0.05, inputProps: probeProps,
+      output: `${out}/probe.png`, puppeteerInstance: browser, timeoutInMilliseconds: 120000, overwrite: true,
+      onBrowserLog: (log) => {
+        const m = log.text.match(PROBLEM);
+        if (m && m[2]) found.push({frame: Number(m[2]), kind: m[1], text: m[3]});
+      },
+    });
+  }
+  rmSync(`${out}/probe.png`, {force: true});
+  // group: same problem (numbers in brackets ignored) on nearby frames -> one range
+  const groups = new Map();
+  for (const w of found) {
+    const key = `${w.kind}|${w.text.replace(/\(.*\)\s*$/, "").trim()}`;
+    groups.set(key, [...(groups.get(key) ?? []), w]);
+  }
+  const ranges = [];
+  for (const [key, list] of groups) {
+    const fs = [...new Set(list.map((w) => w.frame))].sort((a, b) => a - b);
+    let a = fs[0];
+    let prev = fs[0];
+    const flush = () => {
+      const mid = fs.filter((f) => f >= a && f <= prev)[Math.floor(fs.filter((f) => f >= a && f <= prev).length / 2)];
+      const sample = list.find((w) => w.frame === mid);
+      ranges.push({a, b: prev, mid, kind: key.split("|")[0], text: sample.text});
+    };
+    for (const f of fs.slice(1)) {
+      if (f - prev > step * 4) {
+        flush();
+        a = f;
+      }
+      prev = f;
+    }
+    flush();
+  }
+  ranges.sort((x, y) => x.a - y.a);
+  probeProblems = ranges.length;
+  console.log(`probe: ${scenes.length} scenes, every ${step} frames, in ${Math.round((Date.now() - tp) / 1000)} s`);
+  if (ranges.length) {
+    console.log("MASALAH (probe):");
+    for (const r of ranges) console.log(`  scene ${sceneOf(r.a)} frame ${r.a}${r.b > r.a ? `-${r.b}` : ""}: ${r.kind}: ${r.text}`);
+    if (!opt("frames")) for (const r of ranges) if (!plan.some((p) => p.frame === r.mid)) plan.push({scene: sceneOf(r.mid), frame: r.mid});
+    plan.sort((x, y) => x.frame - y.frame);
+  } else console.log("probe: tidak ada masalah.");
+  if (probeOnly) {
+    await browser.close(true);
+    process.exit(ranges.length ? 2 : 0);
+  }
+}
 const comp = await selectComposition({serveUrl, id, inputProps, puppeteerInstance: browser});
 
 const warnings = new Map();
@@ -83,7 +154,7 @@ const renderOne = async ({frame}, attempt = 1) => {
       timeoutInMilliseconds: 90000,
       overwrite: true,
       onBrowserLog: (log) => {
-        if (log.text.includes("LUAR AREA")) warnings.set(`${frame}:${log.text}`, {frame, text: log.text});
+        if (PROBLEM.test(log.text)) warnings.set(`${frame}:${log.text}`, {frame, text: log.text});
       },
     });
   } catch (e) {
@@ -126,11 +197,13 @@ for (let k = 0; k < rows.length; k += 3) {
 }
 sheets.forEach((s) => console.log(`${s.sheet}  scenes ${s.scenes.join(", ")}`));
 if (warnings.size) {
-  console.log("LUAR AREA (keluar area aman):");
+  console.log("MASALAH di still (LUAR AREA = keluar area aman):");
   [...warnings.values()].sort((a, b) => a.frame - b.frame).forEach((w) => {
     const scene = scenes.findIndex((s) => w.frame >= s.from && w.frame < s.from + s.len);
-    console.log(`  scene ${scene} frame ${w.frame}: ${w.text.replace(/^.*LUAR AREA:?\s*/, "")}`);
+    const m = w.text.match(PROBLEM);
+    console.log(`  scene ${scene} frame ${w.frame}: ${m ? `${m[1]}: ${m[3]}` : w.text}`);
   });
 } else {
-  console.log("Tidak ada LUAR AREA.");
+  console.log("Tidak ada masalah di still.");
 }
+if (warnings.size || probeProblems) process.exitCode = 2;

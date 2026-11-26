@@ -110,10 +110,10 @@ const Cutaway: React.FC<{k: number; children?: React.ReactNode}> = ({k, children
 const cutTop = (k: number) => -2.6 + 1.0 * (1 - 0.75 * k) + 1.5 + 0.04;
 
 const MilkBox: React.FC<{at: [number, number, number]; squash: number}> = ({at, squash}) => {
-  const sx = 1 - 0.42 * squash;
-  const sy = 1 - 0.12 * squash;
+  const sx = 1 - 0.5 * squash;
+  const sy = 1 - 0.2 * squash;
   return (
-    <group position={at} scale={[sx, sy, 1 - 0.3 * squash]} rotation={[0, -0.35, squash * 0.08]}>
+    <group position={at} scale={[sx, sy, 1 - 0.45 * squash]} rotation={[squash * 0.06, -0.35, squash * 0.14]}>
       <Box at={[0, 0, 0]} size={[0.9, 1.4, 0.6]} surf={{c: "#f4f2ec", tex: "paper"}} />
       <Box at={[0, 0.55, 0.301]} size={[0.92, 0.32, 0.02]} surf={{c: "#3f7fc4"}} ink={false} />
       <Box at={[0, 1.4, 0]} size={[0.9, 0.18, 0.06]} surf={{c: "#f4f2ec"}} />
@@ -170,17 +170,17 @@ const S3: React.FC = () => {
   const c2 = cueAt(2);
   const up = pop(f, c2 - 6);
   return (
-    <Stage look="kartun" light="siang" cam={[{f: 0, pos: [0.9, 0.9, 5.2], at: [-0.1, 1.0, 0]}, {f: len, pos: [0.9, 2.6, 9.0], at: [-0.1, 2.0, 0]}]}>
+    <Stage look="kartun" light="siang" cam={[{f: 0, pos: [0.4, 0.9, 5.2], at: [-0.4, 1.0, 0]}, {f: len, pos: [0.4, 2.6, 9.0], at: [-0.4, 2.0, 0]}]}>
       <Ground surf={SAND} />
       <House at={[-3, 0, -5]} />
       <House at={[3.2, 0, -6]} rot={-15} wall={{c: "#f2d6a8", tex: "plaster", tile: 2}} />
       <Clouds seed={5} />
       {Array.from({length: 8}, (_, i) => (
-        <Box key={i} at={[0.85, i * 0.5, -0.3]} size={[0.18, 0.5, 0.18]} surf={{c: i % 2 ? "#f2efe6" : "#c44d3c"}} />
+        <Box key={i} at={[-1.1, i * 0.5, -0.3]} size={[0.18, 0.5, 0.18]} surf={{c: i % 2 ? "#f2efe6" : "#c44d3c"}} />
       ))}
-      <Label3D text="4 m" at={[0.85, 4.25, -0.3]} size={0.4} k={pop(f, cueAt(1))} bg="#e9b04f" />
-      <Toon who={PAK_DAR} x={-0.35} z={0} pose={up > 0 ? {...P.lift(t, 2), bob: 10} : P.idle(t, 2)} expr={up > 0 ? "determined" : "neutral"} />
-      {up > 0 ? <Toon who={RAKA} x={-0.35} z={0.06} y={lerp(1.0, 1.58, up)} pose={P.cheer(t, 1)} expr="nervous" shadow={false} /> : null}
+      <Label3D text="4 m" at={[-1.1, 2.3, -0.2]} size={0.36} k={pop(f, cueAt(1))} bg="#e9b04f" />
+      <Toon who={PAK_DAR} x={0.05} z={0} pose={up > 0 ? {...P.lift(t, 2), bob: 10} : P.idle(t, 2)} expr={up > 0 ? "determined" : "neutral"} />
+      {up > 0 ? <Toon who={RAKA} x={0.05} z={0.06} y={lerp(1.0, 1.58, up)} pose={P.cheer(t, 1)} expr="nervous" shadow={false} /> : null}
     </Stage>
   );
 };
@@ -189,7 +189,7 @@ const S3: React.FC = () => {
 const S4: React.FC = () => {
   const {f, t} = useFT();
   const {len} = useScene();
-  const a = lerp(-28, 12, prog(f, 0, len, (x) => x));
+  const a = lerp(-10, 4, prog(f, 0, len, (x) => x));
   return (
     <Stage look="kartun" light="siang" shadowSize={12} cam={{f: 0, pos: orbit([0, 2.2, -3], 10, 3.2, a), at: [0, 2.0, -3]}}>
       <Ground surf={{c: "#6a6050", tex: "dirt", tile: 2}} y={-0.2} />
@@ -199,8 +199,8 @@ const S4: React.FC = () => {
       <House at={[4, 4.2, -13]} wall={{c: "#cfe0e8", tex: "plaster", tile: 2}} roof={{c: "#3f5f8f", tex: "roof", tile: 1.2}} />
       <Masjid at={[0, -0.1, -3]} />
       <Water y={1.0} c={SEA} />
-      <Boat at={[-1.3, 0.82, 1.4]} rock={Math.sin(t * 2) * 0.04} />
-      <Toon who={PAK_DAR} x={-1.3} z={1.4} y={1.2} pose={P.pull(t, 2)} expr="sad" shadow={false} />
+      <Boat at={[-0.35, 0.82, 0.9]} rock={Math.sin(t * 2) * 0.04} />
+      <Toon who={PAK_DAR} x={-0.35} z={0.9} y={1.2} pose={P.pull(t, 2)} expr="sad" shadow={false} />
       <Clouds seed={7} />
     </Stage>
   );
@@ -232,7 +232,7 @@ const S6: React.FC = () => {
   const c2 = cueAt(2);
   const pumpA = Math.sin(t * 7) * 30;
   return (
-    <Stage look="kartun" light="siang" cam={[{f: 0, pos: [-1.6, 2.2, 7.4], at: [-1.6, 1.0, -1]}, {f: c2, pos: [1.6, 2.1, 7.0], at: [1.6, 1.0, -1], ease: "io"}, {f: len, pos: [2.7, 1.8, 5.6], at: [2.7, 1.0, -1]}]}>
+    <Stage look="kartun" light="siang" cam={[{f: 0, pos: [-1.5, 2.2, 7.6], at: [-1.5, 1.0, -1]}, {f: c2, pos: [-1.3, 2.1, 7.0], at: [-1.3, 1.0, -1]}, {f: c2 + 1, pos: [2.7, 2.0, 6.4], at: [2.7, 1.0, -1], ease: "cut"}, {f: len, pos: [2.7, 1.8, 5.6], at: [2.7, 1.0, -1]}]}>
       <Ground surf={SAND} />
       <Clouds seed={9} />
       {[-3.0, 0, 3.0].map((x, i) => (
@@ -241,12 +241,12 @@ const S6: React.FC = () => {
       <Pole from={[-5, 0.12, 0.2]} to={[0.6, 0.12, 0.2]} r={0.07} surf={{c: "#3f7fc4"}} />
       <Pole from={[-3.0, 0.12, 0.2]} to={[-3.0, 0.12, -1.35]} r={0.05} surf={{c: "#3f7fc4"}} />
       <Pole from={[0, 0.12, 0.2]} to={[0, 0.12, -1.35]} r={0.05} surf={{c: "#3f7fc4"}} />
-      <Label3D text="2/3" at={[-1.5, 2.9, -1.2]} size={0.5} k={pop(f, cueAt(1))} bg="#3f7fc4" />
+      <Label3D text="2/3" at={[-1.5, 2.55, -1.2]} size={0.45} k={f < c2 ? pop(f, cueAt(1)) : 0} bg="#3f7fc4" />
       {/* the well pump */}
       <Cyl at={[3.3, 0, -0.2]} r={0.1} h={0.9} surf={{c: "#6a7480"}} />
       <Pole from={[3.3, 0.9, -0.2]} to={[3.3 - 0.45 * Math.cos((pumpA * Math.PI) / 180), 0.9 + 0.45 * Math.sin((pumpA * Math.PI) / 180), -0.2]} r={0.03} surf={{c: "#4a4a52"}} />
       <Toon who={SITI} x={2.5} z={0} pose={{...P.idle(t, 3), armR: [60 - pumpA * 0.5, 30], armL: [50 - pumpA * 0.5, 40], bob: 4 + Math.sin(t * 7) * 4}} expr="tired" />
-      <Toon who={RAKA} x={-0.9} z={0.5} pose={P.idle(t, 1)} expr="happy" />
+      <Toon who={RAKA} x={-1.0} z={0.5} pose={f < cueAt(1) ? P.idle(t, 1) : P.point(t, 1)} expr="happy" />
       <Fx kind="drop" at={[3.3, 1.3, -0.2]} size={0.25} k={f > c2 ? 1 : 0} />
     </Stage>
   );
@@ -259,16 +259,16 @@ const S7: React.FC = () => {
   const c1 = cueAt(1);
   const sq = prog(f, c1 - 4, c1 + 10, eOut);
   return (
-    <Stage look="kartun" light="dalam" cam={[{f: 0, pos: [0.1, 1.45, 4.2], at: [0, 1.1, -0.2]}, {f: c1, pos: [0.0, 1.4, 3.4], at: [0, 1.1, -0.2]}, {f: c1 + 6, pos: [-0.15, 1.35, 3.1], at: [-0.15, 1.1, -0.2], fov: 40, ease: "out"}, {f: len, pos: [-0.15, 1.35, 3.0], at: [-0.15, 1.1, -0.2], fov: 40}]}>
+    <Stage look="kartun" light="dalam" cam={[{f: 0, pos: [0.1, 1.45, 4.4], at: [0, 1.1, -0.2]}, {f: c1, pos: [0.05, 1.4, 3.9], at: [0, 1.1, -0.2]}, {f: c1 + 6, pos: [0.0, 1.38, 3.6], at: [0, 1.1, -0.2], ease: "out"}, {f: len, pos: [0.0, 1.38, 3.5], at: [0, 1.1, -0.2]}]}>
       <Room w={7} d={5} sides="L" wall={{c: "#e8d6b0", tex: "plaster", tile: 2}} floor={{c: "#d8c8a8", tex: "tiles", tile: 1.2}} />
       <Window at={[1.6, 1.1, -2.4]} />
-      <Box at={[-0.42, 0, -0.15]} size={[0.6, 0.55, 0.5]} surf={{c: "#c4925a", tex: "planks", tile: 0.6}} />
-      <MilkBox at={[0.38, 0, -0.3]} squash={sq} />
-      <Pole from={[0.38, 1.38 - 0.17 * sq, -0.3]} to={[0.3, 1.72 - 0.1 * sq, -0.25]} r={0.022} surf={{c: "#e8505b"}} />
-      <Pole from={[0.3, 1.72 - 0.1 * sq, -0.25]} to={[-0.37, 1.32, -0.02]} r={0.022} surf={{c: "#e8505b"}} />
-      <Toon who={BIMO} x={-0.42} z={-0.1} y={0.55} pose={{...P.hold(t, 4), lookX: 0.8}} expr={f < c1 ? "happy" : "shock"} shadow={false} />
-      <Fx kind="lines" at={[0.95, 0.8, -0.2]} size={0.8} k={prog(f, c1, c1 + 14)} />
-      <Fx kind="bang" at={[0.5, 1.95, -0.3]} size={0.6} k={f >= c1 ? prog(f, c1, c1 + 8) * (1 - prog(f, c1 + 22, c1 + 30)) : 0} />
+      <Box at={[-0.38, 0, -0.15]} size={[0.6, 0.55, 0.5]} surf={{c: "#c4925a", tex: "planks", tile: 0.6}} />
+      <MilkBox at={[0.36, 0, -0.3]} squash={sq} />
+      <Pole from={[0.36, 1.38 - 0.28 * sq, -0.3]} to={[0.28, 1.72 - 0.2 * sq, -0.25]} r={0.022} surf={{c: "#e8505b"}} />
+      <Pole from={[0.28, 1.72 - 0.2 * sq, -0.25]} to={[-0.33, 1.32, -0.02]} r={0.022} surf={{c: "#e8505b"}} />
+      <Toon who={BIMO} x={-0.38} z={-0.1} y={0.55} pose={{...P.hold(t, 4), lookX: 0.8}} expr={f < c1 ? "happy" : "shock"} shadow={false} />
+      <Fx kind="lines" at={[0.78, 0.7, -0.2]} size={0.6} k={prog(f, c1, c1 + 14)} spin={Math.PI} />
+      <Fx kind="bang" at={[0.5, 1.75, -0.2]} size={0.5} k={f >= c1 ? prog(f, c1, c1 + 8) * (1 - prog(f, c1 + 22, c1 + 30)) : 0} />
     </Stage>
   );
 };
@@ -297,10 +297,10 @@ const S9: React.FC = () => {
   const {f, t} = useFT();
   const {len, cueAt} = useScene();
   const c1 = cueAt(1);
-  const sink = 0.9 * prog(f, c1, len, (x) => x);
+  const sink = 1.2 * prog(f, c1 - 6, len, (x) => x);
   const splash = (f % 24) / 24;
   return (
-    <Stage look="kartun" light="senja" cam={[{f: 0, pos: [3.2, 4.4, 8.6], at: [0, 1.4, -2]}, {f: len, pos: [2.4, 3.8, 7.6], at: [0, 1.2, -2]}]}>
+    <Stage look="kartun" light="senja" sun={[3, 6, 7]} cam={[{f: 0, pos: [1.6, 3.2, 6.6], at: [0, 1.2, -1.5]}, {f: len, pos: [1.0, 2.2, 5.6], at: [0, 0.5, -1.5]}]}>
       <Water y={2.15} c={SEA} at={[0, 0, -43]} size={80} />
       <SeaWall at={[0, -1, -2.6]} h={3.4} />
       <group position={[0, -sink, 0]}>
@@ -308,7 +308,8 @@ const S9: React.FC = () => {
         <Box at={[0, 0.3, 3]} size={[30, 0.04, 10]} surf={SAND} ink={false} />
         <House at={[-4.2, 0.34, 2.6]} rot={20} />
       </group>
-      <Toon who={SITI} x={-0.2} z={0.8} y={0.34 - sink} pose={f < c1 ? P.point(t, 3) : P.scared(t, 3)} expr={f < c1 ? "determined" : "scared"} shadow={false} />
+      <Toon who={SITI} x={-0.3} z={0.6} y={0.34 - sink} pose={f < c1 ? P.point(t, 3) : P.scared(t, 3)} expr={f < c1 ? "determined" : "scared"} shadow={false} />
+      <Fx kind="lines" at={[0.9, 1.0 - sink, 0.3]} size={0.8} k={(t * 1.3) % 1} spin={Math.PI / 2} />
       <Fx kind="smoke" at={[-1.5, 2.6, -2.8]} size={1.4} k={splash} color="#e6f4ff" />
       <Fx kind="smoke" at={[2.5, 2.6, -2.8]} size={1.2} k={(splash + 0.5) % 1} color="#e6f4ff" />
     </Stage>
@@ -405,7 +406,9 @@ const S13: React.FC = () => {
       <Cyl at={[0.6, 0, -1.0]} r={0.22} r2={0.26} h={0.38} surf={{c: "#3f7fc4"}} />
       {!off ? <Fx kind="drop" at={[0.6, 0.82 - ((f % 15) / 15) * 0.4, -1.0]} size={0.14} k={1} /> : null}
       <Toon who={RAKA} x={0.0} z={-0.4} pose={off ? P.idle(t, 1) : {...P.idle(t, 1), armR: [78, 18], lookX: 0.8, lookY: 0.4}} expr={off ? "happy" : "determined"} />
-      <Lamp at={[-1.4, 2.3, -1.2]} kind="bulb" power={3} />
+      <Pole from={[-1.0, 2.1, -1.28]} to={[-1.0, 2.1, -1.0]} r={0.025} surf={{c: "#3a3a40"}} />
+      <Cyl at={[-1.0, 2.02, -1.0]} r={0.14} r2={0.04} h={0.12} surf={{c: "#3a3a40"}} />
+      <Lamp at={[-1.0, 1.98, -1.0]} kind="bulb" power={3} glow={0.6} />
       <Tree at={[-2.2, 0, -2.4]} s={0.8} />
     </Stage>
   );

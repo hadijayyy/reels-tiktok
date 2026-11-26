@@ -6,6 +6,7 @@ import {AbsoluteFill, getInputProps} from "remotion";
 import {useSceneFrame} from "../camera/Transitions";
 import {eInOut, eIn, eOut, clamp, Ease} from "../motion/ease";
 import {FPS, H, W} from "../styles/palette";
+import {ProbeCtx} from "../story/probe";
 import {canvasTex, LightName, LightSpec, LIGHTS, LookName, LOOKS, LookSpec} from "./look";
 
 /*
@@ -73,6 +74,8 @@ export type StageInfo = {
   light: LightSpec;
   cam: CamNow;
   check: boolean;
+  /** probe mode: the global frame being checked (nothing is drawn); null when rendering normally */
+  probe: number | null;
   /** world point -> screen pixels [x, y] on the 1080 x 1920 frame */
   project: (p: V3) => [number, number];
 };
@@ -95,8 +98,29 @@ const makeCamera = (c: CamNow, frameY: number) => {
 };
 
 /** Applies the camera every frame (inside the canvas). */
-const CamRig: React.FC<{c: CamNow; frameY: number}> = ({c, frameY}) => {
+/** Check mode: warns when the camera sits inside a solid (a wall, a house, a prop), seen from the scene graph. */
+const insideSolid = (scene: THREE.Scene, p: THREE.Vector3) => {
+  scene.updateMatrixWorld(true);
+  const box = new THREE.Box3();
+  const size = new THREE.Vector3();
+  let hit: string | null = null;
+  scene.traverse((o) => {
+    if (hit || !(o as THREE.Mesh).isMesh) return;
+    const m = o as THREE.Mesh;
+    const mat = m.material as THREE.Material;
+    if (mat.side === THREE.BackSide || mat.transparent) return; // ink hulls, cards, glows
+    box.setFromObject(m);
+    box.getSize(size);
+    if (Math.min(size.x, size.y, size.z) < 0.05 || Math.max(size.x, size.y, size.z) > 30) return; // planes, ground, sea
+    box.expandByScalar(-0.03);
+    if (box.containsPoint(p)) hit = `${m.geometry.type} ${size.x.toFixed(1)}x${size.y.toFixed(1)}x${size.z.toFixed(1)} m`;
+  });
+  return hit;
+};
+
+const CamRig: React.FC<{c: CamNow; frameY: number; check: boolean}> = ({c, frameY, check}) => {
   const camera = useThree((s) => s.camera) as THREE.PerspectiveCamera;
+  const scene = useThree((s) => s.scene);
   React.useLayoutEffect(() => {
     camera.fov = c.fov;
     camera.near = 0.05;
@@ -105,6 +129,10 @@ const CamRig: React.FC<{c: CamNow; frameY: number}> = ({c, frameY}) => {
     camera.lookAt(new THREE.Vector3(...c.at));
     camera.setViewOffset(W, H, 0, (0.5 - frameY) * H, W, H);
     camera.updateProjectionMatrix();
+    if (check) {
+      const hit = insideSolid(scene, camera.position);
+      if (hit) console.warn(`KAMERA DI DALAM BENDA: kamera [${c.pos.map((v) => v.toFixed(1)).join(", ")}] ada di dalam ${hit}`);
+    }
   });
   return null;
 };
@@ -174,7 +202,8 @@ export const Stage: React.FC<StageProps> = ({look = "kartun", light = "siang", c
   const c: CamNow = {pos: [base.pos[0] + jx, base.pos[1] + jy, base.pos[2]], at: [base.at[0] + jx * 0.6, base.at[1] + jy * 0.6, base.at[2]], fov: base.fov};
   const fy = frameY ?? spec.frameY;
   const projCam = makeCamera(c, fy);
-  const check = checking();
+  const probe = React.useContext(ProbeCtx);
+  const check = checking() || probe !== null;
   const info: StageInfo = {
     f,
     t,
@@ -183,11 +212,14 @@ export const Stage: React.FC<StageProps> = ({look = "kartun", light = "siang", c
     light: L,
     cam: c,
     check,
+    probe: probe ? probe.frame : null,
     project: (p) => {
       const v = new THREE.Vector3(...p).project(projCam);
       return [((v.x + 1) / 2) * W, ((1 - v.y) / 2) * H];
     },
   };
+  // probe mode: run the checks of the cast and labels, draw nothing
+  if (probe) return <StageCtx.Provider value={info}>{children}</StageCtx.Provider>;
   const s = sun ?? spec.sun ?? L.sun;
   const sv = new THREE.Vector3(...s).normalize().multiplyScalar(20);
   const at = new THREE.Vector3(...c.at);
@@ -198,7 +230,7 @@ export const Stage: React.FC<StageProps> = ({look = "kartun", light = "siang", c
       <AbsoluteFill style={{filter: css}}>
         <ThreeCanvas width={W} height={H} shadows flat gl={{antialias: true}} camera={{fov: c.fov, position: c.pos, near: 0.05, far: 400}}>
           <StageCtx.Provider value={info}>
-            <CamRig c={c} frameY={fy} />
+            <CamRig c={c} frameY={fy} check={check} />
             <Sky top={skyCols[0]} bottom={skyCols[1]} />
             {fog ? <fog attach="fog" args={[L.fog, L.fogNear, L.fogFar]} /> : null}
             <hemisphereLight args={[L.hemiSky, L.hemiGround, L.hemiI]} />
