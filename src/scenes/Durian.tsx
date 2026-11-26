@@ -382,7 +382,7 @@ const S5Gagal: React.FC = () => {
   const wide = cueAt(3);
   const word = useWordAt();
   const behead = word(3, 2);
-  const mouth: V3 = [-0.3, 1.33, 0.18];
+  const mouth: V3 = [-0.3, 1.23, 0.2];
   const hand: V3 = [-0.05, 1.0, 0.3];
   const apple1 = ramp(f, a1 + 4, 12);
   const apple2 = ramp(f, a2 + 4, 14);
@@ -406,7 +406,7 @@ const S5Gagal: React.FC = () => {
       overlay={<><Flash f={f} at={behead} /><Blackout f={f} at={behead + 3} /></>}>
       <Village />
       <Toon who={PILOT1} x={-0.3} z={0.1} pose={strain(t, 1)} expr="scared" />
-      <Apple at={[-0.3, 1.33, 0.28]} />
+      <Apple at={[-0.3, 1.23, 0.28]} />
       <Toon who={KEPALA} x={0.45} z={-0.3} pose={f < behead - 6 ? P.point(t, 21) : P.lift(t, 21)} expr="angry" facing={-1} />
       <Fx kind="burst" at={[-0.3, 1.5, 0.3]} size={1.4} k={(f - behead) / 10} />
     </Stage>
@@ -432,7 +432,7 @@ const S6Lengkeng: React.FC = () => {
   }
   if (f < brag) {
     return (
-      <Stage look="kartun" light="senja" hand={0.01} cam={[{f: macro, pos: [0.15, 0.95, 1.55], at: [0.17, 0.56, 0.75], fov: 34, ease: "cut"}, {f: brag, pos: [0.15, 0.85, 1.3], at: [0.17, 0.55, 0.75], fov: 32}]}>
+      <Stage look="kartun" light="senja" hand={0.01} cam={[{f: macro, pos: [0.2, 1.25, 2.1], at: [0.2, 0.6, 0.75], fov: 36, ease: "cut"}, {f: brag, pos: [0.2, 1.15, 1.85], at: [0.2, 0.58, 0.75], fov: 34}]}>
         <Village />
         <FruitStone at={[0.2, 0, 0.75]} kind="longan" n={Math.min(10, Math.floor(ramp(f, macro, 18) * 10) + 1)} />
         <Toon who={PILOT2} x={0.25} z={0.1} pose={P.idle(t, 2)} expr="happy" facing={-1} />
@@ -462,7 +462,7 @@ const S7Hitung: React.FC = () => {
   const behead = word(3, 2);
   const swallowed = counts.filter((c) => f >= c + 10).length;
   const current = counts.findIndex((c) => f >= c && f < c + 10);
-  const mouth: V3 = [-0.15, 1.33, 0.2];
+  const mouth: V3 = [-0.15, 1.23, 0.2];
   const hand: V3 = [0.1, 1.0, 0.32];
   const n = counts.filter((c) => f >= c).length;
   const lookUp = f >= tenth + 8;
@@ -480,7 +480,7 @@ const S7Hitung: React.FC = () => {
         {current >= 0 ? <Longan at={lerp3(hand, mouth, ramp(f, counts[current], 8))} /> : null}
         {f >= tenth && !laughing ? <Longan at={lerp3(hand, mouth, Math.min(0.85, ramp(f, tenth, 8)))} /> : null}
         {laughing ? <Longan at={[mouth[0] + 0.3 + ramp(f, tenth + 36, 20) * 0.5, mouth[1] + 0.25 - Math.pow(ramp(f, tenth + 36, 20), 2) * 0.9, mouth[2] + 0.1]} /> : null}
-        <Label3D text={f < tenth ? String(Math.max(1, n)) : "10"} at={[0.3, 1.72, 0.1]} size={0.22} k={f < counts[0] ? 0 : 1} bg={f < tenth ? "#e9b04f" : "#c8322e"} />
+        <Label3D text={f < tenth ? String(Math.max(1, n)) : "10"} at={[0.3, 1.72, 0.1]} size={0.22} k={f < counts[0] || f >= tenth + 4 ? 0 : 1} bg={f < tenth ? "#e9b04f" : "#c8322e"} />
         <Fx kind="exclaim" at={[0.3, 1.9, 0.1]} size={0.35} k={lookUp && !laughing ? pop(f, tenth + 8) : 0} />
         <Fx kind="lines" at={[-0.55, 1.4, 0.1]} size={0.6} k={laughing ? 1 : 0} />
       </Stage>
@@ -552,7 +552,7 @@ const S9Cerita: React.FC = () => {
       <Stage look="kartun" light="kenangan" hand={0.02} cam={[{f: back, pos: [-0.1, 1.45, 2.2], at: [-0.1, 1.3, 0], ease: "cut", fov: 40}, {f: saw, pos: [-0.1, 1.45, 1.9], at: [-0.1, 1.32, 0], fov: 38}]}>
         <Village />
         <Toon who={PILOT2} x={-0.15} z={0} pose={P.hold(t, 2)} expr="determined" />
-        <Longan at={[-0.15, 1.33, 0.2]} />
+        <Longan at={[-0.15, 1.23, 0.2]} />
         <FruitStone at={[0.45, 0, 0.75]} kind="longan" n={0} />
       </Stage>
     );
