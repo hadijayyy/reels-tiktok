@@ -4,8 +4,11 @@ Naskah thriller dari user (`scripts/narasi/penumpang.txt`), kata-katanya tidak d
 lebih dari 70 detik jangan dicut); hanya dipecah jadi 27 adegan, "01.30" dibaca "setengah dua". Cerita fiksi,
 tidak ada klaim fakta yang perlu dicek. Gaya `kartun` 3D, cahaya `malam`, musik `horror`.
 
-**Suara (Edge TTS):** narator dan Andi `id-ID-ArdiNeural`; ucapan wanita (baris 5, 7, 9, 11, 17, 23)
-`id-ID-GadisNeural` dengan tempo dan nada diturunkan supaya dingin. Baris 8 ("Lima tahunan, Bu") suara Andi.
+**Suara (Edge TTS):** narator dan Andi `id-ID-ArdiNeural` tempo +15 %; ucapan wanita (baris 5, 7, 9, 11, 17, 23)
+`id-ID-GadisNeural` tempo -6 %, nada -8 Hz supaya dingin. Baris 8 ("Lima tahunan, Bu") suara Andi. Tempo narator
+dinaikkan (bukan memotong naskah) supaya total 124,8 detik, bukan 139,6. Jeda dramatis sedikit dipendekkan.
+Dua kata diberi cara baca: "Pak..." (baris 7, supaya "Pak" tidak tertelan) dan "menoléh" (baris 18, tadinya
+terdengar "menolak"); keduanya dicek ulang dengan whisper medium.
 
 **Nama penumpang:** narasi tidak menyebut nama wanita itu, jadi namanya diperlihatkan di layar ponsel:
 aplikasi taksi "Penumpang: Ratna" (adegan 4) dan berita "Korban: Ratna, 24 tahun" (adegan 14-15). Nama fiksi.

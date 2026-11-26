@@ -271,6 +271,23 @@ hukuman "telan bulat-bulat"; pemenggalan tidak diperlihatkan (layar langsung gel
 | 8-10. Surga | "Kok kamu mati?" Kilas balik: pilot ketiga datang membawa durian |
 | 11-12. Penutup | Pilot kedua paling sial dalam sejarah; pilot ketiga gemetar memeluk durian |
 
+## Video: "Penumpang Terakhir" (125 detik, kartun 3D, thriller)
+
+Hasil jadi: [`out/penumpang.mp4`](out/penumpang.mp4). Naskah, arahan visual, caption, hashtag dan teks cover:
+[`scripts/narasi/penumpang-copy.md`](scripts/narasi/penumpang-copy.md). Naskah thriller dari user, tidak dipotong.
+Dua suara Edge TTS: narator/Andi `id-ID-ArdiNeural`, ucapan wanita `id-ID-GadisNeural`. Wajah wanita tidak pernah
+terlihat (rambut menutupi wajah); tabrakan dan jenazah tidak diperlihatkan.
+
+| Adegan | Isi |
+|---|---|
+| 1-4. Hook | Taksi di jalan kota malam; wanita di bawah lampu jalan; kaca spion; jam 01:30; aplikasi "Penumpang: Ratna" |
+| 5-11. Percakapan | Close-up bergantian Andi dan wanita yang menunduk; "Mobil Bapak dulu warnanya merah, kan?" |
+| 12-17. Eskalasi | Kilas balik mobil merah "DIJUAL"; spion; notifikasi berita korban Ratna; nama sama |
+| 18-19. Rem | Taksi mengerem mendadak; kursi belakang kosong |
+| 20-23. Foto | Pesan dari nomor tak dikenal: foto mobil merah, Andi dan wanita yang sama; "Kamu yang membunuhku" |
+| 24. Tabrak | Taksi oleng ke pembatas jalan, layar gelap |
+| 25-27. Pagi | Polisi di lokasi; ponsel menyala di kursi belakang: "Penumpang: Andi, Tujuan: Jl. Melati No. 27" |
+
 ## Kit kartun 3D: reel uji "KartunDemo" (12 detik, tanpa narasi)
 
 Hasil jadi: [`out/kartun-demo.mp4`](out/kartun-demo.mp4). Tiga adegan untuk menguji kit `src/cartoon/`
@@ -372,5 +389,5 @@ Untuk video cerita bergaya kartun 3D, diorama kertas, atau stickman dengan formu
 - Formula cerita dan aturan gaya kartun 3D diadaptasi dari
   [claude-shorts-skills](https://github.com/fahniazz/claude-shorts-skills) (`cartoon-3d-short`, lisensi MIT);
   kode kit `src/cartoon/` ditulis ulang untuk repo ini.
-- Suara narasi: model OmniVoice (k2-fsa) lewat VoiceStudio; video durian memakai Edge TTS (`id-ID-ArdiNeural`).
+- Suara narasi: model OmniVoice (k2-fsa) lewat VoiceStudio; video durian dan penumpang memakai Edge TTS (`id-ID-ArdiNeural`, `id-ID-GadisNeural`).
 - Font Inter, SIL Open Font License (`public/fonts/LICENSE-Inter.txt`).
