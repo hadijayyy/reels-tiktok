@@ -8,6 +8,7 @@
  * b = elbow/knee bend added on top: the forearm points at a + b. Use the pose presets below first.
  */
 import {INK, mixHex, rnd, shadeHex} from "./look";
+import {DRAFT} from "./quality";
 
 export type Expr = "neutral" | "happy" | "joy" | "shock" | "scared" | "angry" | "sad" | "smug" | "think" | "determined" | "tired" | "nervous";
 export type Limb = [number, number];
@@ -832,7 +833,7 @@ export const renderCard = (
     bb.setTransform(1, 0, 0, 1, 0, 0);
     bb.globalCompositeOperation = "source-over";
     bb.clearRect(0, 0, W, H);
-    const n = 16;
+    const n = DRAFT ? 8 : 16;
     for (let i = 0; i < n; i++) bb.drawImage(A, Math.cos((i / n) * Math.PI * 2) * r * k, Math.sin((i / n) * Math.PI * 2) * r * k);
     bb.drawImage(A, 0, 0);
     bb.globalCompositeOperation = "source-in";

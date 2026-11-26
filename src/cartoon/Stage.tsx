@@ -7,6 +7,7 @@ import {useSceneFrame} from "../camera/Transitions";
 import {eInOut, eIn, eOut, clamp, Ease} from "../motion/ease";
 import {FPS, H, W} from "../styles/palette";
 import {ProbeCtx} from "../story/probe";
+import {DRAFT} from "./quality";
 import {canvasTex, LightName, LightSpec, LIGHTS, LookName, LOOKS, LookSpec} from "./look";
 
 /*
@@ -228,7 +229,7 @@ export const Stage: React.FC<StageProps> = ({look = "kartun", light = "siang", c
   return (
     <AbsoluteFill style={{backgroundColor: skyCols[1]}}>
       <AbsoluteFill style={{filter: css}}>
-        <ThreeCanvas width={W} height={H} shadows flat gl={{antialias: true}} camera={{fov: c.fov, position: c.pos, near: 0.05, far: 400}}>
+        <ThreeCanvas width={W} height={H} shadows flat gl={{antialias: !DRAFT}} camera={{fov: c.fov, position: c.pos, near: 0.05, far: 400}}>
           <StageCtx.Provider value={info}>
             <CamRig c={c} frameY={fy} check={check} />
             <Sky top={skyCols[0]} bottom={skyCols[1]} />
@@ -250,7 +251,7 @@ const Sun: React.FC<{pos: V3; at: V3; color: string; intensity: number; size: nu
   const light = React.useMemo(() => {
     const l = new THREE.DirectionalLight();
     l.castShadow = true;
-    l.shadow.mapSize.set(2048, 2048);
+    l.shadow.mapSize.set(DRAFT ? 512 : 2048, DRAFT ? 512 : 2048);
     l.shadow.bias = -0.0004;
     l.shadow.normalBias = 0.02;
     return l;

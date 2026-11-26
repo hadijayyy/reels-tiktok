@@ -327,7 +327,7 @@ scripts/finish.sh <slug> <Id> [calm|horror|piano|space] [puncak|detik_dentuman] 
 Ia menghitung durasi dari timing, membuat musik (di venv TTS), mixing ke `public/audio/<slug>.mp3` (-14 LUFS; horor: volume 0.3),
 merender `out/<slug>.mp4` per bagian (`scripts/render_parts.mjs`), lalu menjalankan ffprobe dan `check_pacing.py`.
 Revisi beberapa adegan setelah render: `node scripts/render_parts.mjs <Id> <slug> --scene 3,5` merender ulang hanya
-adegan itu (dan transisi di kedua sisinya) lalu menyambung ulang video; `--draft` membuat preview setengah resolusi. Perintah lepasnya, kalau perlu satu per satu:
+adegan itu (dan transisi di kedua sisinya) lalu menyambung ulang video; `--draft` membuat preview cepat (15 fps, setengah resolusi). Perintah lepasnya, kalau perlu satu per satu:
 
 ```bash
 python scripts/make_music.py <slug> <detik> [calm|horror|piano|space|race] [puncak|detik_dentuman]   # detik = FRAMES / 30; piano naik sampai `puncak` (0..1); space: satu dentuman di detik itu

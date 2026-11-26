@@ -8,8 +8,10 @@
 //   (default)    render every part (use after any change you cannot pin to scenes)
 //   --scene 3,5  render only those scenes (0-based) and the transitions on both sides of each, re-use the rest
 //   --missing    render only parts that do not exist yet (resume an interrupted render)
-//   --draft      half resolution (540 x 960) into out/<slug>-draft.mp4, parts kept apart from the final ones:
-//                about 3x faster, for checking timing, acting and camera before the final render
+//   --draft      preview into out/<slug>-draft.mp4: every 2nd frame (15 fps, shown at 30), half size, draft quality
+//                (src/cartoon/quality.ts: small shadow map, no MSAA, low-res character cards), one render call.
+//                About 3.5x faster than the final on the cloud (measured: 0.31 vs 0.85-1.2 s per frame), for checking
+//                timing, acting and camera. With --scene it covers only those scenes (out/<slug>-draft-s3-5.mp4).
 //
 // Parts: scene bodies [from+8, next-8) and seams [cut-8, cut+8) around each cut (8 = HALF in Transitions.tsx,
 // the frames where two scenes overlap), so a scene and its transitions can be replaced on their own.
@@ -20,7 +22,7 @@ import {execFileSync} from "node:child_process";
 import {existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync} from "node:fs";
 import path from "node:path";
 import {bundle} from "@remotion/bundler";
-import {openBrowser, renderMedia, selectComposition} from "@remotion/renderer";
+import {openBrowser, renderFrames, renderMedia, selectComposition} from "@remotion/renderer";
 
 const args = process.argv.slice(2);
 const pos = args.filter((a, i) => !a.startsWith("--") && !(args[i - 1] ?? "").match(/^--(scene|gl|concurrency|out)$/));
@@ -39,12 +41,56 @@ const only = opt("scene") ? opt("scene").split(",").map(Number) : null;
 const gl = opt("gl", process.env.GL ?? null);
 const chromiumOptions = gl ? {gl} : {};
 const concurrency = opt("concurrency") ? Number(opt("concurrency")) : null;
-const out = opt("out", draft ? `out/${slug}-draft.mp4` : `out/${slug}.mp4`);
+const only0 = opt("scene") ? opt("scene").split(",").map(Number) : null;
+const out = opt("out", draft ? `out/${slug}-draft${only0 ? `-s${only0.join("-")}` : ""}.mp4` : `out/${slug}.mp4`);
 const HALF = 8;
 
 const timing = readFileSync(`src/scenes/${slug}Timing.ts`, "utf8");
 const FRAMES = Number(timing.match(/FRAMES = (\d+)/)[1]);
 const scenes = JSON.parse(timing.match(/SCENES = (\[.*?\]);/s)[1]);
+
+const audio = `public/audio/${slug}.mp3`;
+const withAudio = (video, dest, offsetSec = 0) => {
+  if (!existsSync(audio)) {
+    console.log(`no ${audio}: video without sound`);
+    execFileSync("ffmpeg", ["-v", "error", "-y", "-i", video, "-c", "copy", dest]);
+    return;
+  }
+  // apad + shortest: the video decides the length (an mp3 a frame short must not drop the last frame)
+  execFileSync("ffmpeg", ["-v", "error", "-y", "-i", video, "-ss", String(offsetSec), "-i", audio, "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-af", "apad", "-c:a", "aac", "-b:a", "192k", "-shortest", dest]);
+};
+
+if (draft) {
+  const t0 = Date.now();
+  const range = only0 ? [scenes[Math.min(...only0)].from, Math.min(FRAMES, scenes[Math.max(...only0)].from + scenes[Math.max(...only0)].len) - 1] : [0, FRAMES - 1];
+  const dirD = `out/parts/${slug}-draft-frames`;
+  rmSync(dirD, {recursive: true, force: true});
+  mkdirSync(dirD, {recursive: true});
+  const serveUrl = await bundle({entryPoint: path.resolve("src/index.ts")});
+  const browser = await openBrowser("chrome", {chromiumOptions});
+  const inputProps = {draft: true};
+  const comp = await selectComposition({serveUrl, id, inputProps, puppeteerInstance: browser});
+  console.log(`${id}: draft of frames ${range[0]}-${range[1]} (every 2nd frame, half size)`);
+  let last = 0;
+  await renderFrames({
+    composition: comp, serveUrl, outputDir: dirD, imageFormat: "jpeg", jpegQuality: 70, scale: 0.5, everyNthFrame: 2,
+    frameRange: range, inputProps, chromiumOptions, puppeteerInstance: browser, onStart: () => {},
+    onFrameUpdate: (n) => {
+      if (n - last >= 100) {
+        last = n;
+        console.log(`  ${n * 2}/${range[1] - range[0] + 1} frames, ${Math.round((Date.now() - t0) / 1000)} s`);
+      }
+    },
+    ...(concurrency ? {concurrency} : {}),
+  });
+  await browser.close(true);
+  const video = `${dirD}/video.mp4`;
+  execFileSync("ffmpeg", ["-v", "error", "-y", "-framerate", "15", "-pattern_type", "glob", "-i", `${dirD}/element-*.jpeg`, "-vf", "fps=30", "-c:v", "libx264", "-crf", "26", "-pix_fmt", "yuv420p", video]);
+  withAudio(video, out, range[0] / 30);
+  rmSync(dirD, {recursive: true, force: true});
+  console.log(`${out} in ${Math.round((Date.now() - t0) / 1000)} s (preview only: 15 fps, half size)`);
+  process.exit(0);
+}
 
 // parts in playing order
 const parts = [];
@@ -55,7 +101,7 @@ scenes.forEach((s, i) => {
   if (b > a) parts.push({name: `b${String(i).padStart(2, "0")}`, a, b, scenes: [i]});
 });
 
-const dir = `out/parts/${slug}${draft ? "-draft" : ""}`;
+const dir = `out/parts/${slug}`;
 mkdirSync(dir, {recursive: true});
 const file = (p) => `${dir}/${p.name}.mp4`;
 const todo = parts.filter((p) => (only ? p.scenes.some((s) => only.includes(s)) : missing ? !existsSync(file(p)) : true));
@@ -65,7 +111,7 @@ if (absent.length) {
   todo.push(...absent);
 }
 const frames = todo.reduce((n, p) => n + p.b - p.a, 0);
-console.log(`${id}: ${todo.length}/${parts.length} parts, ${frames}/${FRAMES} frames${draft ? " (draft, half size)" : ""}`);
+console.log(`${id}: ${todo.length}/${parts.length} parts, ${frames}/${FRAMES} frames`);
 
 const t0 = Date.now();
 if (todo.length) {
@@ -81,11 +127,10 @@ if (todo.length) {
       composition: comp,
       serveUrl,
       codec: "h264",
-      crf: draft ? 26 : 20,
+      crf: 20,
       muted: true,
       imageFormat: "jpeg",
-      jpegQuality: draft ? 70 : 90,
-      scale: draft ? 0.5 : 1,
+      jpegQuality: 90,
       frameRange: [p.a, p.b - 1],
       outputLocation: tmp,
       inputProps,
@@ -107,12 +152,7 @@ const list = `${dir}/list.txt`;
 writeFileSync(list, parts.map((p) => `file '${path.resolve(file(p))}'`).join("\n") + "\n");
 const video = `${dir}/video.mp4`;
 execFileSync("ffmpeg", ["-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", list, "-c", "copy", video]);
-const audio = `public/audio/${slug}.mp3`;
-if (existsSync(audio)) execFileSync("ffmpeg", ["-v", "error", "-y", "-i", video, "-i", audio, "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", out]);
-else {
-  console.log(`no ${audio}: video without sound`);
-  execFileSync("ffmpeg", ["-v", "error", "-y", "-i", video, "-c", "copy", out]);
-}
+withAudio(video, out);
 rmSync(video, {force: true});
 const n = Number(execFileSync("ffprobe", ["-v", "error", "-select_streams", "v:0", "-count_packets", "-show_entries", "stream=nb_read_packets", "-of", "csv=p=0", out]).toString().trim());
 console.log(`${out}: ${n} frames${n === FRAMES ? " (ok)" : ` (EXPECTED ${FRAMES})`} in ${Math.round((Date.now() - t0) / 1000)} s`);

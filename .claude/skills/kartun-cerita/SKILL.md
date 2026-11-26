@@ -54,8 +54,9 @@ Sebutkan pilihan itu di laporan akhir. Bahasa Indonesia santai, tanpa logo/merek
    satu still di tengah tiap masalah probe). Still juga menangkap `KAMERA DI DALAM BENDA`. Lihat sheet-nya
    (Read): yang tidak bisa dicek mesin adalah keterbacaan (benda kunci cukup besar? punchline terlihat?).
 7. **Preview draft (opsional, disarankan untuk video baru):**
-   `GL=swangle node scripts/render_parts.mjs <Id> <slug> --draft` → `out/<slug>-draft.mp4` setengah resolusi,
-   ±3x lebih cepat. Ambil satu frame per detik (`ffmpeg -i out/<slug>-draft.mp4 -vf "fps=1,scale=216:-1,tile=10x6"`)
+   `GL=swangle node scripts/render_parts.mjs <Id> <slug> --draft` → `out/<slug>-draft.mp4` (15 fps, setengah
+   resolusi, kualitas draft; ±10 menit untuk 60 detik di cloud, ±3,5x lebih cepat dari final). Untuk mengecek satu
+   perbaikan: `--draft --scene 6` (±1 menit per adegan). Ambil satu frame per detik (`ffmpeg -i out/<slug>-draft.mp4 -vf "fps=1,scale=216:-1,tile=10x6"`)
    dan periksa: aksi tepat di kata kunci, transisi, efek yang terpotong.
 8. **Final: `GL=swangle scripts/finish.sh <slug> <Id> [calm|horror|piano|space]`**: musik, mix -14 LUFS, render
    per bagian, ffprobe (jumlah frame harus pas), pacing. Render 3D di cloud tanpa GPU ±1 detik/frame (video

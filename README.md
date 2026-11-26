@@ -275,7 +275,8 @@ Video cerita dengan kit ini dibuat lewat skill `.claude/skills/kartun-cerita/SKI
   kontak, dan daftar `LUAR AREA`; `--scene 3,5` mengulang hanya adegan yang diubah.
 - `scripts/finish.sh <slug> <Id>`: musik, mix (-14 LUFS), render per bagian, ffprobe, dan pacing dalam satu perintah.
 - `node scripts/render_parts.mjs <Id> <slug> [--scene 3,5] [--draft]`: render per adegan + transisi, disambung tanpa
-  encode ulang; `--scene` merender ulang hanya adegan yang diubah, `--draft` membuat preview setengah resolusi.
+  encode ulang; `--scene` merender ulang hanya adegan yang diubah, `--draft` membuat preview cepat (15 fps,
+  setengah resolusi, kualitas draft; bisa digabung dengan `--scene`).
 - Film 3D: `node scripts/check_layout.mjs <Id> <slug> --probe-only` memeriksa setiap frame ke-3 dalam hitungan detik
   (tokoh terpotong, label yang tidak terlihat); tanpa `--probe-only` ditambah still yang juga menangkap kamera di dalam benda.
 - `scripts/check_pacing.py out/<slug>.mp4`: memeriksa frame pertama dan bagian lebih dari 4 detik tanpa
