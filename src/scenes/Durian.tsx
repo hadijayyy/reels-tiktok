@@ -382,7 +382,7 @@ const S5Gagal: React.FC = () => {
   const wide = cueAt(3);
   const word = useWordAt();
   const behead = word(3, 2);
-  const mouth: V3 = [-0.3, 1.23, 0.2];
+  const mouth: V3 = [-0.3, 1.16, 0.22];
   const hand: V3 = [-0.05, 1.0, 0.3];
   const apple1 = ramp(f, a1 + 4, 12);
   const apple2 = ramp(f, a2 + 4, 14);
@@ -394,7 +394,7 @@ const S5Gagal: React.FC = () => {
         <FruitStone at={[0.25, 0, 0.7]} kind="apple" n={f < a1 + 4 ? 10 : f < a2 + 4 ? 9 : 8} />
         <Toon who={PILOT1} x={-0.3} z={0} pose={f < a2 + 18 ? blend(P.idle(t, 1), P.hold(t, 1), apple1 > 0 && apple1 < 1 ? 1 : 0) : strain(t, 1, strainK)} expr={f < a1 + 16 ? "determined" : f < a2 ? "happy" : f < cant ? "shock" : "scared"} />
         {apple1 > 0 && apple1 < 1 ? <Apple at={lerp3(hand, mouth, apple1)} s={1 - apple1 * 0.4} /> : null}
-        {apple2 > 0 ? <Apple at={lerp3(hand, mouth, Math.min(apple2, 0.92))} s={1 - apple2 * 0.15} /> : null}
+        {apple2 > 0 ? <Apple at={lerp3(hand, mouth, Math.min(apple2, 0.95))} s={1 - apple2 * 0.2} /> : null}
         <Fx kind="drop" at={[-0.05, 1.6, 0.2]} size={0.2} k={pop(f, a2 + 16)} />
         <Fx kind="drop" at={[-0.55, 1.5, 0.2]} size={0.18} k={pop(f, cant + 4)} />
         <Fx kind="exclaim" at={[-0.3, 1.95, 0.1]} size={0.35} k={pop(f, cant)} />
@@ -406,7 +406,7 @@ const S5Gagal: React.FC = () => {
       overlay={<><Flash f={f} at={behead} /><Blackout f={f} at={behead + 3} /></>}>
       <Village />
       <Toon who={PILOT1} x={-0.3} z={0.1} pose={strain(t, 1)} expr="scared" />
-      <Apple at={[-0.3, 1.23, 0.28]} />
+      <Apple at={[-0.3, 1.16, 0.28]} s={0.8} />
       <Toon who={KEPALA} x={0.45} z={-0.3} pose={f < behead - 6 ? P.point(t, 21) : P.lift(t, 21)} expr="angry" facing={-1} />
       <Fx kind="burst" at={[-0.3, 1.5, 0.3]} size={1.4} k={(f - behead) / 10} />
     </Stage>
