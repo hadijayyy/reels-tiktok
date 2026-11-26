@@ -479,7 +479,7 @@ export const CUES = [
     "text": "\"Pak, sudah berapa lama jadi sopir?\"",
     "words": [
       {
-        "t": "\"{Pak,=Pak...}",
+        "t": "\"Pak,",
         "f": 952,
         "e": 955
       },
