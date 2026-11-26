@@ -90,7 +90,7 @@ export const Toon: React.FC<ToonProps> = ({who, x, z, y = 0, h = 2.0, pose, expr
     const ys = pts.map((q) => q[1]);
     const inFront = new THREE.Vector3(...st.cam.at).sub(new THREE.Vector3(...st.cam.pos)).dot(new THREE.Vector3(x, y + h * 0.7, z).sub(new THREE.Vector3(...st.cam.pos))) > 0;
     // Shorts/Reels UI: left 4 %, right 16 %, top 8 %; and the face stays above the caption band
-    if (inFront && Math.max(...xs) > -50 && Math.min(...xs) < 1130 && (Math.min(...xs) < 43 || Math.max(...xs) > 907 || Math.min(...ys) < 154 || Math.max(...ys) > 1300)) {
+    if (inFront && Math.max(...xs) > 0 && Math.min(...xs) < 1080 && Math.max(...ys) > 0 && Math.min(...ys) < 1920 && (Math.min(...xs) < 43 || Math.max(...xs) > 907 || Math.min(...ys) < 154 || Math.max(...ys) > 1300)) {
       warn = true;
       console.warn(`LUAR AREA: karakter ${who.name ?? ""} (wajah di x ${Math.round(Math.min(...xs))}..${Math.round(Math.max(...xs))}, y ${Math.round(Math.min(...ys))}..${Math.round(Math.max(...ys))})`);
     }
@@ -311,7 +311,10 @@ export const Label3D: React.FC<{text: string; at: V3; size?: number; color?: str
   const ready = fontReady();
   const key = `label|${text}|${color}|${bg ?? ""}|${ready}`;
   const tex = canvasTex(key, 1024, 256, (g, w, h) => {
+    // shrink long text so it always fits the card (with its outline and plate)
     g.font = `800 150px Inter, sans-serif`;
+    const fit = Math.min(150, (150 * (w - (bg ? 170 : 60))) / Math.max(1, g.measureText(text).width));
+    g.font = `800 ${Math.floor(fit)}px Inter, sans-serif`;
     g.textAlign = "center";
     g.textBaseline = "middle";
     if (bg) {
@@ -325,7 +328,7 @@ export const Label3D: React.FC<{text: string; at: V3; size?: number; color?: str
       g.stroke();
     }
     g.lineJoin = "round";
-    g.lineWidth = 26;
+    g.lineWidth = 26 * (fit / 150);
     g.strokeStyle = "#21181f";
     g.strokeText(text, w / 2, h / 2 + 8);
     g.fillStyle = color;

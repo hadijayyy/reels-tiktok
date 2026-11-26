@@ -20,6 +20,7 @@ import {JOBS_FRAMES, SteveJobsApple} from "./scenes/SteveJobsApple";
 import {ROKET_FRAMES, RoketGagal} from "./scenes/RoketGagal";
 import {BITCOIN_FRAMES, BitcoinNol} from "./scenes/BitcoinNol";
 import {DEMO_FRAMES, KartunDemo} from "./scenes/KartunDemo";
+import {JAKARTA_FRAMES, JakartaTenggelam} from "./scenes/JakartaTenggelam";
 import {FPS, H, W} from "./styles/palette";
 
 // Render with: npx remotion render src/index.ts <Id> out/<name>.mp4
@@ -195,6 +196,15 @@ export const Root: React.FC = () => (
       width={W}
       height={H}
       defaultProps={{narration: "audio/bitcoin.mp3"}}
+    />
+    <Composition
+      id="JakartaTenggelam"
+      component={JakartaTenggelam}
+      durationInFrames={JAKARTA_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+      defaultProps={{narration: "audio/jakarta.mp3"}}
     />
     <Composition id="KartunDemo" component={KartunDemo} durationInFrames={DEMO_FRAMES} fps={FPS} width={W} height={H} />
   </>
