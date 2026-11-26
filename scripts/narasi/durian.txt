@@ -1,0 +1,13 @@
+# Satu baris = satu adegan. Tanda | memisahkan frasa caption.
+Tiga pilot jatuh di pulau terpencil|saat {Perang Dunia II=Perang Dunia Kedua},|lalu ditangkap *suku kanibal.*
+Kepala suku memberi satu syarat.|"Cari {10=sepuluh} buah yang sama.|Waktu kalian tiga jam!"
+Pilot pertama membawa|{10=sepuluh} buah *apel.*|Itu baru awal penderitaannya.
+"Telan semuanya *bulat-bulat*,|tanpa dikunyah, tanpa bersuara.|Kalau gagal, kalian *dipenggal!*" [jeda=0.5]
+Apel pertama berhasil.|Tapi apel kedua...|dia tidak sanggup.|Kepalanya langsung dipenggal! [jeda=0.6]
+Pilot kedua membawa|{10=sepuluh} buah *lengkeng.*|"Kecil begini, pasti gampang!"
+Satu. Dua. Tiga.|Sampai kesembilan, lancar.|Tapi tepat di buah kesepuluh...|kepalanya juga dipenggal! [jeda=0.6]
+Di surga, pilot pertama bertanya,|"Kok kamu mati?|Kan kamu bawa lengkeng?"
+"Harusnya aku selamat!|Tapi pas menelan yang kesepuluh,|aku lihat pilot ketiga membawa..." [jeda=0.5]
+"*Buah durian!*|Aku langsung ketawa ngakak!" [jeda=0.5]
+Sejak itu, pilot kedua resmi jadi|manusia paling sial dalam sejarah.
+Menurut kalian,|pilot ketiga masih bisa hidup nggak?
