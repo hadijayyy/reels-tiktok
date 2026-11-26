@@ -1,0 +1,29 @@
+# Satu baris = satu adegan. Tanda | memisahkan frasa caption.
+# Baris yang diawali tanda kutip dan berisi ucapan wanita dibacakan suara wanita (lihat penumpang-copy.md).
+Malam itu, seorang sopir taksi|dapat penumpang terakhirnya.
+Seorang wanita minta diantar pulang,|dengan satu syarat:|jangan lihat wajahnya lewat *kaca spion.* [jeda=0.8]
+Pukul {01.30=setengah dua} dini hari.|Andi sudah narik dua belas jam.|Satu perjalanan lagi, lalu pulang.
+Seorang wanita masuk|dan duduk di kursi belakang.
+"Jalan Melati nomor {27=dua puluh tujuh}, Pak.|Dan tolong jangan lihat saya|lewat spion."
+Andi mengangguk, agak bingung.|Sepanjang jalan wanita itu diam,|sampai akhirnya dia bertanya,
+"Pak, sudah berapa lama jadi sopir?"
+"Lima tahunan, Bu. Kenapa?"
+"Berarti Bapak pernah|mengantar saya sebelumnya."
+Jawabnya pelan.|Andi tertawa kecil.
+"Mobil Bapak dulu|warnanya *merah*, kan?" [jeda=0.8]
+Tawanya berhenti.|Mobil merah itu sudah dia jual|tiga tahun lalu. [jeda=0.6]
+Tangan Andi mulai dingin di setir.|Dia melirik spion.|Wanita itu masih menunduk.
+Ponselnya berbunyi. Notifikasi berita:|"Tiga tahun lalu, seorang wanita tewas|dalam kecelakaan di Jalan Melati."
+Andi membaca nama korbannya.|Sama persis dengan nama penumpang|di belakang. [jeda=0.6]
+Suaranya gemetar.|"Bu... sebenarnya Ibu siapa?"
+"Bapak benar-benar|tidak ingat?" [jeda=1.0]
+Andi menginjak rem|dan menoleh ke belakang.
+*Kursinya kosong.* [jeda=0.8]
+Ponselnya berbunyi lagi.|Pesan dari nomor tak dikenal,|isinya satu foto.
+Mobil merah miliknya, tiga tahun lalu.|Andi di kursi pengemudi.|Dan di kursi belakang,|wanita yang sama. [jeda=0.6]
+Di bawah foto ada tulisan:
+"Kamu yang membunuhku.|Kenapa kamu *masih hidup?*" [jeda=0.8]
+Andi kehilangan kendali.|Mobilnya meluncur ke pembatas jalan. [jeda=1.0]
+Paginya, polisi menemukan taksi itu|ringsek di dekat pembatas jalan.|Andi tewas di kursi pengemudi.
+Kursi belakang kosong,|kecuali satu ponsel|yang layarnya masih menyala.
+Notifikasi perjalanan baru.|Penumpang: *Andi.*|Tujuan: Jalan Melati nomor {27=dua puluh tujuh}. [jeda=0.6]
