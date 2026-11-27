@@ -76,34 +76,49 @@ const Pan: React.FC<{x: number; handle: 1 | -1}> = ({x, handle}) => (
 );
 
 const Kitchen: React.FC<{g: number}> = ({g}) => {
-  const tile: Surf = {c: "#e6dcc8", tex: "tiles", tile: 0.45};
+  const wall: Surf = {c: "#e6d2b0", tex: "plaster", tile: 2};
   // the clock runs fast while the perfectionist prepares
   const spin = g < 120 ? g * 0.02 : g < 240 ? 2.4 + (g - 120) * 0.35 : 44.4 + (g - 240) * 0.02;
   const cx = -0.25;
   const cy = 2.0;
-  const cz = -1.06;
-  const hand = (len: number, a: number): V3 => [cx + Math.sin(a) * len, cy + Math.cos(a) * len, cz + 0.06];
+  const cz = -1.11; // front face of the back wall
+  const at = (len: number, a: number, z: number): V3 => [cx + Math.sin(a) * len, cy + Math.cos(a) * len, z];
   return (
     <>
-      <Room w={5.2} d={2.4} h={3.2} wall={tile} floor={{c: "#8a6a4a", tex: "planks", tile: 1.2}} sides="" />
-      <Window at={[1.35, 1.25, -1.1]} w={0.9} h={1.0} glass="#1d2a4a" glow={0.25} />
+      <Room w={6} d={2.4} h={4.8} wall={wall} floor={{c: "#8a6a4a", tex: "planks", tile: 1.2}} sides="" />
+      {/* floor runs on toward the camera so wide shots never see past its edge */}
+      <Box at={[0, -0.1, 4.5]} size={[9, 0.1, 7]} surf={{c: "#8a6a4a", tex: "planks", tile: 1.2}} cast={false} ink={false} />
+      {/* tiled splashback behind the counter */}
+      <Box at={[CENTER, TOP, -1.12]} size={[6, 0.72, 0.03]} surf={{c: "#dfe9ec", tex: "tiles", tile: 0.22}} ink={false} />
+      <Window at={[1.35, 1.6, -1.1]} w={0.9} h={1.0} glass="#22345e" glow={0.12} />
       <Shelf at={[-1.75, 0, -0.95]} w={1.0} h={1.7} />
       {/* wall clock */}
-      <Cyl at={[cx, cy, cz - 0.05]} r={0.24} h={0.05} surf={{c: "#f6f1e6"}} rot={[90, 0, 0]} />
-      <Pole from={[cx, cy, cz + 0.06]} to={hand(0.13, spin / 12)} r={0.014} surf={{c: "#222"}} ink={false} />
-      <Pole from={[cx, cy, cz + 0.06]} to={hand(0.19, spin)} r={0.01} surf={{c: "#c0392b"}} ink={false} />
+      {/* rim and face are separate discs without an ink hull (a hull on a thin disc z-fights into a torn edge) */}
+      <Cyl at={[cx, cy, cz]} r={0.25} h={0.04} surf={{c: "#2a2a30"}} rot={[90, 0, 0]} ink={false} seg={48} />
+      <Cyl at={[cx, cy, cz]} r={0.215} h={0.05} surf={{c: "#f7f2e6"}} rot={[90, 0, 0]} ink={false} seg={48} />
+      {[...Array(12)].map((_, i) => (
+        <Pole key={i} from={at(i % 3 === 0 ? 0.15 : 0.17, (i * Math.PI) / 6, cz + 0.055)} to={at(0.195, (i * Math.PI) / 6, cz + 0.055)} r={i % 3 === 0 ? 0.011 : 0.006} surf={{c: "#2a2a30"}} ink={false} />
+      ))}
+      <Pole from={at(-0.03, spin / 12, cz + 0.062)} to={at(0.12, spin / 12, cz + 0.062)} r={0.013} surf={{c: "#2a2a30"}} ink={false} />
+      <Pole from={at(-0.04, spin, cz + 0.07)} to={at(0.18, spin, cz + 0.07)} r={0.008} surf={{c: "#d03a2a"}} ink={false} />
+      <Ball at={[cx, cy, cz + 0.072]} r={0.02} surf={{c: "#2a2a30"}} ink={false} />
       {/* wall lamps on brackets */}
       {[-1.2, 0.85].map((x) => (
         <group key={x}>
-          <Box at={[x, 2.25, -1.08]} size={[0.06, 0.06, 0.18]} surf={{c: "#2a2a2a"}} />
-          <Lamp at={[x, 2.22, -0.95]} power={3.2} />
+          <Box at={[x, 2.3, -1.1]} size={[0.05, 0.05, 0.16]} surf={{c: "#2a2a2a"}} />
+          <Cyl at={[x, 2.16, -0.98]} r={0.13} r2={0.06} h={0.15} surf={{c: "#2f5a4a"}} />
+          <Lamp at={[x, 2.15, -0.98]} power={1.6} glow={0.35} />
         </group>
       ))}
       {/* counter */}
       <Box at={[CENTER, 0, PAN_Z]} size={[2.7, TOP - 0.05, 0.75]} surf={{c: "#33394a", tex: "boards", tile: 0.6}} />
-      <Box at={[CENTER, TOP - 0.05, PAN_Z]} size={[2.8, 0.05, 0.82]} surf={{c: "#d8d2c4", tex: "stone", tile: 0.8}} />
-      {[-1.0, 0.6].map((x) => (
-        <Box key={x} at={[x, 0.36, PAN_Z + 0.38]} size={[0.04, 0.22, 0.03]} surf={{c: "#b8b2a4"}} ink={false} />
+      <Box at={[CENTER, TOP - 0.05, PAN_Z]} size={[2.8, 0.05, 0.82]} surf={{c: "#c9a273", tex: "planks", tile: 0.5}} />
+      {/* cabinet doors with handles */}
+      {[-1.12, -0.44, 0.24, 0.92].map((x, i) => (
+        <group key={x}>
+          <Box at={[x, 0.08, PAN_Z + 0.375]} size={[0.6, 0.6, 0.02]} surf={{c: "#424b60"}} />
+          <Box at={[x + (i % 2 ? -0.22 : 0.22), 0.3, PAN_Z + 0.395]} size={[0.025, 0.16, 0.025]} surf={{c: "#c8c2b4"}} ink={false} />
+        </group>
       ))}
       <Pan x={PX} handle={-1} />
       <Pan x={AX} handle={1} />
@@ -264,7 +279,7 @@ const Shot: React.FC<{cam: CamKey[]; shake?: [number, number][]; labels?: boolea
   const L = leftPose(g, t);
   const R = rightPose(g, t);
   return (
-    <Stage look="kartun" light="dalam" cam={cam} hand={0.012} shake={shake} shadowSize={5} overlay={<TopLine text={LINES[index]} f={f} />}>
+    <Stage look="kartun" light="dalam" cam={cam} hand={0.012} shake={shake} shadowSize={5} exposure={0.94} overlay={<TopLine text={LINES[index]} f={f} />}>
       <Kitchen g={g} />
       <Toon who={PERFEK} x={PX} z={CZ} h={H} pose={L.pose} expr={L.expr} item={L.item} />
       <Toon who={MULAI} x={AX} z={CZ} h={H} pose={R.pose} expr={R.expr} facing={-1} />
