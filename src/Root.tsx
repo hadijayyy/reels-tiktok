@@ -20,6 +20,12 @@ import {JOBS_FRAMES, SteveJobsApple} from "./scenes/SteveJobsApple";
 import {ROKET_FRAMES, RoketGagal} from "./scenes/RoketGagal";
 import {BITCOIN_FRAMES, BitcoinNol} from "./scenes/BitcoinNol";
 import {DEMO_FRAMES, KartunDemo} from "./scenes/KartunDemo";
+import {TigaPilotDurian} from "./scenes/Durian";
+import {PancakePertama} from "./scenes/Pancake";
+import {FRAMES as PANCAKE_FRAMES} from "./scenes/pancakeTiming";
+import {PenumpangTerakhir} from "./scenes/Penumpang";
+import {FRAMES as PENUMPANG_FRAMES} from "./scenes/penumpangTiming";
+import {FRAMES as DURIAN_FRAMES} from "./scenes/durianTiming";
 import {JAKARTA_FRAMES, JakartaTenggelam} from "./scenes/JakartaTenggelam";
 import {FPS, H, W} from "./styles/palette";
 
@@ -205,6 +211,33 @@ export const Root: React.FC = () => (
       width={W}
       height={H}
       defaultProps={{narration: "audio/jakarta.mp3"}}
+    />
+    <Composition
+      id="PancakePertama"
+      component={PancakePertama}
+      durationInFrames={PANCAKE_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+      defaultProps={{narration: "audio/pancake.mp3"}}
+    />
+    <Composition
+      id="TigaPilotDurian"
+      component={TigaPilotDurian}
+      durationInFrames={DURIAN_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+      defaultProps={{narration: "audio/durian.mp3"}}
+    />
+    <Composition
+      id="PenumpangTerakhir"
+      component={PenumpangTerakhir}
+      durationInFrames={PENUMPANG_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+      defaultProps={{narration: "audio/penumpang.mp3"}}
     />
     <Composition id="KartunDemo" component={KartunDemo} durationInFrames={DEMO_FRAMES} fps={FPS} width={W} height={H} />
   </>

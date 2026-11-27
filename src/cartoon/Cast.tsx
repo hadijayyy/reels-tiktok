@@ -1,6 +1,6 @@
 import React from "react";
 import * as THREE from "three";
-import {DRAFT} from "./quality";
+import {DRAFT, HQ} from "./quality";
 import {canvasTex, mixHex} from "./look";
 import {useStage, V3} from "./Stage";
 import {Expr, headBox, Item, P, Pose, renderCard, Who} from "./Toon";
@@ -14,7 +14,7 @@ import {Expr, headBox, Item, P, Pose, renderCard, Who} from "./Toon";
  *   <Label3D text="1752" at={[0, 2.4, 0]} size={0.5} />
  */
 
-const RES = DRAFT ? 0.6 : 1.25; // canvas pixels per design unit (600 x 1000 design -> 750 x 1250 px)
+const RES = DRAFT ? 0.6 : HQ ? 2.2 : 1.25; // canvas pixels per design unit (600 x 1000 design -> 750 x 1250 px)
 
 const blobTex = () =>
   canvasTex("blob", 128, 128, (g, w, h) => {

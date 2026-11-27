@@ -255,6 +255,48 @@ Hasil jadi: [`out/jakarta.mp4`](out/jakarta.mp4). Naskah, caption, hashtag, teks
 | 10-12. Harapan | Tokyo 1968 (24 cm/tahun) membatasi pompa dan berhenti turun; Muara Baru melambat setengah |
 | 13. Penutup | 2050 bukan takdir, tergantung air yang kita sedot hari ini |
 
+## Video: "Tiga Pilot dan Buah Durian" (70 detik, kartun 3D, lelucon)
+
+Hasil jadi: [`out/durian.mp4`](out/durian.mp4). Naskah, arahan visual, caption, hashtag dan teks cover:
+[`scripts/narasi/durian-copy.md`](scripts/narasi/durian-copy.md). Lelucon dari user, latar pulau fiksi,
+hukuman "telan bulat-bulat"; pemenggalan tidak diperlihatkan (layar langsung gelap). Narasi: Edge TTS
+`id-ID-ArdiNeural` (bukan OmniVoice), lihat catatan di file copy.
+
+| Adegan | Isi |
+|---|---|
+| 1. Hook | Pesawat berasap jatuh ke pulau; tiga pilot dikepung prajurit bertombak |
+| 2. Syarat | Kepala suku: cari 10 buah yang sama dalam tiga jam |
+| 3-5. Apel | Pilot pertama bawa apel; aturan telan bulat-bulat; apel kedua gagal, layar gelap |
+| 6-7. Lengkeng | Pilot kedua sombong; hitungan 1 sampai 9 lancar, buah ke-10 dia menoleh, tertawa, layar gelap |
+| 8-10. Surga | "Kok kamu mati?" Kilas balik: pilot ketiga datang membawa durian |
+| 11-12. Penutup | Pilot kedua paling sial dalam sejarah; pilot ketiga gemetar memeluk durian |
+
+## Video: "Pancake Pertama" (14 detik, kartun 3D, pengembangan diri, tanpa narasi)
+
+Hasil jadi: [`out/pancake.mp4`](out/pancake.mp4). Teks layar, caption, hashtag dan teks cover:
+[`scripts/narasi/pancake-copy.md`](scripts/narasi/pancake-copy.md). Satu meja dapur, dua tokoh: PERFEKSIONIS
+menyiapkan pancake sempurna (resep, timbangan, penggaris, termometer) sementara LANGSUNG MULAI menggosongkan
+yang pertama lalu terus memasak sampai punya tumpukan 10. Saat si perfeksionis akhirnya menuang, yang pertamanya
+gosong juga. Tanpa narasi: musik lo-fi, efek suara dapur (`scripts/make_pancake_sfx.py`), satu baris teks per adegan.
+Timing ditulis tangan di `src/scenes/pancakeTiming.ts`.
+
+## Video: "Penumpang Terakhir" (125 detik, kartun 3D, thriller)
+
+Hasil jadi: [`out/penumpang.mp4`](out/penumpang.mp4). Naskah, arahan visual, caption, hashtag dan teks cover:
+[`scripts/narasi/penumpang-copy.md`](scripts/narasi/penumpang-copy.md). Naskah thriller dari user, tidak dipotong.
+Dua suara Edge TTS: narator/Andi `id-ID-ArdiNeural`, ucapan wanita `id-ID-GadisNeural`. Wajah wanita tidak pernah
+terlihat (rambut menutupi wajah); tabrakan dan jenazah tidak diperlihatkan.
+
+| Adegan | Isi |
+|---|---|
+| 1-4. Hook | Taksi di jalan kota malam; wanita di bawah lampu jalan; kaca spion; jam 01:30; aplikasi "Penumpang: Ratna" |
+| 5-11. Percakapan | Close-up bergantian Andi dan wanita yang menunduk; "Mobil Bapak dulu warnanya merah, kan?" |
+| 12-17. Eskalasi | Kilas balik mobil merah "DIJUAL"; spion; notifikasi berita korban Ratna; nama sama |
+| 18-19. Rem | Taksi mengerem mendadak; kursi belakang kosong |
+| 20-23. Foto | Pesan dari nomor tak dikenal: foto mobil merah, Andi dan wanita yang sama; "Kamu yang membunuhku" |
+| 24. Tabrak | Taksi oleng ke pembatas jalan, layar gelap |
+| 25-27. Pagi | Polisi di lokasi; ponsel menyala di kursi belakang: "Penumpang: Andi, Tujuan: Jl. Melati No. 27" |
+
 ## Kit kartun 3D: reel uji "KartunDemo" (12 detik, tanpa narasi)
 
 Hasil jadi: [`out/kartun-demo.mp4`](out/kartun-demo.mp4). Tiga adegan untuk menguji kit `src/cartoon/`
@@ -356,5 +398,8 @@ Untuk video cerita bergaya kartun 3D, diorama kertas, atau stickman dengan formu
 - Formula cerita dan aturan gaya kartun 3D diadaptasi dari
   [claude-shorts-skills](https://github.com/fahniazz/claude-shorts-skills) (`cartoon-3d-short`, lisensi MIT);
   kode kit `src/cartoon/` ditulis ulang untuk repo ini.
-- Suara narasi: model OmniVoice (k2-fsa) lewat VoiceStudio.
+- Suara narasi: model OmniVoice (k2-fsa) lewat VoiceStudio; video durian dan penumpang memakai Edge TTS (`id-ID-ArdiNeural`, `id-ID-GadisNeural`).
+  Bobot OmniVoice berlisensi non-komersial (CC-BY-NC); tokenizer audionya memakai Boson Higgs Audio 2 Community License:
+  Built with Higgs Materials licensed from Boson AI USA, Inc., Copyright Boson AI USA, Inc., All Rights Reserved and
+  Meta Llama 3 licensed under the Meta Llama 3 Community License, Copyright Meta Platforms, Inc., All Right Reserved.
 - Font Inter, SIL Open Font License (`public/fonts/LICENSE-Inter.txt`).

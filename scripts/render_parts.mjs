@@ -2,12 +2,14 @@
 // adds the mixed audio (public/audio/<slug>.mp3). Bundles once and keeps one browser, so after a fix only the
 // changed scenes are rendered again instead of the whole film.
 //
-//   node scripts/render_parts.mjs <CompositionId> <slug> [--scene 3,5] [--missing] [--draft]
+//   node scripts/render_parts.mjs <CompositionId> <slug> [--scene 3,5] [--missing] [--draft] [--hq]
 //                                 [--gl swangle|angle] [--concurrency N] [--out out/<slug>.mp4]
 //
 //   (default)    render every part (use after any change you cannot pin to scenes)
 //   --scene 3,5  render only those scenes (0-based) and the transitions on both sides of each, re-use the rest
 //   --missing    render only parts that do not exist yet (resume an interrupted render)
+//   --hq         high quality: supersampled 3D (2x), sharper cards and shadows, PNG frames, crf 16. About 2-3x
+//                slower than the default; use it for every part of a film (do not mix with default parts).
 //   --draft      preview into out/<slug>-draft.mp4: every 2nd frame (15 fps, shown at 30), half size, draft quality
 //                (src/cartoon/quality.ts: small shadow map, no MSAA, low-res character cards), one render call.
 //                About 3.5x faster than the final on the cloud (measured: 0.31 vs 0.85-1.2 s per frame), for checking
@@ -36,6 +38,7 @@ if (!id || !slug) {
   process.exit(1);
 }
 const draft = args.includes("--draft");
+const hq = args.includes("--hq") && !draft; // supersampled 3D, PNG frames, crf 16 (src/cartoon/quality.ts)
 const missing = args.includes("--missing");
 const only = opt("scene") ? opt("scene").split(",").map(Number) : null;
 const gl = opt("gl", process.env.GL ?? null);
@@ -117,7 +120,7 @@ const t0 = Date.now();
 if (todo.length) {
   const serveUrl = await bundle({entryPoint: path.resolve("src/index.ts")});
   const browser = await openBrowser("chrome", {chromiumOptions});
-  const inputProps = {};
+  const inputProps = hq ? {hq: true} : {};
   const comp = await selectComposition({serveUrl, id, inputProps, puppeteerInstance: browser});
   let done = 0;
   for (const p of todo) {
@@ -127,10 +130,9 @@ if (todo.length) {
       composition: comp,
       serveUrl,
       codec: "h264",
-      crf: 20,
+      crf: hq ? 16 : 20,
       muted: true,
-      imageFormat: "jpeg",
-      jpegQuality: 90,
+      ...(hq ? {imageFormat: "png"} : {imageFormat: "jpeg", jpegQuality: 90}),
       frameRange: [p.a, p.b - 1],
       outputLocation: tmp,
       inputProps,

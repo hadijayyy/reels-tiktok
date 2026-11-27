@@ -15,7 +15,7 @@ import difflib
 import re
 
 SPOKEN = re.compile(r"\{([^=}]+)=([^}]+)\}")
-UNIT = re.compile(r"\{[^=}]+=[^}]+\}|\S+")
+UNIT = re.compile(r"[^\s{]*\{[^=}]+=[^}]+\}\S*|\S+")
 
 _ONES = ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas"]
 
@@ -60,8 +60,8 @@ def phrase_units(phrase: str) -> list[dict]:
     units = []
     for m in UNIT.finditer(phrase):
         raw = m.group(0)
-        sm = SPOKEN.fullmatch(raw)
-        shown, spoken = (sm.group(1), sm.group(2)) if sm else (raw, raw)
+        sm = SPOKEN.search(raw)  # may carry punctuation around it, e.g. "{Pak,=Pak...}
+        shown, spoken = (raw[:sm.start()] + sm.group(1) + raw[sm.end():], raw[:sm.start()] + sm.group(2) + raw[sm.end():]) if sm else (raw, raw)
         emph = shown.startswith("*") or shown.rstrip(".,!?:;\"'").endswith("*") or bool(re.search(r"\d", shown))
         units.append({"text": shown.replace("*", ""), "spoken": norm_tokens(spoken), "shown": norm_tokens(shown), "emph": emph})
     return units
