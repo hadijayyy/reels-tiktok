@@ -147,7 +147,7 @@ const RightSide: React.FC<{g: number; count: boolean}> = ({g, count}) => {
   }
   // smoke while the first one burns
   const smokeK = ramp(g, 26, 30);
-  const smoke = g > 26 && g < 62 ? <Fx kind="smoke" at={[AX, TOP + 0.25 + smokeK * 0.35, PAN_Z]} size={0.55} k={smokeK} color="#5a5048" /> : null;
+  const smoke = g > 26 && g < 62 ? <Fx kind="smoke" at={[AX + 0.12, TOP + 0.1 + smokeK * 0.12, PAN_Z + 0.05]} size={0.28} k={smokeK} color="#8a8078" /> : null;
   // how far along the stack is, for the label
   const label = count && landed > 0 && g >= landAt(1) ? <Label3D text={`#${landed}`} at={[PLATE[0] + 0.08, PLATE[1] + 0.15 + landed * 0.03, PLATE[2]]} size={0.09} k={clamp01((g - landAt(landed)) / 6) + (landed > 1 ? 1 : 0)} /> : null;
   return (
@@ -196,7 +196,7 @@ const LeftSide: React.FC<{g: number}> = ({g}) => {
     const r = 0.15 * (0.55 + 0.45 * Math.min(1, (g - P_POUR) / 6));
     items.push(<Cake key="first" at={[PX, TOP + 0.057, PAN_Z]} c={mix(RAW, BURNT, Math.pow(cook, 0.8))} ugly={cook} r={r} />);
     const sk = ramp(g, P_REVEAL - 10, 30);
-    if (g > P_REVEAL - 10) items.push(<Fx key="smoke" kind="smoke" at={[PX, TOP + 0.25 + sk * 0.3, PAN_Z]} size={0.5} k={sk} color="#5a5048" />);
+    if (g > P_REVEAL - 10) items.push(<Fx key="smoke" kind="smoke" at={[PX - 0.12, TOP + 0.1 + sk * 0.12, PAN_Z + 0.05]} size={0.26} k={sk} color="#8a8078" />);
   }
   if (g >= P_REVEAL && g < 330) items.push(<Label3D key="n1" text="#1" at={[PX + 0.2, TOP + 0.2, PAN_Z + 0.12]} size={0.09} k={clamp01((g - P_REVEAL) / 6)} />);
   // the plate slid over to him
