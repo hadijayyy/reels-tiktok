@@ -271,6 +271,15 @@ hukuman "telan bulat-bulat"; pemenggalan tidak diperlihatkan (layar langsung gel
 | 8-10. Surga | "Kok kamu mati?" Kilas balik: pilot ketiga datang membawa durian |
 | 11-12. Penutup | Pilot kedua paling sial dalam sejarah; pilot ketiga gemetar memeluk durian |
 
+## Video: "Pancake Pertama" (14 detik, kartun 3D, pengembangan diri, tanpa narasi)
+
+Hasil jadi: [`out/pancake.mp4`](out/pancake.mp4). Teks layar, caption, hashtag dan teks cover:
+[`scripts/narasi/pancake-copy.md`](scripts/narasi/pancake-copy.md). Satu meja dapur, dua tokoh: PERFEKSIONIS
+menyiapkan pancake sempurna (resep, timbangan, penggaris, termometer) sementara LANGSUNG MULAI menggosongkan
+yang pertama lalu terus memasak sampai punya tumpukan 10. Saat si perfeksionis akhirnya menuang, yang pertamanya
+gosong juga. Tanpa narasi: musik lo-fi, efek suara dapur (`scripts/make_pancake_sfx.py`), satu baris teks per adegan.
+Timing ditulis tangan di `src/scenes/pancakeTiming.ts`.
+
 ## Video: "Penumpang Terakhir" (125 detik, kartun 3D, thriller)
 
 Hasil jadi: [`out/penumpang.mp4`](out/penumpang.mp4). Naskah, arahan visual, caption, hashtag dan teks cover:
